@@ -13,6 +13,17 @@ export default function Navbar({ cartCount }) {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [menuOpen]);
+
   const nav = (id) => {
     setMenuOpen(false);
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -28,24 +39,44 @@ export default function Navbar({ cartCount }) {
   ];
 
   return (
-    <header className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+    <header className={`navbar ${scrolled ? 'scrolled' : ''} ${menuOpen ? 'menu-open' : ''}`}>
       <div className="nav-container">
         <button
           className="logo-btn"
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          onClick={() => {
+            setMenuOpen(false);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
           aria-label="Cozy Stitches Home"
         >
-          <YarnLogoIcon size={32} className="logo-svg" />
+          <YarnLogoIcon size={30} className="logo-svg" />
           <span className="logo-text">Cozy Stitches</span>
         </button>
 
         <nav className={`nav-links ${menuOpen ? 'open' : ''}`} aria-label="Main navigation">
+          <div className="mobile-nav-header">
+            <span className="mobile-nav-title">Menu</span>
+            <button
+              className="mobile-close-btn"
+              onClick={() => setMenuOpen(false)}
+              aria-label="Close menu"
+            >
+              <X size={24} />
+            </button>
+          </div>
           {links.map(({ id, label, icon }) => (
             <button key={id} className="nav-link" onClick={() => nav(id)}>
               {icon}
               <span>{label}</span>
             </button>
           ))}
+          <button
+            className="mobile-cta-btn"
+            onClick={() => nav('products')}
+          >
+            <Compass size={16} />
+            <span>Browse All Patterns</span>
+          </button>
         </nav>
 
         <div className="nav-actions">
@@ -57,7 +88,12 @@ export default function Navbar({ cartCount }) {
             <span>Browse Patterns</span>
           </button>
 
-          <button className="cart-btn" title="View cart" aria-label="Shopping cart">
+          <button
+            className="cart-btn"
+            title="View cart"
+            aria-label="Shopping cart"
+            onClick={() => nav('products')}
+          >
             <ShoppingBag size={20} />
             <span className="cart-count">{cartCount}</span>
           </button>
@@ -68,7 +104,7 @@ export default function Navbar({ cartCount }) {
             aria-label="Toggle menu"
             aria-expanded={menuOpen}
           >
-            {menuOpen ? <X size={22} /> : <Menu size={22} />}
+            {menuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>

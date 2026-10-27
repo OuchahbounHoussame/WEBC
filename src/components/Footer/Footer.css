@@ -132,8 +132,18 @@
   .fm-brand { grid-column: 1 / -1; }
   .fc-inner { grid-template-columns: 1fr; gap: 40px; }
 }
-@media (max-width: 600px) {
-  .footer-main { grid-template-columns: 1fr 1fr; }
+@media (max-width: 680px) {
+  .footer-contact { padding: 50px 16px; }
+  .fc-form { padding: 20px 16px; }
   .fc-row { grid-template-columns: 1fr; }
-  .footer-bottom { flex-direction: column; text-align: center; }
+  .footer-main {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 18px;
+    padding: 40px 16px 30px;
+  }
+  .footer-bottom { flex-direction: column; text-align: center; gap: 14px; }
+}
+@media (max-width: 460px) {
+  .footer-main { grid-template-columns: 1fr; }
+  .footer-legal { flex-direction: column; gap: 10px; align-items: center; }
 }

@@ -19,3 +19,29 @@
   font-size: 1.15rem;
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
 }
+
+@media (max-width: 860px) {
+  .trust-bar {
+    padding: 14px 16px;
+  }
+  .trust-inner {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px 14px;
+  }
+  .trust-item {
+    white-space: normal;
+    font-size: .82rem;
+    line-height: 1.35;
+  }
+}
+
+@media (max-width: 440px) {
+  .trust-inner {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .trust-item {
+    font-size: .85rem;
+  }
+}
