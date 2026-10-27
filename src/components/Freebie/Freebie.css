@@ -1,0 +1,122 @@
+.freebie-section {
+  background: linear-gradient(135deg, #482750 0%, #733c76 35%, #be6c87 70%, #46977e 100%);
+  padding: 90px 5%;
+  position: relative;
+  overflow: hidden;
+}
+.freebie-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1.3fr;
+  gap: 70px; align-items: center;
+  position: relative; z-index: 2;
+}
+
+/* Visual side */
+.freebie-visual { position: relative; display: flex; justify-content: center; }
+.freebie-card {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 22px; padding: 28px;
+  color: #fff; width: min(300px, 90%);
+  position: relative; z-index: 2;
+  box-shadow: 0 16px 44px rgba(45, 15, 50, 0.25);
+}
+.fc-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; font-size: 2rem; }
+.fc-tag { font-size: .65rem; font-weight: 800; letter-spacing: 2px; opacity: .88; color: #ffe4ee; }
+.fc-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; }
+.fc-vector-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16px;
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.18));
+}
+.fc-details { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 14px; }
+.fc-details span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: .72rem; font-weight: 700;
+  background: rgba(255, 255, 255, 0.22); padding: 4px 12px; border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.fc-value { text-align: center; font-size: .9rem; }
+.fc-value strong { color: #ffe4ee; font-size: 1.15rem; margin-left: 6px; }
+
+.freebie-deco {
+  position: absolute; border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.18);
+  pointer-events: none;
+}
+.d1 { width: 220px; height: 220px; top: -35px; right: -25px; }
+.d2 { width: 130px; height: 130px; bottom: 5px; left: -15px; }
+
+/* Content side */
+.freebie-content .section-label { color: #ffe4ee; }
+.freebie-content h2 { color: #fff; font-size: 2.2rem; margin-bottom: 16px; font-weight: 700; }
+.freebie-sub { color: rgba(255, 255, 255, 0.9); margin-bottom: 22px; font-size: 1rem; line-height: 1.7; }
+.freebie-sub strong { color: #ffe4ee; }
+
+.freebie-perks { list-style: none; margin-bottom: 28px; display: flex; flex-direction: column; gap: 12px; }
+.freebie-perks li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.94);
+  font-size: .93rem; font-weight: 600;
+}
+.perk-check-icon {
+  color: #ffe4ee;
+  flex-shrink: 0;
+}
+.freebie-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: .8rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.freebie-form { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+.freebie-form input {
+  flex: 1; min-width: 200px;
+  padding: 14px 22px; border-radius: 50px;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
+  color: #fff; font-family: 'Lato', sans-serif; font-size: 1rem;
+  outline: none; transition: all .25s;
+}
+.freebie-form input::placeholder { color: rgba(255, 255, 255, 0.65); }
+.freebie-form input:focus {
+  border-color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.freebie-form .btn-primary {
+  background: linear-gradient(135deg, #e8829b 0%, #db6d89 100%);
+  border-color: #f7a2b6;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+.freebie-form .btn-primary:hover {
+  background: linear-gradient(135deg, #d26883 0%, #c45772 100%);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.freebie-note { font-size: .8rem; color: rgba(255, 255, 255, 0.7); }
+
+.freebie-success {
+  display: flex; align-items: center; gap: 16px;
+  background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 18px; padding: 20px 24px; color: #fff;
+}
+.freebie-success span { font-size: 2.4rem; flex-shrink: 0; }
+.freebie-success h3 { margin-bottom: 4px; color: #ffe4ee; }
+.freebie-success p  { margin: 0; opacity: .9; font-size: .9rem; }
+
+@media (max-width: 900px) {
+  .freebie-inner { grid-template-columns: 1fr; gap: 40px; }
+  .freebie-visual { margin-bottom: 0; }
+}

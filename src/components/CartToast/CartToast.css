@@ -1,0 +1,14 @@
+.cart-toast {
+  position: fixed; bottom: 30px; left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: #361f3b; color: #fff;
+  border: 1px solid #663c6c;
+  padding: 14px 28px; border-radius: 50px;
+  display: flex; align-items: center; gap: 10px;
+  font-size: .95rem; font-weight: 600;
+  box-shadow: 0 12px 36px rgba(50, 15, 55, 0.35);
+  z-index: 3000;
+  transition: transform .4s cubic-bezier(.4, 0, .2, 1);
+  pointer-events: none;
+}
+.cart-toast.show { transform: translateX(-50%) translateY(0); }

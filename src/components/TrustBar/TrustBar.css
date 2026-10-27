@@ -1,0 +1,21 @@
+.trust-bar {
+  background: linear-gradient(90deg, #4d2b52 0%, #683c6c 40%, #468774 100%);
+  padding: 16px 5%;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(70, 35, 75, 0.15);
+}
+.trust-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; flex-wrap: wrap;
+  justify-content: space-around; gap: 14px;
+}
+.trust-item {
+  display: flex; align-items: center; gap: 8px;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: .85rem; font-weight: 600;
+  white-space: nowrap;
+}
+.trust-icon {
+  font-size: 1.15rem;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+}
