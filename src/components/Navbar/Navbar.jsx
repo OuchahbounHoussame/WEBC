@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { ShoppingBag, Menu, X, Sparkles, Compass } from 'lucide-react';
+import { ShoppingBag, Menu, X, Sparkles, Compass, DownloadCloud } from 'lucide-react';
 import { YarnLogoIcon } from '../Icons/CrochetIcons';
 import './Navbar.css';
 
-export default function Navbar({ cartCount, onOpenCart }) {
+export default function Navbar({ cartCount, downloadsCount = 0, onOpenCart, onOpenDownloads }) {
   const [scrolled,  setScrolled]  = useState(false);
   const [menuOpen,  setMenuOpen]  = useState(false);
 
@@ -80,6 +80,19 @@ export default function Navbar({ cartCount, onOpenCart }) {
         </nav>
 
         <div className="nav-actions">
+          {downloadsCount > 0 && (
+            <button
+              className="nav-downloads-btn"
+              title="View my purchased patterns"
+              onClick={onOpenDownloads}
+              aria-label="My downloads"
+            >
+              <DownloadCloud size={16} />
+              <span>My Patterns</span>
+              <span className="downloads-count">{downloadsCount}</span>
+            </button>
+          )}
+
           <button
             className="nav-shop-btn"
             onClick={() => nav('products')}

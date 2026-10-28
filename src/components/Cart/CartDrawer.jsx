@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   X,
   Trash2,
@@ -12,13 +12,23 @@ import {
   User,
   Clock,
   RefreshCw,
-  Search
+  Search,
+  PackageCheck
 } from 'lucide-react';
 import { ProductIcon } from '../Icons/CrochetIcons';
 import './CartDrawer.css';
 
-export default function CartDrawer({ isOpen, onClose, cart, onRemove, onClearCart }) {
-  const [view, setView] = useState('cart'); // 'cart' | 'checkout' | 'success' | 'recover'
+export default function CartDrawer({
+  isOpen,
+  onClose,
+  cart,
+  initialTab = 'cart',
+  purchasedOrders = [],
+  onOrderSuccess,
+  onRemove,
+  onClearCart
+}) {
+  const [view, setView] = useState('cart'); // 'cart' | 'checkout' | 'success' | 'downloads' | 'recover'
   const [customerEmail, setCustomerEmail] = useState('');
   const [customerName, setCustomerName] = useState('');
   const [orderResult, setOrderResult] = useState(null);
@@ -30,9 +40,35 @@ export default function CartDrawer({ isOpen, onClose, cart, onRemove, onClearCar
   const [recoverEmail, setRecoverEmail] = useState('');
   const [recoverResult, setRecoverResult] = useState(null);
 
+  // Sync initial tab when opened
+  useEffect(() => {
+    if (isOpen) {
+      if (initialTab === 'downloads') {
+        setView('downloads');
+      } else if (view !== 'success') {
+        setView('cart');
+      }
+    }
+  }, [isOpen, initialTab]);
+
   if (!isOpen) return null;
 
   const total = cart.reduce((sum, item) => sum + item.price, 0);
+
+  // Flatten all purchased downloads across orders
+  const allPurchasedDownloads = [];
+  for (const ord of purchasedOrders) {
+    if (ord.downloads) {
+      for (const dl of ord.downloads) {
+        allPurchasedDownloads.push({
+          ...dl,
+          orderId: ord.orderId,
+          customerEmail: ord.customerEmail,
+          purchasedAt: ord.createdAt
+        });
+      }
+    }
+  }
 
   // Submit checkout to real backend
   const handleCheckoutSubmit = async (e) => {
@@ -63,6 +99,7 @@ export default function CartDrawer({ isOpen, onClose, cart, onRemove, onClearCar
       }
 
       setOrderResult(data.order);
+      if (onOrderSuccess) onOrderSuccess(data.order);
       if (onClearCart) onClearCart();
       setView('success');
     } catch (err) {
@@ -94,6 +131,14 @@ export default function CartDrawer({ isOpen, onClose, cart, onRemove, onClearCar
         throw new Error(data.message || 'Order not found');
       }
       setRecoverResult(data.downloads);
+      if (onOrderSuccess) {
+        onOrderSuccess({
+          orderId: recoverOrderId,
+          customerEmail: recoverEmail,
+          createdAt: new Date().toISOString(),
+          downloads: data.downloads
+        });
+      }
     } catch (err) {
       setErrorMsg(err.message || 'Could not verify order details.');
     } finally {
@@ -109,9 +154,10 @@ export default function CartDrawer({ isOpen, onClose, cart, onRemove, onClearCar
           <div className="cart-title-row">
             <ShoppingBag size={20} className="cart-icon-header" />
             <h3>
-              {view === 'cart' && `Your Pattern Bag (${cart.length})`}
+              {view === 'cart' && `Your Bag (${cart.length})`}
               {view === 'checkout' && 'Secure Instant Checkout'}
               {view === 'success' && 'Order Confirmed!'}
+              {view === 'downloads' && `My Patterns (${allPurchasedDownloads.length})`}
               {view === 'recover' && 'Access Your Patterns'}
             </h3>
           </div>
@@ -119,6 +165,26 @@ export default function CartDrawer({ isOpen, onClose, cart, onRemove, onClearCar
             <X size={20} />
           </button>
         </div>
+
+        {/* Navigation Tabs (when user has purchases) */}
+        {(purchasedOrders.length > 0 || allPurchasedDownloads.length > 0) && view !== 'checkout' && view !== 'success' && (
+          <div className="cart-tabs-bar">
+            <button
+              className={`cart-tab-btn ${view === 'cart' ? 'active' : ''}`}
+              onClick={() => setView('cart')}
+            >
+              <ShoppingBag size={14} />
+              <span>Bag ({cart.length})</span>
+            </button>
+            <button
+              className={`cart-tab-btn ${view === 'downloads' ? 'active' : ''}`}
+              onClick={() => setView('downloads')}
+            >
+              <PackageCheck size={14} />
+              <span>My Patterns ({allPurchasedDownloads.length})</span>
+            </button>
+          </div>
+        )}
 
         {/* View 1: Cart Items */}
         {view === 'cart' && (
@@ -131,14 +197,25 @@ export default function CartDrawer({ isOpen, onClose, cart, onRemove, onClearCar
                 <button className="btn btn-primary" onClick={onClose}>
                   Browse Patterns
                 </button>
-                <button
-                  className="cart-recover-link"
-                  onClick={() => setView('recover')}
-                  style={{ marginTop: '24px' }}
-                >
-                  <Search size={14} />
-                  <span>Already purchased? Retrieve downloads</span>
-                </button>
+                {allPurchasedDownloads.length > 0 ? (
+                  <button
+                    className="btn btn-outline-dark"
+                    style={{ marginTop: '16px' }}
+                    onClick={() => setView('downloads')}
+                  >
+                    <DownloadCloud size={15} />
+                    <span>View My Purchased Patterns ({allPurchasedDownloads.length})</span>
+                  </button>
+                ) : (
+                  <button
+                    className="cart-recover-link"
+                    onClick={() => setView('recover')}
+                    style={{ marginTop: '24px' }}
+                  >
+                    <Search size={14} />
+                    <span>Already purchased? Retrieve downloads</span>
+                  </button>
+                )}
               </div>
             ) : (
               <>
@@ -172,7 +249,7 @@ export default function CartDrawer({ isOpen, onClose, cart, onRemove, onClearCar
                   </div>
                   <div className="cart-security-badge">
                     <ShieldCheck size={16} className="csb-icon" />
-                    <span>Protected link • 48h access • Private PDF stream</span>
+                    <span>Saved in browser • Private download stream</span>
                   </div>
                   <button
                     className="btn btn-primary cart-checkout-btn"
@@ -281,7 +358,7 @@ export default function CartDrawer({ isOpen, onClose, cart, onRemove, onClearCar
           </form>
         )}
 
-        {/* View 3: Order Completed & Secure Downloads Ready */}
+        {/* View 3: Order Completed (Immediate Success) */}
         {view === 'success' && orderResult && (
           <div className="cart-success">
             <CheckCircle2 size={54} className="cart-success-icon" />
@@ -290,13 +367,13 @@ export default function CartDrawer({ isOpen, onClose, cart, onRemove, onClearCar
               Order ID: <strong>{orderResult.orderId}</strong>
             </p>
             <p className="cs-email-tag">
-              Receipt &amp; access sent to <strong>{orderResult.customerEmail}</strong>
+              Saved permanently to your browser + receipt to <strong>{orderResult.customerEmail}</strong>
             </p>
 
             <div className="cs-security-callout">
               <ShieldCheck size={16} />
               <span>
-                Private token active • 48-hour access window • Max 5 downloads per pattern
+                Permanent access saved in your browser • 48-hour active direct links
               </span>
             </div>
 
@@ -326,22 +403,88 @@ export default function CartDrawer({ isOpen, onClose, cart, onRemove, onClearCar
               ))}
             </div>
 
-            <div className="cs-actions">
+            <div className="cs-actions" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <button
+                className="btn btn-primary"
+                style={{ width: '100%', justifyContent: 'center' }}
+                onClick={() => setView('downloads')}
+              >
+                <PackageCheck size={16} />
+                <span>Go to My Purchased Patterns</span>
+              </button>
               <button
                 className="btn btn-outline-dark"
                 style={{ width: '100%', justifyContent: 'center' }}
-                onClick={() => {
-                  setView('cart');
-                  onClose();
-                }}
+                onClick={onClose}
               >
-                Done / Back to Store
+                Back to Store
               </button>
             </div>
           </div>
         )}
 
-        {/* View 4: Retrieve / Refresh Link */}
+        {/* View 4: Persistent "My Purchased Patterns" (Survives Reloads!) */}
+        {view === 'downloads' && (
+          <div className="cart-persistent-downloads">
+            {allPurchasedDownloads.length === 0 ? (
+              <div className="cart-empty">
+                <PackageCheck size={48} className="cart-empty-icon" />
+                <p>No Patterns Purchased Yet</p>
+                <span>When you purchase patterns, they stay permanently accessible here.</span>
+                <button className="btn btn-primary" onClick={() => setView('cart')}>
+                  Back to Store
+                </button>
+              </div>
+            ) : (
+              <>
+                <div className="cpd-header">
+                  <p>Here are your purchased patterns. You can download your PDFs anytime:</p>
+                </div>
+
+                <div className="cart-downloads-list">
+                  {allPurchasedDownloads.map((dl, idx) => (
+                    <div key={`${dl.orderId}-${dl.productId}-${idx}`} className="cart-dl-item">
+                      <div className="cdl-thumb" style={{ background: '#fdf0f4' }}>
+                        <ProductIcon iconKey={dl.productId === 1 ? 'crewmate' : dl.productId === 2 ? 'star' : 'glasses'} size={38} />
+                      </div>
+                      <div className="cdl-info">
+                        <strong>{dl.productName}</strong>
+                        <div className="cdl-meta">
+                          <span>Order: {dl.orderId}</span>
+                        </div>
+                      </div>
+                      <a
+                        href={dl.downloadUrl}
+                        className="btn btn-primary cdl-btn"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <DownloadCloud size={14} />
+                        <span>Download PDF</span>
+                      </a>
+                    </div>
+                  ))}
+                </div>
+
+                <div style={{ marginTop: 'auto', paddingTop: '16px', borderTop: '1px solid #f0e0f4' }}>
+                  <button className="cart-recover-link" onClick={() => setView('recover')}>
+                    <RefreshCw size={13} />
+                    <span>Need to renew expired links? Click here</span>
+                  </button>
+                  <button
+                    className="btn btn-outline-dark"
+                    style={{ width: '100%', justifyContent: 'center', marginTop: '12px' }}
+                    onClick={onClose}
+                  >
+                    Close
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
+        )}
+
+        {/* View 5: Retrieve / Refresh Link */}
         {view === 'recover' && (
           <div className="cart-recover-view">
             <h4>Retrieve Purchased Patterns</h4>
@@ -355,7 +498,7 @@ export default function CartDrawer({ isOpen, onClose, cart, onRemove, onClearCar
                 <input
                   type="text"
                   required
-                  placeholder="e.g. ORD-MVSEQKLO-2008"
+                  placeholder="e.g. ORD-MVSGN925-7641"
                   value={recoverOrderId}
                   onChange={(e) => setRecoverOrderId(e.target.value)}
                   className="cc-input"
