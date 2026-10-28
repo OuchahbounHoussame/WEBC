@@ -1,5 +1,7 @@
 import express from 'express';
 import cors from 'cors';
+import path from 'path';
+import fs from 'fs';
 import productsRoutes from './routes/products.js';
 import ordersRoutes from './routes/orders.js';
 import downloadsRoutes from './routes/downloads.js';
@@ -24,11 +26,23 @@ app.use('/admin', adminRoutes);
 app.get('/api/health', (req, res) => {
   res.json({
     status: 'ok',
-    environment: process.env.VERCEL ? 'Vercel Serverless' : 'Node.js Local Server',
+    environment: process.env.VERCEL ? 'Vercel Serverless' : 'Node.js / Docker Server',
     service: 'Crochet Digital Patterns Backend',
     timestamp: new Date().toISOString()
   });
 });
+
+// Serve frontend in production / Docker mode if dist folder exists
+const distPath = path.join(process.cwd(), 'dist');
+if (fs.existsSync(distPath)) {
+  app.use(express.static(distPath));
+  app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/api') || req.path.startsWith('/admin')) {
+      return next();
+    }
+    res.sendFile(path.join(distPath, 'index.html'));
+  });
+}
 
 // Fallback error handler
 app.use((err, req, res, next) => {

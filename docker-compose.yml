@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  # 1. MySQL Database Container (Named 'crochet')
+  crochet-db:
+    image: mysql:8.0
+    container_name: crochet_db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: crochetpass
+      MYSQL_DATABASE: crochet
+    ports:
+      - "3306:3306"
+    volumes:
+      - crochet_db_data:/var/lib/mysql
+      - ./server/database/crochet_init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - crochet-network
+
+  # 2. Store Backend & App Service
+  crochet-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: crochet_app
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 5000
+      ADMIN_PASSWORD: crochet2026
+      DB_HOST: crochet-db
+      DB_USER: root
+      DB_PASSWORD: crochetpass
+      DB_NAME: crochet
+    ports:
+      - "5000:5000"
+    depends_on:
+      - crochet-db
+    networks:
+      - crochet-network
+
+volumes:
+  crochet_db_data:
+
+networks:
+  crochet-network:
+    driver: bridge
