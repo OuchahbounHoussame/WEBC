@@ -1,5 +1,4 @@
 import { Sparkles, Zap, Printer, Globe, Tag, ArrowRight, Gift } from 'lucide-react';
-import { SusCrewmateIcon, ShootingStarIcon, EyeglassHolderIcon } from '../Icons/CrochetIcons';
 import './Hero.css';
 
 export default function Hero() {
@@ -20,7 +19,7 @@ export default function Hero() {
           <span>Instant PDF Download</span>
         </h1>
         <p className="hero-sub">
-          Shop hundreds of downloadable crochet patterns, amigurumi guides, e-books, and video masterclasses.
+          Shop downloadable crochet patterns, amigurumi guides, and detailed project tutorials.
           Buy once, download forever — straight to your device in seconds.
         </p>
 
@@ -49,38 +48,6 @@ export default function Hero() {
             <span>Get Free Pattern</span>
           </button>
         </div>
-      </div>
-
-      <div className="hero-cards" aria-hidden="true">
-        {[
-          {
-            icon: <SusCrewmateIcon size={52} />,
-            label: 'Sus Space Crewmate',
-            price: '$4.99',
-            tag: 'AMIGURUMI',
-          },
-          {
-            icon: <ShootingStarIcon size={52} />,
-            label: 'Shooting Star Keychain',
-            price: '$4.49',
-            tag: 'KEYCHAIN',
-          },
-          {
-            icon: <EyeglassHolderIcon size={52} />,
-            label: 'Eyeglass Holder Set',
-            price: '$7.99',
-            tag: '7 IN 1 SET',
-          },
-        ].map(({ icon, label, price, tag }) => (
-          <div className="hero-card" key={label}>
-            <div className="hc-vector-icon">{icon}</div>
-            <div className="hc-tag">{tag}</div>
-            <div className="hc-info">
-              <p className="hc-label">{label}</p>
-              <p className="hc-price">{price}</p>
-            </div>
-          </div>
-        ))}
       </div>
 
       <div className="hero-wave">

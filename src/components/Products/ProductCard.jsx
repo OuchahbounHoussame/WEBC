@@ -37,7 +37,7 @@ export default function ProductCard({ product, onAddToCart, onPreview }) {
         title="Click to view pattern details"
       >
         <div className="pc-vector-art">
-          <ProductIcon iconKey={product.iconKey} size={90} />
+          <ProductIcon iconKey={product.iconKey} size={105} />
         </div>
 
         {product.bestseller && (

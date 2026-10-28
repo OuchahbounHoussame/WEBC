@@ -51,6 +51,7 @@ export default function App() {
         onClose={() => setCartOpen(false)}
         cart={cart}
         onRemove={removeFromCart}
+        onClearCart={() => setCart([])}
         onOpenPattern={(product) => setSelectedPattern(product)}
       />
       {selectedPattern && (

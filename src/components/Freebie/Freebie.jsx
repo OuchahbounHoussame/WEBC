@@ -7,11 +7,20 @@ export default function Freebie() {
   const [email, setEmail]     = useState('');
   const [status, setStatus]   = useState('idle'); // idle | loading | done
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email) return;
     setStatus('loading');
-    setTimeout(() => setStatus('done'), 1400);
+    try {
+      await fetch('/api/orders/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'freebie_cactus_pattern' })
+      });
+    } catch (err) {
+      console.error('Newsletter error:', err);
+    }
+    setTimeout(() => setStatus('done'), 800);
   };
 
   const perks = [
