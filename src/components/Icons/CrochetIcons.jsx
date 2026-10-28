@@ -46,6 +46,209 @@ export function YarnLogoIcon({ size = 28, className = "" }) {
   );
 }
 
+// Shooting Star Keychain Vector (From Real PDF Pattern)
+export function ShootingStarIcon({ size = 80 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      {/* Keychain ring & connector chain at top */}
+      <circle cx="72" cy="14" r="7" stroke="#b0b7c3" strokeWidth="2.5" fill="none" />
+      <circle cx="72" cy="14" r="4.5" fill="#fcf9fb" fillOpacity="0.4" />
+      <path d="M68 20L64 26" stroke="#9aa3af" strokeWidth="2.2" strokeLinecap="round" />
+      <circle cx="64" cy="27" r="2.2" fill="#9aa3af" />
+
+      {/* Pastel Rainbow Tail (curved stripes coming from back left) */}
+      <g>
+        {/* Stripe 1: Lilac / Pastel Lavender */}
+        <path
+          d="M12 55 C16 48 30 46 48 50"
+          stroke="#bca1e6"
+          strokeWidth="6"
+          strokeLinecap="round"
+          fill="none"
+        />
+        <path
+          d="M14 55 C18 48 30 46 46 50"
+          stroke="#ffffff"
+          strokeWidth="1.2"
+          strokeDasharray="2 3"
+          strokeLinecap="round"
+          strokeOpacity="0.6"
+          fill="none"
+        />
+
+        {/* Stripe 2: Pastel Rose Pink */}
+        <path
+          d="M14 62 C20 56 32 54 46 56"
+          stroke="#f29cb1"
+          strokeWidth="6"
+          strokeLinecap="round"
+          fill="none"
+        />
+        <path
+          d="M16 62 C22 56 32 54 44 56"
+          stroke="#ffffff"
+          strokeWidth="1.2"
+          strokeDasharray="2 3"
+          strokeLinecap="round"
+          strokeOpacity="0.6"
+          fill="none"
+        />
+
+        {/* Stripe 3: Aqua Green / Mint */}
+        <path
+          d="M18 69 C24 64 34 62 44 63"
+          stroke="#68cfa9"
+          strokeWidth="6"
+          strokeLinecap="round"
+          fill="none"
+        />
+        <path
+          d="M20 69 C26 64 34 62 42 63"
+          stroke="#ffffff"
+          strokeWidth="1.2"
+          strokeDasharray="2 3"
+          strokeLinecap="round"
+          strokeOpacity="0.6"
+          fill="none"
+        />
+      </g>
+
+      {/* Main Yellow 5-Point Star Body */}
+      {/* Center at cx: 58, cy: 54, radius ~24 */}
+      <path
+        d="M58 28
+           C60 28 62 33 65 39
+           C67 42 71 44 76 45
+           C81 46 83 49 80 53
+           C77 56 75 60 76 65
+           C77 70 74 72 70 70
+           C65 67 61 67 58 69
+           C55 67 51 67 46 70
+           C42 72 39 70 40 65
+           C41 60 39 56 36 53
+           C33 49 35 46 40 45
+           C45 44 49 42 51 39
+           C54 33 56 28 58 28 Z"
+        fill="url(#starYellowGrad)"
+        stroke="#d4a328"
+        strokeWidth="2.5"
+        strokeLinejoin="round"
+      />
+
+      {/* Crochet Puff / Stitch Textured Marks on Star */}
+      <g stroke="#c79218" strokeWidth="1.4" strokeDasharray="2 3" strokeLinecap="round" opacity="0.75">
+        <circle cx="58" cy="54" r="8" fill="none" />
+        <circle cx="58" cy="54" r="14" fill="none" />
+      </g>
+
+      {/* Star Cute Face */}
+      {/* Safety Eyes */}
+      <circle cx="51" cy="51" r="3.2" fill="#1e1822" />
+      <circle cx="50" cy="50" r="1.1" fill="#ffffff" />
+      <circle cx="65" cy="51" r="3.2" fill="#1e1822" />
+      <circle cx="64" cy="50" r="1.1" fill="#ffffff" />
+
+      {/* Embroidered U-Shaped Smile */}
+      <path
+        d="M55 57 C56.5 60 59.5 60 61 57"
+        stroke="#1e1822"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        fill="none"
+      />
+
+      {/* Blush Cheeks */}
+      <ellipse cx="46" cy="55" rx="3.5" ry="2" fill="#f89cb1" fillOpacity="0.6" />
+      <ellipse cx="70" cy="55" rx="3.5" ry="2" fill="#f89cb1" fillOpacity="0.6" />
+
+      {/* Gradients */}
+      <defs>
+        <linearGradient id="starYellowGrad" x1="40" y1="28" x2="78" y2="72" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#fde068" />
+          <stop offset="0.7" stopColor="#f7cc42" />
+          <stop offset="1" stopColor="#eebf32" />
+        </linearGradient>
+      </defs>
+    </svg>
+  );
+}
+
+// Sus Space Crewmate Amigurumi Vector (From Real PDF Pattern)
+export function SusCrewmateIcon({ size = 80 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      {/* Soft floor shadow */}
+      <ellipse cx="50" cy="88" rx="26" ry="5" fill="#4d1b2a" fillOpacity="0.22" />
+
+      {/* Red Backpack (on left side) */}
+      <rect x="18" y="38" width="15" height="34" rx="7" fill="#c91e30" stroke="#8a111e" strokeWidth="2.5" />
+      {/* Backpack stitch highlights */}
+      <path d="M22 46V62" stroke="#e84d5d" strokeWidth="1.5" strokeDasharray="3 3" strokeLinecap="round" />
+
+      {/* Main Red Amigurumi Body (with two cute legs) */}
+      <path
+        d="M32 78
+           C28 78 26 73 26 66
+           L26 38
+           C26 22 36 12 50 12
+           C64 12 74 22 74 38
+           L74 66
+           C74 73 72 78 68 78
+           C64 78 61 74 61 68
+           L61 64
+           C61 62 59 60 56 60
+           C53 60 51 62 51 64
+           L51 68
+           C51 74 48 78 44 78
+           C40 78 37 74 37 68
+           L37 64
+           C37 60 36 78 32 78 Z"
+        fill="url(#crewmateRedGrad)"
+        stroke="#8a111e"
+        strokeWidth="2.5"
+        strokeLinejoin="round"
+      />
+
+      {/* Amigurumi Stitch Texture on Body */}
+      <g stroke="#b81d2e" strokeWidth="1.6" strokeDasharray="2.5 3.5" strokeLinecap="round" opacity="0.85">
+        <path d="M34 26C42 22 58 22 66 26" />
+        <path d="M32 35C40 31 60 31 68 35" />
+        <path d="M30 46C34 44 38 44 42 46" />
+        <path d="M30 56C34 54 38 54 42 56" />
+        <path d="M32 66H42" />
+        <path d="M58 66H68" />
+      </g>
+
+      {/* Visor Outer Black Border (Thick felt/yarn outline) */}
+      <ellipse cx="58" cy="42" rx="19" ry="13" fill="#181822" stroke="#0e0e14" strokeWidth="1" />
+
+      {/* Visor Light Blue Glass */}
+      <ellipse cx="58" cy="42" rx="15" ry="9.5" fill="url(#visorBlueGrad)" />
+
+      {/* Visor subtle crochet rows */}
+      <path d="M48 42H68" stroke="#ffffff" strokeWidth="1" strokeOpacity="0.4" strokeDasharray="2 2" />
+
+      {/* Visor White Highlight (Key feature from pattern) */}
+      <ellipse cx="64" cy="38" rx="5.5" ry="2.4" transform="rotate(-6 64 38)" fill="#ffffff" />
+      <circle cx="52" cy="44" r="1.2" fill="#ffffff" fillOpacity="0.6" />
+
+      {/* Gradients */}
+      <defs>
+        <linearGradient id="crewmateRedGrad" x1="30" y1="12" x2="70" y2="80" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#ee2c40" />
+          <stop offset="0.65" stopColor="#d91a2d" />
+          <stop offset="1" stopColor="#b81324" />
+        </linearGradient>
+        <linearGradient id="visorBlueGrad" x1="44" y1="34" x2="72" y2="50" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#aae1fd" />
+          <stop offset="0.45" stopColor="#6dc7f7" />
+          <stop offset="1" stopColor="#45a6de" />
+        </linearGradient>
+      </defs>
+    </svg>
+  );
+}
+
 // 1. Sunflower Granny Square Vector
 export function SunflowerSquareIcon({ size = 80 }) {
   return (
@@ -296,16 +499,20 @@ export function CactusMiniIcon({ size = 90 }) {
 // Helper to render matching vector artwork by key
 export function ProductIcon({ iconKey, size = 80 }) {
   switch (iconKey) {
-    case 'sunflower': return <SunflowerSquareIcon size={size} />;
-    case 'bear':      return <BearAmigurumiIcon size={size} />;
-    case 'tote':      return <BohoToteIcon size={size} />;
-    case 'bible':     return <CrochetBibleIcon size={size} />;
-    case 'top':       return <LacyTopIcon size={size} />;
-    case 'zoo':       return <ZooBundleIcon size={size} />;
-    case 'video':     return <VideoMasterclassIcon size={size} />;
-    case 'blanket':   return <ChunkyBlanketIcon size={size} />;
-    case 'cactus':    return <CactusMiniIcon size={size} />;
-    default:          return <YarnLogoIcon size={size} />;
+    case 'crewmate':
+    case 'sus-crewmate':  return <SusCrewmateIcon size={size} />;
+    case 'star':
+    case 'shooting-star': return <ShootingStarIcon size={size} />;
+    case 'sunflower':     return <SunflowerSquareIcon size={size} />;
+    case 'bear':          return <BearAmigurumiIcon size={size} />;
+    case 'tote':          return <BohoToteIcon size={size} />;
+    case 'bible':         return <CrochetBibleIcon size={size} />;
+    case 'top':           return <LacyTopIcon size={size} />;
+    case 'zoo':           return <ZooBundleIcon size={size} />;
+    case 'video':         return <VideoMasterclassIcon size={size} />;
+    case 'blanket':       return <ChunkyBlanketIcon size={size} />;
+    case 'cactus':        return <CactusMiniIcon size={size} />;
+    default:              return <YarnLogoIcon size={size} />;
   }
 }
 

@@ -13,19 +13,29 @@ import {
 import { ProductIcon } from '../Icons/CrochetIcons';
 import './Products.css';
 
-export default function ProductCard({ product, onAddToCart }) {
+export default function ProductCard({ product, onAddToCart, onPreview }) {
   const [added, setAdded] = useState(false);
 
-  const handleAdd = () => {
+  const handleAdd = (e) => {
+    e.stopPropagation();
     onAddToCart(product);
     setAdded(true);
     setTimeout(() => setAdded(false), 2000);
   };
 
+  const handlePreview = () => {
+    if (onPreview) onPreview(product);
+  };
+
   return (
     <article className="product-card">
       {/* Thumbnail */}
-      <div className="pc-thumb" style={{ background: product.color }}>
+      <div
+        className="pc-thumb"
+        style={{ background: product.color, cursor: 'pointer' }}
+        onClick={handlePreview}
+        title="Click to view pattern details"
+      >
         <div className="pc-vector-art">
           <ProductIcon iconKey={product.iconKey} size={90} />
         </div>
@@ -44,7 +54,13 @@ export default function ProductCard({ product, onAddToCart }) {
         )}
 
         <div className="pc-overlay">
-          <button className="pc-preview-btn">
+          <button
+            className="pc-preview-btn"
+            onClick={(e) => {
+              e.stopPropagation();
+              handlePreview();
+            }}
+          >
             <Eye size={15} />
             <span>Quick Preview</span>
           </button>
@@ -74,7 +90,9 @@ export default function ProductCard({ product, onAddToCart }) {
           </span>
         </div>
 
-        <h3 className="pc-name">{product.name}</h3>
+        <h3 className="pc-name" onClick={handlePreview} style={{ cursor: 'pointer' }}>
+          {product.name}
+        </h3>
         <p className="pc-desc">{product.description}</p>
 
         {/* Stats */}
@@ -118,22 +136,25 @@ export default function ProductCard({ product, onAddToCart }) {
             )}
             <span className="pc-price">\${product.price.toFixed(2)}</span>
           </div>
-          <button
-            className={`btn pc-cta ${added ? 'added' : 'btn-primary'}`}
-            onClick={handleAdd}
-          >
-            {added ? (
-              <>
-                <Check size={15} />
-                <span>Added</span>
-              </>
-            ) : (
-              <>
-                <ShoppingBag size={15} />
-                <span>Get Pattern</span>
-              </>
-            )}
-          </button>
+
+          <div className="pc-actions-cluster">
+            <button
+              className="pc-cart-quick-btn"
+              onClick={handleAdd}
+              title="Add to shopping bag"
+              aria-label="Add to cart"
+            >
+              {added ? <Check size={16} /> : <ShoppingBag size={16} />}
+            </button>
+
+            <button
+              className="btn btn-primary pc-cta"
+              onClick={handlePreview}
+            >
+              <Eye size={14} />
+              <span>Get Pattern</span>
+            </button>
+          </div>
         </div>
       </div>
     </article>

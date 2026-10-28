@@ -1,6 +1,193 @@
 export const products = [
   {
     id: 1,
+    name: "Sus Space Crewmate",
+    category: "amigurumi",
+    skill: "intermediate",
+    iconKey: "crewmate",
+    color: "#fee6ea", // Delicate blush pastel to showcase the vibrant red crewmate
+    price: 4.99,
+    originalPrice: 7.99,
+    description: "A clear, ready-to-make crochet character with body, backpack, visor and white highlight. Approx. 9 cm tall, 3.0 mm hook.",
+    badge: "Amigurumi Pattern",
+    tag: "Instant Download",
+    pages: 5,
+    stars: 5,
+    reviews: 148,
+    downloads: "920",
+    terms: "US Terms",
+    formats: ["PDF"],
+    bestseller: true,
+    size: "Approx. 9 cm",
+    hook: "3.0 mm",
+    materials: [
+      "Medium cotton yarn: red, light blue, black, white",
+      "3.0 mm crochet hook",
+      "Polyester stuffing",
+      "Yarn needle & scissors",
+      "Stitch marker"
+    ],
+    sections: [
+      "Materials & Abbreviations",
+      "Body (Red yarn - continuous rounds)",
+      "Backpack (Red yarn)",
+      "Visor (Light blue) & Black outline",
+      "White highlight & Key step photos"
+    ],
+    patternGuide: {
+      abbreviations: [
+        { code: "MR", meaning: "Magic ring" },
+        { code: "ch", meaning: "Chain" },
+        { code: "sc", meaning: "Single crochet" },
+        { code: "inc", meaning: "Increase (2 sc in one stitch)" },
+        { code: "dec", meaning: "Invisible decrease" },
+        { code: "BLO", meaning: "Back loop only" }
+      ],
+      steps: [
+        {
+          title: "1. Body (Red Yarn)",
+          note: "Crochet in continuous rounds. Stuff as you go. Use a stitch marker at the start of each round.",
+          rounds: [
+            "R1: 6 sc in MR (6)",
+            "R2: 6 inc (12)",
+            "R3: (1 sc, inc) x 6 (18)",
+            "R4: (2 sc, inc) x 6 (24)",
+            "R5: (3 sc, inc) x 6 (30)",
+            "R6 - R12: 30 sc (30)",
+            "R13: (3 sc, dec) x 6 (24)",
+            "R14: (2 sc, dec) x 6 (18)",
+            "R15: (1 sc, dec) x 6 (12)",
+            "R16: 6 dec, fasten off and leave a tail (6)"
+          ],
+          finishing: "Close the opening with a yarn needle. Shape the legs gently and spread the stuffing evenly before pulling the yarn tight."
+        },
+        {
+          title: "2. Backpack (Red Yarn)",
+          rounds: [
+            "R1: 5 sc in MR (5)",
+            "R2: 5 inc (10)",
+            "R3 - R5: 10 sc (10)"
+          ],
+          finishing: "Fasten off, leaving a tail. Sew onto the center back of the body."
+        },
+        {
+          title: "3. Visor & Outline (Light Blue + Black Yarn)",
+          rounds: [
+            "R1: 6 sc in MR (6)",
+            "R2: 6 inc (12)",
+            "R3: (1 sc, inc) x 6 (18)",
+            "R4: (2 sc, inc) x 6 (24)",
+            "R5: 24 sc (24)"
+          ],
+          outline: "Black outline: Make a chain long enough to go around the visor. Form an oval, join, then sew it around the blue piece.",
+          highlight: "White highlight: Make 6 sc in MR. Fasten off, flatten slightly, and sew onto the upper right of the visor."
+        },
+        {
+          title: "4. Assembly Order",
+          points: [
+            "1. Sew the backpack to the center back.",
+            "2. Position the visor in the center front of the body.",
+            "3. Sew on the black outline, then the blue visor inside it.",
+            "4. Add the small white highlight and weave in all ends."
+          ]
+        }
+      ]
+    }
+  },
+  {
+    id: 2,
+    name: "Shooting Star Keychain",
+    category: "amigurumi",
+    skill: "intermediate",
+    iconKey: "star",
+    color: "#fef9db", // Soft creamy pastel lemon yellow
+    price: 4.49,
+    originalPrice: 6.99,
+    description: "A sweet crochet star with an embroidered smile and a pastel rainbow tail in lilac, pink, and aqua green. Approx. 8 cm, 3.0 mm hook.",
+    badge: "Keychain Pattern",
+    tag: "Instant Download",
+    pages: 6,
+    stars: 5,
+    reviews: 168,
+    downloads: "1.1k",
+    terms: "US Terms",
+    formats: ["PDF"],
+    bestseller: true,
+    size: "Approx. 8 cm",
+    hook: "3.0 mm",
+    materials: [
+      "8/6 cotton yarn: yellow, pink, lilac, aqua green & black",
+      "3.0 mm crochet hook & yarn needle",
+      "Two 6 mm safety eyes",
+      "Stitch marker & scissors",
+      "Cold silicone glue (for rainbow tail)",
+      "Metal keychain ring"
+    ],
+    sections: [
+      "Materials & Abbreviations",
+      "Star body - make 2 (continuous rounds)",
+      "Make the five points (no stuffing)",
+      "Pastel rainbow tail (lilac, pink, aqua green)",
+      "Face embroidery & safety eyes",
+      "Assembly & key step photos"
+    ],
+    patternGuide: {
+      abbreviations: [
+        { code: "MR", meaning: "Magic ring" },
+        { code: "ch", meaning: "Chain" },
+        { code: "sl st", meaning: "Slip stitch" },
+        { code: "sc", meaning: "Single crochet" },
+        { code: "hdc", meaning: "Half double crochet" },
+        { code: "dc", meaning: "Double crochet" },
+        { code: "inc", meaning: "Increase (2 sc in one stitch)" },
+        { code: "dec", meaning: "Invisible decrease" }
+      ],
+      steps: [
+        {
+          title: "1. Star Body - Make 2 (Yellow Yarn)",
+          note: "Work the entire piece in continuous rounds with yellow yarn.",
+          rounds: [
+            "R1: 5 sc in MR (5)",
+            "R2: 5 inc (10)",
+            "R3: (1 sc, inc) x 5 (15)",
+            "R4: 1 sc, inc, (2 sc, inc) x 4, 1 sc (20)"
+          ],
+          finishing: "Fasten off the first circle. Do not cut yarn on the second."
+        },
+        {
+          title: "2. Make the Five Points",
+          points: [
+            "1. Place wrong sides together. Work 4 sc from the second star, then 4 sc from the first star.",
+            "2. Work 4 sc and 2 dec (6). Fasten off, leaving a tail for closing.",
+            "3. Repeat for the remaining four points. Close all points with a yarn needle.",
+            "4. Do not stuff. Weave all yarn ends inside."
+          ]
+        },
+        {
+          title: "3. Pastel Rainbow Tail",
+          points: [
+            "1. With lilac, ch 10. Starting in the 2nd chain, make 6 sc and 1 sl st. Fasten off.",
+            "2. Join pink yarn in the 3rd stitch from the back; make 6 sc and 1 sl st. Turn.",
+            "3. Ch 1, make 1 sl st and 5 sc. Fasten off.",
+            "4. Join aqua green yarn in the 3rd stitch from the back; make 4 sc and 1 sl st. Turn.",
+            "5. Ch 1, make 1 sl st and 3 sc. Fasten off and weave in ends."
+          ]
+        },
+        {
+          title: "4. Face & Finishing Assembly",
+          points: [
+            "1. Embroider a U-shaped smile between rounds 1 and 2 with black yarn.",
+            "2. Attach the safety eyes one stitch away from each side of the smile.",
+            "3. Add blush on cheeks if desired.",
+            "4. Glue the rainbow tail to the back of one star side with cold silicone glue.",
+            "5. Attach keychain ring to the top point of the star."
+          ]
+        }
+      ]
+    }
+  },
+  {
+    id: 3,
     name: "Sunflower Granny Square",
     category: "pdf-pattern",
     skill: "beginner",
@@ -20,7 +207,7 @@ export const products = [
     bestseller: true,
   },
   {
-    id: 2,
+    id: 4,
     name: "Tiny Bear Amigurumi",
     category: "amigurumi",
     skill: "beginner",
@@ -40,7 +227,7 @@ export const products = [
     bestseller: true,
   },
   {
-    id: 3,
+    id: 5,
     name: "Boho Tote Bag",
     category: "pdf-pattern",
     skill: "intermediate",
@@ -60,7 +247,7 @@ export const products = [
     bestseller: false,
   },
   {
-    id: 4,
+    id: 6,
     name: "The Complete Beginner's Crochet Bible",
     category: "ebook",
     skill: "beginner",
@@ -80,7 +267,7 @@ export const products = [
     bestseller: true,
   },
   {
-    id: 5,
+    id: 7,
     name: "Lacy Summer Top",
     category: "pdf-pattern",
     skill: "advanced",
@@ -100,7 +287,7 @@ export const products = [
     bestseller: false,
   },
   {
-    id: 6,
+    id: 8,
     name: "Amigurumi Zoo Bundle",
     category: "amigurumi",
     skill: "intermediate",
@@ -120,7 +307,7 @@ export const products = [
     bestseller: true,
   },
   {
-    id: 7,
+    id: 9,
     name: "Coastal Crochet Masterclass",
     category: "video",
     skill: "intermediate",
@@ -140,7 +327,7 @@ export const products = [
     bestseller: false,
   },
   {
-    id: 8,
+    id: 10,
     name: "Chunky Throw Blanket",
     category: "pdf-pattern",
     skill: "beginner",
@@ -179,6 +366,26 @@ export const skillLevels = [
 export const testimonials = [
   {
     id: 1,
+    name: "Alex P.",
+    initial: "A",
+    location: "Seattle, WA",
+    rating: 5,
+    text: "Crocheted the Sus Space Crewmate in one afternoon! The visor and backpack instructions are crystal clear with great step photos. My gamer nephew loved it!",
+    project: "Sus Space Crewmate",
+    featured: true,
+  },
+  {
+    id: 2,
+    name: "Chloe D.",
+    initial: "C",
+    location: "Lyon, France",
+    rating: 5,
+    text: "The Shooting Star Keychain is pure magic! The pastel rainbow tail looks stunning on my backpack and the step photos made assembling it super quick and fun.",
+    project: "Shooting Star Keychain",
+    featured: true,
+  },
+  {
+    id: 3,
     name: "Sarah M.",
     initial: "S",
     location: "Austin, TX",
@@ -188,17 +395,17 @@ export const testimonials = [
     featured: false,
   },
   {
-    id: 2,
+    id: 4,
     name: "Rachel K.",
     initial: "R",
     location: "Bristol, UK",
     rating: 5,
     text: "I'm a complete beginner and the Crochet Bible literally changed my life. The PDF is so well laid out and includes both US and UK terms. Worth every penny!",
     project: "Beginner's Crochet Bible",
-    featured: true,
+    featured: false,
   },
   {
-    id: 3,
+    id: 5,
     name: "Jamie L.",
     initial: "J",
     location: "Toronto, CA",
@@ -208,7 +415,7 @@ export const testimonials = [
     featured: false,
   },
   {
-    id: 4,
+    id: 6,
     name: "Amara T.",
     initial: "A",
     location: "Lagos, NG",

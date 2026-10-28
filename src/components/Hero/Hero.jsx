@@ -1,5 +1,5 @@
 import { Sparkles, Zap, Printer, Globe, Tag, ArrowRight, Gift } from 'lucide-react';
-import { SunflowerSquareIcon, BearAmigurumiIcon, CrochetBibleIcon } from '../Icons/CrochetIcons';
+import { SusCrewmateIcon, ShootingStarIcon, SunflowerSquareIcon } from '../Icons/CrochetIcons';
 import './Hero.css';
 
 export default function Hero() {
@@ -35,7 +35,7 @@ export default function Hero() {
             <Globe size={14} /> US &amp; UK terms
           </span>
           <span>
-            <Tag size={14} /> From \$4.99
+            <Tag size={14} /> From \$4.49
           </span>
         </div>
 
@@ -54,22 +54,22 @@ export default function Hero() {
       <div className="hero-cards" aria-hidden="true">
         {[
           {
+            icon: <SusCrewmateIcon size={52} />,
+            label: 'Sus Space Crewmate',
+            price: '\$4.99',
+            tag: 'AMIGURUMI',
+          },
+          {
+            icon: <ShootingStarIcon size={52} />,
+            label: 'Shooting Star Keychain',
+            price: '\$4.49',
+            tag: 'KEYCHAIN',
+          },
+          {
             icon: <SunflowerSquareIcon size={52} />,
             label: 'Sunflower Square',
             price: '\$4.99',
             tag: 'PDF PATTERN',
-          },
-          {
-            icon: <BearAmigurumiIcon size={52} />,
-            label: 'Bear Amigurumi',
-            price: '\$5.99',
-            tag: 'GUIDE',
-          },
-          {
-            icon: <CrochetBibleIcon size={52} />,
-            label: 'Crochet Bible',
-            price: '\$14.99',
-            tag: 'E-BOOK',
           },
         ].map(({ icon, label, price, tag }) => (
           <div className="hero-card" key={label}>

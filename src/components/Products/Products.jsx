@@ -2,16 +2,24 @@ import { useState } from 'react';
 import { SearchX } from 'lucide-react';
 import { products, categories, skillLevels } from '../../data/products';
 import ProductCard from './ProductCard';
+import PatternModal from './PatternModal';
 import './Products.css';
 
 export default function Products({ onAddToCart }) {
-  const [activeCat,   setActiveCat]   = useState('all');
-  const [activeSkill, setActiveSkill] = useState('all');
-  const [sort,        setSort]        = useState('popular');
+  const [activeCat,       setActiveCat]       = useState('all');
+  const [activeSkill,     setActiveSkill]     = useState('all');
+  const [sort,            setSort]            = useState('popular');
+  const [previewProduct, setPreviewProduct]  = useState(null);
 
   const filtered = products
-    .filter((p) => (activeCat   === 'all' || p.category === activeCat))
-    .filter((p) => (activeSkill === 'all' || p.skill    === activeSkill))
+    .filter((p) => {
+      if (activeCat === 'all') return true;
+      if (activeCat === 'pdf-pattern') {
+        return p.category === 'pdf-pattern' || p.category === 'amigurumi' || (p.formats && p.formats.includes('PDF'));
+      }
+      return p.category === activeCat;
+    })
+    .filter((p) => (activeSkill === 'all' || p.skill === activeSkill))
     .sort((a, b) => {
       if (sort === 'price-asc')  return a.price - b.price;
       if (sort === 'price-desc') return b.price - a.price;
@@ -80,7 +88,12 @@ export default function Products({ onAddToCart }) {
       {filtered.length > 0 ? (
         <div className="products-grid">
           {filtered.map((p) => (
-            <ProductCard key={p.id} product={p} onAddToCart={onAddToCart} />
+            <ProductCard
+              key={p.id}
+              product={p}
+              onAddToCart={onAddToCart}
+              onPreview={setPreviewProduct}
+            />
           ))}
         </div>
       ) : (
@@ -88,6 +101,15 @@ export default function Products({ onAddToCart }) {
           <SearchX size={40} className="no-results-icon" />
           <p>No patterns match these filters. Try a different combination!</p>
         </div>
+      )}
+
+      {/* Quick Preview Modal */}
+      {previewProduct && (
+        <PatternModal
+          product={previewProduct}
+          onClose={() => setPreviewProduct(null)}
+          onAddToCart={onAddToCart}
+        />
       )}
     </section>
   );
