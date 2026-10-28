@@ -188,6 +188,99 @@ export const products = [
   },
   {
     id: 3,
+    name: "Eyeglass Holder Set 2",
+    category: "pdf-pattern",
+    skill: "intermediate",
+    iconKey: "eyeglass-holder",
+    color: "#fbeae8", // Soft warm pastel coral
+    price: 7.99,
+    originalPrice: 14.99,
+    description: "Seven character variations (Fox, Turtle, Raccoon, Llama, Angry Dragon, Chicken). Practical 3D crochet trays with raised walls that keep your glasses safe.",
+    badge: "Set · 7 Characters",
+    tag: "Instant Download",
+    pages: 13,
+    stars: 5,
+    reviews: 284,
+    downloads: "1.6k",
+    terms: "US Terms",
+    formats: ["PDF"],
+    bestseller: true,
+    size: "Universal Eyeglass Tray",
+    hook: "4.0 & 2.5 mm",
+    materials: [
+      "#4 medium-weight yarn (red, cream, grey, black, green, beige)",
+      "#2 fine yarn (for eyes and details)",
+      "4.0 mm & 2.5 mm crochet hooks",
+      "Safety eyes (16 mm for fox/raccoon/llama, or crocheted)",
+      "Fiberfill stuffing for snouts",
+      "Stitch marker & yarn needle",
+      "Cold silicone glue / hot glue"
+    ],
+    sections: [
+      "Materials & Tools & Color Palette",
+      "Special Stitch Guide (BPSC Wall Technique)",
+      "Base Patterns (Fox, Raccoon, Llama, Dragon, Turtle, Chicken)",
+      "Ears & Snouts for All 7 Characters",
+      "Additional Elements (Horns, Whiskers, Comb, Wattles)",
+      "Eyes & Final Assembly Guide with Photos"
+    ],
+    patternGuide: {
+      abbreviations: [
+        { code: "CH", meaning: "Chain" },
+        { code: "SL ST", meaning: "Slip stitch" },
+        { code: "SC", meaning: "Single crochet" },
+        { code: "HDC", meaning: "Half double crochet" },
+        { code: "DC", meaning: "Double crochet" },
+        { code: "TR", meaning: "Treble crochet" },
+        { code: "INC", meaning: "Increase (2 sc in one stitch)" },
+        { code: "DEC", meaning: "Decrease" },
+        { code: "BLO", meaning: "Back loop only" },
+        { code: "BPSC", meaning: "Back-post single crochet (creates vertical tray walls)" },
+        { code: "LS", meaning: "Loop stitch" }
+      ],
+      steps: [
+        {
+          title: "1. Base - Fox & Character Tray (4.0 mm hook)",
+          note: "CH 19 and begin in the second chain. Work in continuous oval rounds.",
+          rounds: [
+            "R1: INC, SC 16, 4 SC in the same chain; continue on other side: SC 16, INC [40]",
+            "R2: INC x2, SC 16, INC x4, SC 16, INC x2 [48]",
+            "R3: (SC, INC) x2, SC 16, (SC, INC) x2, SC, INC, SC, INC, SC 16, (SC, INC) x2 [56]",
+            "R4: SC, SC, INC, SC 2, INC, SC 16, (SC 2, INC) x2, SC, SC, INC, SC 2, INC, SC 16, (SC 2, INC) x2 [64]",
+            "R5: SC, SC 2, INC, SC 3, INC, SC 16, (SC 3, INC) x2, SC, SC 2, INC, SC 3, INC, SC 16, (SC 3, INC) x2 [72]",
+            "R6: SC, SC 3, INC, SC 4, INC, SC 16, (SC 4, INC) x2, SC, SC 3, INC, SC 4, INC, SC 16, (SC 4, INC) x2 [80]"
+          ],
+          finishing: "Work one additional SC in second color. CH 1, turn to work outside wall. R7 BPSC 39, BPSC 41 [80]. R8-9: SC 39, SC 41 [80]. R10: (SC 2, SC2TOG) x2, SC 19, SC2TOG, SC 4, SC2TOG, SC 2, SC 2, (SC2TOG, SC 4) x4, SC 16, SC2TOG, SC 4, SC2TOG, SC 3 [72]."
+        },
+        {
+          title: "2. Ears (Make 2)",
+          points: [
+            "Fox: Inner piece in cream, outer piece in red. CH 2, R1: SC 2, R2: INC x2 [4], R3: SC 4, R4: INC, SC 2, INC [6], R5: SC 6, R6: INC, SC 4, INC [8], R7: SC 8. Place together: SC 7, 3 SC at tip, SC 7.",
+            "Raccoon: R1: SC 2, R2: INC x2, R3: SC 4, R4: INC, SC 2, INC [6], R5-6: SC 6. Join white yarn: SC 6, 3 SC at tip, SC 6.",
+            "Llama & Dragon: R1: 6 SC in MR [6], R2: (SC, INC) x3 [9], R3: (SC, INC, SC) x3 [12], R4-8: SC 12, R9: (SC, DEC, SC) x3 [9]. Fold and close with SC 4."
+          ]
+        },
+        {
+          title: "3. 3D Snouts & Beaks",
+          points: [
+            "Fox Snout: R1-2: SC 8, R3: INC, SC, INC, SC 3, INC, SC [11], R4: (INC, SC) x2, SC, SC, INC, SC 2, INC, SC [15], R5: SC 7, INC, SC 3, INC, SC 3 [17], R6: SC 7, SC 7, SC 3 [17].",
+            "Raccoon Snout: R1-2: SC 8, R3: INC, SC, INC, SC 3, INC, SC [11], R4: (INC, SC) x2, SC 2, INC, SC 2, INC, SC [15], R5: SC 7, INC, SC 3, INC, SC 3 [17].",
+            "Chicken Beak: R1-3: SC 6, R4: (3 SC in one stitch, SC 2) x2, SL ST."
+          ]
+        },
+        {
+          title: "4. Eyes & Facial Assembly",
+          points: [
+            "1. Fox, Raccoon, Llama: Use 16 mm safety eyes with back posts removed. Glue short black yarn strand for eyelid. Secure with glue.",
+            "2. Dragon & Turtle: Use #2 yarn with 2.5 mm hook: R1: SC 6 [6], R2: INC x6 [12], R3: (SC, INC) x6 [18], R4: (SC, INC, SC) x6 [24], R5: (SC 3, INC) x6 [30].",
+            "3. Final Assembly: Stuff snout with fiberfill before sewing completely. Embroider nose on snout. Sew or glue eyes, attach ears/horns to the top rim of the tray."
+          ]
+        }
+      ]
+    }
+  },
+  {
+    id: 4,
     name: "Sunflower Granny Square",
     category: "pdf-pattern",
     skill: "beginner",
@@ -207,7 +300,7 @@ export const products = [
     bestseller: true,
   },
   {
-    id: 4,
+    id: 5,
     name: "Tiny Bear Amigurumi",
     category: "amigurumi",
     skill: "beginner",
@@ -227,7 +320,7 @@ export const products = [
     bestseller: true,
   },
   {
-    id: 5,
+    id: 6,
     name: "Boho Tote Bag",
     category: "pdf-pattern",
     skill: "intermediate",
@@ -247,7 +340,7 @@ export const products = [
     bestseller: false,
   },
   {
-    id: 6,
+    id: 7,
     name: "The Complete Beginner's Crochet Bible",
     category: "ebook",
     skill: "beginner",
@@ -267,7 +360,7 @@ export const products = [
     bestseller: true,
   },
   {
-    id: 7,
+    id: 8,
     name: "Lacy Summer Top",
     category: "pdf-pattern",
     skill: "advanced",
@@ -287,7 +380,7 @@ export const products = [
     bestseller: false,
   },
   {
-    id: 8,
+    id: 9,
     name: "Amigurumi Zoo Bundle",
     category: "amigurumi",
     skill: "intermediate",
@@ -307,7 +400,7 @@ export const products = [
     bestseller: true,
   },
   {
-    id: 9,
+    id: 10,
     name: "Coastal Crochet Masterclass",
     category: "video",
     skill: "intermediate",
@@ -327,7 +420,7 @@ export const products = [
     bestseller: false,
   },
   {
-    id: 10,
+    id: 11,
     name: "Chunky Throw Blanket",
     category: "pdf-pattern",
     skill: "beginner",
@@ -386,6 +479,16 @@ export const testimonials = [
   },
   {
     id: 3,
+    name: "Elena V.",
+    initial: "E",
+    location: "Milan, Italy",
+    rating: 5,
+    text: "Made the Fox and Turtle eyeglass holders as gifts for my parents. They sit right on their nightstands holding their reading glasses! The BPSC wall technique is genius.",
+    project: "Eyeglass Holder Set 2",
+    featured: true,
+  },
+  {
+    id: 4,
     name: "Sarah M.",
     initial: "S",
     location: "Austin, TX",
@@ -395,7 +498,7 @@ export const testimonials = [
     featured: false,
   },
   {
-    id: 4,
+    id: 5,
     name: "Rachel K.",
     initial: "R",
     location: "Bristol, UK",
@@ -405,7 +508,7 @@ export const testimonials = [
     featured: false,
   },
   {
-    id: 5,
+    id: 6,
     name: "Jamie L.",
     initial: "J",
     location: "Toronto, CA",
@@ -415,7 +518,7 @@ export const testimonials = [
     featured: false,
   },
   {
-    id: 6,
+    id: 7,
     name: "Amara T.",
     initial: "A",
     location: "Lagos, NG",

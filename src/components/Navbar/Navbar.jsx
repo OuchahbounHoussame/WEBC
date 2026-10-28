@@ -3,7 +3,7 @@ import { ShoppingBag, Menu, X, Sparkles, Compass } from 'lucide-react';
 import { YarnLogoIcon } from '../Icons/CrochetIcons';
 import './Navbar.css';
 
-export default function Navbar({ cartCount }) {
+export default function Navbar({ cartCount, onOpenCart }) {
   const [scrolled,  setScrolled]  = useState(false);
   const [menuOpen,  setMenuOpen]  = useState(false);
 
@@ -92,7 +92,7 @@ export default function Navbar({ cartCount }) {
             className="cart-btn"
             title="View cart"
             aria-label="Shopping cart"
-            onClick={() => nav('products')}
+            onClick={onOpenCart || (() => nav('products'))}
           >
             <ShoppingBag size={20} />
             <span className="cart-count">{cartCount}</span>

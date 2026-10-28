@@ -15,7 +15,7 @@ export default function Freebie() {
   };
 
   const perks = [
-    'Free Mini Cactus Amigurumi PDF pattern (worth \$4.99)',
+    'Free Mini Cactus Amigurumi PDF pattern (worth $4.99)',
     'Instant delivery direct to your email inbox',
     'Exclusive members-only discounts up to 30% off',
     'Free beginner tips, stitch charts, and weekly pattern drops'
@@ -49,7 +49,7 @@ export default function Freebie() {
               </span>
             </div>
             <div className="fc-value">
-              Value: <s>\$4.99</s> <strong>FREE</strong>
+              Value: <s>$4.99</s> <strong>FREE</strong>
             </div>
           </div>
           <div className="freebie-deco d1" />

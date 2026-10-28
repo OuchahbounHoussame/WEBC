@@ -8,7 +8,7 @@ import './Products.css';
 export default function Products({ onAddToCart }) {
   const [activeCat,       setActiveCat]       = useState('all');
   const [activeSkill,     setActiveSkill]     = useState('all');
-  const [sort,            setSort]            = useState('popular');
+  const [sort,            setSort]            = useState('featured');
   const [previewProduct, setPreviewProduct]  = useState(null);
 
   const filtered = products
@@ -21,6 +21,7 @@ export default function Products({ onAddToCart }) {
     })
     .filter((p) => (activeSkill === 'all' || p.skill === activeSkill))
     .sort((a, b) => {
+      if (sort === 'featured')   return 0;
       if (sort === 'price-asc')  return a.price - b.price;
       if (sort === 'price-desc') return b.price - a.price;
       if (sort === 'popular')    return b.reviews - a.reviews;
@@ -73,6 +74,7 @@ export default function Products({ onAddToCart }) {
           onChange={(e) => setSort(e.target.value)}
           aria-label="Sort products"
         >
+          <option value="featured">Featured / Newest</option>
           <option value="popular">Most Popular</option>
           <option value="price-asc">Price: Low → High</option>
           <option value="price-desc">Price: High → Low</option>

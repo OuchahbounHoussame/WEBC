@@ -1,5 +1,5 @@
 import { Sparkles, Zap, Printer, Globe, Tag, ArrowRight, Gift } from 'lucide-react';
-import { SusCrewmateIcon, ShootingStarIcon, SunflowerSquareIcon } from '../Icons/CrochetIcons';
+import { SusCrewmateIcon, ShootingStarIcon, EyeglassHolderIcon } from '../Icons/CrochetIcons';
 import './Hero.css';
 
 export default function Hero() {
@@ -35,7 +35,7 @@ export default function Hero() {
             <Globe size={14} /> US &amp; UK terms
           </span>
           <span>
-            <Tag size={14} /> From \$4.49
+            <Tag size={14} /> From $4.49
           </span>
         </div>
 
@@ -56,20 +56,20 @@ export default function Hero() {
           {
             icon: <SusCrewmateIcon size={52} />,
             label: 'Sus Space Crewmate',
-            price: '\$4.99',
+            price: '$4.99',
             tag: 'AMIGURUMI',
           },
           {
             icon: <ShootingStarIcon size={52} />,
             label: 'Shooting Star Keychain',
-            price: '\$4.49',
+            price: '$4.49',
             tag: 'KEYCHAIN',
           },
           {
-            icon: <SunflowerSquareIcon size={52} />,
-            label: 'Sunflower Square',
-            price: '\$4.99',
-            tag: 'PDF PATTERN',
+            icon: <EyeglassHolderIcon size={52} />,
+            label: 'Eyeglass Holder Set',
+            price: '$7.99',
+            tag: '7 IN 1 SET',
           },
         ].map(({ icon, label, price, tag }) => (
           <div className="hero-card" key={label}>

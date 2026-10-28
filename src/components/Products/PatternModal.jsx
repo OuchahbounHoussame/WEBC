@@ -16,14 +16,20 @@ import './PatternModal.css';
 export default function PatternModal({ product, onClose, onAddToCart }) {
   const [activeTab, setActiveTab] = useState(product?.patternGuide ? 'guide' : 'overview');
   const [downloadSuccess, setDownloadSuccess] = useState(false);
+  const [added, setAdded] = useState(false);
 
   if (!product) return null;
 
   const handlePrintDownload = () => {
     setDownloadSuccess(true);
     setTimeout(() => setDownloadSuccess(false), 3500);
-    // Open system print dialog (which allows saving as PDF or printing directly)
     window.print();
+  };
+
+  const handleAddToCart = () => {
+    onAddToCart(product);
+    setAdded(true);
+    setTimeout(() => setAdded(false), 2500);
   };
 
   return (
@@ -48,7 +54,7 @@ export default function PatternModal({ product, onClose, onAddToCart }) {
             <div className="pm-side-actions">
               <button className="pm-print-btn" onClick={handlePrintDownload}>
                 <Printer size={15} />
-                <span>Print / Save as PDF</span>
+                <span>{downloadSuccess ? 'Sent to Printer!' : 'Print / Save PDF'}</span>
               </button>
             </div>
           </div>
@@ -56,8 +62,10 @@ export default function PatternModal({ product, onClose, onAddToCart }) {
           {/* Right / Body: Details & Interactive Guide */}
           <div className="pm-details">
             <div className="pm-badges">
-              <span className="pm-badge-type">{product.badge}</span>
-              <span className={`skill-pill skill-${product.skill}`}>{product.skill}</span>
+              <span className="pm-badge-type">{product.badge || 'PDF Pattern'}</span>
+              {product.skill && (
+                <span className={`skill-pill skill-${product.skill}`}>{product.skill}</span>
+              )}
               {product.bestseller && (
                 <span className="pm-badge-hot">Bestseller</span>
               )}
@@ -90,7 +98,7 @@ export default function PatternModal({ product, onClose, onAddToCart }) {
             {activeTab === 'guide' && product.patternGuide && (
               <div className="pm-guide-container">
                 {/* Abbreviations Box */}
-                {product.patternGuide.abbreviations && (
+                {product.patternGuide.abbreviations && product.patternGuide.abbreviations.length > 0 && (
                   <div className="pm-abbr-box">
                     <span className="pm-abbr-title">Abbreviations (US Terms):</span>
                     <div className="pm-abbr-list">
@@ -104,42 +112,44 @@ export default function PatternModal({ product, onClose, onAddToCart }) {
                 )}
 
                 {/* Steps & Rounds */}
-                <div className="pm-steps-list">
-                  {product.patternGuide.steps.map((step, idx) => (
-                    <div key={idx} className="pm-step-block">
-                      <h4 className="pm-step-title">{step.title}</h4>
-                      {step.note && <p className="pm-step-note">{step.note}</p>}
+                {product.patternGuide.steps && (
+                  <div className="pm-steps-list">
+                    {product.patternGuide.steps.map((step, idx) => (
+                      <div key={idx} className="pm-step-block">
+                        <h4 className="pm-step-title">{step.title}</h4>
+                        {step.note && <p className="pm-step-note">{step.note}</p>}
 
-                      {step.rounds && (
-                        <div className="pm-rounds-grid">
-                          {step.rounds.map((r, ri) => (
-                            <div key={ri} className="pm-round-row">
-                              <span className="pm-round-dot" />
-                              <code>{r}</code>
-                            </div>
-                          ))}
-                        </div>
-                      )}
+                        {step.rounds && Array.isArray(step.rounds) && (
+                          <div className="pm-rounds-grid">
+                            {step.rounds.map((r, ri) => (
+                              <div key={ri} className="pm-round-row">
+                                <span className="pm-round-dot" />
+                                <code>{r}</code>
+                              </div>
+                            ))}
+                          </div>
+                        )}
 
-                      {step.outline && <p className="pm-step-highlight">{step.outline}</p>}
-                      {step.highlight && <p className="pm-step-highlight">{step.highlight}</p>}
+                        {step.outline && <p className="pm-step-highlight">{step.outline}</p>}
+                        {step.highlight && <p className="pm-step-highlight">{step.highlight}</p>}
 
-                      {step.points && (
-                        <ol className="pm-points-list">
-                          {step.points.map((pt, pi) => (
-                            <li key={pi}>{pt}</li>
-                          ))}
-                        </ol>
-                      )}
+                        {step.points && Array.isArray(step.points) && (
+                          <ol className="pm-points-list">
+                            {step.points.map((pt, pi) => (
+                              <li key={pi}>{pt}</li>
+                            ))}
+                          </ol>
+                        )}
 
-                      {step.finishing && (
-                        <p className="pm-step-finishing">
-                          <strong>Finishing:</strong> {step.finishing}
-                        </p>
-                      )}
-                    </div>
-                  ))}
-                </div>
+                        {step.finishing && (
+                          <p className="pm-step-finishing">
+                            <strong>Finishing:</strong> {step.finishing}
+                          </p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             )}
 
@@ -166,7 +176,7 @@ export default function PatternModal({ product, onClose, onAddToCart }) {
                   </div>
                   <div className="pm-spec-item">
                     <span className="spec-label">Language / Terms</span>
-                    <span className="spec-val">{product.terms}</span>
+                    <span className="spec-val">{product.terms || 'US Terms'}</span>
                   </div>
                 </div>
 
@@ -186,7 +196,7 @@ export default function PatternModal({ product, onClose, onAddToCart }) {
                 )}
 
                 {/* Sections / Outline */}
-                {product.sections && (
+                {product.sections && product.sections.length > 0 && (
                   <div className="pm-section">
                     <h4 className="pm-subhead">What&apos;s Inside This PDF:</h4>
                     <div className="pm-sections-pills">
@@ -215,9 +225,9 @@ export default function PatternModal({ product, onClose, onAddToCart }) {
             <div className="pm-footer">
               <div className="pm-price-block">
                 {product.originalPrice && (
-                  <span className="pm-original">\${product.originalPrice.toFixed(2)}</span>
+                  <span className="pm-original">${product.originalPrice.toFixed(2)}</span>
                 )}
-                <span className="pm-price">\${product.price.toFixed(2)}</span>
+                <span className="pm-price">${product.price.toFixed(2)}</span>
               </div>
 
               <div className="pm-footer-buttons">
@@ -231,13 +241,20 @@ export default function PatternModal({ product, onClose, onAddToCart }) {
                 </button>
 
                 <button
-                  className="btn btn-primary pm-buy-btn"
-                  onClick={() => {
-                    onAddToCart(product);
-                  }}
+                  className={`btn ${added ? 'btn-white' : 'btn-primary'} pm-buy-btn`}
+                  onClick={handleAddToCart}
                 >
-                  <ShoppingBag size={17} />
-                  <span>Add to Cart &amp; Download</span>
+                  {added ? (
+                    <>
+                      <Check size={17} />
+                      <span>Added to Bag!</span>
+                    </>
+                  ) : (
+                    <>
+                      <ShoppingBag size={17} />
+                      <span>Add to Cart &amp; Download</span>
+                    </>
+                  )}
                 </button>
               </div>
             </div>

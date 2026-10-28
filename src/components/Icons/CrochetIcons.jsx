@@ -46,6 +46,87 @@ export function YarnLogoIcon({ size = 28, className = "" }) {
   );
 }
 
+// Eyeglass Holder Set 2 Vector (From Real PDF Pattern - Fox & Character Tray)
+export function EyeglassHolderIcon({ size = 80 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      {/* Soft shadow */}
+      <ellipse cx="50" cy="86" rx="36" ry="6" fill="#4d1b2a" fillOpacity="0.2" />
+
+      {/* Fox Ears on top rim */}
+      {/* Left Ear */}
+      <polygon points="26,38 34,16 44,34" fill="#e44331" stroke="#9e2417" strokeWidth="2" strokeLinejoin="round" />
+      <polygon points="30,35 34,22 40,33" fill="#fdf4e7" />
+      {/* Right Ear */}
+      <polygon points="56,34 66,16 74,38" fill="#e44331" stroke="#9e2417" strokeWidth="2" strokeLinejoin="round" />
+      <polygon points="60,33 66,22 70,35" fill="#fdf4e7" />
+
+      {/* Main Oval Tray Body (Crochet Base & Raised Walls) */}
+      {/* Outer base */}
+      <ellipse cx="50" cy="58" rx="42" ry="24" fill="#c93322" stroke="#8e1c0f" strokeWidth="2.5" />
+      {/* Inner tray bowl (BPSC vertical wall depth) */}
+      <ellipse cx="50" cy="56" rx="38" ry="20" fill="url(#foxTrayGrad)" />
+
+      {/* Front Cream Muzzle Band */}
+      <path
+        d="M20 58 C26 74 74 74 80 58 C74 70 26 70 20 58 Z"
+        fill="#fdf4e7"
+        stroke="#d1b899"
+        strokeWidth="1.2"
+      />
+
+      {/* Crochet Stitch Texture along the tray rim */}
+      <ellipse
+        cx="50"
+        cy="56"
+        rx="36"
+        ry="18"
+        stroke="#ffffff"
+        strokeWidth="1.2"
+        strokeDasharray="3 3"
+        strokeOpacity="0.55"
+        fill="none"
+      />
+
+      {/* Eyes on tray back wall */}
+      <ellipse cx="37" cy="48" rx="3" ry="4" fill="#1e1822" />
+      <circle cx="36" cy="47" r="1" fill="#ffffff" />
+      <ellipse cx="63" cy="48" rx="3" ry="4" fill="#1e1822" />
+      <circle cx="62" cy="47" r="1" fill="#ffffff" />
+
+      {/* 3D Snout in center */}
+      <polygon points="45,60 55,60 50,72" fill="#e44331" stroke="#9e2417" strokeWidth="1.5" />
+      <ellipse cx="50" cy="62" rx="4" ry="2.5" fill="#1e1822" />
+
+      {/* Stylized Eyeglasses Resting on Holder */}
+      {/* Left Frame */}
+      <rect x="22" y="44" width="22" height="15" rx="7" stroke="#332a38" strokeWidth="2.2" fill="rgba(255,255,255,0.4)" />
+      {/* Right Frame */}
+      <rect x="56" y="44" width="22" height="15" rx="7" stroke="#332a38" strokeWidth="2.2" fill="rgba(255,255,255,0.4)" />
+      {/* Bridge over snout */}
+      <path d="M44 48 Q50 44 56 48" stroke="#332a38" strokeWidth="2.2" fill="none" />
+      {/* Temple arms */}
+      <path d="M22 48 L14 44" stroke="#332a38" strokeWidth="2" strokeLinecap="round" />
+      <path d="M78 48 L86 44" stroke="#332a38" strokeWidth="2" strokeLinecap="round" />
+
+      {/* Bundle Badge */}
+      <rect x="34" y="77" width="32" height="13" rx="6.5" fill="#9d7dc5" />
+      <text x="50" y="86.5" fill="#ffffff" fontSize="7.5" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif">
+        7 IN 1 SET
+      </text>
+
+      {/* Gradients */}
+      <defs>
+        <linearGradient id="foxTrayGrad" x1="50" y1="36" x2="50" y2="76" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#ee4c3a" />
+          <stop offset="0.7" stopColor="#dd3725" />
+          <stop offset="1" stopColor="#bd2313" />
+        </linearGradient>
+      </defs>
+    </svg>
+  );
+}
+
 // Shooting Star Keychain Vector (From Real PDF Pattern)
 export function ShootingStarIcon({ size = 80 }) {
   return (
@@ -500,10 +581,12 @@ export function CactusMiniIcon({ size = 90 }) {
 export function ProductIcon({ iconKey, size = 80 }) {
   switch (iconKey) {
     case 'crewmate':
-    case 'sus-crewmate':  return <SusCrewmateIcon size={size} />;
+    case 'sus-crewmate':    return <SusCrewmateIcon size={size} />;
     case 'star':
-    case 'shooting-star': return <ShootingStarIcon size={size} />;
-    case 'sunflower':     return <SunflowerSquareIcon size={size} />;
+    case 'shooting-star':   return <ShootingStarIcon size={size} />;
+    case 'eyeglass':
+    case 'eyeglass-holder': return <EyeglassHolderIcon size={size} />;
+    case 'sunflower':       return <SunflowerSquareIcon size={size} />;
     case 'bear':          return <BearAmigurumiIcon size={size} />;
     case 'tote':          return <BohoToteIcon size={size} />;
     case 'bible':         return <CrochetBibleIcon size={size} />;

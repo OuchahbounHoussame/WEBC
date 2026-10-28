@@ -132,27 +132,37 @@ export default function ProductCard({ product, onAddToCart, onPreview }) {
         <div className="pc-footer">
           <div className="pc-price-wrap">
             {product.originalPrice && (
-              <span className="pc-original">\${product.originalPrice.toFixed(2)}</span>
+              <span className="pc-original">${product.originalPrice.toFixed(2)}</span>
             )}
-            <span className="pc-price">\${product.price.toFixed(2)}</span>
+            <span className="pc-price">${product.price.toFixed(2)}</span>
           </div>
 
           <div className="pc-actions-cluster">
             <button
-              className="pc-cart-quick-btn"
-              onClick={handleAdd}
-              title="Add to shopping bag"
-              aria-label="Add to cart"
+              type="button"
+              className="pc-preview-trigger-btn"
+              onClick={handlePreview}
+              title="Preview pattern instructions & details"
+              aria-label="Preview pattern"
             >
-              {added ? <Check size={16} /> : <ShoppingBag size={16} />}
+              <Eye size={15} />
             </button>
 
             <button
-              className="btn btn-primary pc-cta"
-              onClick={handlePreview}
+              className={`btn pc-cta ${added ? 'added' : 'btn-primary'}`}
+              onClick={handleAdd}
             >
-              <Eye size={14} />
-              <span>Get Pattern</span>
+              {added ? (
+                <>
+                  <Check size={14} />
+                  <span>Added!</span>
+                </>
+              ) : (
+                <>
+                  <ShoppingBag size={14} />
+                  <span>Get Pattern</span>
+                </>
+              )}
             </button>
           </div>
         </div>
