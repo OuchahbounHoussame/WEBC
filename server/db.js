@@ -7,9 +7,22 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const DATA_DIR = path.join(__dirname, 'data');
+const IS_VERCEL = Boolean(process.env.VERCEL);
+const DATA_DIR = IS_VERCEL ? path.join('/tmp', 'crochet_data') : path.join(__dirname, 'data');
 const DB_PATH = path.join(DATA_DIR, 'store.db');
-export const STORAGE_DIR = path.join(__dirname, 'storage', 'patterns');
+
+export function resolveStorageDir() {
+  const candidates = [
+    path.join(__dirname, 'storage', 'patterns'),
+    path.join(process.cwd(), 'server', 'storage', 'patterns'),
+    path.join(process.cwd(), 'crochet-store-react', 'server', 'storage', 'patterns'),
+  ];
+  for (const c of candidates) {
+    if (fs.existsSync(c)) return c;
+  }
+  return candidates[0];
+}
+export const STORAGE_DIR = resolveStorageDir();
 
 // Ensure directory exists
 if (!fs.existsSync(DATA_DIR)) {
@@ -19,8 +32,12 @@ if (!fs.existsSync(DATA_DIR)) {
 // Initialize SQLite database
 export const db = new Database(DB_PATH);
 
-// Enable WAL mode for high concurrency & performance, plus Foreign Keys
-db.pragma('journal_mode = WAL');
+// Configure database pragmas
+if (IS_VERCEL) {
+  db.pragma('journal_mode = DELETE');
+} else {
+  db.pragma('journal_mode = WAL');
+}
 db.pragma('foreign_keys = ON');
 
 // ── SQL Schema Initialization ──────────────────────────────
