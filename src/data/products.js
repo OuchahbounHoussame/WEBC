@@ -202,7 +202,14 @@ export const products = [
     category: "pdf-pattern",
     skill: "intermediate",
     iconKey: "eyeglass-holder",
-    images: [],
+    primaryImage: "/images/products/eyeglass-holders/eyeglass-grid.jpg",
+    images: [
+      "/images/products/eyeglass-holders/eyeglass-grid.jpg",
+      "/images/products/eyeglass-holders/eyeglass-fox.jpg",
+      "/images/products/eyeglass-holders/eyeglass-turtle.jpg",
+      "/images/products/eyeglass-holders/eyeglass-raccoon.jpg",
+      "/images/products/eyeglass-holders/eyeglass-llama.jpg"
+    ],
     color: "#fbeae8", // Soft warm pastel coral
     price: 7.99,
     originalPrice: 14.99,
