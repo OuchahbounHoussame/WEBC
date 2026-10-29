@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Gift, Zap, FileText, CheckCircle2, Lock, MailCheck, Send, Download } from 'lucide-react';
+import { Gift, Zap, FileText, CheckCircle2, Lock, MailCheck, Send, Download, Sparkles } from 'lucide-react';
 import { ShootingStarIcon } from '../Icons/CrochetIcons';
 import './Freebie.css';
 
@@ -42,27 +42,30 @@ export default function Freebie() {
         <div className="freebie-visual" aria-hidden="true">
           <div className="freebie-card">
             <div className="fc-header">
-              <Gift size={24} className="fc-gift-icon" />
+              <div className="fc-gift-icon-wrap">
+                <Gift size={22} className="fc-gift-icon" />
+              </div>
               <div>
                 <p className="fc-tag">FREE PDF PATTERN</p>
                 <p className="fc-title">Shooting Star Keychain</p>
               </div>
             </div>
-            <div className="fc-vector-wrapper">
+
+            <div className="fc-image-stage">
               <img
                 src="/images/products/shooting-star/star-1.png"
                 alt="Shooting Star Keychain crochet amigurumi"
-                style={{
-                  width: '145px',
-                  height: '145px',
-                  objectFit: 'contain',
-                  filter: 'drop-shadow(0 12px 24px rgba(0, 0, 0, 0.25))'
-                }}
+                className="fc-hero-img"
               />
+              <div className="fc-img-badge">
+                <Sparkles size={12} />
+                <span>Free Pattern</span>
+              </div>
             </div>
+
             <div className="fc-details">
               <span>
-                <FileText size={12} /> 6 pages
+                <FileText size={12} /> 6 pages PDF
               </span>
               <span>
                 <span className="skill-dot" /> Beginner
@@ -71,8 +74,10 @@ export default function Freebie() {
                 <Zap size={12} /> Instant
               </span>
             </div>
+
             <div className="fc-value">
-              Value: <s>$4.49</s> <strong>FREE</strong>
+              <span>Value: <s>$4.49</s></span>
+              <strong className="fc-free-pill">100% FREE</strong>
             </div>
           </div>
           <div className="freebie-deco d1" />
