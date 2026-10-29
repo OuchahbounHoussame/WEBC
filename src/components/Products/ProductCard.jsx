@@ -42,7 +42,6 @@ export default function ProductCard({ product, onAddToCart, onPreview, onViewPro
       {/* Thumbnail */}
       <div
         className="pc-thumb"
-        style={{ background: product.color, cursor: 'pointer' }}
         onClick={handleOpenProduct}
         title="Click to view pattern details and photos"
       >
@@ -52,13 +51,6 @@ export default function ProductCard({ product, onAddToCart, onPreview, onViewPro
               src={product.primaryImage}
               alt={product.name}
               className="pc-real-product-img"
-              style={{
-                width: '100%',
-                height: '100%',
-                maxHeight: '220px',
-                objectFit: 'contain',
-                padding: '8px'
-              }}
             />
           ) : (
             <ProductIcon iconKey={product.iconKey} size={105} />

@@ -79,7 +79,7 @@ export default function ProductDetailPage({ product, onAddToCart, onBuyNow, onBa
       <div className="pdp-main-grid">
         {/* Left: Gallery */}
         <div className="pdp-gallery-column">
-          <div className="pdp-showcase-box" style={{ background: product.color || '#f7eff4' }}>
+          <div className="pdp-showcase-box" style={{ background: '#ffffff', border: '1px solid #f1e4f4' }}>
             {images.length > 0 ? (
               <img
                 src={images[activeImageIndex]}
