@@ -51,11 +51,13 @@ export default function ProductCard({ product, onAddToCart, onPreview, onViewPro
             <img
               src={product.primaryImage}
               alt={product.name}
+              className="pc-real-product-img"
               style={{
                 width: '100%',
                 height: '100%',
-                objectFit: 'cover',
-                borderRadius: '16px'
+                maxHeight: '220px',
+                objectFit: 'contain',
+                padding: '8px'
               }}
             />
           ) : (
@@ -70,17 +72,18 @@ export default function ProductCard({ product, onAddToCart, onPreview, onViewPro
           </div>
         )}
 
-        {product.id === 2 && (
+        {/* Top-Right Badge (Clean separation to prevent collision) */}
+        {product.id === 2 ? (
           <a
             href="#freebie"
-            className="pc-ribbon pc-ribbon-free"
+            className="pc-sale-badge"
             style={{
               background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
               textDecoration: 'none',
-              top: '12px',
-              right: '12px',
-              left: 'auto',
-              cursor: 'pointer'
+              cursor: 'pointer',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '4px'
             }}
             onClick={(e) => {
               e.stopPropagation();
@@ -89,15 +92,15 @@ export default function ProductCard({ product, onAddToCart, onPreview, onViewPro
             }}
             title="Download this pattern 100% Free below!"
           >
-            <Gift size={11} className="pc-ribbon-icon" />
-            <span>Free with Email</span>
+            <Gift size={11} />
+            <span>FREE WITH EMAIL</span>
           </a>
-        )}
-
-        {product.originalPrice && (
-          <div className="pc-sale-badge">
-            SAVE {Math.round((1 - product.price / product.originalPrice) * 100)}%
-          </div>
+        ) : (
+          product.originalPrice && (
+            <div className="pc-sale-badge">
+              SAVE {Math.round((1 - product.price / product.originalPrice) * 100)}%
+            </div>
+          )
         )}
 
         <div className="pc-overlay">

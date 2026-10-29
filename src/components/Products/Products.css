@@ -66,10 +66,13 @@
 }
 
 .pc-thumb {
-  height: 220px; display: flex; align-items: center; justify-content: center;
+  height: 250px; display: flex; align-items: center; justify-content: center;
   position: relative; overflow: hidden; flex-shrink: 0;
+  padding: 10px;
 }
 .pc-vector-art {
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -288,7 +291,8 @@
     gap: 20px;
   }
   .pc-thumb {
-    height: 180px;
+    height: 240px;
+    padding: 8px;
   }
   .pc-body {
     padding: 16px;
