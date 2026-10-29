@@ -25,7 +25,6 @@ export default function ProductDetailPage({ product, onAddToCart, onBuyNow, onBa
     : [];
 
   const [activeImageIndex, setActiveImageIndex] = useState(0);
-  const [viewMode, setViewMode] = useState(images.length > 0 ? 'photo' : 'vector'); // 'photo' | 'vector'
   const [added, setAdded] = useState(false);
   const [copied, setCopied] = useState(false);
   const [activeTab, setActiveTab] = useState('overview'); // 'overview' | 'materials' | 'stitches' | 'reviews'
@@ -81,7 +80,7 @@ export default function ProductDetailPage({ product, onAddToCart, onBuyNow, onBa
         {/* Left: Gallery */}
         <div className="pdp-gallery-column">
           <div className="pdp-showcase-box" style={{ background: product.color || '#f7eff4' }}>
-            {viewMode === 'photo' && images.length > 0 ? (
+            {images.length > 0 ? (
               <img
                 src={images[activeImageIndex]}
                 alt={`${product.name} showcase photo ${activeImageIndex + 1}`}
@@ -106,37 +105,25 @@ export default function ProductDetailPage({ product, onAddToCart, onBuyNow, onBa
             )}
           </div>
 
-          {/* Thumbnails strip */}
-          <div className="pdp-thumbs-strip">
-            {images.map((imgUrl, idx) => (
-              <button
-                key={idx}
-                className={`pdp-thumb-item ${viewMode === 'photo' && activeImageIndex === idx ? 'active' : ''}`}
-                onClick={() => {
-                  setActiveImageIndex(idx);
-                  setViewMode('photo');
-                }}
-                title={`View Photo ${idx + 1}`}
-              >
-                <img src={imgUrl} alt={`Thumbnail ${idx + 1}`} />
-              </button>
-            ))}
-
-            {/* Vector artwork thumbnail toggle */}
-            <button
-              className={`pdp-thumb-item pdp-thumb-vector ${viewMode === 'vector' ? 'active' : ''}`}
-              onClick={() => setViewMode('vector')}
-              title="View Vector Illustration"
-              style={{ background: product.color || '#fdf5f8' }}
-            >
-              <ProductIcon iconKey={product.iconKey} size={36} />
-              <span className="pdp-thumb-vector-label">Art</span>
-            </button>
-          </div>
+          {/* Thumbnails strip (Only real photos, no vector art) */}
+          {images.length > 1 && (
+            <div className="pdp-thumbs-strip">
+              {images.map((imgUrl, idx) => (
+                <button
+                  key={idx}
+                  className={`pdp-thumb-item ${activeImageIndex === idx ? 'active' : ''}`}
+                  onClick={() => setActiveImageIndex(idx)}
+                  title={`View Photo ${idx + 1}`}
+                >
+                  <img src={imgUrl} alt={`Thumbnail ${idx + 1}`} />
+                </button>
+              ))}
+            </div>
+          )}
 
           {images.length > 1 && (
             <p className="pdp-gallery-hint">
-              📸 Click any thumbnail to inspect real pattern details &amp; finished doll
+              📸 Click any photo thumbnail to inspect details &amp; finished doll
             </p>
           )}
         </div>
