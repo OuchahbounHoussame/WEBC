@@ -6,7 +6,13 @@ export const products = [
     category: "amigurumi",
     skill: "intermediate",
     iconKey: "crewmate",
-    images: [],
+    primaryImage: "/images/products/crewmate/crewmate-1.png",
+    images: [
+      "/images/products/crewmate/crewmate-1.png",
+      "/images/products/crewmate/crewmate-2.png",
+      "/images/products/crewmate/crewmate-3.png",
+      "/images/products/crewmate/crewmate-4.png"
+    ],
     color: "#fee6ea", // Delicate blush pastel to showcase the vibrant red crewmate
     price: 4.99,
     originalPrice: 7.99,
