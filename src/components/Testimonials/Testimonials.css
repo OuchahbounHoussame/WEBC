@@ -16,21 +16,28 @@
 .tstat span { font-size: .78rem; color: var(--text-light, #8f7a93); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
 
 .testi-grid {
-  max-width: 1200px; margin: 0 auto 40px;
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-  gap: 24px; padding: 0 20px;
+  max-width: 1320px;
+  margin: 0 auto 40px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  padding: 0 20px;
 }
 .testi-card {
-  background: #fff; border-radius: var(--radius, 18px); padding: 28px;
-  box-shadow: 0 4px 16px rgba(130, 70, 130, 0.06);
+  background: #fff;
+  border-radius: var(--radius, 18px);
+  padding: 32px 28px 28px;
+  box-shadow: 0 4px 18px rgba(130, 70, 130, 0.06);
   border: 1px solid #f3e8f6;
   border-top: 4px solid #dfcfee;
-  transition: transform .3s, box-shadow .3s;
+  transition: transform .3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow .3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 .testi-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 36px rgba(130, 70, 130, 0.12);
+  transform: translateY(-5px);
+  box-shadow: 0 14px 40px rgba(130, 70, 130, 0.12);
 }
 .testi-card.featured {
   border-top-color: var(--pastel-pink, #e8829b);
@@ -53,7 +60,14 @@
 }
 
 .testi-stars { display: flex; gap: 3px; align-items: center; margin-bottom: 12px; }
-.testi-text { color: var(--text-mid, #5f4864); font-style: italic; font-size: .92rem; line-height: 1.7; margin-bottom: 14px; }
+.testi-text {
+  color: var(--text-mid, #5f4864);
+  font-style: italic;
+  font-size: .95rem;
+  line-height: 1.7;
+  margin-bottom: 16px;
+  flex: 1;
+}
 .testi-project {
   display: flex; align-items: center; gap: 8px;
   font-size: .8rem; color: var(--text-light, #8f7a93); margin-bottom: 18px;
@@ -61,23 +75,45 @@
 .tp-heart-icon { color: var(--pastel-pink); }
 .testi-project em { color: var(--pastel-pink-dark, #cf6a84); font-style: normal; font-weight: 700; }
 
-.testi-author { display: flex; align-items: center; gap: 12px; }
+.testi-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+}
 .ta-avatar {
-  width: 40px; height: 40px; border-radius: 50%;
+  width: 42px; height: 42px; border-radius: 50%;
   background: linear-gradient(135deg, #9d7dc5 0%, #7d5ba7 100%);
   color: #fff;
-  font-family: 'Playfair Display', serif; font-size: 1.1rem;
+  font-family: 'Playfair Display', serif; font-size: 1.15rem;
   display: flex; align-items: center; justify-content: center; flex-shrink: 0;
   box-shadow: 0 3px 8px rgba(157, 125, 197, 0.3);
 }
-.testi-author strong { display: block; font-size: .9rem; color: var(--brown, #3d2442); }
-.testi-author span   { font-size: .78rem; color: var(--text-light, #8f7a93); }
+.testi-author strong {
+  display: block;
+  font-size: .92rem;
+  color: var(--brown, #3d2442);
+  white-space: nowrap;
+}
+.testi-author span   {
+  font-size: .78rem;
+  color: var(--text-light, #8f7a93);
+  white-space: nowrap;
+}
 .ta-verified {
-  margin-left: auto; font-size: .7rem; font-weight: 700;
-  color: #278a63; background: #eaf7f2;
+  margin-left: auto;
+  font-size: .72rem;
+  font-weight: 700;
+  color: #278a63;
+  background: #eaf7f2;
   border: 1px solid #c7ecde;
-  padding: 4px 10px; border-radius: 6px;
-  display: inline-flex; align-items: center; gap: 5px;
+  padding: 4px 12px;
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .testi-cta {
@@ -91,17 +127,26 @@
 .testi-cta p { margin: 0; }
 .testi-cta strong { color: var(--pastel-pink-dark, #cf6a84); }
 
+@media (max-width: 1024px) {
+  .testi-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+  }
+}
+
 @media (max-width: 768px) {
   .testi-stats { grid-template-columns: repeat(2, 1fr); }
 }
-@media (max-width: 600px) {
+
+@media (max-width: 680px) {
   .testi-grid {
     grid-template-columns: 1fr;
+    max-width: 480px;
     padding: 0;
-    gap: 18px;
+    gap: 20px;
   }
   .testi-card {
-    padding: 22px 18px;
+    padding: 24px 20px 20px;
   }
   .testi-cta {
     flex-direction: column;
