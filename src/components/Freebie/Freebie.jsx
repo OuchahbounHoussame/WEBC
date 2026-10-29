@@ -49,7 +49,16 @@ export default function Freebie() {
               </div>
             </div>
             <div className="fc-vector-wrapper">
-              <ShootingStarIcon size={120} />
+              <img
+                src="/images/products/shooting-star/star-1.png"
+                alt="Shooting Star Keychain crochet amigurumi"
+                style={{
+                  width: '145px',
+                  height: '145px',
+                  objectFit: 'contain',
+                  filter: 'drop-shadow(0 12px 24px rgba(0, 0, 0, 0.25))'
+                }}
+              />
             </div>
             <div className="fc-details">
               <span>

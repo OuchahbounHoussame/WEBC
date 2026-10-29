@@ -103,7 +103,12 @@ export const products = [
     category: "amigurumi",
     skill: "intermediate",
     iconKey: "star",
-    images: [],
+    primaryImage: "/images/products/shooting-star/star-1.png",
+    images: [
+      "/images/products/shooting-star/star-1.png",
+      "/images/products/shooting-star/star-2.jpg",
+      "/images/products/shooting-star/star-3.png"
+    ],
     color: "#fef9db", // Soft creamy pastel lemon yellow
     price: 4.49,
     originalPrice: 6.99,
