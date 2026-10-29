@@ -2,9 +2,11 @@ export const products = [
   {
     id: 1,
     name: "Sus Space Crewmate",
+    slug: "sus-space-crewmate",
     category: "amigurumi",
     skill: "intermediate",
     iconKey: "crewmate",
+    images: [],
     color: "#fee6ea", // Delicate blush pastel to showcase the vibrant red crewmate
     price: 4.99,
     originalPrice: 7.99,
@@ -97,9 +99,11 @@ export const products = [
   {
     id: 2,
     name: "Shooting Star Keychain",
+    slug: "shooting-star-keychain",
     category: "amigurumi",
     skill: "intermediate",
     iconKey: "star",
+    images: [],
     color: "#fef9db", // Soft creamy pastel lemon yellow
     price: 4.49,
     originalPrice: 6.99,
@@ -189,9 +193,11 @@ export const products = [
   {
     id: 3,
     name: "Eyeglass Holder Set 2",
+    slug: "eyeglass-holder-set-2",
     category: "pdf-pattern",
     skill: "intermediate",
     iconKey: "eyeglass-holder",
+    images: [],
     color: "#fbeae8", // Soft warm pastel coral
     price: 7.99,
     originalPrice: 14.99,
@@ -282,9 +288,18 @@ export const products = [
   {
     id: 4,
     name: "Graduate Doll Amigurumi",
+    slug: "graduate-doll-amigurumi",
     category: "amigurumi",
     skill: "intermediate",
     iconKey: "graduate",
+    primaryImage: "/images/products/graduate-doll/graduate-1.jpg",
+    images: [
+      "/images/products/graduate-doll/graduate-1.jpg",
+      "/images/products/graduate-doll/graduate-2.jpg",
+      "/images/products/graduate-doll/graduate-3.jpg",
+      "/images/products/graduate-doll/graduate-4.jpg",
+      "/images/products/graduate-doll/graduate-5.jpg"
+    ],
     color: "#f6edf9", // Delicate soft celebratory lavender
     price: 6.99,
     originalPrice: 11.99,

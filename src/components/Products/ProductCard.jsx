@@ -14,7 +14,7 @@ import {
 import { ProductIcon } from '../Icons/CrochetIcons';
 import './Products.css';
 
-export default function ProductCard({ product, onAddToCart, onPreview }) {
+export default function ProductCard({ product, onAddToCart, onPreview, onViewProduct }) {
   const [added, setAdded] = useState(false);
 
   const handleAdd = (e) => {
@@ -24,7 +24,16 @@ export default function ProductCard({ product, onAddToCart, onPreview }) {
     setTimeout(() => setAdded(false), 2000);
   };
 
-  const handlePreview = () => {
+  const handleOpenProduct = () => {
+    if (onViewProduct) {
+      onViewProduct(product);
+    } else if (onPreview) {
+      onPreview(product);
+    }
+  };
+
+  const handlePreview = (e) => {
+    e.stopPropagation();
     if (onPreview) onPreview(product);
   };
 
@@ -34,11 +43,24 @@ export default function ProductCard({ product, onAddToCart, onPreview }) {
       <div
         className="pc-thumb"
         style={{ background: product.color, cursor: 'pointer' }}
-        onClick={handlePreview}
-        title="Click to view pattern details"
+        onClick={handleOpenProduct}
+        title="Click to view pattern details and photos"
       >
         <div className="pc-vector-art">
-          <ProductIcon iconKey={product.iconKey} size={105} />
+          {product.primaryImage ? (
+            <img
+              src={product.primaryImage}
+              alt={product.name}
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                borderRadius: '16px'
+              }}
+            />
+          ) : (
+            <ProductIcon iconKey={product.iconKey} size={105} />
+          )}
         </div>
 
         {product.bestseller && (
@@ -115,7 +137,7 @@ export default function ProductCard({ product, onAddToCart, onPreview }) {
           </span>
         </div>
 
-        <h3 className="pc-name" onClick={handlePreview} style={{ cursor: 'pointer' }}>
+        <h3 className="pc-name" onClick={handleOpenProduct} style={{ cursor: 'pointer' }}>
           {product.name}
         </h3>
         <p className="pc-desc">{product.description}</p>

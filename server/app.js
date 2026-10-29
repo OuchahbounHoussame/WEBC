@@ -32,8 +32,13 @@ app.get('/api/health', (req, res) => {
   });
 });
 
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 // Serve frontend in production / Docker mode if dist folder exists
-const distPath = path.join(process.cwd(), 'dist');
+const distPath = path.resolve(__dirname, '../dist');
 if (fs.existsSync(distPath)) {
   app.use(express.static(distPath));
   app.use((req, res, next) => {

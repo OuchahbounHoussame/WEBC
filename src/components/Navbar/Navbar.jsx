@@ -3,7 +3,7 @@ import { ShoppingBag, Menu, X, Sparkles, Compass, DownloadCloud } from 'lucide-r
 import { YarnLogoIcon } from '../Icons/CrochetIcons';
 import './Navbar.css';
 
-export default function Navbar({ cartCount, downloadsCount = 0, onOpenCart, onOpenDownloads }) {
+export default function Navbar({ cartCount, downloadsCount = 0, onOpenCart, onOpenDownloads, onLogoClick }) {
   const [scrolled,  setScrolled]  = useState(false);
   const [menuOpen,  setMenuOpen]  = useState(false);
 
@@ -26,7 +26,10 @@ export default function Navbar({ cartCount, downloadsCount = 0, onOpenCart, onOp
 
   const nav = (id) => {
     setMenuOpen(false);
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    if (onLogoClick) onLogoClick();
+    setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    }, 60);
   };
 
   const links = [
@@ -45,6 +48,7 @@ export default function Navbar({ cartCount, downloadsCount = 0, onOpenCart, onOp
           className="logo-btn"
           onClick={() => {
             setMenuOpen(false);
+            if (onLogoClick) onLogoClick();
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
           aria-label="Cozy Stitches Home"

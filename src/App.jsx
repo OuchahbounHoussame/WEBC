@@ -11,8 +11,28 @@ import Footer       from './components/Footer/Footer';
 import CartToast    from './components/CartToast/CartToast';
 import CartDrawer   from './components/Cart/CartDrawer';
 import PatternModal from './components/Products/PatternModal';
+import ProductDetailPage from './components/ProductDetail/ProductDetailPage';
 import BackToTop    from './components/BackToTop/BackToTop';
+import { products } from './data/products';
 import './App.css';
+
+// URL Helper to resolve product from pathname (/product/:id) or query (?product=id)
+function getProductFromUrl() {
+  if (typeof window === 'undefined') return null;
+  const pathname = window.location.pathname;
+  const searchParams = new URLSearchParams(window.location.search);
+  const paramId = searchParams.get('product') || searchParams.get('p') || searchParams.get('id');
+
+  const match = pathname.match(/^\/product\/([^/]+)/);
+  const target = match ? match[1] : paramId;
+
+  if (!target) return null;
+
+  return products.find(p => 
+    String(p.id) === String(target) || 
+    (p.slug && p.slug === target.toLowerCase())
+  ) || null;
+}
 
 export default function App() {
   // Persist cart across reloads
@@ -39,6 +59,39 @@ export default function App() {
   const [cartInitialTab, setCartInitialTab] = useState('cart'); // 'cart' | 'downloads'
   const [selectedPattern, setSelectedPattern] = useState(null);
   const [toast, setToast] = useState({ visible: false, message: '' });
+
+  // Direct product routing state
+  const [currentProduct, setCurrentProduct] = useState(getProductFromUrl);
+
+  // Synchronize state with browser back/forward buttons and URL changes
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentProduct(getProductFromUrl());
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  const navigateToProduct = (product) => {
+    const url = `/product/${product.id}`;
+    window.history.pushState({ productId: product.id }, '', url);
+    setCurrentProduct(product);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const navigateToHome = () => {
+    window.history.pushState({}, '', '/');
+    setCurrentProduct(null);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleBuyNow = (product) => {
+    if (!cart.find((p) => p.id === product.id)) {
+      setCart((prev) => [...prev, product]);
+    }
+    setCartInitialTab('cart');
+    setCartOpen(true);
+  };
 
   // Save cart to localStorage
   useEffect(() => {
@@ -90,15 +143,27 @@ export default function App() {
           setCartInitialTab('downloads');
           setCartOpen(true);
         }}
+        onLogoClick={navigateToHome}
       />
       <main>
-        <Hero />
-        <TrustBar />
-        <Products onAddToCart={addToCart} />
-        <HowItWorks />
-        <Freebie />
-        <Testimonials />
-        <FAQ />
+        {currentProduct ? (
+          <ProductDetailPage
+            product={currentProduct}
+            onAddToCart={addToCart}
+            onBuyNow={handleBuyNow}
+            onBackToStore={navigateToHome}
+          />
+        ) : (
+          <>
+            <Hero />
+            <TrustBar />
+            <Products onAddToCart={addToCart} onViewProduct={navigateToProduct} />
+            <HowItWorks />
+            <Freebie />
+            <Testimonials />
+            <FAQ />
+          </>
+        )}
       </main>
       <Footer />
       <CartToast toast={toast} />

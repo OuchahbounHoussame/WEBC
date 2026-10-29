@@ -5,7 +5,7 @@ import ProductCard from './ProductCard';
 import PatternModal from './PatternModal';
 import './Products.css';
 
-export default function Products({ onAddToCart }) {
+export default function Products({ onAddToCart, onViewProduct }) {
   const [activeCat,       setActiveCat]       = useState('all');
   const [activeSkill,     setActiveSkill]     = useState('all');
   const [sort,            setSort]            = useState('featured');
@@ -95,6 +95,7 @@ export default function Products({ onAddToCart }) {
               product={p}
               onAddToCart={onAddToCart}
               onPreview={setPreviewProduct}
+              onViewProduct={onViewProduct}
             />
           ))}
         </div>
