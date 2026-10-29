@@ -142,6 +142,7 @@ export default function App() {
           setCartOpen(true);
         }}
         onLogoClick={navigateToHome}
+        isProductPage={Boolean(currentProduct)}
       />
       <main>
         {currentProduct ? (

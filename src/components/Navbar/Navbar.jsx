@@ -1,9 +1,16 @@
 import { useState, useEffect } from 'react';
 import { ShoppingBag, Menu, X, Sparkles, Compass, DownloadCloud } from 'lucide-react';
-import { YarnLogoIcon } from '../Icons/CrochetIcons';
+import Logo from '../Logo/Logo';
 import './Navbar.css';
 
-export default function Navbar({ cartCount, downloadsCount = 0, onOpenCart, onOpenDownloads, onLogoClick }) {
+export default function Navbar({ 
+  cartCount, 
+  downloadsCount = 0, 
+  onOpenCart, 
+  onOpenDownloads, 
+  onLogoClick,
+  isProductPage = false 
+}) {
   const [scrolled,  setScrolled]  = useState(false);
   const [menuOpen,  setMenuOpen]  = useState(false);
 
@@ -42,7 +49,7 @@ export default function Navbar({ cartCount, downloadsCount = 0, onOpenCart, onOp
   ];
 
   return (
-    <header className={`navbar ${scrolled ? 'scrolled' : ''} ${menuOpen ? 'menu-open' : ''}`}>
+    <header className={`navbar ${scrolled ? 'scrolled' : ''} ${menuOpen ? 'menu-open' : ''} ${isProductPage ? 'is-product-page' : ''}`}>
       <div className="nav-container">
         <button
           className="logo-btn"
@@ -53,8 +60,7 @@ export default function Navbar({ cartCount, downloadsCount = 0, onOpenCart, onOp
           }}
           aria-label="Cozy Stitches Home"
         >
-          <YarnLogoIcon size={30} className="logo-svg" />
-          <span className="logo-text">Cozy Stitches</span>
+          <Logo size={36} />
         </button>
 
         <nav className={`nav-links ${menuOpen ? 'open' : ''}`} aria-label="Main navigation">

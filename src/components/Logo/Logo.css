@@ -1,0 +1,106 @@
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.brand-logo:hover {
+  transform: translateY(-1px);
+}
+
+.brand-logo-emblem {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.brand-logo:hover .brand-logo-emblem {
+  transform: rotate(-6deg) scale(1.08);
+}
+
+.brand-logo-text-block {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  text-align: left;
+}
+
+.brand-logo-name {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.42rem;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+
+.bl-cozy {
+  color: var(--pastel-pink, #e8829b);
+  transition: color 0.25s ease;
+}
+
+.bl-stitches {
+  color: #ffffff;
+  transition: color 0.25s ease;
+}
+
+.brand-logo-tagline {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.78);
+  margin-top: 3px;
+  transition: color 0.25s ease;
+}
+
+/* Light / Scrolled / Dark Variants */
+.navbar.scrolled .bl-stitches,
+.navbar.menu-open .bl-stitches,
+.navbar.is-product-page .bl-stitches,
+.brand-logo.dark .bl-stitches {
+  color: var(--brown, #3d2442);
+}
+
+.navbar.scrolled .brand-logo-tagline,
+.navbar.menu-open .brand-logo-tagline,
+.navbar.is-product-page .brand-logo-tagline,
+.brand-logo.dark .brand-logo-tagline {
+  color: var(--text-light, #8f7a93);
+}
+
+.brand-logo.light .bl-stitches {
+  color: #ffffff;
+}
+
+.brand-logo.light .brand-logo-tagline {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .brand-logo {
+    gap: 9px;
+  }
+  .brand-logo-name {
+    font-size: 1.25rem;
+  }
+  .brand-logo-tagline {
+    font-size: 0.58rem;
+    letter-spacing: 1.8px;
+  }
+}
+
+@media (max-width: 380px) {
+  .brand-logo-tagline {
+    display: none;
+  }
+}

@@ -8,6 +8,7 @@ import {
   ExternalLink
 } from 'lucide-react';
 import { YarnLogoIcon, InstagramIcon, YoutubeIcon, PinterestIcon } from '../Icons/CrochetIcons';
+import Logo from '../Logo/Logo';
 import './Footer.css';
 
 export default function Footer() {
@@ -104,9 +105,8 @@ export default function Footer() {
       {/* Main footer */}
       <div className="footer-main">
         <div className="fm-brand">
-          <div className="logo">
-            <YarnLogoIcon size={30} />
-            <span className="logo-text">Cozy Stitches</span>
+          <div className="logo" style={{ marginBottom: '14px' }}>
+            <Logo size={38} variant="dark" />
           </div>
           <p>Handcrafted digital patterns for makers everywhere. Instant PDF downloads to create anywhere, anytime.</p>
           <div className="fm-socials">
