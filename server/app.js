@@ -36,7 +36,8 @@ app.get('/api/health', (req, res) => {
 const distPath = path.join(process.cwd(), 'dist');
 if (fs.existsSync(distPath)) {
   app.use(express.static(distPath));
-  app.get('*', (req, res, next) => {
+  app.use((req, res, next) => {
+    if (req.method !== 'GET') return next();
     if (req.path.startsWith('/api') || req.path.startsWith('/admin')) {
       return next();
     }

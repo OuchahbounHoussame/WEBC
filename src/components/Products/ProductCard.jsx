@@ -8,7 +8,8 @@ import {
   Eye,
   Check,
   ShoppingBag,
-  Sparkles
+  Sparkles,
+  Gift
 } from 'lucide-react';
 import { ProductIcon } from '../Icons/CrochetIcons';
 import './Products.css';
@@ -45,6 +46,30 @@ export default function ProductCard({ product, onAddToCart, onPreview }) {
             <Sparkles size={11} className="pc-ribbon-icon" />
             <span>Bestseller</span>
           </div>
+        )}
+
+        {product.id === 2 && (
+          <a
+            href="#freebie"
+            className="pc-ribbon pc-ribbon-free"
+            style={{
+              background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+              textDecoration: 'none',
+              top: '12px',
+              right: '12px',
+              left: 'auto',
+              cursor: 'pointer'
+            }}
+            onClick={(e) => {
+              e.stopPropagation();
+              const el = document.getElementById('freebie');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }}
+            title="Download this pattern 100% Free below!"
+          >
+            <Gift size={11} className="pc-ribbon-icon" />
+            <span>Free with Email</span>
+          </a>
         )}
 
         {product.originalPrice && (

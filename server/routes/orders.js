@@ -1,5 +1,5 @@
 import express from 'express';
-import { createOrder, getOrderDetails, refreshOrderTokens, addSubscriber } from '../db.js';
+import { createOrder, getOrderDetails, refreshOrderTokens, addSubscriber, grantFreebieDownload } from '../db.js';
 
 const router = express.Router();
 
@@ -98,10 +98,21 @@ router.post('/subscribe', (req, res) => {
       return res.status(400).json({ success: false, message: 'Valid email required' });
     }
     const subscriber = addSubscriber(email, source);
+    
+    // Grant instant free access token to Shooting Star Keychain (product id 2)
+    let freebie = null;
+    try {
+      freebie = grantFreebieDownload(email, 2);
+    } catch (e) {
+      console.warn('Could not generate freebie token:', e.message);
+    }
+
     res.json({
       success: true,
-      message: 'Subscribed and saved in SQL database.',
-      subscriber
+      message: 'Subscribed and free Shooting Star Keychain PDF granted!',
+      subscriber,
+      downloadUrl: freebie?.downloadUrl || null,
+      downloadName: freebie?.downloadName || 'Shooting-Star-Keychain-Pattern.pdf'
     });
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });

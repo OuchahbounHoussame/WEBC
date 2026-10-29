@@ -372,6 +372,49 @@ export function addSubscriber(email, source = 'freebie_signup') {
   return { id: res.lastInsertRowid, email: cleanEmail, source };
 }
 
+// Grant Freebie Download Token for a free pattern (default: Shooting Star Keychain id=2)
+export const grantFreebieDownload = db.transaction((email, productId = 2) => {
+  const cleanEmail = email.trim().toLowerCase();
+  let customer = db.prepare('SELECT * FROM customers WHERE email = ?').get(cleanEmail);
+  if (!customer) {
+    const res = db.prepare('INSERT INTO customers (email, name) VALUES (?, ?)').run(cleanEmail, 'Freebie Subscriber');
+    customer = { id: res.lastInsertRowid, email: cleanEmail, name: 'Freebie Subscriber', total_spent: 0, orders_count: 0 };
+  }
+
+  const prod = db.prepare('SELECT * FROM products WHERE id = ?').get(Number(productId));
+  if (!prod) throw new Error('Product not found');
+
+  const orderId = `FREE-${Date.now().toString(36).toUpperCase()}-${Math.floor(1000 + Math.random() * 9000)}`;
+
+  db.prepare(`
+    INSERT INTO orders (order_id, customer_id, customer_email, customer_name, total_amount, payment_status, payment_method)
+    VALUES (?, ?, ?, ?, 0.00, 'paid', 'freebie')
+  `).run(orderId, customer.id, cleanEmail, customer.name);
+
+  db.prepare(`
+    INSERT INTO order_items (order_id, product_id, product_name, unit_price)
+    VALUES (?, ?, ?, 0.00)
+  `).run(orderId, prod.id, prod.name);
+
+  const token = generateSecureToken();
+  const now = Date.now();
+  const expiresAt = now + 48 * 60 * 60 * 1000;
+
+  db.prepare(`
+    INSERT INTO download_tokens (order_id, product_id, token, download_name, file_name, expires_at)
+    VALUES (?, ?, ?, ?, ?, ?)
+  `).run(orderId, prod.id, token, prod.download_name, prod.file_name, expiresAt);
+
+  return {
+    orderId,
+    productId: prod.id,
+    productName: prod.name,
+    downloadName: prod.download_name,
+    downloadUrl: `/api/downloads/${token}`,
+    expiresAt
+  };
+});
+
 // ── Admin SQL Overview ─────────────────────────────────────
 export function getAdminOverview() {
   const totalRevenue = db.prepare("SELECT COALESCE(SUM(total_amount), 0) as total FROM orders WHERE payment_status = 'paid'").get().total;

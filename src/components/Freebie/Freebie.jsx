@@ -1,31 +1,36 @@
 import { useState } from 'react';
-import { Gift, Zap, FileText, CheckCircle2, Lock, MailCheck, Send } from 'lucide-react';
-import { CactusMiniIcon } from '../Icons/CrochetIcons';
+import { Gift, Zap, FileText, CheckCircle2, Lock, MailCheck, Send, Download } from 'lucide-react';
+import { ShootingStarIcon } from '../Icons/CrochetIcons';
 import './Freebie.css';
 
 export default function Freebie() {
-  const [email, setEmail]     = useState('');
-  const [status, setStatus]   = useState('idle'); // idle | loading | done
+  const [email, setEmail]             = useState('');
+  const [status, setStatus]           = useState('idle'); // idle | loading | done
+  const [downloadUrl, setDownloadUrl] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email) return;
     setStatus('loading');
     try {
-      await fetch('/api/orders/subscribe', {
+      const res = await fetch('/api/orders/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, source: 'freebie_cactus_pattern' })
+        body: JSON.stringify({ email, source: 'freebie_shooting_star' })
       });
+      const data = await res.json();
+      if (data && data.downloadUrl) {
+        setDownloadUrl(data.downloadUrl);
+      }
     } catch (err) {
       console.error('Newsletter error:', err);
     }
-    setTimeout(() => setStatus('done'), 800);
+    setTimeout(() => setStatus('done'), 600);
   };
 
   const perks = [
-    'Free Mini Cactus Amigurumi PDF pattern (worth $4.99)',
-    'Instant delivery direct to your email inbox',
+    'Free Shooting Star Keychain PDF pattern (worth $4.49)',
+    'Instant 1-click download direct to your phone or tablet',
     'Exclusive members-only discounts up to 30% off',
     'Free beginner tips, stitch charts, and weekly pattern drops'
   ];
@@ -40,15 +45,15 @@ export default function Freebie() {
               <Gift size={24} className="fc-gift-icon" />
               <div>
                 <p className="fc-tag">FREE PDF PATTERN</p>
-                <p className="fc-title">Mini Cactus Amigurumi</p>
+                <p className="fc-title">Shooting Star Keychain</p>
               </div>
             </div>
             <div className="fc-vector-wrapper">
-              <CactusMiniIcon size={105} />
+              <ShootingStarIcon size={120} />
             </div>
             <div className="fc-details">
               <span>
-                <FileText size={12} /> 8 pages
+                <FileText size={12} /> 6 pages
               </span>
               <span>
                 <span className="skill-dot" /> Beginner
@@ -58,7 +63,7 @@ export default function Freebie() {
               </span>
             </div>
             <div className="fc-value">
-              Value: <s>$4.99</s> <strong>FREE</strong>
+              Value: <s>$4.49</s> <strong>FREE</strong>
             </div>
           </div>
           <div className="freebie-deco d1" />
@@ -68,9 +73,9 @@ export default function Freebie() {
         {/* Right: form content */}
         <div className="freebie-content">
           <p className="section-label">Instant Free Download</p>
-          <h2>Get Your Free Mini Pattern!</h2>
+          <h2>Get Your Free Shooting Star Pattern!</h2>
           <p className="freebie-sub">
-            Join <strong>8,000+ crocheters</strong> in our creative community and receive a FREE 8-page Mini Cactus Amigurumi pattern — complete with step-by-step photos, stitch guides, and print-ready PDF.
+            Join <strong>8,000+ crocheters</strong> in our creative community and receive a FREE 6-page Shooting Star Keychain pattern — complete with step-by-step photos, stitch guides, and print-ready PDF.
           </p>
 
           <ul className="freebie-perks">
@@ -86,8 +91,29 @@ export default function Freebie() {
             <div className="freebie-success">
               <MailCheck size={36} className="success-mail-icon" />
               <div>
-                <h3>Check your inbox!</h3>
-                <p>Your free pattern has been sent to <strong>{email}</strong></p>
+                <h3>Check your inbox &amp; download below!</h3>
+                <p>Your free pattern has been prepared for <strong>{email}</strong></p>
+                {downloadUrl && (
+                  <div style={{ marginTop: '14px' }}>
+                    <a
+                      href={downloadUrl}
+                      className="btn btn-primary"
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '8px',
+                        padding: '12px 24px',
+                        textDecoration: 'none',
+                        fontWeight: 700,
+                        borderRadius: '50px'
+                      }}
+                      download
+                    >
+                      <Download size={16} />
+                      <span>Download Shooting Star PDF</span>
+                    </a>
+                  </div>
+                )}
               </div>
             </div>
           ) : (
