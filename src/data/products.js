@@ -202,12 +202,13 @@ export const products = [
     category: "pdf-pattern",
     skill: "intermediate",
     iconKey: "eyeglass-holder",
-    primaryImage: "/images/products/eyeglass-holders/eyeglass-grid.jpg",
+    primaryImage: "/images/products/eyeglass-holders/eyeglass-grid.png",
     images: [
-      "/images/products/eyeglass-holders/eyeglass-grid.jpg",
-      "/images/products/eyeglass-holders/eyeglass-fox.jpg",
-      "/images/products/eyeglass-holders/eyeglass-turtle.jpg",
-      "/images/products/eyeglass-holders/eyeglass-raccoon.jpg",
+      "/images/products/eyeglass-holders/eyeglass-grid.png",
+      "/images/products/eyeglass-holders/eyeglass-fox.png",
+      "/images/products/eyeglass-holders/eyeglass-turtle.png",
+      "/images/products/eyeglass-holders/eyeglass-raccoon.png",
+      "/images/products/eyeglass-holders/eyeglass-bunny.png",
       "/images/products/eyeglass-holders/eyeglass-llama.jpg"
     ],
     color: "#fbeae8", // Soft warm pastel coral
