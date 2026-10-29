@@ -297,9 +297,8 @@ export const products = [
     category: "amigurumi",
     skill: "intermediate",
     iconKey: "graduate",
-    primaryImage: "/images/products/graduate-doll/graduate-wide.png",
+    primaryImage: "/images/products/graduate-doll/graduate-1.jpg",
     images: [
-      "/images/products/graduate-doll/graduate-wide.png",
       "/images/products/graduate-doll/graduate-1.jpg",
       "/images/products/graduate-doll/graduate-2.jpg",
       "/images/products/graduate-doll/graduate-3.jpg",
