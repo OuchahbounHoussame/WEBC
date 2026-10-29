@@ -2,7 +2,10 @@
 .pdp-container {
   max-width: 1240px;
   margin: 0 auto;
-  padding: 30px 24px 90px;
+  padding: 95px 20px 90px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
   animation: pdpFadeIn 0.3s ease-out;
 }
 
@@ -89,6 +92,8 @@
   gap: 48px;
   align-items: start;
   margin-bottom: 60px;
+  width: 100%;
+  min-width: 0;
 }
 
 @media (max-width: 900px) {
@@ -102,6 +107,9 @@
 .pdp-gallery-column {
   position: sticky;
   top: 100px;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .pdp-showcase-box {
@@ -109,6 +117,9 @@
   border-radius: 24px;
   overflow: hidden;
   height: 480px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -170,8 +181,14 @@
   display: flex;
   gap: 12px;
   margin-top: 18px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
   overflow-x: auto;
-  padding-bottom: 6px;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 8px;
+  scrollbar-width: thin;
 }
 
 .pdp-thumb-item {
@@ -224,6 +241,10 @@
 /* Details Column */
 .pdp-details-column {
   padding-top: 10px;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .pdp-meta-row {
@@ -260,6 +281,7 @@
   color: #3b2140;
   margin: 0 0 14px 0;
   line-height: 1.2;
+  word-break: break-word;
 }
 
 /* Rating Row */
@@ -269,6 +291,7 @@
   gap: 8px;
   margin-bottom: 22px;
   font-size: 0.9rem;
+  flex-wrap: wrap;
 }
 
 .pdp-stars {
@@ -694,4 +717,95 @@
   color: #554458;
   line-height: 1.6;
   font-style: italic;
+}
+
+/* Responsive Mobile Adjustments */
+@media (max-width: 680px) {
+  .pdp-container {
+    padding: 85px 16px 60px;
+    overflow-x: hidden;
+  }
+
+  .pdp-breadcrumb-wrap {
+    padding-bottom: 14px;
+    margin-bottom: 20px;
+    gap: 10px;
+  }
+
+  .pdp-gallery-column {
+    position: static;
+  }
+
+  .pdp-showcase-box {
+    height: 330px;
+    border-radius: 18px;
+  }
+
+  .pdp-thumbs-strip {
+    gap: 8px;
+    margin-top: 14px;
+    padding-bottom: 8px;
+  }
+
+  .pdp-thumb-item {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+  }
+
+  .pdp-title {
+    font-size: 1.85rem;
+    margin-bottom: 10px;
+  }
+
+  .pdp-rating-row {
+    font-size: 0.84rem;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  .pdp-current-price {
+    font-size: 1.85rem;
+  }
+
+  .pdp-quick-facts {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .pdp-qf-item {
+    padding: 10px 12px;
+  }
+
+  .pdp-cta-cluster {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .pdp-btn-add-bag,
+  .pdp-btn-buy-now {
+    width: 100%;
+    min-width: 0;
+    justify-content: center;
+    padding: 14px 20px;
+  }
+
+  .pdp-tabs-header {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap;
+    padding-bottom: 8px;
+    gap: 8px;
+  }
+
+  .pdp-tab-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 10px 16px;
+    font-size: 0.85rem;
+  }
+
+  .pdp-info-grid {
+    grid-template-columns: 1fr;
+  }
 }
