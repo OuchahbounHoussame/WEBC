@@ -1,5 +1,6 @@
 import express from 'express';
 import { createOrder, getOrderDetails, refreshOrderTokens, addSubscriber, grantFreebieDownload } from '../db.js';
+import { sendFreebieEmail, sendOrderDeliveryEmail } from '../services/mailer.js';
 
 const router = express.Router();
 
@@ -33,6 +34,21 @@ router.post('/checkout', (req, res) => {
       items,
       paymentMethod: paymentMethod || 'credit_card'
     });
+
+    // Send order delivery email with download links to customer
+    try {
+      const appUrl = `${req.protocol}://${req.get('host')}`;
+      sendOrderDeliveryEmail({
+        to: email,
+        customerName: name,
+        orderId: order.orderId,
+        totalAmount: order.totalAmount,
+        downloads: order.downloads,
+        appUrl
+      }).catch(e => console.error('[Order Delivery Email Error]:', e.message));
+    } catch (e) {
+      console.error('[Order Email Trigger Error]:', e.message);
+    }
 
     res.status(201).json({
       success: true,
@@ -105,6 +121,20 @@ router.post('/subscribe', (req, res) => {
       freebie = grantFreebieDownload(email, 2);
     } catch (e) {
       console.warn('Could not generate freebie token:', e.message);
+    }
+
+    // Send Freebie pattern directly to client's email inbox!
+    if (freebie?.downloadUrl) {
+      try {
+        const appUrl = `${req.protocol}://${req.get('host')}`;
+        sendFreebieEmail({
+          to: email,
+          downloadUrl: freebie.downloadUrl,
+          appUrl
+        }).catch(e => console.error('[Freebie Email Dispatch Error]:', e.message));
+      } catch (e) {
+        console.error('[Freebie Email Trigger Error]:', e.message);
+      }
     }
 
     res.json({
