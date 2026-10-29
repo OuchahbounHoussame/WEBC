@@ -279,6 +279,103 @@ export const products = [
       ]
     }
   },
+  {
+    id: 4,
+    name: "Graduate Doll Amigurumi",
+    category: "amigurumi",
+    skill: "intermediate",
+    iconKey: "graduate",
+    color: "#f6edf9", // Delicate soft celebratory lavender
+    price: 6.99,
+    originalPrice: 11.99,
+    description: "An elegant keepsake amigurumi doll with graduation cap, gold tassel & stole, graduation gown, diploma scroll, and floral granny wrap bouquet.",
+    badge: "Keepsake Doll",
+    tag: "Instant Download",
+    pages: 11,
+    stars: 5,
+    reviews: 94,
+    downloads: "680",
+    terms: "US Terms",
+    formats: ["PDF"],
+    bestseller: true,
+    size: "18 cm (20 cm with cap)",
+    hook: "2.00 mm - 2.20 mm",
+    materials: [
+      "Silvigurumi yarn: Skin color, Brown 5902, Burgundy 6781, Gold / Silvia Lumina",
+      "Black yarn for gown and graduation cap",
+      "Beige, Purple & Yellow for bouquet (Sunflower + Lavender)",
+      "White yarn for scroll and eye highlights",
+      "#10 safety eyes & 20-gauge craft wire",
+      "2.00 mm & 2.20 mm crochet hooks",
+      "Silicone fiberfill & needle"
+    ],
+    sections: [
+      "Materials, Abbreviations & False X Stitch",
+      "Shoes, Legs & Body Join (Wire insertion)",
+      "Head, Face Embroidery & Hair Placement",
+      "Bodice & Burgundy Dress",
+      "Graduation Cap with Gold Tassel",
+      "Graduation Gown & Gold Stole",
+      "Diploma Scroll & Granny Bouquet Wrap (Sunflower & Lavender)"
+    ],
+    patternGuide: {
+      abbreviations: [
+        { code: "MR", meaning: "Magic ring" },
+        { code: "CH", meaning: "Chain" },
+        { code: "SC", meaning: "Single crochet" },
+        { code: "INC", meaning: "Increase (2 sc in one stitch)" },
+        { code: "DEC", meaning: "Decrease (invisible decrease)" },
+        { code: "BLO", meaning: "Back loop only" },
+        { code: "FLO", meaning: "Front loop only" },
+        { code: "HDC", meaning: "Half double crochet" },
+        { code: "DC", meaning: "Double crochet" },
+        { code: "SL ST", meaning: "Slip stitch" }
+      ],
+      steps: [
+        {
+          title: "1. Shoes & Legs (2.00 mm hook)",
+          note: "Work in continuous spiral. Stuff firmly as you go.",
+          rounds: [
+            "Shoe color: R1 CH5; from 2nd CH: 3 SC, 3-SC INC; other side: 2 SC, INC [10]",
+            "R2: INC, 2 SC, 3 INC, 3 SC, INC [15]",
+            "R3: 2 INC, 3 SC, 4 INC, 5 SC, INC [22]",
+            "R4: BLO 22 SC",
+            "R5-6: 22 SC (Change to skin color at R7)",
+            "R8: BLO 6 SC, 6 DEC, 4 SC [16]",
+            "R9: 5 SC, 4 DEC, 3 SC [12]",
+            "R10-22: Work leg shaping and knee INC/DEC as detailed in chart."
+          ]
+        },
+        {
+          title: "2. Joining Legs & Body",
+          rounds: [
+            "Join legs with White yarn: work 8 extra SC to the corner, CH2 and join the first leg.",
+            "R1: 9 SC, INC, 9 SC, 2 SC on chain, 9 SC, INC, 9 SC, 2 SC on chain [44]",
+            "R2-5: 44 SC",
+            "Change to skin at R9 (BLO) and shape upper torso.",
+            "Attach arms at R22 (6 SC, 4 SC attaching arm 1, 9 SC, 4 SC attaching arm 2, 5 SC [28]).",
+            "Insert 20-gauge wire for posability."
+          ]
+        },
+        {
+          title: "3. Graduation Cap & Tassel (2.20 mm hook)",
+          rounds: [
+            "Skull cap: R1 8 SC in MR, R2 8 INC [16], R3 (SC, INC)x8 [24], expand to 56 SC.",
+            "Top Square: make 2 squares of 20 SC x 18 rows. Join with SC around with acetate support.",
+            "Tassel: wrap gold Silvia Lumina yarn 8-10 times around fingers, tie fringe, pass through cap center."
+          ]
+        },
+        {
+          title: "4. Gown, Stole & Floral Bouquet",
+          points: [
+            "1. Gown: Worked in black with CH5 sleeve armholes and full flared length.",
+            "2. Gold Stole: CH47 with Silvia Lumina, worked in HDC and DC for draped graduation look.",
+            "3. Bouquet: Granny wrap base holding a mini crochet sunflower and purple lavender sprigs."
+          ]
+        }
+      ]
+    }
+  }
 ];
 
 export const categories = [

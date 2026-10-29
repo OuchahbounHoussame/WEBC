@@ -577,9 +577,139 @@ export function CactusMiniIcon({ size = 90 }) {
   );
 }
 
+// Graduate Doll Amigurumi Vector (From Real PDF Pattern - Cap, Gown, Gold Stole & Bouquet)
+export function GraduateDollIcon({ size = 80 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      {/* Soft floor shadow */}
+      <ellipse cx="50" cy="93" rx="28" ry="5" fill="#321e3c" fillOpacity="0.18" />
+
+      {/* Confetti / celebration sparkles */}
+      <circle cx="16" cy="22" r="2" fill="#ffd15c" />
+      <circle cx="84" cy="18" r="2" fill="#e8829b" />
+      <circle cx="88" cy="40" r="1.5" fill="#ffd15c" />
+      <polygon points="18,36 20,32 22,36 18,36" fill="#be6c87" />
+      <polygon points="82,60 85,57 84,62 82,60" fill="#733c76" />
+
+      {/* Graduation Gown Body */}
+      <path
+        d="M32 54 L26 89 C26 91 28 92 30 92 L70 92 C72 92 74 91 74 89 L68 54 Z"
+        fill="url(#gownGrad)"
+        stroke="#1c1622"
+        strokeWidth="1.5"
+      />
+      {/* Gown center seam / pleats */}
+      <line x1="50" y1="58" x2="50" y2="92" stroke="#1c1622" strokeWidth="1.2" strokeDasharray="3 2" />
+      <path d="M42 62 L40 92" stroke="#372c3f" strokeWidth="1" />
+      <path d="M58 62 L60 92" stroke="#372c3f" strokeWidth="1" />
+
+      {/* Gold Stole / Sash around neck and down front */}
+      <path
+        d="M40 52 L42 78 C42 80 44 81 46 81 L47 81 L45 52 Z"
+        fill="url(#stoleGrad)"
+        stroke="#b8860b"
+        strokeWidth="0.8"
+      />
+      <path
+        d="M60 52 L58 78 C58 80 56 81 54 81 L53 81 L55 52 Z"
+        fill="url(#stoleGrad)"
+        stroke="#b8860b"
+        strokeWidth="0.8"
+      />
+
+      {/* Doll Head & Hair */}
+      {/* Back Hair */}
+      <ellipse cx="50" cy="42" rx="20" ry="18" fill="#5c3826" />
+      {/* Face */}
+      <circle cx="50" cy="43" r="15" fill="#fdeee2" />
+
+      {/* Front Strands & Bangs */}
+      <path d="M35 38 C38 46 44 42 47 38 C49 46 62 44 65 38 C64 34 36 34 35 38 Z" fill="#6d432e" />
+      <path d="M34 40 C33 46 36 53 38 56 C39 52 38 45 37 40 Z" fill="#6d432e" />
+      <path d="M66 40 C67 46 64 53 62 56 C61 52 62 45 63 40 Z" fill="#6d432e" />
+
+      {/* Cheeks */}
+      <ellipse cx="42" cy="46" rx="2.5" ry="1.5" fill="#f7a8b8" fillOpacity="0.65" />
+      <ellipse cx="58" cy="46" rx="2.5" ry="1.5" fill="#f7a8b8" fillOpacity="0.65" />
+
+      {/* Eyes (Amigurumi style with sparkle highlight) */}
+      <circle cx="43" cy="43" r="2.8" fill="#1e131d" />
+      <circle cx="42" cy="42" r="1" fill="#ffffff" />
+      <circle cx="57" cy="43" r="2.8" fill="#1e131d" />
+      <circle cx="56" cy="42" r="1" fill="#ffffff" />
+
+      {/* Eyebrows & Smile */}
+      <path d="M40 39 Q43 38 45 39" stroke="#4a2c1d" strokeWidth="0.8" strokeLinecap="round" fill="none" />
+      <path d="M55 39 Q57 38 60 39" stroke="#4a2c1d" strokeWidth="0.8" strokeLinecap="round" fill="none" />
+      <path d="M48 48 Q50 50 52 48" stroke="#a84358" strokeWidth="1" strokeLinecap="round" fill="none" />
+
+      {/* Right Hand holding Diploma Scroll */}
+      <ellipse cx="32" cy="68" rx="3.5" ry="3.5" fill="#fdeee2" />
+      {/* Diploma Scroll */}
+      <g transform="rotate(-15 30 68)">
+        <rect x="25" y="64" width="12" height="7" rx="2" fill="#fffdfa" stroke="#d5c8b2" strokeWidth="1" />
+        <rect x="30" y="64" width="2.5" height="7" fill="#f3ba2f" />
+      </g>
+
+      {/* Left Hand holding Mini Bouquet */}
+      <ellipse cx="68" cy="68" rx="3.5" ry="3.5" fill="#fdeee2" />
+      {/* Bouquet Wrap & Flowers */}
+      <g transform="translate(64, 58)">
+        {/* Wrap cone */}
+        <polygon points="4,10 9,18 1,18" fill="#e8dacb" stroke="#baa794" strokeWidth="0.8" />
+        {/* Sunflower */}
+        <circle cx="3" cy="8" r="3.2" fill="#fab82c" />
+        <circle cx="3" cy="8" r="1.5" fill="#5c3826" />
+        {/* Lavender sprig */}
+        <circle cx="7" cy="6" r="1.6" fill="#a77ec9" />
+        <circle cx="8" cy="4" r="1.4" fill="#8f60b4" />
+      </g>
+
+      {/* Graduation Cap (Mortarboard) on top of head */}
+      {/* Cap Skull Underlayer */}
+      <path d="M38 31 C38 27 62 27 62 31 Z" fill="#1b1622" />
+      {/* Flat Diamond Top */}
+      <polygon points="50,15 82,24 50,33 18,24" fill="url(#capGrad)" stroke="#110d16" strokeWidth="1.5" strokeLinejoin="round" />
+      {/* Top Button */}
+      <ellipse cx="50" cy="24" rx="2.5" ry="1.8" fill="#ffd15c" />
+      {/* Gold Tassel Ribbon hanging down the left side */}
+      <path
+        d="M50 24 C56 24 68 28 69 34 L71 44"
+        stroke="#ffd15c"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        fill="none"
+      />
+      {/* Tassel brush */}
+      <polygon points="69,44 73,44 74,52 68,52" fill="#e5af22" stroke="#b8860b" strokeWidth="0.6" />
+      <line x1="68" y1="52" x2="74" y2="52" stroke="#fff3a8" strokeWidth="1" />
+
+      {/* Gradients */}
+      <defs>
+        <linearGradient id="gownGrad" x1="50" y1="54" x2="50" y2="92" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#35293d" />
+          <stop offset="0.5" stopColor="#251d2c" />
+          <stop offset="1" stopColor="#18121d" />
+        </linearGradient>
+        <linearGradient id="capGrad" x1="18" y1="24" x2="82" y2="24" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#3d3046" />
+          <stop offset="0.5" stopColor="#261e2c" />
+          <stop offset="1" stopColor="#1a141f" />
+        </linearGradient>
+        <linearGradient id="stoleGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop stopColor="#ffd868" />
+          <stop offset="1" stopColor="#e5aa1f" />
+        </linearGradient>
+      </defs>
+    </svg>
+  );
+}
+
 // Helper to render matching vector artwork by key
 export function ProductIcon({ iconKey, size = 80 }) {
   switch (iconKey) {
+    case 'graduate':
+    case 'graduate-doll':   return <GraduateDollIcon size={size} />;
     case 'crewmate':
     case 'sus-crewmate':    return <SusCrewmateIcon size={size} />;
     case 'star':
