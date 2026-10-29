@@ -10,7 +10,6 @@ import FAQ          from './components/FAQ/FAQ';
 import Footer       from './components/Footer/Footer';
 import CartToast    from './components/CartToast/CartToast';
 import CartDrawer   from './components/Cart/CartDrawer';
-import PatternModal from './components/Products/PatternModal';
 import ProductDetailPage from './components/ProductDetail/ProductDetailPage';
 import BackToTop    from './components/BackToTop/BackToTop';
 import { products } from './data/products';
@@ -57,7 +56,6 @@ export default function App() {
 
   const [cartOpen, setCartOpen] = useState(false);
   const [cartInitialTab, setCartInitialTab] = useState('cart'); // 'cart' | 'downloads'
-  const [selectedPattern, setSelectedPattern] = useState(null);
   const [toast, setToast] = useState({ visible: false, message: '' });
 
   // Direct product routing state
@@ -176,15 +174,11 @@ export default function App() {
         onOrderSuccess={handleOrderSuccess}
         onRemove={removeFromCart}
         onClearCart={() => setCart([])}
-        onOpenPattern={(product) => setSelectedPattern(product)}
+        onOpenPattern={(product) => {
+          setCartOpen(false);
+          navigateToProduct(product);
+        }}
       />
-      {selectedPattern && (
-        <PatternModal
-          product={selectedPattern}
-          onClose={() => setSelectedPattern(null)}
-          onAddToCart={addToCart}
-        />
-      )}
       <BackToTop />
     </>
   );

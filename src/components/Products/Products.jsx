@@ -2,14 +2,12 @@ import { useState } from 'react';
 import { SearchX } from 'lucide-react';
 import { products, categories, skillLevels } from '../../data/products';
 import ProductCard from './ProductCard';
-import PatternModal from './PatternModal';
 import './Products.css';
 
 export default function Products({ onAddToCart, onViewProduct }) {
   const [activeCat,       setActiveCat]       = useState('all');
   const [activeSkill,     setActiveSkill]     = useState('all');
   const [sort,            setSort]            = useState('featured');
-  const [previewProduct, setPreviewProduct]  = useState(null);
 
   const filtered = products
     .filter((p) => {
@@ -94,7 +92,6 @@ export default function Products({ onAddToCart, onViewProduct }) {
               key={p.id}
               product={p}
               onAddToCart={onAddToCart}
-              onPreview={setPreviewProduct}
               onViewProduct={onViewProduct}
             />
           ))}
@@ -104,15 +101,6 @@ export default function Products({ onAddToCart, onViewProduct }) {
           <SearchX size={40} className="no-results-icon" />
           <p>No patterns match these filters. Try a different combination!</p>
         </div>
-      )}
-
-      {/* Quick Preview Modal */}
-      {previewProduct && (
-        <PatternModal
-          product={previewProduct}
-          onClose={() => setPreviewProduct(null)}
-          onAddToCart={onAddToCart}
-        />
       )}
     </section>
   );

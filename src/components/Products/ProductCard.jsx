@@ -14,7 +14,7 @@ import {
 import { ProductIcon } from '../Icons/CrochetIcons';
 import './Products.css';
 
-export default function ProductCard({ product, onAddToCart, onPreview, onViewProduct }) {
+export default function ProductCard({ product, onAddToCart, onViewProduct }) {
   const [added, setAdded] = useState(false);
 
   const handleAdd = (e) => {
@@ -27,14 +27,7 @@ export default function ProductCard({ product, onAddToCart, onPreview, onViewPro
   const handleOpenProduct = () => {
     if (onViewProduct) {
       onViewProduct(product);
-    } else if (onPreview) {
-      onPreview(product);
     }
-  };
-
-  const handlePreview = (e) => {
-    e.stopPropagation();
-    if (onPreview) onPreview(product);
   };
 
   return (
@@ -97,14 +90,15 @@ export default function ProductCard({ product, onAddToCart, onPreview, onViewPro
 
         <div className="pc-overlay">
           <button
+            type="button"
             className="pc-preview-btn"
             onClick={(e) => {
               e.stopPropagation();
-              handlePreview();
+              handleOpenProduct();
             }}
           >
             <Eye size={15} />
-            <span>Quick Preview</span>
+            <span>View Product</span>
           </button>
         </div>
       </div>
@@ -182,15 +176,17 @@ export default function ProductCard({ product, onAddToCart, onPreview, onViewPro
           <div className="pc-actions-cluster">
             <button
               type="button"
-              className="pc-preview-trigger-btn"
-              onClick={handlePreview}
-              title="Preview pattern instructions & details"
-              aria-label="Preview pattern"
+              className="btn pc-view-btn"
+              onClick={handleOpenProduct}
+              title="View full product page & photos"
+              aria-label="View product page"
             >
-              <Eye size={15} />
+              <Eye size={14} />
+              <span>View</span>
             </button>
 
             <button
+              type="button"
               className={`btn pc-cta ${added ? 'added' : 'btn-primary'}`}
               onClick={handleAdd}
             >
