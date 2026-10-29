@@ -2,12 +2,14 @@ import { Resend } from 'resend';
 import path from 'path';
 import fs from 'fs';
 
-// Initialize Resend client if API key is present
-const apiKey = process.env.RESEND_API_KEY;
-const resend = apiKey ? new Resend(apiKey) : null;
+try {
+  process.loadEnvFile();
+} catch (e) {
+  // .env file might not exist in some environments like Vercel where env vars are injected
+}
 
 // Default sender: onboarding@resend.dev (works immediately without custom domain)
-const defaultFrom = process.env.EMAIL_FROM || 'Crochet Store <onboarding@resend.dev>';
+const defaultFrom = () => process.env.EMAIL_FROM || 'Crochet Store <onboarding@resend.dev>';
 
 /**
  * Send Freebie Shooting Star Pattern Email
@@ -161,7 +163,8 @@ export async function sendOrderDeliveryEmail({ to, customerName, orderId, totalA
  * Underlying sender via Resend API or Dev Preview
  */
 async function sendEmail({ to, subject, html, attachments = [] }) {
-  if (!process.env.RESEND_API_KEY) {
+  const key = process.env.RESEND_API_KEY;
+  if (!key) {
     console.log('\n================== [EMAIL DISPATCH SIMULATION] ==================');
     console.log(`✉️  TO:      ${to}`);
     console.log(`📌 SUBJECT: ${subject}`);
@@ -173,8 +176,9 @@ async function sendEmail({ to, subject, html, attachments = [] }) {
   }
 
   try {
-    const res = await resend.emails.send({
-      from: defaultFrom,
+    const resendClient = new Resend(key);
+    const res = await resendClient.emails.send({
+      from: defaultFrom(),
       to: [to],
       subject,
       html,
@@ -184,7 +188,12 @@ async function sendEmail({ to, subject, html, attachments = [] }) {
       }))
     });
 
-    console.log(`[Mailer] ✅ Email sent successfully to ${to} (id: ${res?.data?.id})`);
+    if (res.error) {
+      console.error(`[Mailer] ❌ Resend error for ${to}:`, res.error.message || res.error);
+      return { success: false, error: res.error };
+    }
+
+    console.log(`[Mailer] ✅ Real email sent successfully to ${to} (id: ${res?.data?.id})`);
     return { success: true, id: res?.data?.id };
   } catch (err) {
     console.error(`[Mailer] ❌ Failed to send email to ${to}:`, err.message);
