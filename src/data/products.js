@@ -6,6 +6,7 @@ export const products = [
     category: "amigurumi",
     skill: "intermediate",
     iconKey: "crewmate",
+    buyUrl: "https://cozystitchescrochet.lemonsqueezy.com/checkout/buy/7147a938-7a50-40f1-b2ff-5a78dca1e315",
     primaryImage: "/images/products/crewmate/crewmate-1.png",
     images: [
       "/images/products/crewmate/crewmate-1.png",

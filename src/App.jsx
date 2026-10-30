@@ -11,18 +11,19 @@ import Footer       from './components/Footer/Footer';
 import CartToast    from './components/CartToast/CartToast';
 import CartDrawer   from './components/Cart/CartDrawer';
 import ProductDetailPage from './components/ProductDetail/ProductDetailPage';
+import CheckoutPage from './components/Checkout/CheckoutPage';
 import BackToTop    from './components/BackToTop/BackToTop';
 import { products } from './data/products';
 import './App.css';
 
-// URL Helper to resolve product from pathname (/product/:id) or query (?product=id)
+// URL Helper to resolve product from pathname (/product/:id or /checkout/:id) or query (?product=id)
 function getProductFromUrl() {
   if (typeof window === 'undefined') return null;
   const pathname = window.location.pathname;
   const searchParams = new URLSearchParams(window.location.search);
   const paramId = searchParams.get('product') || searchParams.get('p') || searchParams.get('id');
 
-  const match = pathname.match(/^\/product\/([^/]+)/);
+  const match = pathname.match(/^\/(?:product|checkout)\/([^/]+)/);
   const target = match ? match[1] : paramId;
 
   if (!target) return null;
@@ -31,6 +32,11 @@ function getProductFromUrl() {
     String(p.id) === String(target) || 
     (p.slug && p.slug === target.toLowerCase())
   ) || null;
+}
+
+function isCheckoutFromUrl() {
+  if (typeof window === 'undefined') return false;
+  return window.location.pathname.startsWith('/checkout');
 }
 
 export default function App() {
@@ -60,11 +66,13 @@ export default function App() {
 
   // Direct product routing state
   const [currentProduct, setCurrentProduct] = useState(getProductFromUrl);
+  const [isCheckout, setIsCheckout] = useState(isCheckoutFromUrl);
 
   // Synchronize state with browser back/forward buttons and URL changes
   useEffect(() => {
     const handlePopState = () => {
       setCurrentProduct(getProductFromUrl());
+      setIsCheckout(isCheckoutFromUrl());
     };
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
@@ -74,21 +82,27 @@ export default function App() {
     const url = `/product/${product.id}`;
     window.history.pushState({ productId: product.id }, '', url);
     setCurrentProduct(product);
+    setIsCheckout(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const navigateToCheckout = (product) => {
+    const url = `/checkout/${product.id}`;
+    window.history.pushState({ productId: product.id, isCheckout: true }, '', url);
+    setCurrentProduct(product);
+    setIsCheckout(true);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const navigateToHome = () => {
     window.history.pushState({}, '', '/');
     setCurrentProduct(null);
+    setIsCheckout(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleBuyNow = (product) => {
-    if (!cart.find((p) => p.id === product.id)) {
-      setCart((prev) => [...prev, product]);
-    }
-    setCartInitialTab('cart');
-    setCartOpen(true);
+    navigateToCheckout(product);
   };
 
   // Save cart to localStorage
@@ -130,22 +144,29 @@ export default function App() {
 
   return (
     <>
-      <Navbar
-        cartCount={cart.length}
-        downloadsCount={downloadsCount}
-        onOpenCart={() => {
-          setCartInitialTab('cart');
-          setCartOpen(true);
-        }}
-        onOpenDownloads={() => {
-          setCartInitialTab('downloads');
-          setCartOpen(true);
-        }}
-        onLogoClick={navigateToHome}
-        isProductPage={Boolean(currentProduct)}
-      />
+      {!isCheckout && (
+        <Navbar
+          cartCount={cart.length}
+          downloadsCount={downloadsCount}
+          onOpenCart={() => {
+            setCartInitialTab('cart');
+            setCartOpen(true);
+          }}
+          onOpenDownloads={() => {
+            setCartInitialTab('downloads');
+            setCartOpen(true);
+          }}
+          onLogoClick={navigateToHome}
+          isProductPage={Boolean(currentProduct)}
+        />
+      )}
       <main>
-        {currentProduct ? (
+        {isCheckout && currentProduct ? (
+          <CheckoutPage
+            product={currentProduct}
+            onBack={() => navigateToProduct(currentProduct)}
+          />
+        ) : currentProduct ? (
           <ProductDetailPage
             product={currentProduct}
             onAddToCart={addToCart}
@@ -164,7 +185,7 @@ export default function App() {
           </>
         )}
       </main>
-      <Footer />
+      {!isCheckout && <Footer />}
       <CartToast toast={toast} />
       <CartDrawer
         isOpen={cartOpen}
