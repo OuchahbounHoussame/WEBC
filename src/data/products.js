@@ -19,7 +19,7 @@ export const products = [
     description: "A clear, ready-to-make crochet character with body, backpack, visor and white highlight. Approx. 9 cm tall, 3.0 mm hook.",
     badge: "Amigurumi Pattern",
     tag: "Instant Download",
-    pages: 5,
+    pages: 6,
     stars: 5,
     reviews: 148,
     downloads: "920",
