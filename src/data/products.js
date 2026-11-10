@@ -322,8 +322,8 @@ export const products = [
       "/images/products/graduate-doll/graduate-5.jpg"
     ],
     color: "#f6edf9", // Delicate soft celebratory lavender
-    price: 4.99,
-    originalPrice: 8.99,
+    price: 3.99,
+    originalPrice: 7.99,
     description: "An elegant keepsake amigurumi doll with graduation cap, gold tassel & stole, graduation gown, diploma scroll, and floral granny wrap bouquet.",
     badge: "Keepsake Doll",
     tag: "Instant Download",
