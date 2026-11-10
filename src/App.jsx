@@ -200,6 +200,10 @@ export default function App() {
           setCartOpen(false);
           navigateToProduct(product);
         }}
+        onProceedToCheckout={(product) => {
+          setCartOpen(false);
+          navigateToCheckout(product);
+        }}
       />
       <BackToTop />
     </>

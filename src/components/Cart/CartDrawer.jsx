@@ -26,7 +26,8 @@ export default function CartDrawer({
   purchasedOrders = [],
   onOrderSuccess,
   onRemove,
-  onClearCart
+  onClearCart,
+  onProceedToCheckout
 }) {
   const [view, setView] = useState('cart'); // 'cart' | 'checkout' | 'success' | 'downloads' | 'recover'
   const [customerEmail, setCustomerEmail] = useState('');
@@ -253,9 +254,13 @@ export default function CartDrawer({
                   </div>
                   <button
                     className="btn btn-primary cart-checkout-btn"
-                    onClick={() => setView('checkout')}
+                    onClick={() => {
+                      if (cart.length > 0 && onProceedToCheckout) {
+                        onProceedToCheckout(cart[0]);
+                      }
+                    }}
                   >
-                    <span>Proceed to Checkout</span>
+                    <span>Proceed to Secure Checkout</span>
                     <ArrowRight size={17} />
                   </button>
                   <button className="cart-recover-link" onClick={() => setView('recover')}>
@@ -266,96 +271,6 @@ export default function CartDrawer({
               </>
             )}
           </>
-        )}
-
-        {/* View 2: Checkout Form */}
-        {view === 'checkout' && (
-          <form className="cart-checkout-form" onSubmit={handleCheckoutSubmit}>
-            <div className="cc-summary-box">
-              <div className="cc-sum-header">
-                <span>Order Summary ({cart.length} item{cart.length > 1 ? 's' : ''})</span>
-                <strong>${total.toFixed(2)}</strong>
-              </div>
-              <ul className="cc-items-pill-list">
-                {cart.map((c) => (
-                  <li key={c.id}>
-                    <span>{c.name}</span>
-                    <span>${c.price.toFixed(2)}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="cc-input-group">
-              <label htmlFor="customer-email">
-                <Mail size={14} /> Email Address (For Pattern Delivery) *
-              </label>
-              <input
-                id="customer-email"
-                type="email"
-                required
-                value={customerEmail}
-                onChange={(e) => setCustomerEmail(e.target.value)}
-                placeholder="your.email@example.com"
-                className="cc-input"
-              />
-              <span className="cc-hint">
-                Your private download links &amp; receipt will be linked to this email.
-              </span>
-            </div>
-
-            <div className="cc-input-group">
-              <label htmlFor="customer-name">
-                <User size={14} /> Your Name (Optional)
-              </label>
-              <input
-                id="customer-name"
-                type="text"
-                value={customerName}
-                onChange={(e) => setCustomerName(e.target.value)}
-                placeholder="Crochet Lover"
-                className="cc-input"
-              />
-            </div>
-
-            {errorMsg && <div className="cc-error-box">{errorMsg}</div>}
-
-            <div className="cc-protection-box">
-              <Lock size={15} />
-              <div>
-                <strong>Secure Tokenized Download</strong>
-                <p>PDFs are never public. Access is granted via private, timed tokens to prevent piracy.</p>
-              </div>
-            </div>
-
-            <div className="cc-buttons-row">
-              <button
-                type="button"
-                className="btn btn-outline-dark"
-                onClick={() => setView('cart')}
-                disabled={loading}
-              >
-                Back to Bag
-              </button>
-              <button
-                type="submit"
-                className="btn btn-primary cc-pay-btn"
-                disabled={loading}
-              >
-                {loading ? (
-                  <>
-                    <RefreshCw size={16} className="spin-icon" />
-                    <span>Processing...</span>
-                  </>
-                ) : (
-                  <>
-                    <Lock size={15} />
-                    <span>Complete &amp; Download</span>
-                  </>
-                )}
-              </button>
-            </div>
-          </form>
         )}
 
         {/* View 3: Order Completed (Immediate Success) */}
