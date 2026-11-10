@@ -1,0 +1,57 @@
+<svg width="400" height="90" viewBox="0 0 400 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="blBgGrad" x1="4" y1="4" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#fff8fa" />
+      <stop offset="100%" stop-color="#f3edf9" />
+    </linearGradient>
+    <linearGradient id="blYarnGrad" x1="12" y1="12" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#f49ab0" />
+      <stop offset="50%" stop-color="#e8829b" />
+      <stop offset="100%" stop-color="#cf6a84" />
+    </linearGradient>
+    <linearGradient id="blHookGrad" x1="14" y1="36" x2="38" y2="12" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#9d7dc5" />
+      <stop offset="50%" stop-color="#c19ad8" />
+      <stop offset="100%" stop-color="#e8c288" />
+    </linearGradient>
+    <filter id="blShadow" x="10" y="8" width="76" height="74" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#733c76" flood-opacity="0.18" />
+    </filter>
+  </defs>
+
+  <!-- Circular Emblem -->
+  <g transform="translate(10, 8)">
+    <circle cx="36" cy="36" r="34" fill="url(#blBgGrad)" stroke="#ebd6eb" stroke-width="2.5" />
+    
+    <g filter="url(#blShadow)">
+      <!-- Yarn Ball -->
+      <circle cx="34" cy="37" r="20" fill="url(#blYarnGrad)" />
+      <!-- Loops -->
+      <path d="M17 35C22 24 36 23 48 31" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-opacity="0.9" />
+      <path d="M19 41C25 49 39 50 50 40" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-opacity="0.9" />
+      <path d="M26 23C34 27 39 42 36 53" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-opacity="0.9" />
+      
+      <!-- Crochet Hook -->
+      <path d="M19 55L33 41" stroke="url(#blHookGrad)" stroke-width="4.5" stroke-linecap="round" />
+      <path d="M33 41L51 23" stroke="#f6ecc9" stroke-width="4" stroke-linecap="round" />
+      <path d="M51 23C53 21 56 20.5 56.5 22.5C57 24.5 55 25.5 53 26" stroke="#e5b869" stroke-width="3.5" stroke-linecap="round" />
+    </g>
+
+    <!-- Sparkles -->
+    <path d="M55 12L56.5 16L60.5 17.5L56.5 19L55 23L53.5 19L49.5 17.5L53.5 16Z" fill="#f5a623" />
+    <circle cx="58" cy="31" r="2" fill="#e8829b" />
+    <circle cx="12" cy="27" r="2" fill="#9d7dc5" />
+  </g>
+
+  <!-- Typography: Cozy Stitches Crochet -->
+  <g transform="translate(100, 15)">
+    <!-- Cozy Stitches text -->
+    <text x="0" y="38" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif" font-size="34" font-weight="800" fill="#2d1a30" letter-spacing="-0.5">
+      Cozy <tspan fill="#cf6a84">Stitches</tspan>
+    </text>
+    <!-- Tagline -->
+    <text x="2" y="58" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif" font-size="13" font-weight="600" fill="#9d7dc5" letter-spacing="1.5">
+      CROCHET PATTERN STUDIO ✨
+    </text>
+  </g>
+</svg>
