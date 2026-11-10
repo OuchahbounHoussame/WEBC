@@ -30,10 +30,11 @@ export default function CheckoutPage({ product, onBack }) {
   const checkoutUrl = product.buyUrl || `https://cozystitchescrochet.lemonsqueezy.com/checkout/buy/7147a938-7a50-40f1-b2ff-5a78dca1e315`;
 
   const handleOpenLemonOverlay = (e) => {
-    e.preventDefault();
-    if (window.LemonSqueezy && window.LemonSqueezy.Url) {
+    if (checkoutUrl.includes('lemonsqueezy.com') && window.LemonSqueezy && window.LemonSqueezy.Url) {
+      e.preventDefault();
       window.LemonSqueezy.Url.Open(checkoutUrl);
     } else {
+      // Direct checkout for Fourthwall or external provider
       window.location.href = checkoutUrl;
     }
   };
@@ -81,7 +82,9 @@ export default function CheckoutPage({ product, onBack }) {
                     <div className="co-pill-recom">Recommended for US &amp; Global</div>
                     <h4>Credit / Debit Card, Apple Pay, Google Pay &amp; PayPal</h4>
                     <p className="co-gate-desc">
-                      Fast 1-click checkout powered by Lemon Squeezy (Merchant of Record). All major credit/debit cards accepted.
+                      {checkoutUrl.includes('fourthwall.com')
+                        ? 'Fast 1-click checkout powered by Fourthwall & Stripe. Apple Pay, Google Pay, and all major cards accepted.'
+                        : 'Fast 1-click checkout powered by Lemon Squeezy (Merchant of Record). All major credit/debit cards accepted.'}
                     </p>
                   </div>
 

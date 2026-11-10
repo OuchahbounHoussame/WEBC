@@ -312,6 +312,7 @@ export const products = [
     category: "amigurumi",
     skill: "intermediate",
     iconKey: "graduate",
+    buyUrl: "https://cozy-stitches-crochet-shop.fourthwall.com/cart/checkout?products=97a4fd30-e2c5-453a-a5c5-5ad0c4abba20:1&currency=USD",
     primaryImage: "/images/products/graduate-doll/graduate-1.jpg",
     images: [
       "/images/products/graduate-doll/graduate-1.jpg",
