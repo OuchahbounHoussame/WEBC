@@ -219,8 +219,8 @@ export const products = [
       "/images/products/eyeglass-holders/eyeglass-llama.jpg"
     ],
     color: "#fbeae8", // Soft warm pastel coral
-    price: 7.99,
-    originalPrice: 14.99,
+    price: 4.99,
+    originalPrice: 8.99,
     description: "Seven character variations (Fox, Turtle, Raccoon, Llama, Angry Dragon, Chicken). Practical 3D crochet trays with raised walls that keep your glasses safe.",
     badge: "Set · 7 Characters",
     tag: "Instant Download",
@@ -322,8 +322,8 @@ export const products = [
       "/images/products/graduate-doll/graduate-5.jpg"
     ],
     color: "#f6edf9", // Delicate soft celebratory lavender
-    price: 6.99,
-    originalPrice: 11.99,
+    price: 4.99,
+    originalPrice: 8.99,
     description: "An elegant keepsake amigurumi doll with graduation cap, gold tassel & stole, graduation gown, diploma scroll, and floral granny wrap bouquet.",
     badge: "Keepsake Doll",
     tag: "Instant Download",
