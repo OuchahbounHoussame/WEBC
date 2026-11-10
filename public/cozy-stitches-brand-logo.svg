@@ -1,56 +1,64 @@
-<svg width="400" height="90" viewBox="0 0 400 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="450" height="96" viewBox="0 0 450 96" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="blBgGrad" x1="4" y1="4" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+    <!-- Background Circle Gradient -->
+    <linearGradient id="emblemBgGrad" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#fff8fa" />
       <stop offset="100%" stop-color="#f3edf9" />
     </linearGradient>
-    <linearGradient id="blYarnGrad" x1="12" y1="12" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+
+    <!-- Yarn Ball Gradient -->
+    <linearGradient id="yarnBallGrad" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#f49ab0" />
       <stop offset="50%" stop-color="#e8829b" />
       <stop offset="100%" stop-color="#cf6a84" />
     </linearGradient>
-    <linearGradient id="blHookGrad" x1="14" y1="36" x2="38" y2="12" gradientUnits="userSpaceOnUse">
+
+    <!-- Crochet Hook Gradient -->
+    <linearGradient id="hookGrad" x1="0" y1="1" x2="1" y2="0">
       <stop offset="0%" stop-color="#9d7dc5" />
       <stop offset="50%" stop-color="#c19ad8" />
-      <stop offset="100%" stop-color="#e8c288" />
+      <stop offset="100%" stop-color="#e5b869" />
     </linearGradient>
-    <filter id="blShadow" x="10" y="8" width="76" height="74" filterUnits="userSpaceOnUse">
-      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#733c76" flood-opacity="0.18" />
-    </filter>
   </defs>
 
-  <!-- Circular Emblem -->
+  <!-- Circular Emblem (No buggy filter - 100% compatible with imgproxy/librsvg) -->
   <g transform="translate(10, 8)">
-    <circle cx="36" cy="36" r="34" fill="url(#blBgGrad)" stroke="#ebd6eb" stroke-width="2.5" />
+    <!-- Base Circle -->
+    <circle cx="40" cy="40" r="38" fill="url(#emblemBgGrad)" stroke="#ebd6eb" stroke-width="2.5" />
     
-    <g filter="url(#blShadow)">
-      <!-- Yarn Ball -->
-      <circle cx="34" cy="37" r="20" fill="url(#blYarnGrad)" />
-      <!-- Loops -->
-      <path d="M17 35C22 24 36 23 48 31" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-opacity="0.9" />
-      <path d="M19 41C25 49 39 50 50 40" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-opacity="0.9" />
-      <path d="M26 23C34 27 39 42 36 53" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-opacity="0.9" />
-      
-      <!-- Crochet Hook -->
-      <path d="M19 55L33 41" stroke="url(#blHookGrad)" stroke-width="4.5" stroke-linecap="round" />
-      <path d="M33 41L51 23" stroke="#f6ecc9" stroke-width="4" stroke-linecap="round" />
-      <path d="M51 23C53 21 56 20.5 56.5 22.5C57 24.5 55 25.5 53 26" stroke="#e5b869" stroke-width="3.5" stroke-linecap="round" />
-    </g>
+    <!-- Subtle soft shadow -->
+    <ellipse cx="40" cy="68" rx="20" ry="4" fill="#733c76" fill-opacity="0.15" />
+
+    <!-- Solid Yarn Ball -->
+    <circle cx="39" cy="40" r="23" fill="url(#yarnBallGrad)" />
+
+    <!-- Crisp White Yarn Strands -->
+    <path d="M20 37C26 24 42 23 56 32" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-opacity="0.95" />
+    <path d="M22 44C29 54 45 55 58 43" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-opacity="0.95" />
+    <path d="M30 23C40 28 45 45 42 57" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-opacity="0.95" />
+    
+    <!-- Heart tail -->
+    <path d="M40 63C36 67 29 68 26 65C23 62 26 58 29 58C32 58 35 61 34 64" stroke="#cf6a84" stroke-width="2.5" stroke-linecap="round" fill="none" />
+
+    <!-- Crochet Hook -->
+    <path d="M22 61L39 44" stroke="url(#hookGrad)" stroke-width="5" stroke-linecap="round" />
+    <path d="M39 44L60 23" stroke="#f6ecc9" stroke-width="4.5" stroke-linecap="round" />
+    <path d="M60 23C62.5 20.5 66 20 66.5 22.5C67 25 64.5 26.5 62 27" stroke="#e5b869" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
 
     <!-- Sparkles -->
-    <path d="M55 12L56.5 16L60.5 17.5L56.5 19L55 23L53.5 19L49.5 17.5L53.5 16Z" fill="#f5a623" />
-    <circle cx="58" cy="31" r="2" fill="#e8829b" />
-    <circle cx="12" cy="27" r="2" fill="#9d7dc5" />
+    <path d="M63 9L65 14L70 16L65 18L63 23L61 18L56 16L61 14Z" fill="#f5a623" />
+    <circle cx="67" cy="34" r="2.5" fill="#e8829b" />
+    <circle cx="13" cy="29" r="2.5" fill="#9d7dc5" />
   </g>
 
   <!-- Typography: Cozy Stitches Crochet -->
-  <g transform="translate(100, 15)">
+  <g transform="translate(108, 16)">
     <!-- Cozy Stitches text -->
-    <text x="0" y="38" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif" font-size="34" font-weight="800" fill="#2d1a30" letter-spacing="-0.5">
+    <text x="0" y="40" font-family="'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="38" font-weight="800" fill="#2d1a30" letter-spacing="-0.5">
       Cozy <tspan fill="#cf6a84">Stitches</tspan>
     </text>
     <!-- Tagline -->
-    <text x="2" y="58" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif" font-size="13" font-weight="600" fill="#9d7dc5" letter-spacing="1.5">
+    <text x="2" y="62" font-family="'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#9d7dc5" letter-spacing="1.5">
       CROCHET PATTERN STUDIO ✨
     </text>
   </g>
