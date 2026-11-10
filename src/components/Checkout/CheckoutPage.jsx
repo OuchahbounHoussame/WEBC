@@ -17,6 +17,7 @@ import './CheckoutPage.css';
 
 export default function CheckoutPage({ product, onBack }) {
   const [activeMethod, setActiveMethod] = useState('lemon'); // 'lemon' (cards/apple pay/paypal)
+  const [isRedirecting, setIsRedirecting] = useState(false);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -30,12 +31,13 @@ export default function CheckoutPage({ product, onBack }) {
   const checkoutUrl = product.buyUrl || `https://cozystitchescrochet.lemonsqueezy.com/checkout/buy/7147a938-7a50-40f1-b2ff-5a78dca1e315`;
 
   const handleOpenLemonOverlay = (e) => {
+    e.preventDefault();
     if (checkoutUrl.includes('lemonsqueezy.com') && window.LemonSqueezy && window.LemonSqueezy.Url) {
-      e.preventDefault();
       window.LemonSqueezy.Url.Open(checkoutUrl);
     } else {
-      // Direct checkout for Fourthwall or external provider
-      window.location.href = checkoutUrl;
+      setIsRedirecting(true);
+      // Clean single navigation prevents double-request race condition
+      window.location.assign(checkoutUrl);
     }
   };
 

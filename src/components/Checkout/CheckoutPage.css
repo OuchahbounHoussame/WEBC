@@ -589,3 +589,12 @@
     padding: 16px 20px;
   }
 }
+
+
+@keyframes coSpinAnim {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.co-spin {
+  animation: coSpinAnim 0.8s linear infinite;
+}
