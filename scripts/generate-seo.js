@@ -265,7 +265,7 @@ function prerenderProductPages(templateHtml) {
               📄 Instant Download PDF &bull; 🪡 ${product.terms || 'US Terms'} &bull; 📐 ${product.hook || '3.0 mm'} Hook
             </div>
             <div style="font-size: 26px; font-weight: 800; color: #be6c87; margin-bottom: 16px;">
-              ${Number(product.price).toFixed(2)} USD
+              $${Number(product.price).toFixed(2)} USD
             </div>
             <p style="font-size: 15px; line-height: 1.6; color: #554458;">${product.description}</p>
             <div style="background: #fdf8fa; border: 1px solid #f2e1ea; border-radius: 12px; padding: 16px; margin: 20px 0;">
@@ -277,10 +277,10 @@ function prerenderProductPages(templateHtml) {
             ${materialsHtml ? `<div style="margin-top: 20px;"><h3 style="color: #482750; font-size: 16px;">Materials Required:</h3><ul style="color: #554458; line-height: 1.6;">${materialsHtml}</ul></div>` : ''}
             ${sectionsHtml ? `<div style="margin-top: 20px;"><h3 style="color: #482750; font-size: 16px;">Pattern Sections:</h3><ul style="color: #554458; line-height: 1.6;">${sectionsHtml}</ul></div>` : ''}
             ${(() => {
-              const directCheckout = (product.id === 4 && product.buyUrl) ? product.buyUrl : `/checkout/${product.id}`;
+              const directCheckout = product.buyUrl || `/checkout/${product.id}`;
               return `<div style="margin-top: 28px;">
                 <a href="${directCheckout}" style="display: inline-block; background: #be6c87; color: #ffffff; padding: 14px 28px; border-radius: 50px; font-weight: 700; text-decoration: none; font-size: 15px;">
-                  Instant Checkout — ${Number(product.price).toFixed(2)}
+                  Instant Checkout — $${Number(product.price).toFixed(2)}
                 </a>
               </div>`;
             })()}
