@@ -28,7 +28,7 @@ export default function CheckoutPage({ product, onBack }) {
     : null;
 
   // Lemon Squeezy direct checkout URL (with overlay fallback)
-  const checkoutUrl = product.buyUrl || `https://cozystitchescrochet.lemonsqueezy.com/checkout/buy/7147a938-7a50-40f1-b2ff-5a78dca1e315`;
+  const checkoutUrl = product.buyUrl || 'https://cozy-stitches-crochet-shop.fourthwall.com/';
 
   const handleOpenLemonOverlay = (e) => {
     if (checkoutUrl.includes('fourthwall.com')) {
