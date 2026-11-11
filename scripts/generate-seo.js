@@ -43,6 +43,8 @@ function getProductSEO(product) {
     ? product.images.map((img) => (img.startsWith('http') ? img : `${SITE_URL}${img}`))
     : [imageUrl];
 
+  // Strictly genuine Schema.org Product markup
+  // Excludes unverified reviews/ratings and physical shipping/returns per digital goods guidelines
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -69,48 +71,8 @@ function getProductSEO(product) {
         "@type": "Organization",
         "name": "CozyStitches",
         "url": SITE_URL
-      },
-      "shippingDetails": {
-        "@type": "OfferShippingDetails",
-        "shippingRate": {
-          "@type": "MonetaryAmount",
-          "value": "0.00",
-          "currency": "USD"
-        },
-        "deliveryTime": {
-          "@type": "ShippingDeliveryTime",
-          "handlingTime": {
-            "@type": "QuantitativeValue",
-            "minValue": 0,
-            "maxValue": 0,
-            "unitCode": "DAY"
-          },
-          "transitTime": {
-            "@type": "QuantitativeValue",
-            "minValue": 0,
-            "maxValue": 0,
-            "unitCode": "DAY"
-          }
-        }
-      },
-      "hasMerchantReturnPolicy": {
-        "@type": "MerchantReturnPolicy",
-        "applicableCountry": ["US", "GB", "CA", "AU", "EU"],
-        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-        "merchantReturnDays": 7,
-        "returnMethod": "https://schema.org/ReturnByMail",
-        "returnFees": "https://schema.org/FreeReturn"
       }
-    },
-    ...(product.reviews ? {
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": (product.stars || 5).toFixed(1),
-        "reviewCount": String(product.reviews),
-        "bestRating": "5",
-        "worstRating": "1"
-      }
-    } : {})
+    }
   };
 
   return {
@@ -185,7 +147,78 @@ Sitemap: ${SITE_URL}/sitemap.xml
 `;
 }
 
-// ── 4. Prerender Product Pages ────────────────────────────────
+// ── 4. Generate 404.html ──────────────────────────────────────
+function generate404Html() {
+  return `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404: Pattern Not Found | CozyStitches</title>
+  <meta name="robots" content="noindex, follow" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #faf4f8;
+      color: #482750;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .card {
+      background: #ffffff;
+      border: 1px solid #ebd9ea;
+      border-radius: 24px;
+      box-shadow: 0 12px 36px rgba(115, 60, 118, 0.08);
+      max-width: 520px;
+      width: 100%;
+      padding: 48px 32px;
+      text-align: center;
+    }
+    .icon { font-size: 56px; margin-bottom: 16px; }
+    h1 {
+      font-family: Georgia, serif;
+      font-size: 28px;
+      color: #482750;
+      margin-bottom: 12px;
+    }
+    p {
+      color: #7f6885;
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+    a.btn {
+      display: inline-block;
+      background: #be6c87;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 15px;
+      text-decoration: none;
+      padding: 14px 32px;
+      border-radius: 50px;
+      box-shadow: 0 6px 20px rgba(190, 108, 135, 0.3);
+      transition: background 0.2s ease;
+    }
+    a.btn:hover { background: #ab5772; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">🧶</div>
+    <h1>404 — Pattern Not Found</h1>
+    <p>We couldn't find the crochet pattern you're looking for. It may have been retired or the link might be out of date.</p>
+    <a href="/" class="btn">&larr; Return to All Patterns</a>
+  </div>
+</body>
+</html>`;
+}
+
+// ── 5. Prerender Product Pages ────────────────────────────────
 function prerenderProductPages(templateHtml) {
   for (const product of products) {
     const seo = getProductSEO(product);
@@ -228,9 +261,6 @@ function prerenderProductPages(templateHtml) {
               ${product.skill} • Digital Pattern PDF
             </div>
             <h1 style="font-size: 32px; color: #482750; margin: 12px 0 8px;">${product.name}</h1>
-            <div style="font-size: 14px; color: #f5a623; margin-bottom: 16px;">
-              ★★★★★ <span style="color: #7f6885;">5.0 (${product.reviews || 94} crafter reviews • ${product.downloads || 600}+ downloads)</span>
-            </div>
             <div style="font-size: 28px; font-weight: 800; color: #be6c87; margin-bottom: 16px;">
               $${Number(product.price).toFixed(2)} USD
               ${product.originalPrice ? `<span style="font-size: 18px; text-decoration: line-through; color: #9c8a9f; margin-left: 8px;">$${Number(product.originalPrice).toFixed(2)}</span>` : ''}
@@ -343,7 +373,15 @@ if (fs.existsSync(distDir)) {
 }
 console.log('✓ robots.txt generated and configured');
 
-// 3. Prerender product pages if dist exists
+// 3. Generate 404.html
+const notFoundHtml = generate404Html();
+fs.writeFileSync(path.join(publicDir, '404.html'), notFoundHtml, 'utf8');
+if (fs.existsSync(distDir)) {
+  fs.writeFileSync(path.join(distDir, '404.html'), notFoundHtml, 'utf8');
+}
+console.log('✓ 404.html generated for HTTP 404 responses');
+
+// 4. Prerender product pages if dist exists
 const distIndex = path.join(distDir, 'index.html');
 if (fs.existsSync(distIndex)) {
   const templateHtml = fs.readFileSync(distIndex, 'utf8');

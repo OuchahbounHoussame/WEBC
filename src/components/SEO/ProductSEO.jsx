@@ -1,10 +1,13 @@
 import { useEffect } from 'react';
 
 export const SITE_URL = 'https://www.shopcozystitches.com';
+const HOMEPAGE_TITLE = 'Cozy Stitches — Premium Handmade Crochet PDF Patterns';
+const HOMEPAGE_DESC = 'Download charming, step-by-step crochet & amigurumi PDF patterns instantly. Clear instructions, full-color step photos, and beginner-friendly guides.';
 
 /**
- * Generates unified SEO metadata and Schema.org Product JSON-LD
- * used both for client-side dynamic head updates and static prerendering.
+ * Generates verified SEO metadata and 100% genuine Schema.org Product JSON-LD.
+ * Only real, published product data is included.
+ * No fabricated ratings, unverified reviews, physical shipping, or inaccurate return policies.
  */
 export function getProductSEOMetadata(product) {
   if (!product) return null;
@@ -35,6 +38,8 @@ export function getProductSEOMetadata(product) {
     ? product.images.map((img) => (img.startsWith('http') ? img : `${SITE_URL}${img}`))
     : [imageUrl];
 
+  // Strictly genuine Schema.org Product markup
+  // Excludes unverified reviews/ratings and physical shipping/returns per digital goods guidelines
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -61,48 +66,8 @@ export function getProductSEOMetadata(product) {
         "@type": "Organization",
         "name": "CozyStitches",
         "url": SITE_URL
-      },
-      "shippingDetails": {
-        "@type": "OfferShippingDetails",
-        "shippingRate": {
-          "@type": "MonetaryAmount",
-          "value": "0.00",
-          "currency": "USD"
-        },
-        "deliveryTime": {
-          "@type": "ShippingDeliveryTime",
-          "handlingTime": {
-            "@type": "QuantitativeValue",
-            "minValue": 0,
-            "maxValue": 0,
-            "unitCode": "DAY"
-          },
-          "transitTime": {
-            "@type": "QuantitativeValue",
-            "minValue": 0,
-            "maxValue": 0,
-            "unitCode": "DAY"
-          }
-        }
-      },
-      "hasMerchantReturnPolicy": {
-        "@type": "MerchantReturnPolicy",
-        "applicableCountry": ["US", "GB", "CA", "AU", "EU"],
-        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-        "merchantReturnDays": 7,
-        "returnMethod": "https://schema.org/ReturnByMail",
-        "returnFees": "https://schema.org/FreeReturn"
       }
-    },
-    ...(product.reviews ? {
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": (product.stars || 5).toFixed(1),
-        "reviewCount": String(product.reviews),
-        "bestRating": "5",
-        "worstRating": "1"
-      }
-    } : {})
+    }
   };
 
   return {
@@ -121,7 +86,6 @@ export default function ProductSEO({ product }) {
     const meta = getProductSEOMetadata(product);
     if (!meta) return;
 
-    const previousTitle = document.title;
     document.title = meta.seoTitle;
 
     const setMeta = (name, content, isProperty = false) => {
@@ -138,7 +102,7 @@ export default function ProductSEO({ product }) {
     // Standard Meta
     setMeta('description', meta.seoDescription);
 
-    // Canonical
+    // Canonical Tag (single element, never duplicates)
     let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) {
       canonical = document.createElement('link');
@@ -157,13 +121,13 @@ export default function ProductSEO({ product }) {
     setMeta('product:price:amount', Number(product.price).toFixed(2), true);
     setMeta('product:price:currency', 'USD', true);
 
-    // Twitter
+    // Twitter Card
     setMeta('twitter:card', 'summary_large_image');
     setMeta('twitter:title', meta.seoTitle);
     setMeta('twitter:description', meta.seoDescription);
     setMeta('twitter:image', meta.imageUrl);
 
-    // JSON-LD
+    // Product Schema JSON-LD
     let script = document.getElementById('product-schema-jsonld');
     if (!script) {
       script = document.createElement('script');
@@ -174,9 +138,19 @@ export default function ProductSEO({ product }) {
     script.textContent = JSON.stringify(meta.jsonLd, null, 2);
 
     return () => {
-      document.title = previousTitle;
+      // Cleanly restore homepage metadata when navigating away
+      document.title = HOMEPAGE_TITLE;
       const scriptToRemove = document.getElementById('product-schema-jsonld');
       if (scriptToRemove) scriptToRemove.remove();
+
+      let activeCanonical = document.querySelector('link[rel="canonical"]');
+      if (activeCanonical) {
+        activeCanonical.setAttribute('href', `${SITE_URL}/`);
+      }
+      let activeDesc = document.querySelector('meta[name="description"]');
+      if (activeDesc) {
+        activeDesc.setAttribute('content', HOMEPAGE_DESC);
+      }
     };
   }, [product]);
 
