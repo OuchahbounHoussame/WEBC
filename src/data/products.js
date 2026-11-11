@@ -201,6 +201,7 @@ export const products = [
     category: "pdf-pattern",
     skill: "intermediate",
     iconKey: "eyeglass-holder",
+    buyUrl: "https://cozy-stitches-crochet-shop.fourthwall.com/cart/checkout?products=a673caae-9270-4be7-805a-75e396bd21f9:1&currency=USD",
     primaryImage: "/images/products/eyeglass-holders/eyeglass-grid.png",
     images: [
       "/images/products/eyeglass-holders/eyeglass-grid.png",
@@ -211,7 +212,7 @@ export const products = [
       "/images/products/eyeglass-holders/eyeglass-llama.jpg"
     ],
     color: "#fbeae8", // Soft warm pastel coral
-    price: 4.99,
+    price: 3.99,
     description: "Seven character variations (Fox, Turtle, Raccoon, Llama, Angry Dragon, Chicken). Practical 3D crochet trays with raised walls that keep your glasses safe.",
     badge: "Set · 7 Characters",
     tag: "Instant Download",

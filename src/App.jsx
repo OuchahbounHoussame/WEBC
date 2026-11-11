@@ -123,6 +123,10 @@ export default function App() {
   };
 
   const handleBuyNow = (product) => {
+    if (product && product.buyUrl) {
+      window.location.href = product.buyUrl;
+      return;
+    }
     navigateToCheckout(product);
   };
 
@@ -223,6 +227,10 @@ export default function App() {
         }}
         onProceedToCheckout={(product) => {
           setCartOpen(false);
+          if (product && product.buyUrl) {
+            window.location.href = product.buyUrl;
+            return;
+          }
           navigateToCheckout(product);
         }}
       />
