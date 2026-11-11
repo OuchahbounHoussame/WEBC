@@ -51,7 +51,11 @@ export default function ProductCard({ product, onAddToCart, onViewProduct }) {
           )}
         </div>
 
-        {product.bestseller && (
+        {product.soldOut ? (
+          <div className="pc-ribbon" style={{ background: '#7f6885', color: '#ffffff' }}>
+            <span>Sold Out</span>
+          </div>
+        ) : product.bestseller && (
           <div className="pc-ribbon">
             <Sparkles size={11} className="pc-ribbon-icon" />
             <span>Bestseller</span>
@@ -104,10 +108,14 @@ export default function ProductCard({ product, onAddToCart, onViewProduct }) {
       <div className="pc-body">
         {/* Badges row */}
         <div className="pc-badges">
-          <span className="pc-badge-type">{product.badge}</span>
+          {product.soldOut ? (
+            <span className="pc-badge-type" style={{ background: '#ebd9ea', color: '#7f6885' }}>Sold Out</span>
+          ) : (
+            <span className="pc-badge-type">{product.badge}</span>
+          )}
           <span className="pc-badge-instant">
             <Zap size={11} />
-            <span>{product.tag}</span>
+            <span>{product.soldOut ? 'Restocking Soon' : product.tag}</span>
           </span>
         </div>
 

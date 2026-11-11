@@ -66,7 +66,7 @@ function getProductSEO(product) {
       "price": Number(product.price).toFixed(2),
       "priceValidUntil": "2027-12-31",
       "itemCondition": "https://schema.org/NewCondition",
-      "availability": "https://schema.org/InStock",
+      "availability": product.soldOut ? "https://schema.org/OutOfStock" : "https://schema.org/InStock",
       "seller": {
         "@type": "Organization",
         "name": "CozyStitches",
@@ -277,10 +277,17 @@ function prerenderProductPages(templateHtml) {
             ${materialsHtml ? `<div style="margin-top: 20px;"><h3 style="color: #482750; font-size: 16px;">Materials Required:</h3><ul style="color: #554458; line-height: 1.6;">${materialsHtml}</ul></div>` : ''}
             ${sectionsHtml ? `<div style="margin-top: 20px;"><h3 style="color: #482750; font-size: 16px;">Pattern Sections:</h3><ul style="color: #554458; line-height: 1.6;">${sectionsHtml}</ul></div>` : ''}
             ${(() => {
+              if (product.soldOut) {
+                return `<div style="margin-top: 28px;">
+                  <span style="display: inline-block; background: #e0d5e2; color: #7f6885; padding: 14px 28px; border-radius: 50px; font-weight: 700; font-size: 15px;">
+                    Sold Out — Restocking Soon
+                  </span>
+                </div>`;
+              }
               const directCheckout = product.buyUrl || `/checkout/${product.id}`;
               return `<div style="margin-top: 28px;">
                 <a href="${directCheckout}" style="display: inline-block; background: #be6c87; color: #ffffff; padding: 14px 28px; border-radius: 50px; font-weight: 700; text-decoration: none; font-size: 15px;">
-                  Instant Checkout — $${Number(product.price).toFixed(2)}
+                  Instant Checkout — ${Number(product.price).toFixed(2)}
                 </a>
               </div>`;
             })()}

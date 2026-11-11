@@ -6,7 +6,7 @@ export const products = [
     category: "amigurumi",
     skill: "intermediate",
     iconKey: "crewmate",
-    buyUrl: "https://cozystitchescrochet.lemonsqueezy.com/checkout/buy/7147a938-7a50-40f1-b2ff-5a78dca1e315",
+    soldOut: true,
     primaryImage: "/images/products/crewmate/crewmate-1.png",
     images: [
       "/images/products/crewmate/crewmate-1.png",
@@ -106,6 +106,7 @@ export const products = [
     category: "amigurumi",
     skill: "intermediate",
     iconKey: "star",
+    soldOut: true,
     primaryImage: "/images/products/shooting-star/star-1.png",
     images: [
       "/images/products/shooting-star/star-1.png",
@@ -201,6 +202,7 @@ export const products = [
     category: "pdf-pattern",
     skill: "intermediate",
     iconKey: "eyeglass-holder",
+    soldOut: false,
     buyUrl: "https://cozy-stitches-crochet-shop.fourthwall.com/cart/checkout?products=a673caae-9270-4be7-805a-75e396bd21f9:1&currency=USD",
     primaryImage: "/images/products/eyeglass-holders/eyeglass-grid.png",
     images: [
@@ -301,6 +303,7 @@ export const products = [
     category: "amigurumi",
     skill: "intermediate",
     iconKey: "graduate",
+    soldOut: false,
     buyUrl: "https://cozy-stitches-crochet-shop.fourthwall.com/cart/checkout?products=97a4fd30-e2c5-453a-a5c5-5ad0c4abba20:1&currency=USD",
     primaryImage: "/images/products/graduate-doll/graduate-1.jpg",
     images: [

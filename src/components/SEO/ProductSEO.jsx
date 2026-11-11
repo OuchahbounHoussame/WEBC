@@ -61,7 +61,7 @@ export function getProductSEOMetadata(product) {
       "price": Number(product.price).toFixed(2),
       "priceValidUntil": "2027-12-31",
       "itemCondition": "https://schema.org/NewCondition",
-      "availability": "https://schema.org/InStock",
+      "availability": product.soldOut ? "https://schema.org/OutOfStock" : "https://schema.org/InStock",
       "seller": {
         "@type": "Organization",
         "name": "CozyStitches",

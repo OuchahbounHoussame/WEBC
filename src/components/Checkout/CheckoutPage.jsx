@@ -45,6 +45,22 @@ export default function CheckoutPage({ product, onBack }) {
     }
   };
 
+  if (product.soldOut) {
+    return (
+      <div className="co-page-wrapper" style={{ padding: '80px 20px', textAlign: 'center' }}>
+        <div style={{ maxWidth: '480px', margin: '0 auto', background: '#ffffff', padding: '40px 24px', borderRadius: '24px', border: '1px solid #ebd9ea', boxShadow: '0 8px 30px rgba(0,0,0,0.04)' }}>
+          <h2 style={{ color: '#482750', fontSize: '24px', marginBottom: '12px' }}>Pattern Sold Out</h2>
+          <p style={{ color: '#7f6885', fontSize: '15px', lineHeight: 1.6, marginBottom: '28px' }}>
+            <strong>{product.name}</strong> is temporarily unavailable while we prepare instant delivery on Fourthwall. Please check back soon!
+          </p>
+          <button onClick={onBack} className="btn btn-primary" style={{ padding: '14px 28px', borderRadius: '50px', cursor: 'pointer' }}>
+            Back to Available Patterns
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="co-page-wrapper">
       {/* Top Secure Header */}

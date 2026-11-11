@@ -123,6 +123,7 @@ export default function App() {
   };
 
   const handleBuyNow = (product) => {
+    if (product?.soldOut) return;
     if (product && product.buyUrl) {
       window.location.href = product.buyUrl;
       return;
@@ -145,6 +146,7 @@ export default function App() {
   }, [purchasedOrders]);
 
   const addToCart = (product) => {
+    if (product?.soldOut) return;
     if (!cart.find((p) => p.id === product.id)) {
       setCart((prev) => [...prev, product]);
     }
