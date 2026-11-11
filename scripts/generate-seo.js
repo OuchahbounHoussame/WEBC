@@ -261,9 +261,11 @@ function prerenderProductPages(templateHtml) {
               ${product.skill} • Digital Pattern PDF
             </div>
             <h1 style="font-size: 32px; color: #482750; margin: 12px 0 8px;">${product.name}</h1>
-            <div style="font-size: 28px; font-weight: 800; color: #be6c87; margin-bottom: 16px;">
-              $${Number(product.price).toFixed(2)} USD
-              ${product.originalPrice ? `<span style="font-size: 18px; text-decoration: line-through; color: #9c8a9f; margin-left: 8px;">$${Number(product.originalPrice).toFixed(2)}</span>` : ''}
+            <div style="font-size: 14px; color: #7f6885; margin: 8px 0 14px;">
+              📄 Instant Download PDF &bull; 🪡 ${product.terms || 'US Terms'} &bull; 📐 ${product.hook || '3.0 mm'} Hook
+            </div>
+            <div style="font-size: 26px; font-weight: 800; color: #be6c87; margin-bottom: 16px;">
+              ${Number(product.price).toFixed(2)} USD
             </div>
             <p style="font-size: 15px; line-height: 1.6; color: #554458;">${product.description}</p>
             <div style="background: #fdf8fa; border: 1px solid #f2e1ea; border-radius: 12px; padding: 16px; margin: 20px 0;">
@@ -274,11 +276,14 @@ function prerenderProductPages(templateHtml) {
             </div>
             ${materialsHtml ? `<div style="margin-top: 20px;"><h3 style="color: #482750; font-size: 16px;">Materials Required:</h3><ul style="color: #554458; line-height: 1.6;">${materialsHtml}</ul></div>` : ''}
             ${sectionsHtml ? `<div style="margin-top: 20px;"><h3 style="color: #482750; font-size: 16px;">Pattern Sections:</h3><ul style="color: #554458; line-height: 1.6;">${sectionsHtml}</ul></div>` : ''}
-            <div style="margin-top: 28px;">
-              <a href="/checkout/${product.id}" style="display: inline-block; background: #be6c87; color: #ffffff; padding: 14px 28px; border-radius: 50px; font-weight: 700; text-decoration: none; font-size: 15px;">
-                Instant Checkout — $${Number(product.price).toFixed(2)}
-              </a>
-            </div>
+            ${(() => {
+              const directCheckout = (product.id === 4 && product.buyUrl) ? product.buyUrl : `/checkout/${product.id}`;
+              return `<div style="margin-top: 28px;">
+                <a href="${directCheckout}" style="display: inline-block; background: #be6c87; color: #ffffff; padding: 14px 28px; border-radius: 50px; font-weight: 700; text-decoration: none; font-size: 15px;">
+                  Instant Checkout — ${Number(product.price).toFixed(2)}
+                </a>
+              </div>`;
+            })()}
             <div style="margin-top: 36px; padding-top: 24px; border-top: 1px solid #ebd9ea;">
               <h3 style="color: #482750; font-size: 18px; margin-bottom: 12px;">More Amigurumi &amp; Crochet Patterns</h3>
               <ul style="padding-left: 20px;">
@@ -321,12 +326,18 @@ function prerenderProductPages(templateHtml) {
 
     let productHtml = templateHtml;
 
-    // Replace <title> and generic description
+    // 1. Remove generic title, description, and canonical
     productHtml = productHtml.replace(/<title>[\s\S]*?<\/title>/, '');
-    productHtml = productHtml.replace(/<meta name="description"[\s\S]*?>/, '');
-    productHtml = productHtml.replace(/<link rel="canonical"[\s\S]*?>/, '');
+    productHtml = productHtml.replace(/<meta name="description"[^>]*>\s*/g, '');
+    productHtml = productHtml.replace(/<link rel="canonical"[^>]*>\s*/g, '');
 
-    // Insert new head tags before </head>
+    // 2. STRIP ALL HOMEPAGE OPEN GRAPH & TWITTER TAGS TO PREVENT DUPLICATES
+    productHtml = productHtml.replace(/<!-- Open Graph \/ Facebook -->[\s\S]*?<!-- Pinterest Domain Verification -->/, '<!-- Pinterest Domain Verification -->');
+    productHtml = productHtml.replace(/<meta property="og:[^>]*>\s*/g, '');
+    productHtml = productHtml.replace(/<meta name="twitter:[^>]*>\s*/g, '');
+    productHtml = productHtml.replace(/<meta property="product:[^>]*>\s*/g, '');
+
+    // 3. Insert unique product head tags before </head>
     productHtml = productHtml.replace('</head>', `${headReplacements}\n  </head>`);
 
     // Inject semantic content into <div id="root">
