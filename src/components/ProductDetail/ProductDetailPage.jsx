@@ -19,8 +19,9 @@ import {
 import { ProductIcon } from '../Icons/CrochetIcons';
 import './ProductDetailPage.css';
 import ProductSEO from '../SEO/ProductSEO';
+import { products } from '../../data/products';
 
-export default function ProductDetailPage({ product, onAddToCart, onBuyNow, onBackToStore }) {
+export default function ProductDetailPage({ product, onAddToCart, onBuyNow, onBackToStore, onSelectProduct }) {
   const images = (product.images && product.images.length > 0)
     ? product.images
     : [];
@@ -429,6 +430,48 @@ export default function ProductDetailPage({ product, onAddToCart, onBuyNow, onBa
           )}
         </div>
       </div>
-    </div>
+    
+      {/* Related Products Section: Internal Linking & Discovery */}
+      <section className="pdp-related-section" aria-label="Explore more crochet patterns">
+        <div className="pdp-related-header">
+          <h2 className="pdp-related-title">More Crochet Patterns You'll Love</h2>
+          <p className="pdp-related-sub">Downloadable PDF tutorials with step-by-step photos</p>
+        </div>
+        <div className="pdp-related-grid">
+          {products.filter((p) => p.id !== product.id).map((rel) => (
+            <a
+              key={rel.id}
+              href={`/product/${rel.id}`}
+              className="pdp-related-card"
+              onClick={(e) => {
+                e.preventDefault();
+                if (onSelectProduct) {
+                  onSelectProduct(rel);
+                } else {
+                  window.location.href = `/product/${rel.id}`;
+                }
+              }}
+            >
+              <div className="pdp-related-img-wrap">
+                <img
+                  src={rel.primaryImage}
+                  alt={`${rel.name} handmade crochet amigurumi pattern PDF`}
+                  loading="lazy"
+                  className="pdp-related-img"
+                />
+                <span className="pdp-related-badge">{rel.skill}</span>
+              </div>
+              <div className="pdp-related-info">
+                <h3 className="pdp-related-name">{rel.name}</h3>
+                <div className="pdp-related-meta">
+                  <span className="pdp-related-price">${Number(rel.price).toFixed(2)} USD</span>
+                  <span className="pdp-related-cta">View Pattern &rarr;</span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+</div>
   );
 }

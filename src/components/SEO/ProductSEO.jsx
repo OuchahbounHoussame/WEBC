@@ -9,20 +9,20 @@ export const SITE_URL = 'https://www.shopcozystitches.com';
 export function getProductSEOMetadata(product) {
   if (!product) return null;
 
-  let seoTitle = `${product.name} Crochet Pattern (PDF) | Cozy Stitches`;
+  let seoTitle = `${product.name} Crochet Pattern | CozyStitches`;
   let seoDescription = product.description;
 
   if (product.id === 1) {
-    seoTitle = `Sus Space Crewmate Amigurumi Crochet Pattern (PDF) | Cozy Stitches`;
+    seoTitle = `Space Crewmate Amigurumi Crochet Pattern | CozyStitches`;
     seoDescription = `Crochet your own space crewmate with this 6-page digital PDF amigurumi pattern. Includes US terms, step-by-step photos, backpack, visor & highlight details.`;
   } else if (product.id === 2) {
-    seoTitle = `Shooting Star Keychain Crochet Pattern (PDF) | Cozy Stitches`;
-    seoDescription = `Create an adorable pastel shooting star keychain with this 6-page instant download PDF crochet tutorial. Features US crochet abbreviations and assembly photos.`;
+    seoTitle = `Shooting Star Keychain Crochet Pattern | CozyStitches`;
+    seoDescription = `Create a cute pastel shooting star keychain with this 6-page digital PDF crochet pattern. Includes US terms, photo tutorial, and rainbow tail assembly.`;
   } else if (product.id === 3) {
-    seoTitle = `7-in-1 Animal Eyeglass Holder Crochet Patterns (PDF) | Cozy Stitches`;
-    seoDescription = `13-page printable PDF crochet pattern bundle for 7 animal glasses stands: Fox, Turtle, Raccoon, Llama, Dragon & Chicken. Functional desk decor in US terms.`;
+    seoTitle = `Crochet Glasses Holder PDF Pattern | CozyStitches`;
+    seoDescription = `Create adorable crochet glasses holders with this downloadable PDF pattern. Explore step-by-step instructions and start your next crochet project.`;
   } else if (product.id === 4) {
-    seoTitle = `Graduate Doll Amigurumi Crochet Pattern (PDF) | Cozy Stitches`;
+    seoTitle = `Graduate Doll Amigurumi Crochet Pattern | CozyStitches`;
     seoDescription = `Handmade graduation keepsake amigurumi doll pattern. 11-page digital PDF tutorial with cap, gold tassel, gown, diploma scroll and floral bouquet in US terms.`;
   }
 
@@ -47,7 +47,7 @@ export function getProductSEOMetadata(product) {
     "category": "Crafts & Hobbies > Crochet & Knitting > Crochet Patterns",
     "brand": {
       "@type": "Brand",
-      "name": "Cozy Stitches"
+      "name": "CozyStitches"
     },
     "offers": {
       "@type": "Offer",
@@ -59,8 +59,39 @@ export function getProductSEOMetadata(product) {
       "availability": "https://schema.org/InStock",
       "seller": {
         "@type": "Organization",
-        "name": "Cozy Stitches",
+        "name": "CozyStitches",
         "url": SITE_URL
+      },
+      "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": "0.00",
+          "currency": "USD"
+        },
+        "deliveryTime": {
+          "@type": "ShippingDeliveryTime",
+          "handlingTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 0,
+            "maxValue": 0,
+            "unitCode": "DAY"
+          },
+          "transitTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 0,
+            "maxValue": 0,
+            "unitCode": "DAY"
+          }
+        }
+      },
+      "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": ["US", "GB", "CA", "AU", "EU"],
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+        "merchantReturnDays": 7,
+        "returnMethod": "https://schema.org/ReturnByMail",
+        "returnFees": "https://schema.org/FreeReturn"
       }
     },
     ...(product.reviews ? {
@@ -122,7 +153,7 @@ export default function ProductSEO({ product }) {
     setMeta('og:url', meta.canonicalUrl, true);
     setMeta('og:type', 'product', true);
     setMeta('og:image', meta.imageUrl, true);
-    setMeta('og:site_name', 'Cozy Stitches', true);
+    setMeta('og:site_name', 'CozyStitches', true);
     setMeta('product:price:amount', Number(product.price).toFixed(2), true);
     setMeta('product:price:currency', 'USD', true);
 

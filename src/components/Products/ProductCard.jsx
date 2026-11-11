@@ -90,17 +90,19 @@ export default function ProductCard({ product, onAddToCart, onViewProduct }) {
         )}
 
         <div className="pc-overlay">
-          <button
-            type="button"
+          <a
+            href={`/product/${product.id}`}
             className="pc-preview-btn"
+            style={{ textDecoration: 'none' }}
             onClick={(e) => {
+              e.preventDefault();
               e.stopPropagation();
               handleOpenProduct();
             }}
           >
             <Eye size={15} />
             <span>View Product</span>
-          </button>
+          </a>
         </div>
       </div>
 
@@ -127,8 +129,17 @@ export default function ProductCard({ product, onAddToCart, onViewProduct }) {
           </span>
         </div>
 
-        <h3 className="pc-name" onClick={handleOpenProduct} style={{ cursor: 'pointer' }}>
-          {product.name}
+        <h3 className="pc-name">
+          <a
+            href={`/product/${product.id}`}
+            className="pc-name-link"
+            onClick={(e) => {
+              e.preventDefault();
+              handleOpenProduct();
+            }}
+          >
+            {product.name}
+          </a>
         </h3>
         <p className="pc-desc">{product.description}</p>
 
@@ -175,16 +186,20 @@ export default function ProductCard({ product, onAddToCart, onViewProduct }) {
           </div>
 
           <div className="pc-actions-cluster">
-            <button
-              type="button"
+            <a
+              href={`/product/${product.id}`}
               className="btn pc-view-btn"
-              onClick={handleOpenProduct}
+              onClick={(e) => {
+                e.preventDefault();
+                handleOpenProduct();
+              }}
               title="View full product page & photos"
               aria-label="View product page"
+              style={{ textDecoration: 'none' }}
             >
               <Eye size={14} />
               <span>View</span>
-            </button>
+            </a>
 
             <button
               type="button"

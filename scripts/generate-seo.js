@@ -17,20 +17,20 @@ console.log(`[SEO Generator] Starting SEO generation for ${products.length} prod
 
 // ── 1. Helper for Product SEO Metadata ────────────────────────
 function getProductSEO(product) {
-  let seoTitle = `${product.name} Crochet Pattern (PDF) | Cozy Stitches`;
+  let seoTitle = `${product.name} Crochet Pattern | CozyStitches`;
   let seoDescription = product.description;
 
   if (product.id === 1) {
-    seoTitle = `Sus Space Crewmate Amigurumi Crochet Pattern (PDF) | Cozy Stitches`;
+    seoTitle = `Space Crewmate Amigurumi Crochet Pattern | CozyStitches`;
     seoDescription = `Crochet your own space crewmate with this 6-page digital PDF amigurumi pattern. Includes US terms, step-by-step photos, backpack, visor & highlight details.`;
   } else if (product.id === 2) {
-    seoTitle = `Shooting Star Keychain Crochet Pattern (PDF) | Cozy Stitches`;
-    seoDescription = `Create an adorable pastel shooting star keychain with this 6-page instant download PDF crochet tutorial. Features US crochet abbreviations and assembly photos.`;
+    seoTitle = `Shooting Star Keychain Crochet Pattern | CozyStitches`;
+    seoDescription = `Create a cute pastel shooting star keychain with this 6-page digital PDF crochet pattern. Includes US terms, photo tutorial, and rainbow tail assembly.`;
   } else if (product.id === 3) {
-    seoTitle = `7-in-1 Animal Eyeglass Holder Crochet Patterns (PDF) | Cozy Stitches`;
-    seoDescription = `13-page printable PDF crochet pattern bundle for 7 animal glasses stands: Fox, Turtle, Raccoon, Llama, Dragon & Chicken. Functional desk decor in US terms.`;
+    seoTitle = `Crochet Glasses Holder PDF Pattern | CozyStitches`;
+    seoDescription = `Create adorable crochet glasses holders with this downloadable PDF pattern. Explore step-by-step instructions and start your next crochet project.`;
   } else if (product.id === 4) {
-    seoTitle = `Graduate Doll Amigurumi Crochet Pattern (PDF) | Cozy Stitches`;
+    seoTitle = `Graduate Doll Amigurumi Crochet Pattern | CozyStitches`;
     seoDescription = `Handmade graduation keepsake amigurumi doll pattern. 11-page digital PDF tutorial with cap, gold tassel, gown, diploma scroll and floral bouquet in US terms.`;
   }
 
@@ -55,7 +55,7 @@ function getProductSEO(product) {
     "category": "Crafts & Hobbies > Crochet & Knitting > Crochet Patterns",
     "brand": {
       "@type": "Brand",
-      "name": "Cozy Stitches"
+      "name": "CozyStitches"
     },
     "offers": {
       "@type": "Offer",
@@ -67,8 +67,39 @@ function getProductSEO(product) {
       "availability": "https://schema.org/InStock",
       "seller": {
         "@type": "Organization",
-        "name": "Cozy Stitches",
+        "name": "CozyStitches",
         "url": SITE_URL
+      },
+      "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": "0.00",
+          "currency": "USD"
+        },
+        "deliveryTime": {
+          "@type": "ShippingDeliveryTime",
+          "handlingTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 0,
+            "maxValue": 0,
+            "unitCode": "DAY"
+          },
+          "transitTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 0,
+            "maxValue": 0,
+            "unitCode": "DAY"
+          }
+        }
+      },
+      "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": ["US", "GB", "CA", "AU", "EU"],
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+        "merchantReturnDays": 7,
+        "returnMethod": "https://schema.org/ReturnByMail",
+        "returnFees": "https://schema.org/FreeReturn"
       }
     },
     ...(product.reviews ? {
@@ -167,6 +198,20 @@ function prerenderProductPages(templateHtml) {
       .map((s) => `<li>${s}</li>`)
       .join('');
 
+    // Internal links to related patterns
+    const otherProducts = products.filter((p) => p.id !== product.id);
+    const relatedHtml = otherProducts
+      .map(
+        (rel) => `
+        <li style="margin-bottom: 8px;">
+          <a href="/product/${rel.id}" style="color: #be6c87; font-weight: 600; text-decoration: none;">
+            ${rel.name} Crochet Pattern (PDF) — $${Number(rel.price).toFixed(2)}
+          </a>
+        </li>
+      `
+      )
+      .join('');
+
     const semanticContent = `
       <div class="pdp-container prerendered-static" style="max-width: 1100px; margin: 0 auto; padding: 24px 16px;">
         <nav aria-label="Breadcrumb" style="font-size: 13px; margin-bottom: 20px; color: #7f6885;">
@@ -204,6 +249,12 @@ function prerenderProductPages(templateHtml) {
                 Instant Checkout — $${Number(product.price).toFixed(2)}
               </a>
             </div>
+            <div style="margin-top: 36px; padding-top: 24px; border-top: 1px solid #ebd9ea;">
+              <h3 style="color: #482750; font-size: 18px; margin-bottom: 12px;">More Amigurumi &amp; Crochet Patterns</h3>
+              <ul style="padding-left: 20px;">
+                ${relatedHtml}
+              </ul>
+            </div>
           </div>
         </article>
       </div>
@@ -217,7 +268,7 @@ function prerenderProductPages(templateHtml) {
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="product" />
-    <meta property="og:site_name" content="Cozy Stitches" />
+    <meta property="og:site_name" content="CozyStitches" />
     <meta property="og:url" content="${seo.canonicalUrl}" />
     <meta property="og:title" content="${seo.seoTitle.replace(/"/g, '&quot;')}" />
     <meta property="og:description" content="${seo.seoDescription.replace(/"/g, '&quot;')}" />
