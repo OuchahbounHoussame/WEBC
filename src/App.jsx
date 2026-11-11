@@ -68,6 +68,26 @@ export default function App() {
   // Direct product routing state
   const [currentProduct, setCurrentProduct] = useState(getProductFromUrl);
   const [isCheckout, setIsCheckout] = useState(isCheckoutFromUrl);
+  // Check if current route is an invalid/missing product
+  const isInvalidProductRoute = Boolean(
+    typeof window !== 'undefined' &&
+    window.location.pathname.startsWith('/product/') &&
+    !currentProduct
+  );
+
+  useEffect(() => {
+    if (isInvalidProductRoute) {
+      document.title = 'Pattern Not Found | CozyStitches';
+      let robots = document.querySelector('meta[name="robots"]');
+      if (!robots) {
+        robots = document.createElement('meta');
+        robots.name = 'robots';
+        document.head.appendChild(robots);
+      }
+      robots.content = 'noindex, follow';
+    }
+  }, [isInvalidProductRoute]);
+
 
   // Synchronize state with browser back/forward buttons and URL changes
   useEffect(() => {

@@ -19,8 +19,9 @@ import {
 import { ProductIcon } from '../Icons/CrochetIcons';
 import './ProductDetailPage.css';
 import ProductSEO from '../SEO/ProductSEO';
+import { products } from '../../data/products';
 
-export default function ProductDetailPage({ product, onAddToCart, onBuyNow, onBackToStore }) {
+export default function ProductDetailPage({ product, onAddToCart, onBuyNow, onBackToStore, onSelectProduct }) {
   const images = (product.images && product.images.length > 0)
     ? product.images
     : [];
@@ -49,10 +50,7 @@ export default function ProductDetailPage({ product, onAddToCart, onBuyNow, onBa
     setTimeout(() => setAdded(false), 2000);
   };
 
-  const discountPercent = product.originalPrice
-    ? Math.round((1 - product.price / product.originalPrice) * 100)
-    : null;
-
+  
   return (
     <div className="pdp-container">
       <ProductSEO product={product} />
@@ -100,12 +98,7 @@ export default function ProductDetailPage({ product, onAddToCart, onBuyNow, onBa
               <span>Instant PDF</span>
             </div>
 
-            {discountPercent && (
-              <div className="pdp-sale-floating">
-                SAVE {discountPercent}%
-              </div>
-            )}
-          </div>
+                      </div>
 
           {/* Thumbnails strip (Only real photos, no vector art) */}
           {images.length > 1 && (
@@ -143,39 +136,22 @@ export default function ProductDetailPage({ product, onAddToCart, onBuyNow, onBa
 
           <h1 className="pdp-title">{product.name}</h1>
 
-          {/* Reviews & Social Proof */}
-          <div className="pdp-rating-row">
-            <div className="pdp-stars">
-              {[...Array(5)].map((_, i) => (
-                <Star
-                  key={i}
-                  size={16}
-                  fill="#f5a623"
-                  color="#f5a623"
-                  strokeWidth={1.5}
-                />
-              ))}
-            </div>
-            <span className="pdp-rating-score">5.0</span>
-            <span className="pdp-review-count">({product.reviews || 94} crafter reviews)</span>
+          {/* Genuine Digital Pattern Highlights */}
+          <div className="pdp-rating-row" style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+            <span style={{ background: '#f5eef6', color: '#733c76', padding: '4px 10px', borderRadius: '50px', fontSize: '0.8rem', fontWeight: 700 }}>
+              📄 Instant PDF Download
+            </span>
             <span className="pdp-dot">•</span>
-            <span className="pdp-downloads-count">
-              <DownloadCloud size={14} />
-              <span>{product.downloads || '600+'} downloads</span>
+            <span style={{ fontSize: '0.82rem', color: '#7f6885' }}>
+              Full Color Step Photos &bull; US Crochet Terms
             </span>
           </div>
 
           {/* Pricing Row */}
           <div className="pdp-price-box">
             <div className="pdp-price-wrap">
-              <span className="pdp-current-price">${product.price.toFixed(2)}</span>
-              {product.originalPrice && (
-                <span className="pdp-original-price">${product.originalPrice.toFixed(2)}</span>
-              )}
+              <span className="pdp-current-price">${product.price.toFixed(2)} USD</span>
             </div>
-            {discountPercent && (
-              <span className="pdp-savings-tag">You save {discountPercent}% today!</span>
-            )}
           </div>
 
           <p className="pdp-short-desc">{product.description}</p>
@@ -393,42 +369,61 @@ export default function ProductDetailPage({ product, onAddToCart, onBuyNow, onBa
 
           {activeTab === 'reviews' && (
             <div className="pdp-panel-reviews">
-              <div className="pdp-reviews-summary">
-                <div className="pdp-rev-score-box">
-                  <div className="pdp-rev-big-num">5.0</div>
-                  <div className="pdp-stars">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} size={18} fill="#f5a623" color="#f5a623" />
-                    ))}
-                  </div>
-                  <span>Based on {product.reviews || 94} verified purchases</span>
-                </div>
-              </div>
-
-              <div className="pdp-reviews-cards">
-                <div className="pdp-review-bubble">
-                  <div className="pdp-rb-header">
-                    <strong>Maria S.</strong>
-                    <span className="pdp-verified">Verified Buyer</span>
-                  </div>
-                  <p>
-                    "The photos in this pattern made the hair placement and graduation cap so effortless! I made one for my daughter's graduation and it brought tears to her eyes. Absolute perfection!"
-                  </p>
-                </div>
-                <div className="pdp-review-bubble">
-                  <div className="pdp-rb-header">
-                    <strong>Elena K.</strong>
-                    <span className="pdp-verified">Verified Buyer</span>
-                  </div>
-                  <p>
-                    "Clear stitch explanations, high quality pictures, and the wire insertion technique was explained step-by-step. Very happy with this pattern!"
-                  </p>
-                </div>
+              <div style={{ background: '#fdf8fa', border: '1px solid #ebd9ea', borderRadius: '16px', padding: '24px', lineHeight: 1.7, color: '#554458' }}>
+                <h4 style={{ color: '#482750', fontSize: '18px', marginBottom: '12px', fontFamily: 'Georgia, serif' }}>Instant Digital Delivery Guarantee</h4>
+                <ul style={{ paddingLeft: '20px', fontSize: '15px' }}>
+                  <li style={{ marginBottom: '8px' }}><strong>Instant Access:</strong> As soon as checkout completes, your download link is displayed immediately and backed up via email.</li>
+                  <li style={{ marginBottom: '8px' }}><strong>Print-Ready Format:</strong> Print-optimized PDF formatted for standard A4 and US Letter paper sizes.</li>
+                  <li style={{ marginBottom: '8px' }}><strong>Lifetime Download Access:</strong> You can re-download your purchased PDF anytime with your purchase email address.</li>
+                  <li><strong>Support &amp; Assistance:</strong> Have questions about stitches or pattern steps? Contact our team anytime for friendly crafter assistance.</li>
+                </ul>
               </div>
             </div>
           )}
         </div>
       </div>
-    </div>
+    
+      {/* Related Products Section: Internal Linking & Discovery */}
+      <section className="pdp-related-section" aria-label="Explore more crochet patterns">
+        <div className="pdp-related-header">
+          <h2 className="pdp-related-title">More Crochet Patterns You'll Love</h2>
+          <p className="pdp-related-sub">Downloadable PDF tutorials with step-by-step photos</p>
+        </div>
+        <div className="pdp-related-grid">
+          {products.filter((p) => p.id !== product.id).map((rel) => (
+            <a
+              key={rel.id}
+              href={`/product/${rel.id}`}
+              className="pdp-related-card"
+              onClick={(e) => {
+                e.preventDefault();
+                if (onSelectProduct) {
+                  onSelectProduct(rel);
+                } else {
+                  window.location.href = `/product/${rel.id}`;
+                }
+              }}
+            >
+              <div className="pdp-related-img-wrap">
+                <img
+                  src={rel.primaryImage}
+                  alt={`${rel.name} handmade crochet amigurumi pattern PDF`}
+                  loading="lazy"
+                  className="pdp-related-img"
+                />
+                <span className="pdp-related-badge">{rel.skill}</span>
+              </div>
+              <div className="pdp-related-info">
+                <h3 className="pdp-related-name">{rel.name}</h3>
+                <div className="pdp-related-meta">
+                  <span className="pdp-related-price">${Number(rel.price).toFixed(2)} USD</span>
+                  <span className="pdp-related-cta">View Pattern &rarr;</span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+</div>
   );
 }

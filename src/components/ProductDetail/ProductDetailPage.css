@@ -809,3 +809,105 @@
     grid-template-columns: 1fr;
   }
 }
+
+
+/* Related Products Section (Internal Linking & Discovery) */
+.pdp-related-section {
+  margin-top: 56px;
+  padding-top: 40px;
+  border-top: 1px solid #ebd9ea;
+}
+.pdp-related-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+.pdp-related-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: #482750;
+  margin-bottom: 8px;
+}
+.pdp-related-sub {
+  color: #7f6885;
+  font-size: 0.95rem;
+}
+.pdp-related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+.pdp-related-card {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #ebd9ea;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.pdp-related-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(115, 60, 118, 0.08);
+  border-color: #d8b8d6;
+}
+.pdp-related-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #faf4f8;
+  overflow: hidden;
+}
+.pdp-related-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.pdp-related-card:hover .pdp-related-img {
+  transform: scale(1.04);
+}
+.pdp-related-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #733c76;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 50px;
+  text-transform: uppercase;
+  backdrop-filter: blur(4px);
+}
+.pdp-related-info {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.pdp-related-name {
+  font-size: 1.05rem;
+  font-family: 'Playfair Display', serif;
+  color: #482750;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+.pdp-related-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 8px;
+}
+.pdp-related-price {
+  font-weight: 800;
+  color: #be6c87;
+  font-size: 1.1rem;
+}
+.pdp-related-cta {
+  font-size: 0.82rem;
+  color: #733c76;
+  font-weight: 700;
+}

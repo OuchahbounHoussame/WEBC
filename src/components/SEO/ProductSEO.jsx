@@ -1,28 +1,31 @@
 import { useEffect } from 'react';
 
 export const SITE_URL = 'https://www.shopcozystitches.com';
+const HOMEPAGE_TITLE = 'Cozy Stitches — Premium Handmade Crochet PDF Patterns';
+const HOMEPAGE_DESC = 'Download charming, step-by-step crochet & amigurumi PDF patterns instantly. Clear instructions, full-color step photos, and beginner-friendly guides.';
 
 /**
- * Generates unified SEO metadata and Schema.org Product JSON-LD
- * used both for client-side dynamic head updates and static prerendering.
+ * Generates verified SEO metadata and 100% genuine Schema.org Product JSON-LD.
+ * Only real, published product data is included.
+ * No fabricated ratings, unverified reviews, physical shipping, or inaccurate return policies.
  */
 export function getProductSEOMetadata(product) {
   if (!product) return null;
 
-  let seoTitle = `${product.name} Crochet Pattern (PDF) | Cozy Stitches`;
+  let seoTitle = `${product.name} Crochet Pattern | CozyStitches`;
   let seoDescription = product.description;
 
   if (product.id === 1) {
-    seoTitle = `Sus Space Crewmate Amigurumi Crochet Pattern (PDF) | Cozy Stitches`;
+    seoTitle = `Space Crewmate Amigurumi Crochet Pattern | CozyStitches`;
     seoDescription = `Crochet your own space crewmate with this 6-page digital PDF amigurumi pattern. Includes US terms, step-by-step photos, backpack, visor & highlight details.`;
   } else if (product.id === 2) {
-    seoTitle = `Shooting Star Keychain Crochet Pattern (PDF) | Cozy Stitches`;
-    seoDescription = `Create an adorable pastel shooting star keychain with this 6-page instant download PDF crochet tutorial. Features US crochet abbreviations and assembly photos.`;
+    seoTitle = `Shooting Star Keychain Crochet Pattern | CozyStitches`;
+    seoDescription = `Create a cute pastel shooting star keychain with this 6-page digital PDF crochet pattern. Includes US terms, photo tutorial, and rainbow tail assembly.`;
   } else if (product.id === 3) {
-    seoTitle = `7-in-1 Animal Eyeglass Holder Crochet Patterns (PDF) | Cozy Stitches`;
-    seoDescription = `13-page printable PDF crochet pattern bundle for 7 animal glasses stands: Fox, Turtle, Raccoon, Llama, Dragon & Chicken. Functional desk decor in US terms.`;
+    seoTitle = `Crochet Glasses Holder PDF Pattern | CozyStitches`;
+    seoDescription = `Create adorable crochet glasses holders with this downloadable PDF pattern. Explore step-by-step instructions and start your next crochet project.`;
   } else if (product.id === 4) {
-    seoTitle = `Graduate Doll Amigurumi Crochet Pattern (PDF) | Cozy Stitches`;
+    seoTitle = `Graduate Doll Amigurumi Crochet Pattern | CozyStitches`;
     seoDescription = `Handmade graduation keepsake amigurumi doll pattern. 11-page digital PDF tutorial with cap, gold tassel, gown, diploma scroll and floral bouquet in US terms.`;
   }
 
@@ -35,6 +38,8 @@ export function getProductSEOMetadata(product) {
     ? product.images.map((img) => (img.startsWith('http') ? img : `${SITE_URL}${img}`))
     : [imageUrl];
 
+  // Strictly genuine Schema.org Product markup
+  // Excludes unverified reviews/ratings and physical shipping/returns per digital goods guidelines
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -47,7 +52,7 @@ export function getProductSEOMetadata(product) {
     "category": "Crafts & Hobbies > Crochet & Knitting > Crochet Patterns",
     "brand": {
       "@type": "Brand",
-      "name": "Cozy Stitches"
+      "name": "CozyStitches"
     },
     "offers": {
       "@type": "Offer",
@@ -59,19 +64,10 @@ export function getProductSEOMetadata(product) {
       "availability": "https://schema.org/InStock",
       "seller": {
         "@type": "Organization",
-        "name": "Cozy Stitches",
+        "name": "CozyStitches",
         "url": SITE_URL
       }
-    },
-    ...(product.reviews ? {
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": (product.stars || 5).toFixed(1),
-        "reviewCount": String(product.reviews),
-        "bestRating": "5",
-        "worstRating": "1"
-      }
-    } : {})
+    }
   };
 
   return {
@@ -90,7 +86,6 @@ export default function ProductSEO({ product }) {
     const meta = getProductSEOMetadata(product);
     if (!meta) return;
 
-    const previousTitle = document.title;
     document.title = meta.seoTitle;
 
     const setMeta = (name, content, isProperty = false) => {
@@ -107,7 +102,7 @@ export default function ProductSEO({ product }) {
     // Standard Meta
     setMeta('description', meta.seoDescription);
 
-    // Canonical
+    // Canonical Tag (single element, never duplicates)
     let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) {
       canonical = document.createElement('link');
@@ -122,17 +117,17 @@ export default function ProductSEO({ product }) {
     setMeta('og:url', meta.canonicalUrl, true);
     setMeta('og:type', 'product', true);
     setMeta('og:image', meta.imageUrl, true);
-    setMeta('og:site_name', 'Cozy Stitches', true);
+    setMeta('og:site_name', 'CozyStitches', true);
     setMeta('product:price:amount', Number(product.price).toFixed(2), true);
     setMeta('product:price:currency', 'USD', true);
 
-    // Twitter
+    // Twitter Card
     setMeta('twitter:card', 'summary_large_image');
     setMeta('twitter:title', meta.seoTitle);
     setMeta('twitter:description', meta.seoDescription);
     setMeta('twitter:image', meta.imageUrl);
 
-    // JSON-LD
+    // Product Schema JSON-LD
     let script = document.getElementById('product-schema-jsonld');
     if (!script) {
       script = document.createElement('script');
@@ -143,9 +138,19 @@ export default function ProductSEO({ product }) {
     script.textContent = JSON.stringify(meta.jsonLd, null, 2);
 
     return () => {
-      document.title = previousTitle;
+      // Cleanly restore homepage metadata when navigating away
+      document.title = HOMEPAGE_TITLE;
       const scriptToRemove = document.getElementById('product-schema-jsonld');
       if (scriptToRemove) scriptToRemove.remove();
+
+      let activeCanonical = document.querySelector('link[rel="canonical"]');
+      if (activeCanonical) {
+        activeCanonical.setAttribute('href', `${SITE_URL}/`);
+      }
+      let activeDesc = document.querySelector('meta[name="description"]');
+      if (activeDesc) {
+        activeDesc.setAttribute('content', HOMEPAGE_DESC);
+      }
     };
   }, [product]);
 

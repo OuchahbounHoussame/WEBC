@@ -59,7 +59,7 @@ export default function ProductCard({ product, onAddToCart, onViewProduct }) {
         )}
 
         {/* Top-Right Badge (Clean separation to prevent collision) */}
-        {product.id === 2 ? (
+        {product.id === 2 && (
           <a
             href="#freebie"
             className="pc-sale-badge"
@@ -81,26 +81,22 @@ export default function ProductCard({ product, onAddToCart, onViewProduct }) {
             <Gift size={11} />
             <span>FREE WITH EMAIL</span>
           </a>
-        ) : (
-          product.originalPrice && (
-            <div className="pc-sale-badge">
-              SAVE {Math.round((1 - product.price / product.originalPrice) * 100)}%
-            </div>
-          )
         )}
 
         <div className="pc-overlay">
-          <button
-            type="button"
+          <a
+            href={`/product/${product.id}`}
             className="pc-preview-btn"
+            style={{ textDecoration: 'none' }}
             onClick={(e) => {
+              e.preventDefault();
               e.stopPropagation();
               handleOpenProduct();
             }}
           >
             <Eye size={15} />
             <span>View Product</span>
-          </button>
+          </a>
         </div>
       </div>
 
@@ -127,83 +123,30 @@ export default function ProductCard({ product, onAddToCart, onViewProduct }) {
           </span>
         </div>
 
-        <h3 className="pc-name" onClick={handleOpenProduct} style={{ cursor: 'pointer' }}>
-          {product.name}
+        <h3 className="pc-name">
+          <a
+            href={`/product/${product.id}`}
+            className="pc-name-link"
+            onClick={(e) => {
+              e.preventDefault();
+              handleOpenProduct();
+            }}
+          >
+            {product.name}
+          </a>
         </h3>
         <p className="pc-desc">{product.description}</p>
 
-        {/* Stats */}
+        {/* Honest Format & Delivery Specs */}
         <div className="pc-stats">
-          <div className="pc-stars" title={`${product.stars} stars`}>
-            {[...Array(5)].map((_, i) => (
-              <Star
-                key={i}
-                size={13}
-                fill={i < product.stars ? "#f5a623" : "none"}
-                color={i < product.stars ? "#f5a623" : "#d8c2e0"}
-                strokeWidth={2}
-              />
-            ))}
-            <span className="pc-review-count">({product.reviews})</span>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', fontSize: '0.78rem', color: '#733c76', fontWeight: 600 }}>
+            <FileText size={13} color="#be6c87" />
+            <span>Digital PDF</span>
           </div>
           <span className="pc-downloads">
             <DownloadCloud size={13} />
-            <span>{product.downloads} downloads</span>
+            <span>Instant Access</span>
           </span>
-        </div>
-
-        {/* File info */}
-        <div className="pc-formats">
-          {product.pages && (
-            <span className="pc-pages-info">
-              <FileText size={12} />
-              <span>{product.pages} pages</span>
-            </span>
-          )}
-          {product.formats.map((f) => (
-            <span key={f} className="pc-format-tag">{f}</span>
-          ))}
-        </div>
-
-        {/* Price + CTA */}
-        <div className="pc-footer">
-          <div className="pc-price-wrap">
-            {product.originalPrice && (
-              <span className="pc-original">${product.originalPrice.toFixed(2)}</span>
-            )}
-            <span className="pc-price">${product.price.toFixed(2)}</span>
-          </div>
-
-          <div className="pc-actions-cluster">
-            <button
-              type="button"
-              className="btn pc-view-btn"
-              onClick={handleOpenProduct}
-              title="View full product page & photos"
-              aria-label="View product page"
-            >
-              <Eye size={14} />
-              <span>View</span>
-            </button>
-
-            <button
-              type="button"
-              className={`btn pc-cta ${added ? 'added' : 'btn-primary'}`}
-              onClick={handleAdd}
-            >
-              {added ? (
-                <>
-                  <Check size={14} />
-                  <span>Added!</span>
-                </>
-              ) : (
-                <>
-                  <ShoppingBag size={14} />
-                  <span>Get Pattern</span>
-                </>
-              )}
-            </button>
-          </div>
         </div>
       </div>
     </article>

@@ -17,20 +17,20 @@ console.log(`[SEO Generator] Starting SEO generation for ${products.length} prod
 
 // ── 1. Helper for Product SEO Metadata ────────────────────────
 function getProductSEO(product) {
-  let seoTitle = `${product.name} Crochet Pattern (PDF) | Cozy Stitches`;
+  let seoTitle = `${product.name} Crochet Pattern | CozyStitches`;
   let seoDescription = product.description;
 
   if (product.id === 1) {
-    seoTitle = `Sus Space Crewmate Amigurumi Crochet Pattern (PDF) | Cozy Stitches`;
+    seoTitle = `Space Crewmate Amigurumi Crochet Pattern | CozyStitches`;
     seoDescription = `Crochet your own space crewmate with this 6-page digital PDF amigurumi pattern. Includes US terms, step-by-step photos, backpack, visor & highlight details.`;
   } else if (product.id === 2) {
-    seoTitle = `Shooting Star Keychain Crochet Pattern (PDF) | Cozy Stitches`;
-    seoDescription = `Create an adorable pastel shooting star keychain with this 6-page instant download PDF crochet tutorial. Features US crochet abbreviations and assembly photos.`;
+    seoTitle = `Shooting Star Keychain Crochet Pattern | CozyStitches`;
+    seoDescription = `Create a cute pastel shooting star keychain with this 6-page digital PDF crochet pattern. Includes US terms, photo tutorial, and rainbow tail assembly.`;
   } else if (product.id === 3) {
-    seoTitle = `7-in-1 Animal Eyeglass Holder Crochet Patterns (PDF) | Cozy Stitches`;
-    seoDescription = `13-page printable PDF crochet pattern bundle for 7 animal glasses stands: Fox, Turtle, Raccoon, Llama, Dragon & Chicken. Functional desk decor in US terms.`;
+    seoTitle = `Crochet Glasses Holder PDF Pattern | CozyStitches`;
+    seoDescription = `Create adorable crochet glasses holders with this downloadable PDF pattern. Explore step-by-step instructions and start your next crochet project.`;
   } else if (product.id === 4) {
-    seoTitle = `Graduate Doll Amigurumi Crochet Pattern (PDF) | Cozy Stitches`;
+    seoTitle = `Graduate Doll Amigurumi Crochet Pattern | CozyStitches`;
     seoDescription = `Handmade graduation keepsake amigurumi doll pattern. 11-page digital PDF tutorial with cap, gold tassel, gown, diploma scroll and floral bouquet in US terms.`;
   }
 
@@ -43,6 +43,8 @@ function getProductSEO(product) {
     ? product.images.map((img) => (img.startsWith('http') ? img : `${SITE_URL}${img}`))
     : [imageUrl];
 
+  // Strictly genuine Schema.org Product markup
+  // Excludes unverified reviews/ratings and physical shipping/returns per digital goods guidelines
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -55,7 +57,7 @@ function getProductSEO(product) {
     "category": "Crafts & Hobbies > Crochet & Knitting > Crochet Patterns",
     "brand": {
       "@type": "Brand",
-      "name": "Cozy Stitches"
+      "name": "CozyStitches"
     },
     "offers": {
       "@type": "Offer",
@@ -67,19 +69,10 @@ function getProductSEO(product) {
       "availability": "https://schema.org/InStock",
       "seller": {
         "@type": "Organization",
-        "name": "Cozy Stitches",
+        "name": "CozyStitches",
         "url": SITE_URL
       }
-    },
-    ...(product.reviews ? {
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": (product.stars || 5).toFixed(1),
-        "reviewCount": String(product.reviews),
-        "bestRating": "5",
-        "worstRating": "1"
-      }
-    } : {})
+    }
   };
 
   return {
@@ -154,7 +147,78 @@ Sitemap: ${SITE_URL}/sitemap.xml
 `;
 }
 
-// ── 4. Prerender Product Pages ────────────────────────────────
+// ── 4. Generate 404.html ──────────────────────────────────────
+function generate404Html() {
+  return `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404: Pattern Not Found | CozyStitches</title>
+  <meta name="robots" content="noindex, follow" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #faf4f8;
+      color: #482750;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .card {
+      background: #ffffff;
+      border: 1px solid #ebd9ea;
+      border-radius: 24px;
+      box-shadow: 0 12px 36px rgba(115, 60, 118, 0.08);
+      max-width: 520px;
+      width: 100%;
+      padding: 48px 32px;
+      text-align: center;
+    }
+    .icon { font-size: 56px; margin-bottom: 16px; }
+    h1 {
+      font-family: Georgia, serif;
+      font-size: 28px;
+      color: #482750;
+      margin-bottom: 12px;
+    }
+    p {
+      color: #7f6885;
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+    a.btn {
+      display: inline-block;
+      background: #be6c87;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 15px;
+      text-decoration: none;
+      padding: 14px 32px;
+      border-radius: 50px;
+      box-shadow: 0 6px 20px rgba(190, 108, 135, 0.3);
+      transition: background 0.2s ease;
+    }
+    a.btn:hover { background: #ab5772; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">🧶</div>
+    <h1>404 — Pattern Not Found</h1>
+    <p>We couldn't find the crochet pattern you're looking for. It may have been retired or the link might be out of date.</p>
+    <a href="/" class="btn">&larr; Return to All Patterns</a>
+  </div>
+</body>
+</html>`;
+}
+
+// ── 5. Prerender Product Pages ────────────────────────────────
 function prerenderProductPages(templateHtml) {
   for (const product of products) {
     const seo = getProductSEO(product);
@@ -165,6 +229,20 @@ function prerenderProductPages(templateHtml) {
       .join('');
     const sectionsHtml = (product.sections || [])
       .map((s) => `<li>${s}</li>`)
+      .join('');
+
+    // Internal links to related patterns
+    const otherProducts = products.filter((p) => p.id !== product.id);
+    const relatedHtml = otherProducts
+      .map(
+        (rel) => `
+        <li style="margin-bottom: 8px;">
+          <a href="/product/${rel.id}" style="color: #be6c87; font-weight: 600; text-decoration: none;">
+            ${rel.name} Crochet Pattern (PDF) — $${Number(rel.price).toFixed(2)}
+          </a>
+        </li>
+      `
+      )
       .join('');
 
     const semanticContent = `
@@ -183,12 +261,11 @@ function prerenderProductPages(templateHtml) {
               ${product.skill} • Digital Pattern PDF
             </div>
             <h1 style="font-size: 32px; color: #482750; margin: 12px 0 8px;">${product.name}</h1>
-            <div style="font-size: 14px; color: #f5a623; margin-bottom: 16px;">
-              ★★★★★ <span style="color: #7f6885;">5.0 (${product.reviews || 94} crafter reviews • ${product.downloads || 600}+ downloads)</span>
+            <div style="font-size: 14px; color: #7f6885; margin: 8px 0 14px;">
+              📄 Instant Download PDF &bull; 🪡 ${product.terms || 'US Terms'} &bull; 📐 ${product.hook || '3.0 mm'} Hook
             </div>
-            <div style="font-size: 28px; font-weight: 800; color: #be6c87; margin-bottom: 16px;">
-              $${Number(product.price).toFixed(2)} USD
-              ${product.originalPrice ? `<span style="font-size: 18px; text-decoration: line-through; color: #9c8a9f; margin-left: 8px;">$${Number(product.originalPrice).toFixed(2)}</span>` : ''}
+            <div style="font-size: 26px; font-weight: 800; color: #be6c87; margin-bottom: 16px;">
+              ${Number(product.price).toFixed(2)} USD
             </div>
             <p style="font-size: 15px; line-height: 1.6; color: #554458;">${product.description}</p>
             <div style="background: #fdf8fa; border: 1px solid #f2e1ea; border-radius: 12px; padding: 16px; margin: 20px 0;">
@@ -199,10 +276,19 @@ function prerenderProductPages(templateHtml) {
             </div>
             ${materialsHtml ? `<div style="margin-top: 20px;"><h3 style="color: #482750; font-size: 16px;">Materials Required:</h3><ul style="color: #554458; line-height: 1.6;">${materialsHtml}</ul></div>` : ''}
             ${sectionsHtml ? `<div style="margin-top: 20px;"><h3 style="color: #482750; font-size: 16px;">Pattern Sections:</h3><ul style="color: #554458; line-height: 1.6;">${sectionsHtml}</ul></div>` : ''}
-            <div style="margin-top: 28px;">
-              <a href="/checkout/${product.id}" style="display: inline-block; background: #be6c87; color: #ffffff; padding: 14px 28px; border-radius: 50px; font-weight: 700; text-decoration: none; font-size: 15px;">
-                Instant Checkout — $${Number(product.price).toFixed(2)}
-              </a>
+            ${(() => {
+              const directCheckout = (product.id === 4 && product.buyUrl) ? product.buyUrl : `/checkout/${product.id}`;
+              return `<div style="margin-top: 28px;">
+                <a href="${directCheckout}" style="display: inline-block; background: #be6c87; color: #ffffff; padding: 14px 28px; border-radius: 50px; font-weight: 700; text-decoration: none; font-size: 15px;">
+                  Instant Checkout — ${Number(product.price).toFixed(2)}
+                </a>
+              </div>`;
+            })()}
+            <div style="margin-top: 36px; padding-top: 24px; border-top: 1px solid #ebd9ea;">
+              <h3 style="color: #482750; font-size: 18px; margin-bottom: 12px;">More Amigurumi &amp; Crochet Patterns</h3>
+              <ul style="padding-left: 20px;">
+                ${relatedHtml}
+              </ul>
             </div>
           </div>
         </article>
@@ -217,7 +303,7 @@ function prerenderProductPages(templateHtml) {
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="product" />
-    <meta property="og:site_name" content="Cozy Stitches" />
+    <meta property="og:site_name" content="CozyStitches" />
     <meta property="og:url" content="${seo.canonicalUrl}" />
     <meta property="og:title" content="${seo.seoTitle.replace(/"/g, '&quot;')}" />
     <meta property="og:description" content="${seo.seoDescription.replace(/"/g, '&quot;')}" />
@@ -240,12 +326,18 @@ function prerenderProductPages(templateHtml) {
 
     let productHtml = templateHtml;
 
-    // Replace <title> and generic description
+    // 1. Remove generic title, description, and canonical
     productHtml = productHtml.replace(/<title>[\s\S]*?<\/title>/, '');
-    productHtml = productHtml.replace(/<meta name="description"[\s\S]*?>/, '');
-    productHtml = productHtml.replace(/<link rel="canonical"[\s\S]*?>/, '');
+    productHtml = productHtml.replace(/<meta name="description"[^>]*>\s*/g, '');
+    productHtml = productHtml.replace(/<link rel="canonical"[^>]*>\s*/g, '');
 
-    // Insert new head tags before </head>
+    // 2. STRIP ALL HOMEPAGE OPEN GRAPH & TWITTER TAGS TO PREVENT DUPLICATES
+    productHtml = productHtml.replace(/<!-- Open Graph \/ Facebook -->[\s\S]*?<!-- Pinterest Domain Verification -->/, '<!-- Pinterest Domain Verification -->');
+    productHtml = productHtml.replace(/<meta property="og:[^>]*>\s*/g, '');
+    productHtml = productHtml.replace(/<meta name="twitter:[^>]*>\s*/g, '');
+    productHtml = productHtml.replace(/<meta property="product:[^>]*>\s*/g, '');
+
+    // 3. Insert unique product head tags before </head>
     productHtml = productHtml.replace('</head>', `${headReplacements}\n  </head>`);
 
     // Inject semantic content into <div id="root">
@@ -292,7 +384,15 @@ if (fs.existsSync(distDir)) {
 }
 console.log('✓ robots.txt generated and configured');
 
-// 3. Prerender product pages if dist exists
+// 3. Generate 404.html
+const notFoundHtml = generate404Html();
+fs.writeFileSync(path.join(publicDir, '404.html'), notFoundHtml, 'utf8');
+if (fs.existsSync(distDir)) {
+  fs.writeFileSync(path.join(distDir, '404.html'), notFoundHtml, 'utf8');
+}
+console.log('✓ 404.html generated for HTTP 404 responses');
+
+// 4. Prerender product pages if dist exists
 const distIndex = path.join(distDir, 'index.html');
 if (fs.existsSync(distIndex)) {
   const templateHtml = fs.readFileSync(distIndex, 'utf8');
