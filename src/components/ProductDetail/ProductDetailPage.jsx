@@ -201,13 +201,21 @@ export default function ProductDetailPage({ product, onAddToCart, onBuyNow, onBa
             </button>
 
             {onBuyNow && (
-              <button
+              <a
+                href={product.buyUrl || `/checkout/${product.id}`}
                 className="pdp-btn-buy-now btn"
-                onClick={() => onBuyNow(product)}
+                style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
+                onClick={(e) => {
+                  if (product.buyUrl) {
+                    return;
+                  }
+                  e.preventDefault();
+                  onBuyNow(product);
+                }}
               >
                 <Zap size={18} />
                 <span>Instant Checkout</span>
-              </button>
+              </a>
             )}
           </div>
 
