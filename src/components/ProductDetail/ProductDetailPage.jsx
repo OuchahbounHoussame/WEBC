@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { ProductIcon } from '../Icons/CrochetIcons';
 import './ProductDetailPage.css';
+import ProductSEO from '../SEO/ProductSEO';
 
 export default function ProductDetailPage({ product, onAddToCart, onBuyNow, onBackToStore }) {
   const images = (product.images && product.images.length > 0)
@@ -54,6 +55,7 @@ export default function ProductDetailPage({ product, onAddToCart, onBuyNow, onBa
 
   return (
     <div className="pdp-container">
+      <ProductSEO product={product} />
       {/* Top Breadcrumb Bar */}
       <div className="pdp-breadcrumb-wrap">
         <button className="pdp-back-btn" onClick={onBackToStore}>
@@ -83,7 +85,7 @@ export default function ProductDetailPage({ product, onAddToCart, onBuyNow, onBa
             {images.length > 0 ? (
               <img
                 src={images[activeImageIndex]}
-                alt={`${product.name} showcase photo ${activeImageIndex + 1}`}
+                alt={`${product.name} crochet pattern photo ${activeImageIndex + 1} - handmade amigurumi`}
                 className="pdp-main-image"
               />
             ) : (
@@ -115,7 +117,7 @@ export default function ProductDetailPage({ product, onAddToCart, onBuyNow, onBa
                   onClick={() => setActiveImageIndex(idx)}
                   title={`View Photo ${idx + 1}`}
                 >
-                  <img src={imgUrl} alt={`Thumbnail ${idx + 1}`} />
+                  <img src={imgUrl} alt={`${product.name} step photo thumbnail ${idx + 1}`} loading="lazy" />
                 </button>
               ))}
             </div>

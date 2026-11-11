@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://www.shopcozystitches.com/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.shopcozystitches.com/product/1</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shopcozystitches.com/images/products/crewmate/crewmate-1.png</image:loc>
+      <image:title><![CDATA[Sus Space Crewmate Crochet Pattern PDF]]></image:title>
+      <image:caption><![CDATA[Crochet your own space crewmate with this 6-page digital PDF amigurumi pattern. Includes US terms, step-by-step photos, backpack, visor & highlight details.]]></image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shopcozystitches.com/product/2</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shopcozystitches.com/images/products/shooting-star/star-1.png</image:loc>
+      <image:title><![CDATA[Shooting Star Keychain Crochet Pattern PDF]]></image:title>
+      <image:caption><![CDATA[Create an adorable pastel shooting star keychain with this 6-page instant download PDF crochet tutorial. Features US crochet abbreviations and assembly photos.]]></image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shopcozystitches.com/product/3</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shopcozystitches.com/images/products/eyeglass-holders/eyeglass-grid.png</image:loc>
+      <image:title><![CDATA[Eyeglass Holder Set 2 Crochet Pattern PDF]]></image:title>
+      <image:caption><![CDATA[13-page printable PDF crochet pattern bundle for 7 animal glasses stands: Fox, Turtle, Raccoon, Llama, Dragon & Chicken. Functional desk decor in US terms.]]></image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shopcozystitches.com/product/4</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shopcozystitches.com/images/products/graduate-doll/graduate-1.jpg</image:loc>
+      <image:title><![CDATA[Graduate Doll Amigurumi Crochet Pattern PDF]]></image:title>
+      <image:caption><![CDATA[Handmade graduation keepsake amigurumi doll pattern. 11-page digital PDF tutorial with cap, gold tassel, gown, diploma scroll and floral bouquet in US terms.]]></image:caption>
+    </image:image>
+  </url>
+</urlset>

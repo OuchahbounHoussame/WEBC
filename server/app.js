@@ -36,9 +36,32 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const distPath = path.resolve(__dirname, '../dist');
+
+// Fallback SEO endpoints for sitemap.xml and robots.txt
+app.get('/sitemap.xml', (req, res) => {
+  const distSitemap = path.join(distPath, 'sitemap.xml');
+  const pubSitemap = path.resolve(__dirname, '../public/sitemap.xml');
+  const target = fs.existsSync(distSitemap) ? distSitemap : pubSitemap;
+  if (fs.existsSync(target)) {
+    res.setHeader('Content-Type', 'application/xml; charset=utf-8');
+    return res.sendFile(target);
+  }
+  res.status(404).send('Sitemap not found');
+});
+
+app.get('/robots.txt', (req, res) => {
+  const distRobots = path.join(distPath, 'robots.txt');
+  const pubRobots = path.resolve(__dirname, '../public/robots.txt');
+  const target = fs.existsSync(distRobots) ? distRobots : pubRobots;
+  if (fs.existsSync(target)) {
+    res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+    return res.sendFile(target);
+  }
+  res.status(404).send('robots.txt not found');
+});
 
 // Serve frontend in production / Docker mode if dist folder exists
-const distPath = path.resolve(__dirname, '../dist');
 if (fs.existsSync(distPath)) {
   app.use(express.static(distPath));
   app.use((req, res, next) => {

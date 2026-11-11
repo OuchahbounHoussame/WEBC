@@ -1,0 +1,24 @@
+# robots.txt for Cozy Stitches
+# Website: https://www.shopcozystitches.com/
+
+User-agent: *
+Allow: /
+Allow: /product/
+Allow: /images/
+Allow: /patterns/
+Allow: /assets/
+Allow: /favicon.svg
+Allow: /logo.svg
+
+# Disallow private checkout, admin area, internal APIs, and storage
+Disallow: /checkout/
+Disallow: /checkout
+Disallow: /admin
+Disallow: /admin/
+Disallow: /api/
+Disallow: /server/
+Disallow: /storage/
+
+# Sitemap & Host
+Host: https://www.shopcozystitches.com
+Sitemap: https://www.shopcozystitches.com/sitemap.xml
