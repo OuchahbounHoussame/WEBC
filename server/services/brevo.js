@@ -22,10 +22,20 @@ function getBrevoApiKey() {
   return process.env.BREVO_API_KEY || '';
 }
 
-function getSender() {
+/**
+ * Verified sender details for CozyStitches
+ * Enforces verified domain hello@shopcozystitches.com to ensure DKIM/DMARC alignment
+ */
+export function getSender() {
+  const envEmail = process.env.BREVO_SENDER_EMAIL || process.env.EMAIL_FROM_ADDRESS;
+  // Guard against unauthenticated/stale Gmail addresses that land in Spam or fail DMARC
+  const email = (envEmail && !envEmail.toLowerCase().includes('@gmail.com'))
+    ? envEmail.trim()
+    : 'hello@shopcozystitches.com';
+
   return {
-    name: process.env.BREVO_SENDER_NAME || 'CozyStitches',
-    email: process.env.BREVO_SENDER_EMAIL || process.env.EMAIL_FROM_ADDRESS || 'ouchahbounhoussame@gmail.com'
+    name: (process.env.BREVO_SENDER_NAME || 'CozyStitches').trim(),
+    email
   };
 }
 
@@ -35,6 +45,7 @@ function getSender() {
 export async function sendBrevoTransactionalEmail({ to, subject, html, text }) {
   const apiKey = getBrevoApiKey();
   const masked = maskEmail(to);
+  const sender = getSender();
 
   if (!apiKey) {
     console.log(`[Brevo] ℹ️ BREVO_API_KEY not configured. Simulating delivery to ${masked}.`);
@@ -47,16 +58,25 @@ export async function sendBrevoTransactionalEmail({ to, subject, html, text }) {
   }
 
   const payload = {
-    sender: getSender(),
-    to: [{ email: to }],
+    sender,
+    replyTo: {
+      name: sender.name,
+      email: sender.email
+    },
+    to: [{ email: to.trim() }],
     subject,
     htmlContent: html,
-    textContent: text || 'Your free pattern is ready to download.'
+    textContent: text || 'Your free pattern is ready to download.',
+    tags: ['free-pattern-delivery']
   };
+
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 10000); // 10s request timeout
 
   try {
     const res = await fetch(`${BREVO_API_URL}/smtp/email`, {
       method: 'POST',
+      signal: controller.signal,
       headers: {
         'api-key': apiKey,
         'Content-Type': 'application/json',
@@ -77,19 +97,24 @@ export async function sendBrevoTransactionalEmail({ to, subject, html, text }) {
       };
     }
 
-    console.log(`[Brevo] ✅ Transactional email sent to ${masked} (Message ID: ${data?.messageId || 'ok'})`);
+    console.log(`[Brevo] ✅ Transactional email dispatched from ${sender.email} to ${masked} (Message ID: ${data?.messageId || 'ok'})`);
     return {
       success: true,
       messageId: data?.messageId,
+      sender: sender.email,
       provider: 'brevo'
     };
   } catch (err) {
-    console.error(`[Brevo] ❌ Network error sending to ${masked}:`, err.message);
+    const isTimeout = err.name === 'AbortError';
+    const errorMsg = isTimeout ? 'Brevo request timed out after 10 seconds' : err.message;
+    console.error(`[Brevo] ❌ Network error sending to ${masked}:`, errorMsg);
     return {
       success: false,
       error: 'Failed to communicate with email delivery provider',
-      details: err.message
+      details: errorMsg
     };
+  } finally {
+    clearTimeout(timeoutId);
   }
 }
 

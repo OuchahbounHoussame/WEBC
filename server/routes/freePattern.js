@@ -159,7 +159,7 @@ https://www.shopcozystitches.com
       <div class="cta-box">
         <div style="font-size: 32px; margin-bottom: 8px;">⭐</div>
         <div style="font-size: 18px; font-weight: 700; color: #482750;">Shooting Star Keychain Pattern</div>
-        <div style="font-size: 13px; color: #7f6885; margin: 4px 0 12px;">6 Printable Pages • Full Color Step Photos • US Terms</div>
+        <div style="font-size: 13px; color: #7f6885; margin: 4px 0 12px;">7 Printable Pages • Full Color Step Photos • US Terms</div>
         <a href="${downloadUrl}" class="btn-download" target="_blank">Download Your Free Pattern</a>
         <div class="expiry-note">🔒 Active for 48 hours. You can request a fresh link anytime on our website.</div>
       </div>
@@ -182,6 +182,15 @@ https://www.shopcozystitches.com
     html: emailHtml,
     text: emailText
   });
+
+  if (!emailResult.success) {
+    console.error(`[FreePattern] ❌ Failed to dispatch delivery email to ${masked}: ${emailResult.error || 'Provider rejected'}`);
+    return res.status(502).json({
+      success: false,
+      message: 'We could not send your pattern email right now. Please check back shortly or reach out to support.',
+      error: emailResult.error || 'Email dispatch failed'
+    });
+  }
 
   // 7. Handle Optional Marketing Consent (GDPR Strict)
   let subscribedToMarketing = false;
