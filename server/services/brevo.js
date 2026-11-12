@@ -25,7 +25,7 @@ function getBrevoApiKey() {
 function getSender() {
   return {
     name: process.env.BREVO_SENDER_NAME || 'CozyStitches',
-    email: process.env.BREVO_SENDER_EMAIL || process.env.EMAIL_FROM_ADDRESS || 'hello@shopcozystitches.com'
+    email: process.env.BREVO_SENDER_EMAIL || process.env.EMAIL_FROM_ADDRESS || 'ouchahbounhoussame@gmail.com'
   };
 }
 
