@@ -14,25 +14,39 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// API Routes
+// Normalize req.url for Vercel Serverless catch-all rewrites
+app.use((req, res, next) => {
+  if (req.originalUrl && req.url !== req.originalUrl) {
+    req.url = req.originalUrl;
+  }
+  next();
+});
+
+// API Routes (dual mounted for direct & rewritten serverless routing)
 app.use('/api/free-pattern', freePatternRoutes);
+app.use('/free-pattern', freePatternRoutes);
 app.use('/api/products', productsRoutes);
+app.use('/products', productsRoutes);
 app.use('/api/orders', ordersRoutes);
+app.use('/orders', ordersRoutes);
 app.use('/api/downloads', downloadsRoutes);
+app.use('/downloads', downloadsRoutes);
 app.use('/api/admin', adminRoutes);
 
 // Visual Admin Dashboard
 app.use('/admin', adminRoutes);
 
 // Health check
-app.get('/api/health', (req, res) => {
+const healthCheck = (req, res) => {
   res.json({
     status: 'ok',
     environment: process.env.VERCEL ? 'Vercel Serverless' : 'Node.js / Docker Server',
     service: 'Crochet Digital Patterns Backend',
     timestamp: new Date().toISOString()
   });
-});
+};
+app.get('/api/health', healthCheck);
+app.get('/health', healthCheck);
 
 import { fileURLToPath } from 'url';
 
