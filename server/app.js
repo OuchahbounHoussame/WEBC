@@ -6,6 +6,7 @@ import productsRoutes from './routes/products.js';
 import ordersRoutes from './routes/orders.js';
 import downloadsRoutes from './routes/downloads.js';
 import adminRoutes from './routes/admin.js';
+import freePatternRoutes from './routes/freePattern.js';
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(cors());
 app.use(express.json());
 
 // API Routes
+app.use('/api/free-pattern', freePatternRoutes);
 app.use('/api/products', productsRoutes);
 app.use('/api/orders', ordersRoutes);
 app.use('/api/downloads', downloadsRoutes);
