@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Gift, Zap, FileText, CheckCircle2, Lock, MailCheck, Send, Download, Sparkles, AlertCircle } from 'lucide-react';
+import { Gift, Zap, FileText, CheckCircle2, Lock, MailCheck, Send, Sparkles, AlertCircle } from 'lucide-react';
 import { track } from '@vercel/analytics';
 import PrivacyPolicyModal from '../Privacy/PrivacyPolicyModal';
 import './Freebie.css';
@@ -10,7 +10,6 @@ export default function Freebie() {
   const [honeypot, setHoneypot]                 = useState('');
   const [status, setStatus]                     = useState('idle'); // idle | loading | done | error
   const [errorMessage, setErrorMessage]         = useState('');
-  const [downloadUrl, setDownloadUrl]           = useState(null);
   const [privacyOpen, setPrivacyOpen]           = useState(false);
 
   const handleSubmit = async (e) => {
@@ -155,28 +154,9 @@ export default function Freebie() {
                 <MailCheck size={36} className="success-mail-icon" />
                 <div>
                   <h3>Check your inbox &amp; start crafting!</h3>
-                  <p>Your free pattern has been prepared and sent to <strong>{email}</strong>.</p>
-                  {downloadUrl && (
-                    <div style={{ marginTop: '14px' }}>
-                      <a
-                        href={downloadUrl}
-                        className="btn btn-primary"
-                        style={{
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                          gap: '8px',
-                          padding: '12px 24px',
-                          textDecoration: 'none',
-                          fontWeight: 700,
-                          borderRadius: '50px'
-                        }}
-                        download
-                      >
-                        <Download size={16} />
-                        <span>Download Shooting Star PDF</span>
-                      </a>
-                    </div>
-                  )}
+                  <p>
+                    Your free pattern has been prepared and sent to <strong>{email}</strong>. Please check your inbox (and spam/promotions folder) to download your PDF!
+                  </p>
                 </div>
               </div>
             ) : (
