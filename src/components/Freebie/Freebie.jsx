@@ -71,7 +71,7 @@ export default function Freebie() {
   };
 
   const perks = [
-    'Official 6-page digital PDF pattern with full color guide',
+    'Official 7-page digital PDF pattern with full color guide',
     'Step-by-step photos for star points, face embroidery & rainbow tail',
     'Instant delivery directly to your inbox',
     'Standard US crochet terms with hook and yarn specifications'
@@ -109,7 +109,7 @@ export default function Freebie() {
 
               <div className="fc-details">
                 <span>
-                  <FileText size={12} /> 6 pages PDF
+                  <FileText size={12} /> 7 pages PDF
                 </span>
                 <span>
                   <span className="skill-dot" /> Intermediate
@@ -133,7 +133,7 @@ export default function Freebie() {
             <p className="section-label">Instant Free Download</p>
             <h2>Get Your Free Shooting Star Pattern!</h2>
             <p className="freebie-sub">
-              Enjoy a complimentary 6-page Shooting Star Keychain pattern — complete with step-by-step photos, stitch guides, and a print-ready PDF delivered directly to your inbox.
+              Enjoy a complimentary 7-page Shooting Star Keychain pattern — complete with step-by-step photos, stitch guides, and a print-ready PDF delivered directly to your inbox.
             </p>
 
             <ul className="freebie-perks">

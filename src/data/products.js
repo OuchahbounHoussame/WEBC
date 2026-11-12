@@ -119,7 +119,7 @@ export const products = [
     description: "A sweet crochet star with an embroidered smile and a pastel rainbow tail in lilac, pink, and aqua green. Approx. 8 cm, 3.0 mm hook. Permanently 100% free digital download.",
     badge: "100% Free Pattern",
     tag: "Free PDF",
-    pages: 6,
+    pages: 7,
     terms: "US Terms",
     formats: ["PDF"],
     bestseller: false,
