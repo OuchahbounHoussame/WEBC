@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import { YarnLogoIcon, InstagramIcon, YoutubeIcon, PinterestIcon } from '../Icons/CrochetIcons';
 import Logo from '../Logo/Logo';
+import PrivacyPolicyModal from '../Privacy/PrivacyPolicyModal';
 import './Footer.css';
 
 export default function Footer() {
@@ -16,6 +17,7 @@ export default function Footer() {
   const [sent,  setSent]    = useState(false);
   const [form,  setForm]    = useState({ name: '', email: '', topic: '', msg: '' });
   const [formSent, setFormSent] = useState(false);
+  const [privacyOpen, setPrivacyOpen] = useState(false);
 
   const handleContact = (e) => {
     e.preventDefault();
@@ -168,11 +170,12 @@ export default function Footer() {
       <div className="footer-bottom">
         <p>© 2026 Cozy Stitches · All rights reserved · Digital patterns are licensed for personal &amp; small business use.</p>
         <div className="footer-legal">
-          <a href="#">Privacy Policy</a>
+          <button type="button" onClick={() => setPrivacyOpen(true)} style={{ background: 'none', border: 'none', color: 'inherit', font: 'inherit', cursor: 'pointer', padding: 0 }}>Privacy Policy</button>
           <a href="#">Terms of Service</a>
           <a href="#">Cookie Settings</a>
         </div>
       </div>
+      <PrivacyPolicyModal isOpen={privacyOpen} onClose={() => setPrivacyOpen(false)} />
     </footer>
   );
 }

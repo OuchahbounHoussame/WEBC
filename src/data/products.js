@@ -106,7 +106,8 @@ export const products = [
     category: "amigurumi",
     skill: "intermediate",
     iconKey: "star",
-    soldOut: true,
+    soldOut: false,
+    isFree: true,
     primaryImage: "/images/products/shooting-star/star-1.png",
     images: [
       "/images/products/shooting-star/star-1.png",
@@ -114,14 +115,14 @@ export const products = [
       "/images/products/shooting-star/star-3.png"
     ],
     color: "#fef9db", // Soft creamy pastel lemon yellow
-    price: 4.49,
-    description: "A sweet crochet star with an embroidered smile and a pastel rainbow tail in lilac, pink, and aqua green. Approx. 8 cm, 3.0 mm hook.",
-    badge: "Keychain Pattern",
-    tag: "Instant Download",
+    price: 0.00,
+    description: "A sweet crochet star with an embroidered smile and a pastel rainbow tail in lilac, pink, and aqua green. Approx. 8 cm, 3.0 mm hook. Permanently 100% free digital download.",
+    badge: "100% Free Pattern",
+    tag: "Free PDF",
     pages: 6,
     terms: "US Terms",
     formats: ["PDF"],
-    bestseller: true,
+    bestseller: false,
     size: "Approx. 8 cm",
     hook: "3.0 mm",
     materials: [

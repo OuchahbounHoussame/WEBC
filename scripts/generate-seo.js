@@ -24,8 +24,8 @@ function getProductSEO(product) {
     seoTitle = `Space Crewmate Amigurumi Crochet Pattern | CozyStitches`;
     seoDescription = `Crochet your own space crewmate with this 6-page digital PDF amigurumi pattern. Includes US terms, step-by-step photos, backpack, visor & highlight details.`;
   } else if (product.id === 2) {
-    seoTitle = `Shooting Star Keychain Crochet Pattern | CozyStitches`;
-    seoDescription = `Create a cute pastel shooting star keychain with this 6-page digital PDF crochet pattern. Includes US terms, photo tutorial, and rainbow tail assembly.`;
+    seoTitle = `Free Shooting Star Keychain Crochet Pattern PDF | CozyStitches`;
+    seoDescription = `Download the free Shooting Star Keychain crochet pattern PDF. Includes step-by-step photos, US terms, and pastel rainbow tail assembly. Instant email delivery.`;
   } else if (product.id === 3) {
     seoTitle = `Crochet Glasses Holder PDF Pattern | CozyStitches`;
     seoDescription = `Create adorable crochet glasses holders with this downloadable PDF pattern. Explore step-by-step instructions and start your next crochet project.`;
@@ -63,10 +63,10 @@ function getProductSEO(product) {
       "@type": "Offer",
       "url": canonicalUrl,
       "priceCurrency": "USD",
-      "price": Number(product.price).toFixed(2),
+      "price": (product.id === 2 || product.isFree) ? "0.00" : Number(product.price).toFixed(2),
       "priceValidUntil": "2027-12-31",
       "itemCondition": "https://schema.org/NewCondition",
-      "availability": product.soldOut ? "https://schema.org/OutOfStock" : "https://schema.org/InStock",
+      "availability": (product.id === 2 || product.isFree) ? "https://schema.org/InStock" : (product.soldOut ? "https://schema.org/OutOfStock" : "https://schema.org/InStock"),
       "seller": {
         "@type": "Organization",
         "name": "CozyStitches",
@@ -264,9 +264,13 @@ function prerenderProductPages(templateHtml) {
             <div style="font-size: 14px; color: #7f6885; margin: 8px 0 14px;">
               📄 Instant Download PDF &bull; 🪡 ${product.terms || 'US Terms'} &bull; 📐 ${product.hook || '3.0 mm'} Hook
             </div>
+            ${product.id === 2 || product.isFree ? `
+            <div style="font-size: 26px; font-weight: 800; color: #059669; margin-bottom: 16px;">
+              100% FREE PDF
+            </div>` : `
             <div style="font-size: 26px; font-weight: 800; color: #be6c87; margin-bottom: 16px;">
-              $${Number(product.price).toFixed(2)} USD
-            </div>
+              ${Number(product.price).toFixed(2)} USD
+            </div>`}
             <p style="font-size: 15px; line-height: 1.6; color: #554458;">${product.description}</p>
             <div style="background: #fdf8fa; border: 1px solid #f2e1ea; border-radius: 12px; padding: 16px; margin: 20px 0;">
               <p style="margin: 4px 0;"><strong>📄 File Format:</strong> Instant Download PDF (${product.pages || 6} pages with step photos)</p>
@@ -277,6 +281,13 @@ function prerenderProductPages(templateHtml) {
             ${materialsHtml ? `<div style="margin-top: 20px;"><h3 style="color: #482750; font-size: 16px;">Materials Required:</h3><ul style="color: #554458; line-height: 1.6;">${materialsHtml}</ul></div>` : ''}
             ${sectionsHtml ? `<div style="margin-top: 20px;"><h3 style="color: #482750; font-size: 16px;">Pattern Sections:</h3><ul style="color: #554458; line-height: 1.6;">${sectionsHtml}</ul></div>` : ''}
             ${(() => {
+              if (product.id === 2 || product.isFree) {
+                return `<div style="margin-top: 28px;">
+                  <a href="/#freebie" style="display: inline-block; background: #059669; color: #ffffff; padding: 14px 28px; border-radius: 50px; font-weight: 700; text-decoration: none; font-size: 15px; box-shadow: 0 4px 14px rgba(5,150,105,0.3);">
+                    Get Free PDF Pattern
+                  </a>
+                </div>`;
+              }
               if (product.soldOut) {
                 return `<div style="margin-top: 28px;">
                   <span style="display: inline-block; background: #e0d5e2; color: #7f6885; padding: 14px 28px; border-radius: 50px; font-weight: 700; font-size: 15px;">

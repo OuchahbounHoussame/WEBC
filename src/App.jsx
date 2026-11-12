@@ -123,6 +123,12 @@ export default function App() {
   };
 
   const handleBuyNow = (product) => {
+    if (product?.isFree || product?.id === 2) {
+      const el = document.getElementById('freebie');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      else window.location.href = '/#freebie';
+      return;
+    }
     if (product?.soldOut) return;
     if (product && product.buyUrl) {
       window.location.href = product.buyUrl;
@@ -146,6 +152,12 @@ export default function App() {
   }, [purchasedOrders]);
 
   const addToCart = (product) => {
+    if (product?.isFree || product?.id === 2) {
+      const el = document.getElementById('freebie');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      else window.location.href = '/#freebie';
+      return;
+    }
     if (product?.soldOut) return;
     if (!cart.find((p) => p.id === product.id)) {
       setCart((prev) => [...prev, product]);

@@ -19,8 +19,8 @@ export function getProductSEOMetadata(product) {
     seoTitle = `Space Crewmate Amigurumi Crochet Pattern | CozyStitches`;
     seoDescription = `Crochet your own space crewmate with this 6-page digital PDF amigurumi pattern. Includes US terms, step-by-step photos, backpack, visor & highlight details.`;
   } else if (product.id === 2) {
-    seoTitle = `Shooting Star Keychain Crochet Pattern | CozyStitches`;
-    seoDescription = `Create a cute pastel shooting star keychain with this 6-page digital PDF crochet pattern. Includes US terms, photo tutorial, and rainbow tail assembly.`;
+    seoTitle = `Free Shooting Star Keychain Crochet Pattern PDF | CozyStitches`;
+    seoDescription = `Download the free Shooting Star Keychain crochet pattern PDF. Includes step-by-step photos, US terms, and pastel rainbow tail assembly. Instant email delivery.`;
   } else if (product.id === 3) {
     seoTitle = `Crochet Glasses Holder PDF Pattern | CozyStitches`;
     seoDescription = `Create adorable crochet glasses holders with this downloadable PDF pattern. Explore step-by-step instructions and start your next crochet project.`;
@@ -58,10 +58,10 @@ export function getProductSEOMetadata(product) {
       "@type": "Offer",
       "url": canonicalUrl,
       "priceCurrency": "USD",
-      "price": Number(product.price).toFixed(2),
+      "price": (product.id === 2 || product.isFree) ? "0.00" : Number(product.price).toFixed(2),
       "priceValidUntil": "2027-12-31",
       "itemCondition": "https://schema.org/NewCondition",
-      "availability": product.soldOut ? "https://schema.org/OutOfStock" : "https://schema.org/InStock",
+      "availability": (product.id === 2 || product.isFree) ? "https://schema.org/InStock" : (product.soldOut ? "https://schema.org/OutOfStock" : "https://schema.org/InStock"),
       "seller": {
         "@type": "Organization",
         "name": "CozyStitches",

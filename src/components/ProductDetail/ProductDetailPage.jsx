@@ -14,7 +14,8 @@ import {
   Printer,
   Layers,
   Heart,
-  Scissors
+  Scissors,
+  Gift
 } from 'lucide-react';
 import { ProductIcon } from '../Icons/CrochetIcons';
 import './ProductDetailPage.css';
@@ -150,7 +151,11 @@ export default function ProductDetailPage({ product, onAddToCart, onBuyNow, onBa
           {/* Pricing Row */}
           <div className="pdp-price-box">
             <div className="pdp-price-wrap">
-              <span className="pdp-current-price">${product.price.toFixed(2)} USD</span>
+              {product.isFree || product.id === 2 ? (
+                <span className="pdp-current-price" style={{ color: '#059669', fontWeight: 800 }}>100% FREE</span>
+              ) : (
+                <span className="pdp-current-price">${product.price.toFixed(2)} USD</span>
+              )}
             </div>
           </div>
 

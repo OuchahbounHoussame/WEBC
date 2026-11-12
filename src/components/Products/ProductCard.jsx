@@ -51,7 +51,12 @@ export default function ProductCard({ product, onAddToCart, onViewProduct }) {
           )}
         </div>
 
-        {product.soldOut ? (
+        {product.isFree || product.id === 2 ? (
+          <div className="pc-ribbon" style={{ background: '#10b981', color: '#ffffff' }}>
+            <Sparkles size={11} className="pc-ribbon-icon" />
+            <span>100% Free</span>
+          </div>
+        ) : product.soldOut ? (
           <div className="pc-ribbon" style={{ background: '#7f6885', color: '#ffffff' }}>
             <span>Sold Out</span>
           </div>
@@ -108,7 +113,9 @@ export default function ProductCard({ product, onAddToCart, onViewProduct }) {
       <div className="pc-body">
         {/* Badges row */}
         <div className="pc-badges">
-          {product.soldOut ? (
+          {product.isFree || product.id === 2 ? (
+            <span className="pc-badge-type" style={{ background: '#ecfdf5', color: '#059669', fontWeight: 700 }}>100% Free Pattern</span>
+          ) : product.soldOut ? (
             <span className="pc-badge-type" style={{ background: '#ebd9ea', color: '#7f6885' }}>Sold Out</span>
           ) : (
             <span className="pc-badge-type">{product.badge}</span>
