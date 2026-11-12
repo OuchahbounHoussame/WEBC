@@ -49,10 +49,6 @@ export default function Freebie() {
         throw new Error(data.message || 'We could not send your pattern right now. Please try again.');
       }
 
-      if (data.downloadUrl) {
-        setDownloadUrl(data.downloadUrl);
-      }
-
       // Track successful request without PII
       try {
         track('free_pattern_success', { has_marketing_consent: marketingConsent });
