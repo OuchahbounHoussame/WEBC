@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import Navbar       from './components/Navbar/Navbar';
 import Hero         from './components/Hero/Hero';
 import TrustBar     from './components/TrustBar/TrustBar';
@@ -250,6 +251,7 @@ export default function App() {
       />
       <BackToTop />
       <Analytics />
+      <SpeedInsights />
     </>
   );
 }
