@@ -19,24 +19,40 @@ export function maskEmail(email) {
 const BREVO_API_URL = 'https://api.brevo.com/v3';
 
 function getBrevoApiKey() {
-  return process.env.BREVO_API_KEY || '';
+  return (process.env.BREVO_API_KEY || '').trim();
+}
+
+/**
+ * Extracts pure email address from strings like:
+ * - "CozyStitches <hello@shopcozystitches.com>"
+ * - "\"hello@shopcozystitches.com\""
+ * - "hello@shopcozystitches.com"
+ */
+export function extractPureEmail(raw) {
+  if (!raw || typeof raw !== 'string') return '';
+  const match = raw.match(/<([^>]+)>/);
+  const candidate = (match ? match[1] : raw).replace(/['"\s]/g, '').trim().toLowerCase();
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(candidate) ? candidate : '';
 }
 
 /**
  * Verified sender details for CozyStitches
- * Enforces verified domain hello@shopcozystitches.com to ensure DKIM/DMARC alignment
+ * Enforces verified domain hello@shopcozystitches.com to ensure DKIM/DMARC alignment.
  */
 export function getSender() {
-  const envEmail = process.env.BREVO_SENDER_EMAIL || process.env.EMAIL_FROM_ADDRESS;
-  // Guard against unauthenticated/stale Gmail addresses that land in Spam or fail DMARC
-  const email = (envEmail && !envEmail.toLowerCase().includes('@gmail.com'))
-    ? envEmail.trim()
+  const envRaw = process.env.BREVO_SENDER_EMAIL || process.env.EMAIL_FROM_ADDRESS || process.env.EMAIL_FROM;
+  const parsed = extractPureEmail(envRaw);
+
+  // If parsed email is a Gmail address, empty, or unverified, enforce verified domain sender
+  const email = (parsed && !parsed.includes('@gmail.com'))
+    ? parsed
     : 'hello@shopcozystitches.com';
 
-  return {
-    name: (process.env.BREVO_SENDER_NAME || 'CozyStitches').trim(),
-    email
-  };
+  const nameRaw = process.env.BREVO_SENDER_NAME || 'CozyStitches';
+  const name = nameRaw.replace(/['"]/g, '').trim() || 'CozyStitches';
+
+  return { name, email };
 }
 
 /**
@@ -44,7 +60,8 @@ export function getSender() {
  */
 export async function sendBrevoTransactionalEmail({ to, subject, html, text }) {
   const apiKey = getBrevoApiKey();
-  const masked = maskEmail(to);
+  const cleanTo = extractPureEmail(to);
+  const masked = maskEmail(cleanTo || to);
   const sender = getSender();
 
   if (!apiKey) {
@@ -57,13 +74,23 @@ export async function sendBrevoTransactionalEmail({ to, subject, html, text }) {
     };
   }
 
+  if (!cleanTo) {
+    return {
+      success: false,
+      error: 'Invalid recipient email format'
+    };
+  }
+
   const payload = {
-    sender,
+    sender: {
+      name: sender.name,
+      email: sender.email
+    },
     replyTo: {
       name: sender.name,
       email: sender.email
     },
-    to: [{ email: to.trim() }],
+    to: [{ email: cleanTo }],
     subject,
     htmlContent: html,
     textContent: text || 'Your free pattern is ready to download.',
@@ -89,7 +116,7 @@ export async function sendBrevoTransactionalEmail({ to, subject, html, text }) {
 
     if (!res.ok) {
       const errorMsg = data?.message || `Brevo returned HTTP ${res.status}`;
-      console.error(`[Brevo] ❌ Transactional send failed for ${masked}: ${errorMsg}`);
+      console.error(`[Brevo] ❌ Transactional send failed for ${masked}: ${errorMsg} (Code: ${data?.code || res.status})`);
       return {
         success: false,
         error: errorMsg,
@@ -123,7 +150,8 @@ export async function sendBrevoTransactionalEmail({ to, subject, html, text }) {
  */
 export async function subscribeBrevoContact({ email, attributes = {}, doubleOptin = false, siteUrl = 'https://www.shopcozystitches.com' }) {
   const apiKey = getBrevoApiKey();
-  const masked = maskEmail(email);
+  const cleanEmail = extractPureEmail(email);
+  const masked = maskEmail(cleanEmail || email);
 
   if (!apiKey) {
     console.log(`[Brevo] ℹ️ BREVO_API_KEY not configured. Simulating contact subscription for ${masked}.`);
@@ -132,6 +160,10 @@ export async function subscribeBrevoContact({ email, attributes = {}, doubleOpti
       simulated: true,
       provider: 'brevo_simulated'
     };
+  }
+
+  if (!cleanEmail) {
+    return { success: false, error: 'Invalid email' };
   }
 
   const listId = process.env.BREVO_LIST_ID ? Number(process.env.BREVO_LIST_ID) : null;
@@ -150,7 +182,7 @@ export async function subscribeBrevoContact({ email, attributes = {}, doubleOpti
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          email,
+          email: cleanEmail,
           includeListIds: [listId],
           templateId: doiTemplateId,
           redirectionUrl: `${siteUrl.replace(/\/$/, '')}/?optin=confirmed`,
@@ -176,7 +208,7 @@ export async function subscribeBrevoContact({ email, attributes = {}, doubleOpti
 
   // Standard Direct List Subscription
   const payload = {
-    email,
+    email: cleanEmail,
     updateEnabled: true,
     attributes: {
       CONSENT_TIMESTAMP: attributes.consentTimestamp || new Date().toISOString(),
@@ -226,15 +258,20 @@ export async function subscribeBrevoContact({ email, attributes = {}, doubleOpti
  */
 export async function unsubscribeBrevoContact(email) {
   const apiKey = getBrevoApiKey();
-  const masked = maskEmail(email);
+  const cleanEmail = extractPureEmail(email);
+  const masked = maskEmail(cleanEmail || email);
 
   if (!apiKey) {
     console.log(`[Brevo] Simulating unsubscribe for ${masked}`);
     return { success: true, simulated: true };
   }
 
+  if (!cleanEmail) {
+    return { success: false, error: 'Invalid email' };
+  }
+
   try {
-    const encoded = encodeURIComponent(email);
+    const encoded = encodeURIComponent(cleanEmail);
     const res = await fetch(`${BREVO_API_URL}/contacts/${encoded}`, {
       method: 'PUT',
       headers: {
