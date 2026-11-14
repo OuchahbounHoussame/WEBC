@@ -7,7 +7,7 @@ export const products = [
     skill: "intermediate",
     iconKey: "bunny",
     soldOut: false,
-    buyUrl: "https://cozy-stitches-crochet-shop.fourthwall.com/",
+    buyUrl: "https://cozy-stitches-crochet-shop.fourthwall.com/cart/checkout?products=9755bfdc-b748-4b40-915c-69d4452c19c1:1&currency=USD",
     primaryImage: "/images/products/kroha-bunny/bunny-1.jpg",
     images: [
       "/images/products/kroha-bunny/bunny-1.jpg",
