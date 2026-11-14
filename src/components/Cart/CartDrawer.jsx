@@ -296,7 +296,7 @@ export default function CartDrawer({
               {orderResult.downloads.map((dl) => (
                 <div key={dl.productId} className="cart-dl-item">
                   <div className="cdl-thumb" style={{ background: '#fdf0f4' }}>
-                    <ProductIcon iconKey={dl.productId === 1 ? 'crewmate' : dl.productId === 2 ? 'star' : 'glasses'} size={38} />
+                    <ProductIcon iconKey={dl.productId === 1 ? 'bunny' : dl.productId === 2 ? 'star' : 'glasses'} size={38} />
                   </div>
                   <div className="cdl-info">
                     <strong>{dl.productName}</strong>
@@ -360,7 +360,7 @@ export default function CartDrawer({
                   {allPurchasedDownloads.map((dl, idx) => (
                     <div key={`${dl.orderId}-${dl.productId}-${idx}`} className="cart-dl-item">
                       <div className="cdl-thumb" style={{ background: '#fdf0f4' }}>
-                        <ProductIcon iconKey={dl.productId === 1 ? 'crewmate' : dl.productId === 2 ? 'star' : 'glasses'} size={38} />
+                        <ProductIcon iconKey={dl.productId === 1 ? 'bunny' : dl.productId === 2 ? 'star' : 'glasses'} size={38} />
                       </div>
                       <div className="cdl-info">
                         <strong>{dl.productName}</strong>

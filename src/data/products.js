@@ -1,43 +1,49 @@
 export const products = [
   {
     id: 1,
-    name: "Sus Space Crewmate",
-    slug: "sus-space-crewmate",
+    name: "Kroha Bunny Plush & Keychain",
+    slug: "kroha-bunny",
     category: "amigurumi",
     skill: "intermediate",
-    iconKey: "crewmate",
-    soldOut: true,
-    primaryImage: "/images/products/crewmate/crewmate-1.png",
+    iconKey: "bunny",
+    soldOut: false,
+    buyUrl: "https://cozy-stitches-crochet-shop.fourthwall.com/",
+    primaryImage: "/images/products/kroha-bunny/bunny-1.jpg",
     images: [
-      "/images/products/crewmate/crewmate-1.png",
-      "/images/products/crewmate/crewmate-2.png",
-      "/images/products/crewmate/crewmate-3.png",
-      "/images/products/crewmate/crewmate-4.png"
+      "/images/products/kroha-bunny/bunny-1.jpg",
+      "/images/products/kroha-bunny/bunny-2.jpg",
+      "/images/products/kroha-bunny/bunny-3.jpg",
+      "/images/products/kroha-bunny/bunny-4.jpg"
     ],
-    color: "#fee6ea", // Delicate blush pastel to showcase the vibrant red crewmate
-    price: 4.99,
-    description: "A clear, ready-to-make crochet character with body, backpack, visor and white highlight. Approx. 9 cm tall, 3.0 mm hook.",
-    badge: "Amigurumi Pattern",
+    color: "#e8f7ee", // Delicate soft mint pastel
+    price: 3.99,
+    description: "An adorable plush amigurumi bunny pattern with 2-in-1 sizing: a 9 cm mini keychain or a 17 cm huggable plush toy. Includes step-by-step photos for sculpted facial details, floppy ears, and sweet bow tie.",
+    badge: "Plush & Keychain",
     tag: "Instant Download",
-    pages: 6,
+    pages: 17,
     terms: "US Terms",
     formats: ["PDF"],
     bestseller: true,
-    size: "Approx. 9 cm",
-    hook: "3.0 mm",
+    size: "9 cm (Keychain) / 17 cm (Plush Toy)",
+    hook: "2.0 mm (Keychain) & 3.5 mm (Plush Toy)",
     materials: [
-      "Medium cotton yarn: red, light blue, black, white",
-      "3.0 mm crochet hook",
-      "Polyester stuffing",
-      "Yarn needle & scissors",
-      "Stitch marker"
+      "YarnArt Dolce Baby yarn (for 9 cm keychain, 1 skein, 100% micro-polyester, 50g / 85m)",
+      "Himalaya Dolphin Baby plush yarn (for 17 cm plush toy, 1 skein, 100% polyester, 100g / 120m)",
+      "Crochet hooks: 2.0 mm (keychain) or 3.5 mm (plush toy)",
+      "Hollofibre or polyester fiberfill stuffing",
+      "1 pair plastic safety eyes / beads (and strong thread for sculpting)",
+      "Black embroidery thread for nose, mouth and eye indentations",
+      "Yarn needle (tapestry & long doll needle) & scissors",
+      "Keychain clasp or lobster claw attachment",
+      "Optional: yellow polka-dot ribbon & clover charm for neckline"
     ],
     sections: [
-      "Materials & Abbreviations",
-      "Body (Red yarn - continuous rounds)",
-      "Backpack (Red yarn)",
-      "Visor (Light blue) & Black outline",
-      "White highlight & Key step photos"
+      "Materials, Sizing & Abbreviations",
+      "Legs & Lower Body Join (Seamless spiral)",
+      "Upper Torso, Arm Attachment & Head",
+      "Floppy Ears & Tail",
+      "Facial Sculpting, Eye Deepening & Embroidery",
+      "Assembly, Ribbon Bow & Keychain Clasp"
     ],
     patternGuide: {
       abbreviations: [
@@ -46,54 +52,45 @@ export const products = [
         { code: "sc", meaning: "Single crochet" },
         { code: "inc", meaning: "Increase (2 sc in one stitch)" },
         { code: "dec", meaning: "Invisible decrease" },
-        { code: "BLO", meaning: "Back loop only" }
+        { code: "sl st", meaning: "Slip stitch" }
       ],
       steps: [
         {
-          title: "1. Body (Red Yarn)",
-          note: "Crochet in continuous rounds. Stuff as you go. Use a stitch marker at the start of each round.",
+          title: "1. Legs & Lower Body (Worked Bottom-Up)",
+          note: "Work in continuous spiral. Stuff legs lightly as you go.",
           rounds: [
-            "R1: 6 sc in MR (6)",
-            "R2: 6 inc (12)",
-            "R3: (1 sc, inc) x 6 (18)",
-            "R4: (2 sc, inc) x 6 (24)",
-            "R5: (3 sc, inc) x 6 (30)",
-            "R6 - R12: 30 sc (30)",
-            "R13: (3 sc, dec) x 6 (24)",
-            "R14: (2 sc, dec) x 6 (18)",
-            "R15: (1 sc, dec) x 6 (12)",
-            "R16: 6 dec, fasten off and leave a tail (6)"
-          ],
-          finishing: "Close the opening with a yarn needle. Shape the legs gently and spread the stuffing evenly before pulling the yarn tight."
+            "Leg 1: R1 6 sc in MR [6], R2 6 inc [12], R3-4 12 sc [12]. Fasten off.",
+            "Leg 2: Repeat R1-4, do not cut yarn. Chain 1 and join to Leg 1.",
+            "R5: 12 sc on Leg 1, 1 sc in chain, 12 sc on Leg 2, 1 sc in chain [26]",
+            "R6-10: Work 26 sc in continuous rounds, building the tummy.",
+            "Stuff the bottom and lower tummy firmly before continuing."
+          ]
         },
         {
-          title: "2. Backpack (Red Yarn)",
+          title: "2. Upper Torso & Arm Join",
           rounds: [
-            "R1: 5 sc in MR (5)",
-            "R2: 5 inc (10)",
-            "R3 - R5: 10 sc (10)"
-          ],
-          finishing: "Fasten off, leaving a tail. Sew onto the center back of the body."
+            "Arms (make 2): R1 5 sc in MR [5], R2 5 inc [10], R3-6 10 sc [10]. Fold flat and crochet 4 sc through both layers.",
+            "Body continuation: R11-13 Work gradual decrease rounds to shape waist and chest.",
+            "R14: Crochet arms directly into the body round on each side to eliminate sewing.",
+            "R15: Shape neck opening, stuff upper torso."
+          ]
         },
         {
-          title: "3. Visor & Outline (Light Blue + Black Yarn)",
+          title: "3. Head & Floppy Ears",
           rounds: [
-            "R1: 6 sc in MR (6)",
-            "R2: 6 inc (12)",
-            "R3: (1 sc, inc) x 6 (18)",
-            "R4: (2 sc, inc) x 6 (24)",
-            "R5: 24 sc (24)"
-          ],
-          outline: "Black outline: Make a chain long enough to go around the visor. Form an oval, join, then sew it around the blue piece.",
-          highlight: "White highlight: Make 6 sc in MR. Fasten off, flatten slightly, and sew onto the upper right of the visor."
+            "Head: Continue upwards from neck with increase rounds to 30 sc. Work 5 even rounds.",
+            "Insert safety eyes between rows 6 and 7 of head, spaced 5 stitches apart.",
+            "Gradually decrease and close top of head, stuffing firmly.",
+            "Ears (make 2): R1 6 sc in MR, R2 (1 sc, inc) x 3 [9], R3-8 9 sc. Pinch base and sew to top of head."
+          ]
         },
         {
-          title: "4. Assembly Order",
+          title: "4. Facial Needle Sculpting & Keychain Clasp",
           points: [
-            "1. Sew the backpack to the center back.",
-            "2. Position the visor in the center front of the body.",
-            "3. Sew on the black outline, then the blue visor inside it.",
-            "4. Add the small white highlight and weave in all ends."
+            "1. Needle sculpting: Pass strong thread through back of neck to inner corners of eyes. Pull gently to create deep, expressive eye sockets.",
+            "2. Muzzle embroidery: Embroider horizontal nose line and vertical drop mouth in black thread.",
+            "3. Tail & Clasp: Sew round pom-pom tail at lower back. Attach sturdy lobster clasp to head center between ears.",
+            "4. Finishing touch: Tie yellow polka-dot ribbon around the neck with a miniature clover charm."
           ]
         }
       ]
@@ -400,103 +397,6 @@ export const products = [
         }
       ]
     }
-  },
-  {
-    id: 5,
-    name: "Kroha Bunny Plush & Keychain",
-    slug: "kroha-bunny",
-    category: "amigurumi",
-    skill: "intermediate",
-    iconKey: "bunny",
-    soldOut: false,
-    buyUrl: "https://cozy-stitches-crochet-shop.fourthwall.com/",
-    primaryImage: "/images/products/kroha-bunny/bunny-1.jpg",
-    images: [
-      "/images/products/kroha-bunny/bunny-1.jpg",
-      "/images/products/kroha-bunny/bunny-2.jpg",
-      "/images/products/kroha-bunny/bunny-3.jpg",
-      "/images/products/kroha-bunny/bunny-4.jpg"
-    ],
-    color: "#e8f7ee", // Delicate soft mint pastel
-    price: 3.99,
-    description: "An adorable plush amigurumi bunny pattern with 2-in-1 sizing: a 9 cm mini keychain or a 17 cm huggable plush toy. Includes step-by-step photos for sculpted facial details, floppy ears, and sweet bow tie.",
-    badge: "Plush & Keychain",
-    tag: "Instant Download",
-    pages: 17,
-    terms: "US Terms",
-    formats: ["PDF"],
-    bestseller: false,
-    size: "9 cm (Keychain) / 17 cm (Plush Toy)",
-    hook: "2.0 mm (Keychain) & 3.5 mm (Plush Toy)",
-    materials: [
-      "YarnArt Dolce Baby yarn (for 9 cm keychain, 1 skein, 100% micro-polyester, 50g / 85m)",
-      "Himalaya Dolphin Baby plush yarn (for 17 cm plush toy, 1 skein, 100% polyester, 100g / 120m)",
-      "Crochet hooks: 2.0 mm (keychain) or 3.5 mm (plush toy)",
-      "Hollofibre or polyester fiberfill stuffing",
-      "1 pair plastic safety eyes / beads (and strong thread for sculpting)",
-      "Black embroidery thread for nose, mouth and eye indentations",
-      "Yarn needle (tapestry & long doll needle) & scissors",
-      "Keychain clasp or lobster claw attachment",
-      "Optional: yellow polka-dot ribbon & clover charm for neckline"
-    ],
-    sections: [
-      "Materials, Sizing & Abbreviations",
-      "Legs & Lower Body Join (Seamless spiral)",
-      "Upper Torso, Arm Attachment & Head",
-      "Floppy Ears & Tail",
-      "Facial Sculpting, Eye Deepening & Embroidery",
-      "Assembly, Ribbon Bow & Keychain Clasp"
-    ],
-    patternGuide: {
-      abbreviations: [
-        { code: "MR", meaning: "Magic ring" },
-        { code: "ch", meaning: "Chain" },
-        { code: "sc", meaning: "Single crochet" },
-        { code: "inc", meaning: "Increase (2 sc in one stitch)" },
-        { code: "dec", meaning: "Invisible decrease" },
-        { code: "sl st", meaning: "Slip stitch" }
-      ],
-      steps: [
-        {
-          title: "1. Legs & Lower Body (Worked Bottom-Up)",
-          note: "Work in continuous spiral. Stuff legs lightly as you go.",
-          rounds: [
-            "Leg 1: R1 6 sc in MR [6], R2 6 inc [12], R3-4 12 sc [12]. Fasten off.",
-            "Leg 2: Repeat R1-4, do not cut yarn. Chain 1 and join to Leg 1.",
-            "R5: 12 sc on Leg 1, 1 sc in chain, 12 sc on Leg 2, 1 sc in chain [26]",
-            "R6-10: Work 26 sc in continuous rounds, building the tummy.",
-            "Stuff the bottom and lower tummy firmly before continuing."
-          ]
-        },
-        {
-          title: "2. Upper Torso & Arm Join",
-          rounds: [
-            "Arms (make 2): R1 5 sc in MR [5], R2 5 inc [10], R3-6 10 sc [10]. Fold flat and crochet 4 sc through both layers.",
-            "Body continuation: R11-13 Work gradual decrease rounds to shape waist and chest.",
-            "R14: Crochet arms directly into the body round on each side to eliminate sewing.",
-            "R15: Shape neck opening, stuff upper torso."
-          ]
-        },
-        {
-          title: "3. Head & Floppy Ears",
-          rounds: [
-            "Head: Continue upwards from neck with increase rounds to 30 sc. Work 5 even rounds.",
-            "Insert safety eyes between rows 6 and 7 of head, spaced 5 stitches apart.",
-            "Gradually decrease and close top of head, stuffing firmly.",
-            "Ears (make 2): R1 6 sc in MR, R2 (1 sc, inc) x 3 [9], R3-8 9 sc. Pinch base and sew to top of head."
-          ]
-        },
-        {
-          title: "4. Facial Needle Sculpting & Keychain Clasp",
-          points: [
-            "1. Needle sculpting: Pass strong thread through back of neck to inner corners of eyes. Pull gently to create deep, expressive eye sockets.",
-            "2. Muzzle embroidery: Embroider horizontal nose line and vertical drop mouth in black thread.",
-            "3. Tail & Clasp: Sew round pom-pom tail at lower back. Attach sturdy lobster clasp to head center between ears.",
-            "4. Finishing touch: Tie yellow polka-dot ribbon around the neck with a miniature clover charm."
-          ]
-        }
-      ]
-    }
   }
 ];
 
@@ -519,8 +419,8 @@ export const testimonials = [
     initial: "A",
     location: "Seattle, WA",
     rating: 5,
-    text: "Crocheted the Sus Space Crewmate in one afternoon! The visor and backpack instructions are crystal clear with great step photos. My gamer nephew loved it!",
-    project: "Sus Space Crewmate",
+    text: "Crocheted the Kroha Bunny in an afternoon! The 2-in-1 sizing and facial sculpting guide made the little bunny keychain turn out so precious on my backpack.",
+    project: "Kroha Bunny Plush & Keychain",
     featured: true,
   },
   {

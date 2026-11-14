@@ -21,8 +21,8 @@ function getProductSEO(product) {
   let seoDescription = product.description;
 
   if (product.id === 1) {
-    seoTitle = `Space Crewmate Amigurumi Crochet Pattern | CozyStitches`;
-    seoDescription = `Crochet your own space crewmate with this 6-page digital PDF amigurumi pattern. Includes US terms, step-by-step photos, backpack, visor & highlight details.`;
+    seoTitle = `Kroha Bunny Plush & Keychain Crochet Pattern | CozyStitches`;
+    seoDescription = `Crochet your own sweet Kroha Bunny with this 17-page digital PDF pattern. Includes instructions for 9 cm keychain & 17 cm plush toy with step-by-step photos in US terms.`;
   } else if (product.id === 2) {
     seoTitle = `Free Shooting Star Keychain Crochet Pattern PDF | CozyStitches`;
     seoDescription = `Download the free Shooting Star Keychain crochet pattern PDF. Includes step-by-step photos, US terms, and pastel rainbow tail assembly. Instant email delivery.`;
@@ -32,9 +32,7 @@ function getProductSEO(product) {
   } else if (product.id === 4) {
     seoTitle = `Graduate Doll Amigurumi Crochet Pattern | CozyStitches`;
     seoDescription = `Handmade graduation keepsake amigurumi doll pattern. 11-page digital PDF tutorial with cap, gold tassel, gown, diploma scroll and floral bouquet in US terms.`;
-  } else if (product.id === 5) {
-    seoTitle = `Kroha Bunny Plush & Keychain Crochet Pattern | CozyStitches`;
-    seoDescription = `Crochet your own sweet Kroha Bunny with this 17-page digital PDF pattern. Includes instructions for 9 cm keychain & 17 cm plush toy with step-by-step photos in US terms.`;
+
   }
 
   const canonicalUrl = `${SITE_URL}/product/${product.id}`;
@@ -421,5 +419,12 @@ if (fs.existsSync(distIndex)) {
 } else {
   console.warn('! dist/index.html not found, prerender skipped (will run post-build).');
 }
+
+// Legacy alias: /product/5 -> /product/1
+const p5Dir = path.join(rootDir, 'dist', 'product', '5');
+if (!fs.existsSync(p5Dir)) fs.mkdirSync(p5Dir, { recursive: true });
+const redirectHtml = '<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url=/product/1"><link rel="canonical" href="https://www.shopcozystitches.com/product/1"></head><body><script>window.location.replace("/product/1");</script></body></html>';
+fs.writeFileSync(path.join(p5Dir, 'index.html'), redirectHtml, 'utf8');
+fs.writeFileSync(path.join(rootDir, 'dist', 'product', '5.html'), redirectHtml, 'utf8');
 
 console.log('[SEO Generator] Completed successfully! 🎉');
