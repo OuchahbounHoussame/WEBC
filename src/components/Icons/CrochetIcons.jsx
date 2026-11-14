@@ -705,9 +705,125 @@ export function GraduateDollIcon({ size = 80 }) {
   );
 }
 
+// Kroha Bunny Amigurumi Vector (From Real PDF Pattern - Mint Plush, Ears, Ribbon Bow & Charm)
+export function KrohaBunnyIcon({ size = 80 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      {/* Soft floor shadow */}
+      <ellipse cx="50" cy="94" rx="26" ry="4" fill="#2d4a3e" fillOpacity="0.15" />
+
+      {/* Keychain ring & connector at top */}
+      <circle cx="50" cy="7" r="4.5" fill="none" stroke="#94a3b8" strokeWidth="1.5" />
+      <circle cx="50" cy="7" r="2.5" fill="none" stroke="#cbd5e1" strokeWidth="0.8" />
+      <path d="M50 11.5 L50 20" stroke="#94a3b8" strokeWidth="1.6" strokeLinecap="round" />
+      <circle cx="50" cy="18" r="1.6" fill="#64748b" />
+
+      {/* Bunny Ears */}
+      {/* Left Ear */}
+      <path
+        d="M42 24 C36 14 39 4 44 4 C49 4 51 13 47 24 Z"
+        fill="url(#bunnyMint)"
+        stroke="#7ca88e"
+        strokeWidth="1.3"
+      />
+      <path
+        d="M43 20 C40 14 41 8 44 8 C46 8 48 14 46 20 Z"
+        fill="#fecdd3"
+        fillOpacity="0.75"
+      />
+
+      {/* Right Ear */}
+      <path
+        d="M58 24 C53 13 55 4 60 4 C65 4 68 14 62 24 Z"
+        fill="url(#bunnyMint)"
+        stroke="#7ca88e"
+        strokeWidth="1.3"
+      />
+      <path
+        d="M59 20 C56 14 58 8 60 8 C62 8 64 14 61 20 Z"
+        fill="#fecdd3"
+        fillOpacity="0.75"
+      />
+
+      {/* Feet / Chubby bottom legs */}
+      <ellipse cx="43" cy="87" rx="6.5" ry="5.5" fill="url(#bunnyMint)" stroke="#7ca88e" strokeWidth="1.2" />
+      <ellipse cx="57" cy="87" rx="6.5" ry="5.5" fill="url(#bunnyMint)" stroke="#7ca88e" strokeWidth="1.2" />
+
+      {/* Chubby Plush Body */}
+      <ellipse cx="50" cy="71" rx="16.5" ry="17" fill="url(#bunnyMint)" stroke="#7ca88e" strokeWidth="1.3" />
+
+      {/* Little Arms */}
+      <path
+        d="M36 64 C25 66 21 70 24 74 C27 77 33 73 37 68 Z"
+        fill="url(#bunnyMint)"
+        stroke="#7ca88e"
+        strokeWidth="1.2"
+      />
+      <path
+        d="M64 64 C75 66 79 70 76 74 C73 77 67 73 63 68 Z"
+        fill="url(#bunnyMint)"
+        stroke="#7ca88e"
+        strokeWidth="1.2"
+      />
+
+      {/* Chubby Round Head */}
+      <ellipse cx="50" cy="38" rx="18" ry="16.5" fill="url(#bunnyMint)" stroke="#7ca88e" strokeWidth="1.3" />
+
+      {/* Cheeks */}
+      <ellipse cx="36" cy="42" rx="2.5" ry="1.4" fill="#fca5a5" fillOpacity="0.6" />
+      <ellipse cx="64" cy="42" rx="2.5" ry="1.4" fill="#fca5a5" fillOpacity="0.6" />
+
+      {/* Eyes (Black safety eyes with white shine) */}
+      <circle cx="41.5" cy="38" r="3.2" fill="#18231c" />
+      <circle cx="40.5" cy="37" r="1.1" fill="#ffffff" />
+      <circle cx="58.5" cy="38" r="3.2" fill="#18231c" />
+      <circle cx="57.5" cy="37" r="1.1" fill="#ffffff" />
+
+      {/* Embroidered Muzzle & Nose */}
+      <path d="M46 44 L54 44" stroke="#18231c" strokeWidth="1.4" strokeLinecap="round" />
+      <path d="M50 44 L50 49" stroke="#18231c" strokeWidth="1.4" strokeLinecap="round" />
+
+      {/* Yellow Polka-Dot Ribbon Bow & Charm */}
+      <g id="bow-tie">
+        {/* Left Bow Loop */}
+        <path d="M50 54 C44 48 37 50 38 56 C39 61 46 58 50 55 Z" fill="url(#bowGrad)" stroke="#d97706" strokeWidth="0.8" />
+        <circle cx="43" cy="54" r="0.9" fill="#ffffff" />
+        <circle cx="41" cy="57" r="0.8" fill="#ffffff" />
+
+        {/* Right Bow Loop */}
+        <path d="M50 54 C56 48 63 50 62 56 C61 61 54 58 50 55 Z" fill="url(#bowGrad)" stroke="#d97706" strokeWidth="0.8" />
+        <circle cx="57" cy="54" r="0.9" fill="#ffffff" />
+        <circle cx="59" cy="57" r="0.8" fill="#ffffff" />
+
+        {/* Center Knot */}
+        <ellipse cx="50" cy="54.5" rx="2.5" ry="2.2" fill="#f59e0b" stroke="#b45309" strokeWidth="0.8" />
+
+        {/* Silver Clover / Floral Charm */}
+        <circle cx="50" cy="59.5" r="2.2" fill="#e2e8f0" stroke="#94a3b8" strokeWidth="0.6" />
+        <circle cx="50" cy="59.5" r="0.8" fill="#475569" />
+      </g>
+
+      {/* Gradients */}
+      <defs>
+        <linearGradient id="bunnyMint" x1="30" y1="20" x2="70" y2="90" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#e3f8eb" />
+          <stop offset="0.6" stopColor="#c8edd4" />
+          <stop offset="1" stopColor="#a9deba" />
+        </linearGradient>
+        <linearGradient id="bowGrad" x1="38" y1="50" x2="62" y2="60" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#fef08a" />
+          <stop offset="1" stopColor="#facc15" />
+        </linearGradient>
+      </defs>
+    </svg>
+  );
+}
+
 // Helper to render matching vector artwork by key
 export function ProductIcon({ iconKey, size = 80 }) {
   switch (iconKey) {
+    case 'bunny':
+    case 'kroha-bunny':     return <KrohaBunnyIcon size={size} />;
     case 'graduate':
     case 'graduate-doll':   return <GraduateDollIcon size={size} />;
     case 'crewmate':

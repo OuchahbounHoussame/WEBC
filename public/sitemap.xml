@@ -3,13 +3,13 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://www.shopcozystitches.com/</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.shopcozystitches.com/product/1</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -20,7 +20,7 @@
   </url>
   <url>
     <loc>https://www.shopcozystitches.com/product/2</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -31,7 +31,7 @@
   </url>
   <url>
     <loc>https://www.shopcozystitches.com/product/3</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -42,13 +42,24 @@
   </url>
   <url>
     <loc>https://www.shopcozystitches.com/product/4</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
       <image:loc>https://www.shopcozystitches.com/images/products/graduate-doll/graduate-1.jpg</image:loc>
       <image:title><![CDATA[Graduate Doll Amigurumi Crochet Pattern PDF]]></image:title>
       <image:caption><![CDATA[Handmade graduation keepsake amigurumi doll pattern. 11-page digital PDF tutorial with cap, gold tassel, gown, diploma scroll and floral bouquet in US terms.]]></image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shopcozystitches.com/product/5</loc>
+    <lastmod>2026-11-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shopcozystitches.com/images/products/kroha-bunny/bunny-1.jpg</image:loc>
+      <image:title><![CDATA[Kroha Bunny Plush & Keychain Crochet Pattern PDF]]></image:title>
+      <image:caption><![CDATA[Crochet your own sweet Kroha Bunny with this 17-page digital PDF pattern. Includes instructions for 9 cm keychain & 17 cm plush toy with step-by-step photos in US terms.]]></image:caption>
     </image:image>
   </url>
 </urlset>

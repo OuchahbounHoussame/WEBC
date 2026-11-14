@@ -32,6 +32,9 @@ function getProductSEO(product) {
   } else if (product.id === 4) {
     seoTitle = `Graduate Doll Amigurumi Crochet Pattern | CozyStitches`;
     seoDescription = `Handmade graduation keepsake amigurumi doll pattern. 11-page digital PDF tutorial with cap, gold tassel, gown, diploma scroll and floral bouquet in US terms.`;
+  } else if (product.id === 5) {
+    seoTitle = `Kroha Bunny Plush & Keychain Crochet Pattern | CozyStitches`;
+    seoDescription = `Crochet your own sweet Kroha Bunny with this 17-page digital PDF pattern. Includes instructions for 9 cm keychain & 17 cm plush toy with step-by-step photos in US terms.`;
   }
 
   const canonicalUrl = `${SITE_URL}/product/${product.id}`;
