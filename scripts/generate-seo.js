@@ -632,6 +632,41 @@ function prerenderBlogPages(templateHtml) {
     ${(post.tags || []).map((k) => `<meta property="article:tag" content="${k}" />`).join('\n    ')}
     `;
 
+        const getInlinePinHtml = (pin, calloutText) => {
+      if (!pin) return '';
+      const pUrl = pin.directPinUrl && pin.directPinUrl.trim() !== ''
+        ? pin.directPinUrl
+        : `https://www.pinterest.com/pin/create/button/?url=${encodeURIComponent(postCanonical)}&media=${encodeURIComponent(SITE_URL + pin.pngFile)}&description=${encodeURIComponent(pin.description)}`;
+      return `
+        <aside style="margin: 36px 0; background: linear-gradient(135deg, #fffafd 0%, #fef5f8 100%); border: 1px solid #ebd9ea; border-radius: 16px; padding: 20px; display: flex; flex-wrap: wrap; align-items: center; gap: 20px; box-shadow: 0 4px 16px rgba(72,39,80,0.05);">
+          <div style="flex: 0 0 160px; max-width: 180px;">
+            <a href="${pUrl}" target="_blank" rel="noopener noreferrer" title="Save this pin to Pinterest" style="display: block; text-decoration: none; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 14px rgba(72,39,80,0.12);">
+              <picture>
+                <source srcset="${pin.webpFile}" type="image/webp" />
+                <img src="${pin.pngFile}" alt="${pin.alt}" width="${pin.width}" height="${pin.height}" style="width: 100%; height: auto; display: block;" loading="lazy" />
+              </picture>
+            </a>
+          </div>
+          <div style="flex: 1 1 240px;">
+            <div style="font-size: 12px; color: #e60023; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px;">
+              Save to Pinterest &bull; ${pin.board}
+            </div>
+            <a href="${pUrl}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
+              <h4 style="font-size: 18px; color: #482750; font-family: Georgia, serif; margin: 0 0 6px; cursor: pointer;">
+                ${pin.title}
+              </h4>
+            </a>
+            <p style="font-size: 14px; color: #554458; line-height: 1.55; margin: 0 0 14px;">
+              ${calloutText || pin.description}
+            </p>
+            <a href="${pUrl}" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: #e60023; color: #ffffff; padding: 9px 18px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 13px; box-shadow: 0 4px 12px rgba(230,0,35,0.25);">
+              Pin this project &rarr;
+            </a>
+          </div>
+        </aside>
+      `;
+    };
+
     // Semantic article body construction matching 01-Article-English.md
     const introHtml = (post.intro || [post.excerpt || post.description])
       .map((p) => `<p style="margin-bottom: 14px; font-size: 17px; line-height: 1.7; color: #3d2544;">${p.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</p>`)
@@ -686,7 +721,9 @@ function prerenderBlogPages(templateHtml) {
     ` : '';
 
     const patternStepsHtml = post.steps ? `
-      <section id="${post.patternAnchor || 'shooting-star-pattern'}" style="margin-bottom: 48px;">
+      ${post.saveForLater?.pins?.[0] ? getInlinePinHtml(post.saveForLater.pins[0], "Planning your next crochet session? Pin this free shooting star pattern to your Pinterest board so you don't lose it!") : ''}
+
+        <section id="${post.patternAnchor || 'shooting-star-pattern'}" style="margin-bottom: 48px;">
         <h2 style="font-size: 28px; color: #482750; font-family: Georgia, serif; border-bottom: 2px solid #fee6ea; padding-bottom: 10px; margin-bottom: 24px;">
           ${post.patternTitle || 'Free shooting star crochet pattern'}
         </h2>
@@ -723,6 +760,7 @@ function prerenderBlogPages(templateHtml) {
                 ${st.notes.map((n) => `<p style="margin: 4px 0;">${n}</p>`).join('')}
               </div>
             ` : ''}
+            ${st.number === 3 && post.saveForLater?.pins?.[2] ? getInlinePinHtml(post.saveForLater.pins[2], "Love this stepped pastel color combination? Pin this tutorial to your colorful crochet ideas board!") : ''}
           </div>
         `).join('')}
       </section>
@@ -850,6 +888,9 @@ function prerenderBlogPages(templateHtml) {
         </div>
       </div>
     `).join('');
+
+    
+
 
     const articleSemantic = `
       <div class="blog-post-container prerendered-static" style="max-width: 860px; margin: 0 auto; padding: 32px 16px;">
