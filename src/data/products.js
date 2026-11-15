@@ -415,7 +415,7 @@ export const products = [
       "/images/products/santa-claus/santa-4.jpg"
     ],
     color: "#fde8e8", // Soft warm holiday pastel
-    price: 4.99,
+    price: 3.99,
     description: "A cuddly Christmas amigurumi doll measuring approx. 27 cm tall. Features a lush loop-stitch beard, slouchy Santa hat with snowflake pin, fluffy cuffs, and 10 linked video demonstrations.",
     badge: "Holiday Special",
     tag: "Instant Download",
