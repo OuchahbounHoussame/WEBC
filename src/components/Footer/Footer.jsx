@@ -12,7 +12,7 @@ import Logo from '../Logo/Logo';
 import PrivacyPolicyModal from '../Privacy/PrivacyPolicyModal';
 import './Footer.css';
 
-export default function Footer() {
+export default function Footer({ onBlogClick }) {
   const [email, setEmail]   = useState('');
   const [sent,  setSent]    = useState(false);
   const [form,  setForm]    = useState({ name: '', email: '', topic: '', msg: '' });
@@ -130,9 +130,20 @@ export default function Footer() {
 
         <div className="fm-col">
           <h4>Learn &amp; Craft</h4>
-          {["Beginner's Guide", 'Stitch Library', 'Free Mini Pattern', 'US vs UK Terms', 'Crochet Journal'].map((l) => (
-            <a key={l} href="#">{l}</a>
-          ))}
+          <a
+            href="/blog"
+            onClick={(e) => {
+              e.preventDefault();
+              if (onBlogClick) onBlogClick();
+              else window.location.href = '/blog';
+            }}
+            style={{ fontWeight: 600, color: '#fbcfe8' }}
+          >
+            Crochet Blog &amp; Tutorials
+          </a>
+          <a href="/#freebie">Free Shooting Star Pattern</a>
+          <a href="/#how-it-works">How Downloads Work</a>
+          <a href="/#faq">US vs UK Terms FAQ</a>
         </div>
 
         <div className="fm-col">

@@ -13,8 +13,11 @@ import CartToast    from './components/CartToast/CartToast';
 import CartDrawer   from './components/Cart/CartDrawer';
 import ProductDetailPage from './components/ProductDetail/ProductDetailPage';
 import CheckoutPage from './components/Checkout/CheckoutPage';
+import BlogIndex from './components/Blog/BlogIndex';
+import BlogPostPage from './components/Blog/BlogPostPage';
 import BackToTop    from './components/BackToTop/BackToTop';
 import { products } from './data/products';
+import { getBlogPostBySlug } from './data/blogPosts';
 import './App.css';
 
 // URL Helper to resolve product from pathname (/product/:id or /checkout/:id) or query (?product=id)
@@ -38,6 +41,17 @@ function getProductFromUrl() {
 function isCheckoutFromUrl() {
   if (typeof window === 'undefined') return false;
   return window.location.pathname.startsWith('/checkout');
+}
+
+function getBlogSlugFromUrl() {
+  if (typeof window === 'undefined') return null;
+  const match = window.location.pathname.match(/^\/blog\/([^/]+)/);
+  return match ? match[1] : null;
+}
+
+function isBlogIndexFromUrl() {
+  if (typeof window === 'undefined') return false;
+  return window.location.pathname === '/blog' || window.location.pathname === '/blog/';
 }
 
 export default function App() {
@@ -65,9 +79,12 @@ export default function App() {
   const [cartInitialTab, setCartInitialTab] = useState('cart'); // 'cart' | 'downloads'
   const [toast, setToast] = useState({ visible: false, message: '' });
 
-  // Direct product routing state
+  // Direct product and blog routing state
   const [currentProduct, setCurrentProduct] = useState(getProductFromUrl);
   const [isCheckout, setIsCheckout] = useState(isCheckoutFromUrl);
+  const [currentBlogSlug, setCurrentBlogSlug] = useState(getBlogSlugFromUrl);
+  const [isBlogIndex, setIsBlogIndex] = useState(isBlogIndexFromUrl);
+
   // Check if current route is an invalid/missing product
   const isInvalidProductRoute = Boolean(
     typeof window !== 'undefined' &&
@@ -75,9 +92,16 @@ export default function App() {
     !currentProduct
   );
 
+  const isInvalidBlogRoute = Boolean(
+    typeof window !== 'undefined' &&
+    window.location.pathname.startsWith('/blog/') &&
+    !isBlogIndex &&
+    !getBlogPostBySlug(currentBlogSlug)
+  );
+
   useEffect(() => {
-    if (isInvalidProductRoute) {
-      document.title = 'Pattern Not Found | CozyStitches';
+    if (isInvalidProductRoute || isInvalidBlogRoute) {
+      document.title = 'Page Not Found | CozyStitches';
       let robots = document.querySelector('meta[name="robots"]');
       if (!robots) {
         robots = document.createElement('meta');
@@ -86,7 +110,7 @@ export default function App() {
       }
       robots.content = 'noindex, follow';
     }
-  }, [isInvalidProductRoute]);
+  }, [isInvalidProductRoute, isInvalidBlogRoute]);
 
 
   // Synchronize state with browser back/forward buttons and URL changes
@@ -94,6 +118,8 @@ export default function App() {
     const handlePopState = () => {
       setCurrentProduct(getProductFromUrl());
       setIsCheckout(isCheckoutFromUrl());
+      setCurrentBlogSlug(getBlogSlugFromUrl());
+      setIsBlogIndex(isBlogIndexFromUrl());
     };
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
@@ -104,6 +130,8 @@ export default function App() {
     window.history.pushState({ productId: product.id }, '', url);
     setCurrentProduct(product);
     setIsCheckout(false);
+    setCurrentBlogSlug(null);
+    setIsBlogIndex(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -112,6 +140,26 @@ export default function App() {
     window.history.pushState({ productId: product.id, isCheckout: true }, '', url);
     setCurrentProduct(product);
     setIsCheckout(true);
+    setCurrentBlogSlug(null);
+    setIsBlogIndex(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const navigateToBlog = () => {
+    window.history.pushState({}, '', '/blog');
+    setCurrentProduct(null);
+    setIsCheckout(false);
+    setCurrentBlogSlug(null);
+    setIsBlogIndex(true);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const navigateToBlogPost = (slug) => {
+    window.history.pushState({ slug }, '', `/blog/${slug}`);
+    setCurrentProduct(null);
+    setIsCheckout(false);
+    setCurrentBlogSlug(slug);
+    setIsBlogIndex(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -119,6 +167,8 @@ export default function App() {
     window.history.pushState({}, '', '/');
     setCurrentProduct(null);
     setIsCheckout(false);
+    setCurrentBlogSlug(null);
+    setIsBlogIndex(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -196,7 +246,8 @@ export default function App() {
             setCartOpen(true);
           }}
           onLogoClick={navigateToHome}
-          isProductPage={Boolean(currentProduct)}
+          onBlogClick={navigateToBlog}
+          isProductPage={Boolean(currentProduct || currentBlogSlug || isBlogIndex)}
         />
       )}
       <main>
@@ -212,6 +263,32 @@ export default function App() {
             onBuyNow={handleBuyNow}
             onBackToStore={navigateToHome}
           />
+        ) : currentBlogSlug ? (
+          <BlogPostPage
+            post={getBlogPostBySlug(currentBlogSlug)}
+            onBackToBlog={navigateToBlog}
+            onHomeClick={navigateToHome}
+            onOpenProduct={navigateToProduct}
+            onFreebieClick={() => {
+              navigateToHome();
+              setTimeout(() => {
+                const el = document.getElementById('freebie');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }, 120);
+            }}
+          />
+        ) : isBlogIndex ? (
+          <BlogIndex
+            onOpenPost={navigateToBlogPost}
+            onHomeClick={navigateToHome}
+            onFreebieClick={() => {
+              navigateToHome();
+              setTimeout(() => {
+                const el = document.getElementById('freebie');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }, 120);
+            }}
+          />
         ) : (
           <>
             <Hero />
@@ -224,7 +301,7 @@ export default function App() {
           </>
         )}
       </main>
-      {!isCheckout && <Footer />}
+      {!isCheckout && <Footer onBlogClick={navigateToBlog} />}
       <CartToast toast={toast} />
       <CartDrawer
         isOpen={cartOpen}

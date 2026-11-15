@@ -4,6 +4,8 @@
 User-agent: *
 Allow: /
 Allow: /product/
+Allow: /blog
+Allow: /blog/
 Allow: /images/
 Allow: /patterns/
 Allow: /assets/

@@ -78,7 +78,7 @@ app.get('/robots.txt', (req, res) => {
   res.status(404).send('robots.txt not found');
 });
 
-// 2. Real HTTP 404 handler for invalid product routes (Vercel Serverless / Express)
+// 2. Real HTTP 404 handler for invalid product and blog routes (Vercel Serverless / Express)
 app.get('/product/:id', (req, res) => {
   const id = req.params.id;
   const staticFile = path.join(distPath, 'product', id, 'index.html');
@@ -93,6 +93,30 @@ app.get('/product/:id', (req, res) => {
     return res.status(404).setHeader('Content-Type', 'text/html; charset=utf-8').sendFile(notFoundHtml);
   }
   res.status(404).setHeader('Content-Type', 'text/html; charset=utf-8').send('<h1>404 — Pattern Not Found</h1>');
+});
+
+app.get('/blog', (req, res) => {
+  const staticFile = path.join(distPath, 'blog', 'index.html');
+  if (fs.existsSync(staticFile)) {
+    return res.sendFile(staticFile);
+  }
+  res.sendFile(path.join(distPath, 'index.html'));
+});
+
+app.get('/blog/:slug', (req, res) => {
+  const slug = req.params.slug;
+  const staticFile = path.join(distPath, 'blog', slug, 'index.html');
+  if (fs.existsSync(staticFile)) {
+    return res.sendFile(staticFile);
+  }
+  const notFoundHtml = fs.existsSync(path.join(distPath, '404.html'))
+    ? path.join(distPath, '404.html')
+    : path.join(publicPath, '404.html');
+
+  if (fs.existsSync(notFoundHtml)) {
+    return res.status(404).setHeader('Content-Type', 'text/html; charset=utf-8').sendFile(notFoundHtml);
+  }
+  res.status(404).setHeader('Content-Type', 'text/html; charset=utf-8').send('<h1>404 — Article Not Found</h1>');
 });
 
 // 3. Serve frontend in production / Docker mode if dist folder exists
@@ -116,6 +140,21 @@ if (fs.existsSync(distPath)) {
           return res.status(404).setHeader('Content-Type', 'text/html; charset=utf-8').sendFile(notFoundHtml);
         }
         return res.status(404).send('Pattern Not Found');
+      }
+    }
+    // Intercept invalid blog article routes to ensure true HTTP 404
+    if (req.path.startsWith('/blog/')) {
+      const match = req.path.match(/^\/blog\/([^/]+)/);
+      const target = match ? match[1] : null;
+      const staticFile = target ? path.join(distPath, 'blog', target, 'index.html') : null;
+      if (!staticFile || !fs.existsSync(staticFile)) {
+        const notFoundHtml = fs.existsSync(path.join(distPath, '404.html'))
+          ? path.join(distPath, '404.html')
+          : path.join(publicPath, '404.html');
+        if (fs.existsSync(notFoundHtml)) {
+          return res.status(404).setHeader('Content-Type', 'text/html; charset=utf-8').sendFile(notFoundHtml);
+        }
+        return res.status(404).send('Article Not Found');
       }
     }
     res.sendFile(path.join(distPath, 'index.html'));
