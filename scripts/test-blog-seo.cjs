@@ -41,36 +41,75 @@ async function runTests() {
   console.log('\nTest Group 2: Blog Index HTML SEO Audit');
   const blogIndexHtml = fs.readFileSync(blogIndexPath, 'utf8');
 
-  assert(blogIndexHtml.includes('<title>Crochet Blog &amp; Free Amigurumi Tutorials | CozyStitches</title>') ||
-         blogIndexHtml.includes('<title>Crochet Blog & Free Amigurumi Tutorials | CozyStitches</title>'), 'Blog index has unique SEO title');
+  assert(blogIndexHtml.includes('Crochet Blog &amp; Free Amigurumi Tutorials | Cozy Stitches') ||
+         blogIndexHtml.includes('Crochet Blog & Free Amigurumi Tutorials | Cozy Stitches'), 'Blog index has unique SEO title');
   assert(blogIndexHtml.includes('<link rel="canonical" href="https://www.shopcozystitches.com/blog" />'), 'Blog index has canonical tag to /blog');
   assert(blogIndexHtml.includes('property="og:type" content="website"'), 'Blog index has og:type website');
   assert(blogIndexHtml.includes('"@type": "Blog"'), 'Blog index has Schema.org Blog structured data');
-  assert(blogIndexHtml.includes('Free Shooting Star Crochet Pattern: Make a Cute Keychain'), 'Blog index lists first article title');
+  assert(blogIndexHtml.includes('Free Shooting Star Crochet Pattern: Cute Star Keychain'), 'Blog index lists first article title');
   assert(blogIndexHtml.includes('/blog/free-shooting-star-crochet-pattern-keychain'), 'Blog index links to first article slug');
-  assert(blogIndexHtml.includes('href="/#freebie"'), 'Blog index links to freebie landing section');
+  assert(blogIndexHtml.includes('href="/product/2"'), 'Blog index links to freebie pattern listing');
 
   // ── 3. Shooting Star Article HTML SEO & Pattern Integrity ──
   console.log('\nTest Group 3: Shooting Star Article Verification');
   const articleHtml = fs.readFileSync(articlePath, 'utf8');
 
-  assert(articleHtml.includes('Free Shooting Star Crochet Pattern: Make a Cute Keychain'), 'Article page has accurate title');
+  // Document Title & Single H1
+  assert(articleHtml.includes('<title>Free Shooting Star Crochet Pattern | Cozy Stitches</title>'), 'Article has required exact title: Free Shooting Star Crochet Pattern | Cozy Stitches');
+  const h1Matches = articleHtml.match(/<h1[^>]*>([\s\S]*?)<\/h1>/gi) || [];
+  assert(h1Matches.length === 1, `Exactly one H1 element present (found ${h1Matches.length})`);
+  assert(h1Matches[0] && h1Matches[0].includes('Free Shooting Star Crochet Pattern: Cute Star Keychain'), 'H1 is: Free Shooting Star Crochet Pattern: Cute Star Keychain');
+
+  // Meta Description & Canonical
+  assert(articleHtml.includes('content="Crochet a smiling shooting star with a pastel tail. Get the free star keychain pattern, US stitch instructions and printable photo guide from Cozy Stitches."'), 'Meta description matches required copy');
   assert(articleHtml.includes('<link rel="canonical" href="https://www.shopcozystitches.com/blog/free-shooting-star-crochet-pattern-keychain" />'), 'Article has unique canonical tag');
   assert(articleHtml.includes('property="og:type" content="article"'), 'Article has og:type article');
   assert(articleHtml.includes('"@type": "BlogPosting"'), 'Article includes Schema.org BlogPosting markup');
   assert(articleHtml.includes('"@type": "BreadcrumbList"'), 'Article includes Schema.org BreadcrumbList markup');
 
+  // Explicit Anchor IDs
+  assert(articleHtml.includes('id="shooting-star-pattern"'), 'Article includes anchor ID shooting-star-pattern');
+  assert(articleHtml.includes('id="download-pattern"'), 'Article includes anchor ID download-pattern');
+  assert(articleHtml.includes('id="save-for-later"'), 'Article includes anchor ID save-for-later');
+
+  // Jump-links
+  assert(articleHtml.includes('href="#shooting-star-pattern"'), 'Includes jump link to #shooting-star-pattern');
+  assert(articleHtml.includes('href="#download-pattern"'), 'Includes jump link to #download-pattern');
+  assert(articleHtml.includes('href="#save-for-later"'), 'Includes jump link to #save-for-later');
+
+  // Hero caption
+  assert(articleHtml.includes('Yellow crochet shooting star with a smiling face and pastel crocheted tail.'), 'Hero caption matches required text');
+
   // Verified pattern details (strict no-invention requirement)
-  assert(articleHtml.includes('3.0 mm'), 'Pattern specifies 3.0 mm hook (verified)');
+  assert(articleHtml.includes('3 mm') || articleHtml.includes('3.0 mm'), 'Pattern specifies 3 mm hook (verified)');
   assert(articleHtml.includes('8/6 cotton yarn'), 'Pattern specifies 8/6 cotton yarn (verified)');
-  assert(articleHtml.includes('6 mm'), 'Pattern specifies 6 mm safety eyes (verified)');
-  assert(articleHtml.includes('Round 1:</b>') || articleHtml.includes('Round 1:</strong>') || articleHtml.includes('Work 5 sc into a Magic Ring'), 'Includes verified stitch counts for circles');
-  assert(articleHtml.includes('Lilac') && articleHtml.includes('Pink') && articleHtml.includes('Aqua Green'), 'Includes verified ribbon color specifications');
-  assert(articleHtml.includes('cold') || articleHtml.includes('silicone') || articleHtml.includes('craft glue'), 'Mentions verified cold silicone assembly note');
+  assert(articleHtml.includes('Work 5 sc into a MR'), 'Includes verified stitch counts for circles');
+  assert(articleHtml.includes('Lilac') && articleHtml.includes('Pink') && articleHtml.includes('Aqua green'), 'Includes verified ribbon color specifications');
+  assert(articleHtml.includes('seven of the nine available chains'), 'Explains arithmetic clarification for the lilac tail');
+  assert(articleHtml.includes('cold silicone craft glue'), 'Mentions verified cold silicone assembly note');
+  assert(articleHtml.includes('Bhindi.crochet'), 'Preserves original designer credit');
+
+  // Real Process Photos
+  assert(articleHtml.includes('star-points-guide'), 'Includes star-points construction process photo');
+  assert(articleHtml.includes('tail-guide'), 'Includes stepped tail guide process photo');
+  assert(articleHtml.includes('assembly-guide'), 'Includes assembly guide process photo');
+
+  // 7-Page PDF verification in download section
+  assert(articleHtml.includes('7 pages'), 'States verified 7 pages for the English edition PDF');
+  assert(articleHtml.includes('href="/product/2"'), 'Article CTA links to /product/2');
+
+  // FAQs
+  assert(articleHtml.includes('Frequently asked questions'), 'Includes Frequently asked questions section');
+  assert(articleHtml.includes('Does the crochet star need stuffing?'), 'Includes unstuffed FAQ');
+
+  // Save for Later & Pinterest Pins
+  assert(articleHtml.includes('Save this crochet project for later'), 'Includes Save this crochet project for later section');
+  assert(articleHtml.includes('pinterest.com/pin/create/button/'), 'Includes functional Pinterest Save buttons');
+  assert(articleHtml.includes('01-free-shooting-star.png'), 'Includes Pin 1 image');
+  assert(articleHtml.includes('06-save-pattern.png'), 'Includes Pin 6 image');
 
   // Internal linking & conversion paths
-  assert(articleHtml.includes('href="/#freebie"'), 'Article contains prominent CTA link to free pattern PDF (/#freebie)');
-  assert(articleHtml.includes('/product/2'), 'Article cross-promotes product 2 (Shooting Star)');
+  assert(articleHtml.includes('/product/1'), 'Article cross-promotes product 1 (Kroha Bunny)');
   assert(articleHtml.includes('/product/6'), 'Article cross-promotes product 6 (Christmas Collection)');
   assert(articleHtml.includes('href="/blog"'), 'Article contains breadcrumb navigation back to /blog');
 
@@ -124,7 +163,10 @@ async function runTests() {
 
     const resArticle = await fetchUrl('/blog/free-shooting-star-crochet-pattern-keychain');
     assert(resArticle.status === 200, 'GET /blog/:slug returns HTTP 200');
-    assert(resArticle.body.includes('Free Shooting Star Crochet Pattern'), 'GET /blog/:slug body contains prerendered article content');
+    assert(resArticle.body.includes('Free Shooting Star Crochet Pattern: Cute Star Keychain'), 'GET /blog/:slug body contains updated H1');
+    assert(resArticle.body.includes('id="shooting-star-pattern"'), 'GET /blog/:slug contains shooting-star-pattern anchor');
+    assert(resArticle.body.includes('id="download-pattern"'), 'GET /blog/:slug contains download-pattern anchor');
+    assert(resArticle.body.includes('id="save-for-later"'), 'GET /blog/:slug contains save-for-later anchor');
 
     const resInvalidBlog = await fetchUrl('/blog/non-existent-crochet-slug');
     assert(resInvalidBlog.status === 404, 'GET /blog/non-existent returns true HTTP 404');

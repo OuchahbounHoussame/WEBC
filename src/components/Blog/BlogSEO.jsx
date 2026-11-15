@@ -26,7 +26,7 @@ export function getBlogPostSEOMetadata(post) {
       "@id": canonicalUrl
     },
     "headline": post.title,
-    "description": post.description,
+    "description": post.metaDescription || post.description,
     "image": allImages,
     "datePublished": post.publishedAt,
     "dateModified": post.updatedAt || post.publishedAt,
@@ -75,7 +75,7 @@ export function getBlogPostSEOMetadata(post) {
 
   return {
     seoTitle: post.seoTitle || `${post.title} | CozyStitches Blog`,
-    seoDescription: post.description,
+    seoDescription: post.metaDescription || post.description,
     canonicalUrl,
     imageUrl,
     allImages,

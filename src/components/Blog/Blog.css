@@ -649,3 +649,43 @@
     padding: 24px 16px;
   }
 }
+
+/* ── Jump Links Bar ───────────────────────────────────────────────────── */
+.article-jump-links {
+  background: #fdf8fa;
+  border: 1px solid #ebd9ea;
+  border-radius: 50px;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  margin: 16px 0 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+}
+
+.article-jump-link {
+  color: var(--pastel-pink, #be6c87);
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.article-jump-link:hover {
+  color: var(--plum, #482750);
+  text-decoration: underline;
+}
+
+.jump-sep {
+  color: #c9b7cb;
+}
+
+/* ── Pinterest Save Button & Pins ─────────────────────────────────────── */
+.pinterest-save-btn:hover {
+  background: #ad001a !important;
+  transform: translateY(-1px);
+}
+
+.article-step-block {
+  scroll-margin-top: 80px;
+}
