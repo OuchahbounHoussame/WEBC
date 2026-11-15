@@ -689,3 +689,17 @@
 .article-step-block {
   scroll-margin-top: 80px;
 }
+
+/* ── Pinterest Pin Cards Interactive Hover ────────────────────────────── */
+.pins-grid > div {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.pins-grid > div:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(72, 39, 80, 0.12);
+}
+
+.pins-grid a:hover img {
+  transform: scale(1.03);
+}
