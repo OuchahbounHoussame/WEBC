@@ -465,25 +465,42 @@ export default function BlogPostPage({
               return (
                 <div style={{ background: '#fdf8fa', border: '1px solid #ebd9ea', borderRadius: '16px', padding: '20px', marginBottom: '24px', display: 'flex', flexWrap: 'wrap', gap: '20px', alignItems: 'center' }}>
                   <div style={{ flex: '0 0 180px', maxWidth: '200px' }}>
-                    <picture>
-                      <source srcSet={pin1.webpFile} type="image/webp" />
-                      <img
-                        src={pin1.pngFile}
-                        alt={pin1.alt}
-                        width={pin1.width}
-                        height={pin1.height}
-                        style={{ width: '100%', height: 'auto', borderRadius: '12px', display: 'block', boxShadow: '0 4px 14px rgba(72,39,80,0.08)' }}
-                        loading="lazy"
-                      />
-                    </picture>
+                    <a
+                      href={pinterestUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="Click to Save this Pin on Pinterest"
+                      onClick={() => handlePinterestSave(pin1)}
+                      style={{ display: 'block', textDecoration: 'none', cursor: 'pointer', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 14px rgba(72,39,80,0.08)', transition: 'transform 0.2s, box-shadow 0.2s' }}
+                    >
+                      <picture>
+                        <source srcSet={pin1.webpFile} type="image/webp" />
+                        <img
+                          src={pin1.pngFile}
+                          alt={pin1.alt}
+                          width={pin1.width}
+                          height={pin1.height}
+                          style={{ width: '100%', height: 'auto', display: 'block' }}
+                          loading="lazy"
+                        />
+                      </picture>
+                    </a>
                   </div>
                   <div style={{ flex: '1 1 260px' }}>
                     <div style={{ fontSize: '0.8rem', color: '#be6c87', fontWeight: 700, textTransform: 'uppercase', marginBottom: '4px' }}>
                       Featured Pin &bull; {pin1.board}
                     </div>
-                    <h3 style={{ fontSize: '1.2rem', color: '#482750', margin: '0 0 8px' }}>
-                      {pin1.title}
-                    </h3>
+                    <a
+                      href={pinterestUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => handlePinterestSave(pin1)}
+                      style={{ textDecoration: 'none', color: 'inherit' }}
+                    >
+                      <h3 style={{ fontSize: '1.2rem', color: '#482750', margin: '0 0 8px', cursor: 'pointer' }}>
+                        {pin1.title}
+                      </h3>
+                    </a>
                     <p style={{ fontSize: '0.92rem', color: '#554458', lineHeight: 1.6, marginBottom: '14px' }}>
                       {pin1.description}
                     </p>
@@ -523,25 +540,42 @@ export default function BlogPostPage({
                       const pUrl = `https://www.pinterest.com/pin/create/button/?url=${encodeURIComponent(canonicalUrl)}&media=${encodeURIComponent(SITE_URL + pin.pngFile)}&description=${encodeURIComponent(pin.description)}`;
                       return (
                         <div key={pin.id} style={{ background: '#ffffff', border: '1px solid #ebd9ea', borderRadius: '12px', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
-                          <picture>
-                            <source srcSet={pin.webpFile} type="image/webp" />
-                            <img
-                              src={pin.pngFile}
-                              alt={pin.alt}
-                              width={pin.width}
-                              height={pin.height}
-                              style={{ width: '100%', height: 'auto', display: 'block' }}
-                              loading="lazy"
-                            />
-                          </picture>
+                          <a
+                            href={pUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title="Click to Save this Pin on Pinterest"
+                            onClick={() => handlePinterestSave(pin)}
+                            style={{ display: 'block', textDecoration: 'none', cursor: 'pointer', overflow: 'hidden' }}
+                          >
+                            <picture>
+                              <source srcSet={pin.webpFile} type="image/webp" />
+                              <img
+                                src={pin.pngFile}
+                                alt={pin.alt}
+                                width={pin.width}
+                                height={pin.height}
+                                style={{ width: '100%', height: 'auto', display: 'block', transition: 'transform 0.25s ease' }}
+                                loading="lazy"
+                              />
+                            </picture>
+                          </a>
                           <div style={{ padding: '14px', display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'space-between' }}>
                             <div>
                               <div style={{ fontSize: '0.75rem', color: '#be6c87', fontWeight: 700, textTransform: 'uppercase', marginBottom: '4px' }}>
                                 {pin.angle}
                               </div>
-                              <h4 style={{ fontSize: '0.95rem', color: '#482750', margin: '0 0 6px', lineHeight: 1.3 }}>
-                                {pin.title}
-                              </h4>
+                              <a
+                                href={pUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={() => handlePinterestSave(pin)}
+                                style={{ textDecoration: 'none', color: 'inherit' }}
+                              >
+                                <h4 style={{ fontSize: '0.95rem', color: '#482750', margin: '0 0 6px', lineHeight: 1.3, cursor: 'pointer' }}>
+                                  {pin.title}
+                                </h4>
+                              </a>
                               <p style={{ fontSize: '0.82rem', color: '#7f6885', lineHeight: 1.5, margin: '0 0 12px' }}>
                                 {pin.description}
                               </p>

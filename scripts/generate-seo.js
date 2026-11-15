@@ -788,14 +788,16 @@ function prerenderBlogPages(templateHtml) {
           return `
             <div style="background: #fdf8fa; border: 1px solid #ebd9ea; border-radius: 16px; padding: 20px; margin-bottom: 24px; display: flex; flex-wrap: wrap; gap: 20px; align-items: center;">
               <div style="flex: 0 0 180px; max-width: 200px;">
-                <picture>
-                  <source srcset="${pin1.webpFile}" type="image/webp" />
-                  <img src="${pin1.pngFile}" alt="${pin1.alt}" width="${pin1.width}" height="${pin1.height}" style="width: 100%; height: auto; border-radius: 12px; display: block; box-shadow: 0 4px 14px rgba(72,39,80,0.08);" loading="lazy" />
-                </picture>
+                <a href="${pUrl}" target="_blank" rel="noopener noreferrer" title="Save this pin to Pinterest" style="display: block; text-decoration: none; cursor: pointer; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 14px rgba(72,39,80,0.08);">
+                  <picture>
+                    <source srcset="${pin1.webpFile}" type="image/webp" />
+                    <img src="${pin1.pngFile}" alt="${pin1.alt}" width="${pin1.width}" height="${pin1.height}" style="width: 100%; height: auto; display: block;" loading="lazy" />
+                  </picture>
+                </a>
               </div>
               <div style="flex: 1 1 260px;">
                 <div style="font-size: 13px; color: #be6c87; font-weight: 700; text-transform: uppercase; margin-bottom: 4px;">Featured Pin &bull; ${pin1.board}</div>
-                <h3 style="font-size: 20px; color: #482750; font-family: Georgia, serif; margin: 0 0 8px;">${pin1.title}</h3>
+                <a href="${pUrl}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;"><h3 style="font-size: 20px; color: #482750; font-family: Georgia, serif; margin: 0 0 8px; cursor: pointer;">${pin1.title}</h3></a>
                 <p style="font-size: 15px; color: #554458; line-height: 1.6; margin-bottom: 14px;">${pin1.description}</p>
                 <a href="${pUrl}" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: #e60023; color: #ffffff; padding: 10px 20px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 14px; box-shadow: 0 4px 12px rgba(230,0,35,0.25);">
                   Save to Pinterest &rarr;
@@ -811,13 +813,15 @@ function prerenderBlogPages(templateHtml) {
             const pUrl = `https://www.pinterest.com/pin/create/button/?url=${encodeURIComponent(postCanonical)}&media=${encodeURIComponent(SITE_URL + pin.pngFile)}&description=${encodeURIComponent(pin.description)}`;
             return `
               <div style="background: #ffffff; border: 1px solid #ebd9ea; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column;">
-                <picture>
-                  <source srcset="${pin.webpFile}" type="image/webp" />
-                  <img src="${pin.pngFile}" alt="${pin.alt}" width="${pin.width}" height="${pin.height}" style="width: 100%; height: auto; display: block;" loading="lazy" />
-                </picture>
+                <a href="${pUrl}" target="_blank" rel="noopener noreferrer" title="Save this pin to Pinterest" style="display: block; text-decoration: none; cursor: pointer; overflow: hidden;">
+                  <picture>
+                    <source srcset="${pin.webpFile}" type="image/webp" />
+                    <img src="${pin.pngFile}" alt="${pin.alt}" width="${pin.width}" height="${pin.height}" style="width: 100%; height: auto; display: block;" loading="lazy" />
+                  </picture>
+                </a>
                 <div style="padding: 14px;">
                   <div style="font-size: 12px; color: #be6c87; font-weight: 700; text-transform: uppercase; margin-bottom: 4px;">${pin.angle}</div>
-                  <h4 style="font-size: 15px; color: #482750; font-family: Georgia, serif; margin: 0 0 6px;">${pin.title}</h4>
+                  <a href="${pUrl}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;"><h4 style="font-size: 15px; color: #482750; font-family: Georgia, serif; margin: 0 0 6px; cursor: pointer;">${pin.title}</h4></a>
                   <p style="font-size: 13px; color: #7f6885; line-height: 1.5; margin: 0 0 12px;">${pin.description}</p>
                   <a href="${pUrl}" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: #e60023; color: #ffffff; padding: 8px 14px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 13px;">
                     Save Pin &rarr;
