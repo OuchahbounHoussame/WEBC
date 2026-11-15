@@ -72,6 +72,87 @@ export default function BlogPostPage({
     }
   };
 
+  // Helper to render an engaging inline Pinterest Pin card inside article text
+  const renderInlinePin = (pin, calloutText) => {
+    if (!pin) return null;
+    const pinLink = pin.directPinUrl && pin.directPinUrl.trim() !== ''
+      ? pin.directPinUrl
+      : `https://www.pinterest.com/pin/create/button/?url=${encodeURIComponent(canonicalUrl)}&media=${encodeURIComponent(SITE_URL + pin.pngFile)}&description=${encodeURIComponent(pin.description)}`;
+    return (
+      <aside
+        className="inline-pin-banner"
+        aria-label="Pinterest inspiration"
+        style={{
+          margin: '36px 0',
+          background: 'linear-gradient(135deg, #fffafd 0%, #fef5f8 100%)',
+          border: '1px solid #ebd9ea',
+          borderRadius: '16px',
+          padding: '20px',
+          display: 'flex',
+          flexWrap: 'wrap',
+          alignItems: 'center',
+          gap: '20px',
+          boxShadow: '0 4px 16px rgba(72,39,80,0.05)'
+        }}
+      >
+        <div style={{ flex: '0 0 160px', maxWidth: '180px' }}>
+          <a
+            href={pinLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Click to Save this Pin on Pinterest"
+            onClick={() => handlePinterestSave(pin)}
+            style={{ display: 'block', textDecoration: 'none', cursor: 'pointer', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 14px rgba(72,39,80,0.12)', transition: 'transform 0.25s' }}
+          >
+            <picture>
+              <source srcSet={pin.webpFile} type="image/webp" />
+              <img
+                src={pin.pngFile}
+                alt={pin.alt}
+                width={pin.width}
+                height={pin.height}
+                style={{ width: '100%', height: 'auto', display: 'block' }}
+                loading="lazy"
+              />
+            </picture>
+          </a>
+        </div>
+        <div style={{ flex: '1 1 240px' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.78rem', color: '#e60023', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '6px' }}>
+            <Bookmark size={14} />
+            <span>Save to Pinterest &bull; {pin.board}</span>
+          </div>
+          <a
+            href={pinLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => handlePinterestSave(pin)}
+            style={{ textDecoration: 'none', color: 'inherit' }}
+          >
+            <h4 style={{ fontSize: '1.15rem', color: '#482750', margin: '0 0 6px', fontFamily: 'Georgia, serif', lineHeight: 1.35, cursor: 'pointer' }}>
+              {pin.title}
+            </h4>
+          </a>
+          <p style={{ fontSize: '0.92rem', color: '#554458', lineHeight: 1.55, margin: '0 0 14px' }}>
+            {calloutText || pin.description}
+          </p>
+          <a
+            href={pinLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => handlePinterestSave(pin)}
+            className="pinterest-save-btn"
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#e60023', color: '#ffffff', padding: '9px 18px', borderRadius: '50px', textDecoration: 'none', fontWeight: 700, fontSize: '0.88rem', boxShadow: '0 4px 12px rgba(230,0,35,0.25)' }}
+          >
+            <Bookmark size={14} />
+            <span>Pin this project</span>
+            <ExternalLink size={12} style={{ opacity: 0.8 }} />
+          </a>
+        </div>
+      </aside>
+    );
+  };
+
   return (
     <div className="blog-container">
       <BlogPostSEO post={post} />
