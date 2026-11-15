@@ -819,9 +819,107 @@ export function KrohaBunnyIcon({ size = 80 }) {
   );
 }
 
+// Plush Santa Claus Doll Vector (From Real PDF Pattern - Red Suit, Fluffy Beard, Belt & Slouchy Hat)
+export function SantaClausIcon({ size = 80 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      {/* Soft floor shadow */}
+      <ellipse cx="50" cy="94" rx="26" ry="4" fill="#3b1d1d" fillOpacity="0.16" />
+
+      {/* Black boots */}
+      <ellipse cx="42" cy="88" rx="6.5" ry="5" fill="#18181b" />
+      <ellipse cx="58" cy="88" rx="6.5" ry="5" fill="#18181b" />
+      {/* Fluffy boot cuffs */}
+      <rect x="36" y="81" width="12" height="4.5" rx="2.2" fill="#ffffff" stroke="#e2e8f0" strokeWidth="0.6" />
+      <rect x="52" y="81" width="12" height="4.5" rx="2.2" fill="#ffffff" stroke="#e2e8f0" strokeWidth="0.6" />
+
+      {/* Red trousers */}
+      <rect x="38" y="72" width="9" height="11" rx="2" fill="#dc2626" />
+      <rect x="53" y="72" width="9" height="11" rx="2" fill="#dc2626" />
+
+      {/* Chubby red jacket body */}
+      <ellipse cx="50" cy="65" rx="19" ry="18" fill="url(#santaRedGrad)" stroke="#b91c1c" strokeWidth="1" />
+
+      {/* Fluffy white jacket edging at bottom */}
+      <ellipse cx="50" cy="78" rx="19.5" ry="3.5" fill="#ffffff" stroke="#e2e8f0" strokeWidth="0.6" />
+
+      {/* Black belt */}
+      <rect x="31" y="63" width="38" height="6" rx="1.5" fill="#18181b" />
+      {/* Embroidered yellow belt buckle */}
+      <rect x="45.5" y="61" width="9" height="10" rx="1.5" fill="#18181b" stroke="#facc15" strokeWidth="2" />
+
+      {/* Red arms with fluffy white cuffs */}
+      <path d="M32 54 C21 57 18 63 21 68 C24 71 29 67 34 60 Z" fill="#dc2626" stroke="#b91c1c" strokeWidth="0.8" />
+      <ellipse cx="22" cy="67" rx="3.5" ry="2.8" fill="#ffffff" stroke="#e2e8f0" strokeWidth="0.6" />
+
+      <path d="M68 54 C79 57 82 63 79 68 C76 71 71 67 66 60 Z" fill="#dc2626" stroke="#b91c1c" strokeWidth="0.8" />
+      <ellipse cx="78" cy="67" rx="3.5" ry="2.8" fill="#ffffff" stroke="#e2e8f0" strokeWidth="0.6" />
+
+      {/* Santa Head (peach flesh tone) */}
+      <circle cx="50" cy="38" r="16" fill="#fcd9bd" />
+
+      {/* Eyes (glossy safety eyes) */}
+      <circle cx="43" cy="36" r="2.8" fill="#18181b" />
+      <circle cx="42" cy="35" r="1" fill="#ffffff" />
+      <circle cx="57" cy="36" r="2.8" fill="#18181b" />
+      <circle cx="56" cy="35" r="1" fill="#ffffff" />
+
+      {/* Cute white eyebrows */}
+      <path d="M40 32 Q43 31 46 32" stroke="#ffffff" strokeWidth="1.4" strokeLinecap="round" />
+      <path d="M54 32 Q57 31 60 32" stroke="#ffffff" strokeWidth="1.4" strokeLinecap="round" />
+
+      {/* Peach nose */}
+      <ellipse cx="50" cy="39" rx="2.6" ry="2.2" fill="#fca5a5" />
+
+      {/* Fluffy Loop-Stitch Beard & Mustache */}
+      <path
+        d="M34 40 C31 46 34 50 36 53 C33 57 38 61 43 62 C47 64 53 64 57 62 C62 61 67 57 64 53 C66 50 69 46 66 40 C60 45 52 43 50 42 C48 43 40 45 34 40 Z"
+        fill="#ffffff"
+        stroke="#e2e8f0"
+        strokeWidth="0.8"
+      />
+      {/* Mustache loops */}
+      <path d="M50 40 Q43 38 39 43 Q45 46 50 42 Z" fill="#ffffff" stroke="#e2e8f0" strokeWidth="0.6" />
+      <path d="M50 40 Q57 38 61 43 Q55 46 50 42 Z" fill="#ffffff" stroke="#e2e8f0" strokeWidth="0.6" />
+
+      {/* Slouchy Santa Hat */}
+      <path
+        d="M32 26 C34 14 47 7 60 10 C70 13 78 20 77 30 C76 36 71 39 68 40 L64 36 C67 33 70 28 66 22 C60 16 48 16 38 24 Z"
+        fill="url(#santaRedGrad)"
+        stroke="#b91c1c"
+        strokeWidth="0.8"
+      />
+      {/* Fluffy white hat brim */}
+      <ellipse cx="50" cy="26" rx="18.5" ry="4.5" fill="#ffffff" stroke="#e2e8f0" strokeWidth="0.6" />
+
+      {/* White pompom hanging to side */}
+      <circle cx="69" cy="40" r="4.5" fill="#ffffff" stroke="#e2e8f0" strokeWidth="0.8" />
+
+      {/* Snowflake decoration on brim */}
+      <g transform="translate(63, 24) scale(0.6)">
+        <line x1="0" y1="-5" x2="0" y2="5" stroke="#94a3b8" strokeWidth="1" strokeLinecap="round" />
+        <line x1="-5" y1="0" x2="5" y2="0" stroke="#94a3b8" strokeWidth="1" strokeLinecap="round" />
+        <line x1="-3.5" y1="-3.5" x2="3.5" y2="3.5" stroke="#94a3b8" strokeWidth="0.8" strokeLinecap="round" />
+        <line x1="-3.5" y1="3.5" x2="3.5" y2="-3.5" stroke="#94a3b8" strokeWidth="0.8" strokeLinecap="round" />
+      </g>
+
+      {/* Gradients */}
+      <defs>
+        <linearGradient id="santaRedGrad" x1="30" y1="20" x2="70" y2="85" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#ef4444" />
+          <stop offset="0.6" stopColor="#dc2626" />
+          <stop offset="1" stopColor="#991b1b" />
+        </linearGradient>
+      </defs>
+    </svg>
+  );
+}
+
 // Helper to render matching vector artwork by key
 export function ProductIcon({ iconKey, size = 80 }) {
   switch (iconKey) {
+    case 'santa':
+    case 'santa-claus':     return <SantaClausIcon size={size} />;
     case 'bunny':
     case 'kroha-bunny':     return <KrohaBunnyIcon size={size} />;
     case 'graduate':

@@ -420,11 +420,4 @@ if (fs.existsSync(distIndex)) {
   console.warn('! dist/index.html not found, prerender skipped (will run post-build).');
 }
 
-// Legacy alias: /product/5 -> /product/1
-const p5Dir = path.join(rootDir, 'dist', 'product', '5');
-if (!fs.existsSync(p5Dir)) fs.mkdirSync(p5Dir, { recursive: true });
-const redirectHtml = '<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url=/product/1"><link rel="canonical" href="https://www.shopcozystitches.com/product/1"></head><body><script>window.location.replace("/product/1");</script></body></html>';
-fs.writeFileSync(path.join(p5Dir, 'index.html'), redirectHtml, 'utf8');
-fs.writeFileSync(path.join(rootDir, 'dist', 'product', '5.html'), redirectHtml, 'utf8');
-
 console.log('[SEO Generator] Completed successfully! 🎉');

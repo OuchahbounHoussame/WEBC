@@ -151,7 +151,8 @@ export function initSchema() {
     [1, "Kroha Bunny Plush & Keychain", "amigurumi", "intermediate", 3.99, 6.99, "pattern-1-kroha-bunny.pdf", "Kroha-Bunny-Amigurumi-Pattern.pdf", 17],
     [2, "Shooting Star Keychain", "pdf-pattern", "beginner", 4.49, 6.99, "pattern-2-shooting-star-keychain.pdf", "Shooting-Star-Keychain-Pattern.pdf", 6],
     [3, "Eyeglass Holder Set 2", "pdf-pattern", "intermediate", 4.99, 8.99, "pattern-3-eyeglass-holder-set-2.pdf", "Eyeglass-Holder-Set-2-Pattern.pdf", 13],
-    [4, "Graduate Doll Amigurumi", "amigurumi", "intermediate", 6.99, 11.99, "pattern-4-graduate-doll.pdf", "Graduate-Doll-Amigurumi-Pattern.pdf", 11]
+    [4, "Graduate Doll Amigurumi", "amigurumi", "intermediate", 6.99, 11.99, "pattern-4-graduate-doll.pdf", "Graduate-Doll-Amigurumi-Pattern.pdf", 11],
+    [5, "Plush Santa Claus Doll", "amigurumi", "intermediate", 4.99, 8.99, "pattern-5-santa-claus.pdf", "Santa-Claus-Plush-Pattern.pdf", 18]
   ];
 
   for (const p of productsSeed) {

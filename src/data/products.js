@@ -397,6 +397,113 @@ export const products = [
         }
       ]
     }
+  },
+  {
+    id: 5,
+    name: "Plush Santa Claus Doll",
+    slug: "plush-santa-claus",
+    category: "amigurumi",
+    skill: "intermediate",
+    iconKey: "santa",
+    soldOut: false,
+    buyUrl: "https://cozy-stitches-crochet-shop.fourthwall.com/",
+    primaryImage: "/images/products/santa-claus/santa-1.jpg",
+    images: [
+      "/images/products/santa-claus/santa-1.jpg",
+      "/images/products/santa-claus/santa-2.jpg",
+      "/images/products/santa-claus/santa-3.jpg",
+      "/images/products/santa-claus/santa-4.jpg"
+    ],
+    color: "#fde8e8", // Soft warm holiday pastel
+    price: 4.99,
+    description: "A cuddly Christmas amigurumi doll measuring approx. 27 cm tall. Features a lush loop-stitch beard, slouchy Santa hat with snowflake pin, fluffy cuffs, and 10 linked video demonstrations.",
+    badge: "Holiday Special",
+    tag: "Instant Download",
+    pages: 18,
+    terms: "US Terms",
+    formats: ["PDF"],
+    bestseller: true,
+    size: "Approx. 27 cm tall",
+    hook: "4.0 mm",
+    materials: [
+      "Himalaya Dolphin Baby: 80333 (Flesh tone head & nose)",
+      "Wolans Bunny Baby: 100-08 (Red clothing & hat, approx. 1 skein)",
+      "Wolans Bunny Baby: 100-10 (Black boots & belt)",
+      "Wolans Bunny Baby: 100-01 (White loop-stitch beard & mustache)",
+      "Alize Softy (white, held double) for fluffy jacket edging, cuffs & pompom",
+      "Himalaya Dolphin Baby 80313 (Yellow) for embroidered belt buckle",
+      "YarnArt Jeans shade 73 for facial needle sculpting",
+      "4.0 mm crochet hook",
+      "Approx. 200 g holofiber stuffing & 10 mm safety eyes",
+      "Snowflake button decoration & large-eye tapestry needle"
+    ],
+    sections: [
+      "Materials, Tools & Abbreviations",
+      "Arms & Thumb Bobble (Make 2 with white cuffs)",
+      "Boots & Legs Construction (Right & Left)",
+      "Body Joining, Tummy & Jacket Edging",
+      "Black Belt, Upper Torso & Arm Join",
+      "Head Shaping & Facial Needle Sculpting",
+      "Nose & Loop-Stitch Fluffy Beard",
+      "Slouchy Santa Hat, Pompom & Snowflake Accent",
+      "Embroidered Belt Buckle & Video Directory (10 technique tutorials)"
+    ],
+    patternGuide: {
+      abbreviations: [
+        { code: "MR", meaning: "Magic ring" },
+        { code: "ch", meaning: "Chain" },
+        { code: "sc", meaning: "Single crochet" },
+        { code: "hdc", meaning: "Half double crochet" },
+        { code: "dc", meaning: "Double crochet" },
+        { code: "inc", meaning: "Increase (2 sc in one stitch)" },
+        { code: "dec", meaning: "Decrease (work 2 stitches together)" },
+        { code: "sl st", meaning: "Slip stitch" },
+        { code: "BLO", meaning: "Back loop only" }
+      ],
+      steps: [
+        {
+          title: "1. Arms & Boots (4.0 mm hook)",
+          note: "Work with plush chenille yarn. Stuff limbs as you go.",
+          rounds: [
+            "Arms (make 2): R1 5 sc in MR, R2 5 inc [10], R3 5 sc, 3-dc bobble thumb, 4 sc [10].",
+            "R5 5 sc, dec, 3 sc [9], R6 9 sc BLO. Work Alize Softy cuffs in front loops.",
+            "R8-14 9 sc [9]. Flatten and work 4 sc through both layers.",
+            "Boots: Start in black with ch 4, work oval base to 14 sc, shape toe with 4 dec to 10 sc.",
+            "Change to red at R7 BLO for trousers, work Alize Softy cuff in front loops."
+          ]
+        },
+        {
+          title: "2. Joining Legs & Body Shaping",
+          rounds: [
+            "Join legs with ch 5 bridge. R10 13 sc on right leg, 5 sc along chain, 13 sc on left leg, 5 sc along chain [36].",
+            "R11 Work increase round to 54 sc, crochet R12-16 [54] for plump tummy.",
+            "R17 BLO (7 sc, dec) x 6 [48]. Work white Alize Softy around front loops for jacket trim.",
+            "R19-20 Work 2 rounds in black for belt.",
+            "R21-27 Switch to red, work waist decreases to 24 sc. Stuff body firmly.",
+            "R28 Attach arms directly into round with 4 sc through arm and body."
+          ]
+        },
+        {
+          title: "3. Head & Facial Needle Sculpting",
+          rounds: [
+            "Continue directly from body: switch to flesh tone, R30 18 inc [36], expand to 48 sc.",
+            "Insert 10 mm safety eyes between R36 and R37, spaced 5 stitches apart.",
+            "Stuff neck firmly, close head with gradual decreases to 6 dec.",
+            "Facial sculpting: use YarnArt Jeans to sculpt eye sockets from under neck (points 1-6).",
+            "Nose: 4 sc in MR, sew centered between eyes at R34-36."
+          ]
+        },
+        {
+          title: "4. Slouchy Santa Hat & Loop-Stitch Beard",
+          points: [
+            "1. Hat: Foundation ch 42 joined into ring. Work joined hdc rounds with gradual hdc decreases down to 10 sts. Gather tip.",
+            "2. Brim & Pompom: Work 2 rounds of white Alize Softy sc around hat brim. Make fluffy pompom and attach to hat tip with snowflake charm.",
+            "3. Beard: Work lush loop-stitch rows in white plush yarn framing cheeks and chin.",
+            "4. Belt Buckle: Embroider a neat square buckle in yellow plush yarn on the black belt."
+          ]
+        }
+      ]
+    }
   }
 ];
 
