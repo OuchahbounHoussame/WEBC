@@ -9,6 +9,7 @@ export default function Navbar({
   onOpenCart, 
   onOpenDownloads, 
   onLogoClick,
+  onBlogClick,
   isProductPage = false 
 }) {
   const [scrolled,  setScrolled]  = useState(false);
@@ -31,11 +32,17 @@ export default function Navbar({
     };
   }, [menuOpen]);
 
-  const nav = (id) => {
+  const nav = (link) => {
     setMenuOpen(false);
+    if (typeof link === 'object' && link.isBlog) {
+      if (onBlogClick) onBlogClick();
+      else window.location.href = '/blog';
+      return;
+    }
+    const targetId = typeof link === 'string' ? link : link.id;
     if (onLogoClick) onLogoClick();
     setTimeout(() => {
-      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
     }, 60);
   };
 
@@ -43,6 +50,7 @@ export default function Navbar({
     { id: 'products',      label: 'Shop Patterns', icon: null },
     { id: 'how-it-works',  label: 'How It Works',  icon: null },
     { id: 'freebie',       label: 'Free Pattern',   icon: <Sparkles size={14} className="nav-sparkle-icon" /> },
+    { id: 'blog',          label: 'Blog & Tutorials', isBlog: true, icon: null },
     { id: 'testimonials',  label: 'Community',      icon: null },
     { id: 'faq',           label: 'FAQ',            icon: null },
     { id: 'contact',       label: 'Contact',        icon: null },
@@ -74,10 +82,10 @@ export default function Navbar({
               <X size={24} />
             </button>
           </div>
-          {links.map(({ id, label, icon }) => (
-            <button key={id} className="nav-link" onClick={() => nav(id)}>
-              {icon}
-              <span>{label}</span>
+          {links.map((link) => (
+            <button key={link.id} className="nav-link" onClick={() => nav(link)}>
+              {link.icon}
+              <span>{link.label}</span>
             </button>
           ))}
           <button

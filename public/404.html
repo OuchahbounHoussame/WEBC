@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>404: Pattern Not Found | CozyStitches</title>
+  <title>404: Page Not Found | CozyStitches</title>
   <meta name="robots" content="noindex, follow" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <style>
@@ -52,16 +52,29 @@
       border-radius: 50px;
       box-shadow: 0 6px 20px rgba(190, 108, 135, 0.3);
       transition: background 0.2s ease;
+      margin: 4px;
     }
     a.btn:hover { background: #ab5772; }
+    a.btn-outline {
+      background: transparent;
+      color: #be6c87;
+      border: 2px solid #be6c87;
+      box-shadow: none;
+    }
+    a.btn-outline:hover {
+      background: #fee6ea;
+    }
   </style>
 </head>
 <body>
   <div class="card">
     <div class="icon">🧶</div>
-    <h1>404 — Pattern Not Found</h1>
-    <p>We couldn't find the crochet pattern you're looking for. It may have been retired or the link might be out of date.</p>
-    <a href="/" class="btn">&larr; Return to All Patterns</a>
+    <h1>404 — Page Not Found</h1>
+    <p>We couldn't find the crochet page or pattern you're looking for. Browse our patterns or visit the crochet blog.</p>
+    <div>
+      <a href="/" class="btn">&larr; Return to Patterns</a>
+      <a href="/blog" class="btn btn-outline">Read Crochet Blog</a>
+    </div>
   </div>
 </body>
 </html>

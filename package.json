@@ -8,7 +8,7 @@
     "server": "node server/index.js",
     "build": "vite build && node scripts/generate-seo.js",
     "lint": "oxlint",
-    "test": "node scripts/test-free-pattern.cjs",
+    "test": "node scripts/test-free-pattern.cjs && node scripts/test-blog-seo.cjs",
     "preview": "vite preview"
   },
   "dependencies": {

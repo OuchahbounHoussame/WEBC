@@ -15,6 +15,7 @@
     { "source": "/api/(.*)", "destination": "/api/[...all]" },
     { "source": "/admin", "destination": "/api/index" },
     { "source": "/admin/(.*)", "destination": "/api/[...all]" },
+    { "source": "/blog/(.*)", "destination": "/api/[...all]" },
     { "source": "/product/(.*)", "destination": "/api/[...all]" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
