@@ -32,7 +32,12 @@ function getProductSEO(product) {
   } else if (product.id === 4) {
     seoTitle = `Graduate Doll Amigurumi Crochet Pattern | CozyStitches`;
     seoDescription = `Handmade graduation keepsake amigurumi doll pattern. 11-page digital PDF tutorial with cap, gold tassel, gown, diploma scroll and floral bouquet in US terms.`;
-
+  } else if (product.id === 5) {
+    seoTitle = `Plush Santa Claus Doll Crochet Pattern | CozyStitches`;
+    seoDescription = `Crochet an adorable 27 cm plush Santa Claus doll with this 18-page digital PDF pattern. Features slouchy Santa hat, loop-stitch beard, fluffy cuffs, and 10 video links in US terms.`;
+  } else if (product.id === 6) {
+    seoTitle = `Christmas Collection 5-in-1 Amigurumi Crochet Pattern PDF | CozyStitches`;
+    seoDescription = `Complete 48-page Christmas amigurumi pattern bundle. Includes 5 designs: Grinch, Little Dragon, Gingerbread Doll, Snowman, and Elf with step-by-step photos and 8 video tutorials.`;
   }
 
   const canonicalUrl = `${SITE_URL}/product/${product.id}`;

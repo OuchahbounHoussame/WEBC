@@ -915,9 +915,98 @@ export function SantaClausIcon({ size = 80 }) {
   );
 }
 
+// Christmas Collection (5-in-1 Holiday Amigurumi Bundle)
+export function ChristmasCollectionIcon({ size = 80 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Christmas Collection 5-in-1 Icon">
+      {/* Background Soft Glow */}
+      <circle cx="50" cy="50" r="46" fill="#fef2f2" stroke="#fecaca" strokeWidth="1.5" />
+      <circle cx="50" cy="50" r="41" fill="#fff" opacity="0.6" />
+
+      {/* Decorative Golden Stars & Sparkles */}
+      <path d="M50 12 L52 17 L57 18 L53 22 L54 27 L50 24 L46 27 L47 22 L43 18 L48 17 Z" fill="#fbbf24" stroke="#f59e0b" strokeWidth="0.5" />
+      <circle cx="20" cy="22" r="1.5" fill="#fbbf24" />
+      <circle cx="80" cy="22" r="1.5" fill="#fbbf24" />
+      <circle cx="15" cy="45" r="1.2" fill="#ef4444" />
+      <circle cx="85" cy="45" r="1.2" fill="#10b981" />
+
+      {/* Mini Christmas Tree in Center Background */}
+      <polygon points="50,22 42,34 58,34" fill="#059669" />
+      <polygon points="50,28 40,42 60,42" fill="#10b981" />
+      <polygon points="50,35 37,50 63,50" fill="#059669" />
+      <rect x="47.5" y="50" width="5" height="6" rx="1" fill="#78350f" />
+
+      {/* Left Character: Cute Gingerbread Doll */}
+      <g transform="translate(14, 38) scale(0.62)">
+        {/* Body & limbs */}
+        <rect x="18" y="32" width="7" height="15" rx="3" fill="#d97706" />
+        <rect x="29" y="32" width="7" height="15" rx="3" fill="#d97706" />
+        <rect x="16" y="18" width="22" height="20" rx="6" fill="#d97706" />
+        <rect x="6" y="20" width="12" height="6" rx="3" fill="#d97706" transform="rotate(-20 6 20)" />
+        <rect x="36" y="16" width="12" height="6" rx="3" fill="#d97706" transform="rotate(20 36 16)" />
+        {/* Head */}
+        <circle cx="27" cy="10" r="12" fill="#d97706" />
+        {/* Scalloped Icing Cap */}
+        <path d="M15 10 C15 3 21 0 27 0 C33 0 39 3 39 10 C37 12 35 9 33 11 C31 9 29 12 27 10 C25 12 23 9 21 11 C19 9 17 12 15 10 Z" fill="#ffffff" />
+        {/* Sprinkles */}
+        <line x1="22" y1="4" x2="25" y2="5" stroke="#ef4444" strokeWidth="1" strokeLinecap="round" />
+        <line x1="28" y1="3" x2="31" y2="4" stroke="#10b981" strokeWidth="1" strokeLinecap="round" />
+        <line x1="25" y1="7" x2="28" y2="8" stroke="#3b82f6" strokeWidth="1" strokeLinecap="round" />
+        {/* Eyes & Smile */}
+        <circle cx="22" cy="11" r="1.5" fill="#18181b" />
+        <circle cx="32" cy="11" r="1.5" fill="#18181b" />
+        <circle cx="20" cy="14" r="1.5" fill="#fca5a5" opacity="0.6" />
+        <circle cx="34" cy="14" r="1.5" fill="#fca5a5" opacity="0.6" />
+        <path d="M24 14 Q27 16 30 14" stroke="#451a03" strokeWidth="0.8" strokeLinecap="round" />
+        {/* Red Buttons */}
+        <circle cx="27" cy="24" r="2" fill="#dc2626" />
+        <circle cx="27" cy="30" r="2" fill="#dc2626" />
+      </g>
+
+      {/* Right Character: Cozy Snowman */}
+      <g transform="translate(54, 38) scale(0.62)">
+        {/* Lower body */}
+        <circle cx="28" cy="36" r="14" fill="#ffffff" stroke="#e2e8f0" strokeWidth="1" />
+        {/* Upper body / Head */}
+        <circle cx="28" cy="14" r="11" fill="#ffffff" stroke="#e2e8f0" strokeWidth="1" />
+        {/* Top Hat */}
+        <ellipse cx="28" cy="7" rx="11" ry="3" fill="#18181b" />
+        <rect x="21" y="-3" width="14" height="9" rx="1.5" fill="#18181b" />
+        <rect x="21" y="4" width="14" height="2" fill="#dc2626" />
+        {/* Safety Eyes */}
+        <circle cx="23" cy="13" r="1.5" fill="#18181b" />
+        <circle cx="33" cy="13" r="1.5" fill="#18181b" />
+        {/* Orange Carrot Nose */}
+        <polygon points="28,15 36,17 28,18" fill="#f97316" stroke="#ea580c" strokeWidth="0.4" />
+        {/* Coal Smile */}
+        <circle cx="24" cy="19" r="0.6" fill="#18181b" />
+        <circle cx="26" cy="20" r="0.6" fill="#18181b" />
+        <circle cx="28" cy="20.5" r="0.6" fill="#18181b" />
+        <circle cx="30" cy="20" r="0.6" fill="#18181b" />
+        <circle cx="32" cy="19" r="0.6" fill="#18181b" />
+        {/* Red Cozy Scarf */}
+        <path d="M19 22 C22 25 34 25 37 22 C37 25 22 27 19 22 Z" fill="#dc2626" />
+        <path d="M31 23 L33 34 L29 34 L28 24 Z" fill="#b91c1c" />
+        {/* Coal buttons */}
+        <circle cx="28" cy="31" r="1.5" fill="#18181b" />
+        <circle cx="28" cy="37" r="1.5" fill="#18181b" />
+      </g>
+
+      {/* Front Foreground Badge / Banner */}
+      <g transform="translate(18, 77)">
+        <rect x="0" y="0" width="64" height="16" rx="8" fill="#b91c1c" stroke="#991b1b" strokeWidth="1" />
+        <text x="32" y="11.5" textAnchor="middle" fill="#ffffff" fontSize="8.5" fontWeight="bold" fontFamily="system-ui, sans-serif" letterSpacing="0.5">5-IN-1 PACK</text>
+      </g>
+    </svg>
+  );
+}
+
 // Helper to render matching vector artwork by key
 export function ProductIcon({ iconKey, size = 80 }) {
   switch (iconKey) {
+    case 'christmas':
+    case 'christmas-collection':
+    case 'collection':      return <ChristmasCollectionIcon size={size} />;
     case 'santa':
     case 'santa-claus':     return <SantaClausIcon size={size} />;
     case 'bunny':

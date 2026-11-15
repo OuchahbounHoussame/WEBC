@@ -107,7 +107,8 @@ VALUES
   (2, 'Shooting Star Keychain', 'pdf-pattern', 'beginner', 4.49, 6.99, 'pattern-2-shooting-star-keychain.pdf', 'Shooting-Star-Keychain-Pattern.pdf', 6, 168),
   (3, 'Eyeglass Holder Set 2', 'pdf-pattern', 'intermediate', 4.99, 8.99, 'pattern-3-eyeglass-holder-set-2.pdf', 'Eyeglass-Holder-Set-2-Pattern.pdf', 13, 284),
   (4, 'Graduate Doll Amigurumi', 'amigurumi', 'intermediate', 6.99, 11.99, 'pattern-4-graduate-doll.pdf', 'Graduate-Doll-Amigurumi-Pattern.pdf', 11, 94),
-  (5, 'Plush Santa Claus Doll', 'amigurumi', 'intermediate', 3.99, 8.99, 'pattern-5-santa-claus.pdf', 'Santa-Claus-Plush-Pattern.pdf', 18, 120)
+  (5, 'Plush Santa Claus Doll', 'amigurumi', 'intermediate', 3.99, 8.99, 'pattern-5-santa-claus.pdf', 'Santa-Claus-Plush-Pattern.pdf', 18, 120),
+  (6, 'Christmas Collection 5-in-1 Amigurumi', 'amigurumi', 'intermediate', 7.99, 14.99, 'pattern-6-christmas-collection.pdf', 'Christmas-Collection-5in1-Pattern.pdf', 48, 85)
 ON DUPLICATE KEY UPDATE name=VALUES(name), price=VALUES(price);
 
 -- Sample customer

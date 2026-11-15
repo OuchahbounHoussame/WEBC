@@ -504,6 +504,104 @@ export const products = [
         }
       ]
     }
+  },
+  {
+    id: 6,
+    name: "Christmas Collection 5-in-1 Amigurumi",
+    slug: "christmas-collection-5-in-1",
+    category: "amigurumi",
+    skill: "intermediate",
+    iconKey: "christmas-collection",
+    soldOut: false,
+    buyUrl: "https://cozy-stitches-crochet-shop.fourthwall.com/",
+    primaryImage: "/images/products/christmas-collection/christmas-1.jpg",
+    images: [
+      "/images/products/christmas-collection/christmas-1.jpg",
+      "/images/products/christmas-collection/christmas-2.jpg",
+      "/images/products/christmas-collection/christmas-3.jpg",
+      "/images/products/christmas-collection/christmas-4.jpg"
+    ],
+    color: "#fef2f2", // Festive holiday white & berry
+    price: 7.99,
+    description: "A complete 48-page holiday amigurumi collection featuring 5 festive designs: The Grinch, Little Dragon, Gingerbread Doll, Snowman, and Christmas Elf. Includes step-by-step photos and 8 technique video demonstrations.",
+    badge: "5-in-1 Bundle",
+    tag: "Instant Download",
+    pages: 48,
+    terms: "US Terms",
+    formats: ["PDF"],
+    bestseller: true,
+    size: "5 Designs (Approx. 15–20 cm each)",
+    hook: "1.75 mm",
+    materials: [
+      "YarnArt Jeans (55% cotton, 45% acrylic, 160 m / 50 g) in assorted holiday shades",
+      "Alize Softy (shade 62) for fluffy trims, cuffs & collars",
+      "1.75 mm crochet hook",
+      "10 mm safety eyes (5 pairs)",
+      "2 mm wire & fabric adhesive tape (for poseable dragon tail)",
+      "Polyfill stuffing & large-eye tapestry needle",
+      "Embroidery yarn for facial expressions & details",
+      "Stitch markers, scissors & lighter"
+    ],
+    sections: [
+      "Welcome & Reading Guide (Round numbering & tips)",
+      "Materials, Abbreviations & Shared Facial Shaping",
+      "Character 1: Festive Grinch (Head, body, limbs, trousers & Santa hat)",
+      "Character 2: Little Dragon (Head, body, wired tail, limbs, spikes, horns & wings)",
+      "Character 3: Gingerbread Doll (Body, scalloped icing cap, sprinkles & buttons)",
+      "Character 4: Holiday Snowman (Head, flat-standing base, top hat, carrot nose & scarf)",
+      "Character 5: Christmas Elf (Head, body, fluffy jacket trim, curly hair cap & striped hat)",
+      "Video Directory (8 clickable technique tutorials)"
+    ],
+    patternGuide: {
+      abbreviations: [
+        { code: "MR", meaning: "Magic ring" },
+        { code: "ch", meaning: "Chain" },
+        { code: "sc", meaning: "Single crochet" },
+        { code: "hdc", meaning: "Half double crochet" },
+        { code: "dc", meaning: "Double crochet" },
+        { code: "inc", meaning: "Increase (2 sc in one stitch)" },
+        { code: "dec", meaning: "Decrease (work 2 stitches together)" },
+        { code: "BPsc", meaning: "Back post single crochet" },
+        { code: "FPsc", meaning: "Front post single crochet" },
+        { code: "FLO", meaning: "Front loop only" },
+        { code: "BLO", meaning: "Back loop only" }
+      ],
+      steps: [
+        {
+          title: "1. Shared Techniques & Materials (1.75 mm hook)",
+          note: "Work with YarnArt Jeans. Neck rounds use ordinary decreases; all other shaping uses invisible decreases.",
+          rounds: [
+            "Facial Shaping: pull eyes downward along lower edge, then upper edge, and pull toward one another for deep expressive eye sockets.",
+            "Back Post sc (BPsc): worked concave around post to create sharp structural base ridges for limbs and hats.",
+            "Front Post sc (FPsc): worked for the Snowman's top hat brim reversal.",
+            "Alize Softy trims: alternate ch 1 and sl st worked under sc posts for plush fur texture."
+          ]
+        },
+        {
+          title: "2. The Grinch & Christmas Elf",
+          rounds: [
+            "Grinch: worked head-to-body in one piece. R1-27 head, R28-46 tummy shaping. Removable red trousers with black belt and yellow buckle, slouchy Santa hat with fluffy pompom.",
+            "Elf: head and body in one piece starting in skin tone, switching to teal coat and burgundy trousers. Features 27 curly hair strands, pointed ears, ruffled neck collar, and a festive red-and-white striped beanie."
+          ]
+        },
+        {
+          title: "3. Little Dragon with Poseable Wired Tail",
+          rounds: [
+            "Crochet head, body, and tapering tail continuously.",
+            "Insert 16-17 cm length of 2 mm taped copper wire from neck down through the tail for full poseability.",
+            "Make front & hind legs with flat BPsc bases, 5 dorsal spikes, 2 horns, and ribbed wings sewn at an angle between body R29-34."
+          ]
+        },
+        {
+          title: "4. Gingerbread Doll & Holiday Snowman",
+          points: [
+            "1. Gingerbread: legs joined with ch 6 bridge, arms crocheted directly into body at R28. Crowned with scalloped white icing cap and rainbow sprinkles.",
+            "2. Snowman: seamlessly shaped head and body with 42 BPsc flat base for free-standing display. Carrot nose, black top hat with red band, and wrapped cozy red scarf.",
+            "3. Technique Videos: 8 linked tutorials for facial shaping, invisible decreases, wire insertion, icing attachment, and post stitches."
+          ]
+        }
+      ]
+    }
   }
 ];
 
