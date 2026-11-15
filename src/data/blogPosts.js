@@ -26,13 +26,14 @@ export const blogPosts = [
     category: "Free Patterns",
     difficulty: "Easy / Advanced Beginner",
     readingTime: "6 min read",
-    primaryImage: "/images/products/shooting-star/star-1.png",
+    primaryImage: "/images/products/shooting-star/star-1.jpg",
     primaryImageCaption: "Yellow crochet shooting star with a smiling face and pastel crocheted tail.",
     primaryImageAlt: "Yellow crochet shooting star with a smiling face and pastel crocheted tail.",
     images: [
-      "/images/products/shooting-star/star-1.png",
+      "/images/products/shooting-star/star-1.jpg",
       "/images/products/shooting-star/star-2.jpg",
-      "/images/products/shooting-star/star-3.png"
+      "/images/products/shooting-star/star-3.jpg",
+      "/images/products/shooting-star/star-4.jpg"
     ],
     featured: true,
     tags: [

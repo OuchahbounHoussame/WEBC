@@ -310,11 +310,12 @@ export const products = [
     iconKey: "star",
     soldOut: false,
     isFree: true,
-    primaryImage: "/images/products/shooting-star/star-1.png",
+    primaryImage: "/images/products/shooting-star/star-1.jpg",
     images: [
-      "/images/products/shooting-star/star-1.png",
+      "/images/products/shooting-star/star-1.jpg",
       "/images/products/shooting-star/star-2.jpg",
-      "/images/products/shooting-star/star-3.png"
+      "/images/products/shooting-star/star-3.jpg",
+      "/images/products/shooting-star/star-4.jpg"
     ],
     color: "#fef9db", // Soft creamy pastel lemon yellow
     price: 0.00,
