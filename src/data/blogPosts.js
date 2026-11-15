@@ -10,6 +10,7 @@
 export const blogPosts = [
   {
     id: 1,
+          directPinUrl: "", // Paste your custom Pinterest Pin URL here when ready
     slug: "free-shooting-star-crochet-pattern-keychain",
     title: "Free Shooting Star Crochet Pattern: Cute Star Keychain",
     seoTitle: "Free Shooting Star Crochet Pattern | Cozy Stitches",
@@ -251,6 +252,7 @@ export const blogPosts = [
       pins: [
         {
           id: 1,
+          directPinUrl: "", // Paste your custom Pinterest Pin URL here when ready
           angle: "Search intent",
           keyword: "free shooting star crochet pattern",
           title: "Free Shooting Star Crochet Pattern with a Pastel Tail",
@@ -264,6 +266,7 @@ export const blogPosts = [
         },
         {
           id: 2,
+          directPinUrl: "", // Paste your custom Pinterest Pin URL here when ready
           angle: "Handmade gift",
           keyword: "crochet star keychain pattern",
           title: "Crochet Star Keychain Pattern for a Handmade Gift",
@@ -277,6 +280,7 @@ export const blogPosts = [
         },
         {
           id: 3,
+          directPinUrl: "", // Paste your custom Pinterest Pin URL here when ready
           angle: "Color and texture",
           keyword: "pastel crochet star",
           title: "Pastel Shooting Star Crochet Pattern — Free Tutorial",
@@ -290,6 +294,7 @@ export const blogPosts = [
         },
         {
           id: 4,
+          directPinUrl: "", // Paste your custom Pinterest Pin URL here when ready
           angle: "Process confidence",
           keyword: "shooting star crochet tutorial",
           title: "Shooting Star Crochet Tutorial with a Photo Guide",
@@ -303,6 +308,7 @@ export const blogPosts = [
         },
         {
           id: 5,
+          directPinUrl: "", // Paste your custom Pinterest Pin URL here when ready
           angle: "Small crochet project",
           keyword: "amigurumi star pattern",
           title: "Free Amigurumi Star Pattern with a Smiling Face",
@@ -316,6 +322,7 @@ export const blogPosts = [
         },
         {
           id: 6,
+          directPinUrl: "", // Paste your custom Pinterest Pin URL here when ready
           angle: "Save for later",
           keyword: "free crochet star pattern",
           title: "Free Crochet Star Pattern to Save for Your Next Project",

@@ -250,6 +250,12 @@ export default function BlogPostPage({
           </section>
         )}
 
+        {/* Inline Pin 1 (Pattern Overview) */}
+        {renderInlinePin(
+          post.saveForLater?.pins?.[0],
+          "Planning your next crochet session? Pin this free shooting star pattern to your Pinterest board so you don't lose it!"
+        )}
+
         {/* Section: Free shooting star crochet pattern (Anchor: #shooting-star-pattern) */}
         <section id="shooting-star-pattern" className="article-pattern-section" style={{ marginBottom: '48px' }}>
           <h2 style={{ fontSize: '1.85rem', color: '#482750', borderBottom: '2px solid #fee6ea', paddingBottom: '10px', marginBottom: '24px' }}>
@@ -341,6 +347,12 @@ export default function BlogPostPage({
                   ))}
                 </div>
               )}
+
+              {/* Inline Pin 2 (Pastel Stepped Tail Inspiration - shown after Step 3) */}
+              {step.number === 3 && renderInlinePin(
+                post.saveForLater?.pins?.[2],
+                "Love this stepped pastel color combination? Pin this tutorial to your colorful crochet ideas board!"
+              )}
             </div>
           ))}
         </section>
@@ -362,6 +374,12 @@ export default function BlogPostPage({
               ))}
             </div>
           </section>
+        )}
+
+        {/* Inline Pin 3 (Save for Later / Gift Idea) */}
+        {renderInlinePin(
+          post.saveForLater?.pins?.[5],
+          "Save this cute star keychain pattern to your Pinterest board for your next quick handmade gift!"
         )}
 
         {/* Section: Download CTA (Anchor: #download-pattern) */}
