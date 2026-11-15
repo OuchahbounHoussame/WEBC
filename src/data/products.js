@@ -406,7 +406,7 @@ export const products = [
     skill: "intermediate",
     iconKey: "santa",
     soldOut: false,
-    buyUrl: "https://cozy-stitches-crochet-shop.fourthwall.com/",
+    buyUrl: "https://cozy-stitches-crochet-shop.fourthwall.com/cart/checkout?products=d917960a-1151-423b-8efa-a8c5522741c3:1&currency=USD",
     primaryImage: "/images/products/santa-claus/santa-1.jpg",
     images: [
       "/images/products/santa-claus/santa-1.jpg",
