@@ -822,7 +822,9 @@ function prerenderBlogPages(templateHtml) {
         <!-- Featured Pin 1 -->
         ${post.saveForLater.pins && post.saveForLater.pins[0] ? (() => {
           const pin1 = post.saveForLater.pins[0];
-          const pUrl = `https://www.pinterest.com/pin/create/button/?url=${encodeURIComponent(postCanonical)}&media=${encodeURIComponent(SITE_URL + pin1.pngFile)}&description=${encodeURIComponent(pin1.description)}`;
+          const pUrl = pin1.directPinUrl && pin1.directPinUrl.trim() !== ''
+            ? pin1.directPinUrl
+            : `https://www.pinterest.com/pin/create/button/?url=${encodeURIComponent(postCanonical)}&media=${encodeURIComponent(SITE_URL + pin1.pngFile)}&description=${encodeURIComponent(pin1.description)}`;
           return `
             <div style="background: #fdf8fa; border: 1px solid #ebd9ea; border-radius: 16px; padding: 20px; margin-bottom: 24px; display: flex; flex-wrap: wrap; gap: 20px; align-items: center;">
               <div style="flex: 0 0 180px; max-width: 200px;">
@@ -848,7 +850,9 @@ function prerenderBlogPages(templateHtml) {
         <!-- All 6 Pins Grid for Static Crawlability -->
         <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; margin-top: 24px;">
           ${(post.saveForLater.pins || []).slice(1).map((pin) => {
-            const pUrl = `https://www.pinterest.com/pin/create/button/?url=${encodeURIComponent(postCanonical)}&media=${encodeURIComponent(SITE_URL + pin.pngFile)}&description=${encodeURIComponent(pin.description)}`;
+            const pUrl = pin.directPinUrl && pin.directPinUrl.trim() !== ''
+              ? pin.directPinUrl
+              : `https://www.pinterest.com/pin/create/button/?url=${encodeURIComponent(postCanonical)}&media=${encodeURIComponent(SITE_URL + pin.pngFile)}&description=${encodeURIComponent(pin.description)}`;
             return `
               <div style="background: #ffffff; border: 1px solid #ebd9ea; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column;">
                 <a href="${pUrl}" target="_blank" rel="noopener noreferrer" title="Save this pin to Pinterest" style="display: block; text-decoration: none; cursor: pointer; overflow: hidden;">
