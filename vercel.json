@@ -4,16 +4,15 @@
   "outputDirectory": "dist",
   "cleanUrls": true,
   "functions": {
-    "api/index.js": {
-      "includeFiles": "{server/**,dist/**}"
-    },
     "api/[...all].js": {
-      "includeFiles": "{server/**,dist/**}"
+      "includeFiles": "{server/**,dist/*.html,dist/*.xml,dist/*.txt,dist/blog/**,dist/product/**}",
+      "excludeFiles": "{dist/images/**,dist/assets/**}"
     }
   },
   "rewrites": [
+    { "source": "/api", "destination": "/api/[...all]" },
     { "source": "/api/(.*)", "destination": "/api/[...all]" },
-    { "source": "/admin", "destination": "/api/index" },
+    { "source": "/admin", "destination": "/api/[...all]" },
     { "source": "/admin/(.*)", "destination": "/api/[...all]" },
     { "source": "/blog/(.*)", "destination": "/api/[...all]" },
     { "source": "/product/(.*)", "destination": "/api/[...all]" },
