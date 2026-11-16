@@ -252,7 +252,7 @@ export const blogPosts = [
       pins: [
         {
           id: 1,
-          directPinUrl: "", // Paste your custom Pinterest Pin URL here when ready
+          directPinUrl: "https://www.pinterest.com/pin/1082552830404493209/",
           angle: "Search intent",
           keyword: "free shooting star crochet pattern",
           title: "Free Shooting Star Crochet Pattern with a Pastel Tail",
@@ -280,7 +280,7 @@ export const blogPosts = [
         },
         {
           id: 3,
-          directPinUrl: "", // Paste your custom Pinterest Pin URL here when ready
+          directPinUrl: "https://www.pinterest.com/pin/1082552830404493070/",
           angle: "Color and texture",
           keyword: "pastel crochet star",
           title: "Pastel Shooting Star Crochet Pattern — Free Tutorial",
@@ -322,7 +322,7 @@ export const blogPosts = [
         },
         {
           id: 6,
-          directPinUrl: "", // Paste your custom Pinterest Pin URL here when ready
+          directPinUrl: "https://www.pinterest.com/pin/1082552830404493288/",
           angle: "Save for later",
           keyword: "free crochet star pattern",
           title: "Free Crochet Star Pattern to Save for Your Next Project",

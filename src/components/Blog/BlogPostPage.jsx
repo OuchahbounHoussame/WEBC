@@ -560,7 +560,9 @@ export default function BlogPostPage({
             {/* Featured Pin 1 */}
             {post.saveForLater.pins && post.saveForLater.pins[0] && (() => {
               const pin1 = post.saveForLater.pins[0];
-              const pinterestUrl = `https://www.pinterest.com/pin/create/button/?url=${encodeURIComponent(canonicalUrl)}&media=${encodeURIComponent(SITE_URL + pin1.pngFile)}&description=${encodeURIComponent(pin1.description)}`;
+              const pinterestUrl = pin1.directPinUrl && pin1.directPinUrl.trim() !== ''
+                ? pin1.directPinUrl
+                : `https://www.pinterest.com/pin/create/button/?url=${encodeURIComponent(canonicalUrl)}&media=${encodeURIComponent(SITE_URL + pin1.pngFile)}&description=${encodeURIComponent(pin1.description)}`;
               return (
                 <div style={{ background: '#fdf8fa', border: '1px solid #ebd9ea', borderRadius: '16px', padding: '20px', marginBottom: '24px', display: 'flex', flexWrap: 'wrap', gap: '20px', alignItems: 'center' }}>
                   <div style={{ flex: '0 0 180px', maxWidth: '200px' }}>
@@ -636,7 +638,9 @@ export default function BlogPostPage({
                 {showAllPins && (
                   <div className="pins-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: '20px', marginTop: '20px' }}>
                     {post.saveForLater.pins.slice(1).map((pin) => {
-                      const pUrl = `https://www.pinterest.com/pin/create/button/?url=${encodeURIComponent(canonicalUrl)}&media=${encodeURIComponent(SITE_URL + pin.pngFile)}&description=${encodeURIComponent(pin.description)}`;
+                      const pUrl = pin.directPinUrl && pin.directPinUrl.trim() !== ''
+                        ? pin.directPinUrl
+                        : `https://www.pinterest.com/pin/create/button/?url=${encodeURIComponent(canonicalUrl)}&media=${encodeURIComponent(SITE_URL + pin.pngFile)}&description=${encodeURIComponent(pin.description)}`;
                       return (
                         <div key={pin.id} style={{ background: '#ffffff', border: '1px solid #ebd9ea', borderRadius: '12px', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
                           <a
