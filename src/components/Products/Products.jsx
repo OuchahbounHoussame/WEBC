@@ -12,6 +12,15 @@ export default function Products({ onAddToCart, onViewProduct }) {
   const filtered = products
     .filter((p) => {
       if (activeCat === 'all') return true;
+      if (activeCat === 'christmas') {
+        return (
+          p.iconKey === 'christmas-collection' ||
+          p.iconKey === 'santa' ||
+          p.badge === 'Holiday Special' ||
+          p.badge === '5-in-1 Bundle' ||
+          (p.slug && (p.slug.includes('christmas') || p.slug.includes('grinch') || p.slug.includes('snowman') || p.slug.includes('gingerbread') || p.slug.includes('dragon')))
+        );
+      }
       if (activeCat === 'pdf-pattern') {
         return p.category === 'pdf-pattern' || p.category === 'amigurumi' || (p.formats && p.formats.includes('PDF'));
       }

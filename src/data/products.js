@@ -204,406 +204,6 @@ export const products = [
       ]
     }
   },
-  {
-    id: 1,
-    name: "Kroha Bunny Plush & Keychain",
-    slug: "kroha-bunny",
-    category: "amigurumi",
-    skill: "intermediate",
-    iconKey: "bunny",
-    soldOut: false,
-    buyUrl: "https://cozy-stitches-crochet-shop.fourthwall.com/cart/checkout?products=9755bfdc-b748-4b40-915c-69d4452c19c1:1&currency=USD",
-    primaryImage: "/images/products/kroha-bunny/bunny-1.webp",
-    images: [
-      "/images/products/kroha-bunny/bunny-1.jpg",
-      "/images/products/kroha-bunny/bunny-2.jpg",
-      "/images/products/kroha-bunny/bunny-3.jpg",
-      "/images/products/kroha-bunny/bunny-4.jpg"
-    ],
-    color: "#e8f7ee", // Delicate soft mint pastel
-    price: 3.99,
-    description: "An adorable plush amigurumi bunny pattern with 2-in-1 sizing: a 9 cm mini keychain or a 17 cm huggable plush toy. Includes step-by-step photos for sculpted facial details, floppy ears, and sweet bow tie.",
-    badge: "Plush & Keychain",
-    tag: "Instant Download",
-    pages: 17,
-    terms: "US Terms",
-    formats: ["PDF"],
-    bestseller: true,
-    size: "9 cm (Keychain) / 17 cm (Plush Toy)",
-    hook: "2.0 mm (Keychain) & 3.5 mm (Plush Toy)",
-    materials: [
-      "YarnArt Dolce Baby yarn (for 9 cm keychain, 1 skein, 100% micro-polyester, 50g / 85m)",
-      "Himalaya Dolphin Baby plush yarn (for 17 cm plush toy, 1 skein, 100% polyester, 100g / 120m)",
-      "Crochet hooks: 2.0 mm (keychain) or 3.5 mm (plush toy)",
-      "Hollofibre or polyester fiberfill stuffing",
-      "1 pair plastic safety eyes / beads (and strong thread for sculpting)",
-      "Black embroidery thread for nose, mouth and eye indentations",
-      "Yarn needle (tapestry & long doll needle) & scissors",
-      "Keychain clasp or lobster claw attachment",
-      "Optional: yellow polka-dot ribbon & clover charm for neckline"
-    ],
-    sections: [
-      "Materials, Sizing & Abbreviations",
-      "Legs & Lower Body Join (Seamless spiral)",
-      "Upper Torso, Arm Attachment & Head",
-      "Floppy Ears & Tail",
-      "Facial Sculpting, Eye Deepening & Embroidery",
-      "Assembly, Ribbon Bow & Keychain Clasp"
-    ],
-    patternGuide: {
-      abbreviations: [
-        { code: "MR", meaning: "Magic ring" },
-        { code: "ch", meaning: "Chain" },
-        { code: "sc", meaning: "Single crochet" },
-        { code: "inc", meaning: "Increase (2 sc in one stitch)" },
-        { code: "dec", meaning: "Invisible decrease" },
-        { code: "sl st", meaning: "Slip stitch" }
-      ],
-      steps: [
-        {
-          title: "1. Legs & Lower Body (Worked Bottom-Up)",
-          note: "Work in continuous spiral. Stuff legs lightly as you go.",
-          rounds: [
-            "Leg 1: R1 6 sc in MR [6], R2 6 inc [12], R3-4 12 sc [12]. Fasten off.",
-            "Leg 2: Repeat R1-4, do not cut yarn. Chain 1 and join to Leg 1.",
-            "R5: 12 sc on Leg 1, 1 sc in chain, 12 sc on Leg 2, 1 sc in chain [26]",
-            "R6-10: Work 26 sc in continuous rounds, building the tummy.",
-            "Stuff the bottom and lower tummy firmly before continuing."
-          ]
-        },
-        {
-          title: "2. Upper Torso & Arm Join",
-          rounds: [
-            "Arms (make 2): R1 5 sc in MR [5], R2 5 inc [10], R3-6 10 sc [10]. Fold flat and crochet 4 sc through both layers.",
-            "Body continuation: R11-13 Work gradual decrease rounds to shape waist and chest.",
-            "R14: Crochet arms directly into the body round on each side to eliminate sewing.",
-            "R15: Shape neck opening, stuff upper torso."
-          ]
-        },
-        {
-          title: "3. Head & Floppy Ears",
-          rounds: [
-            "Head: Continue upwards from neck with increase rounds to 30 sc. Work 5 even rounds.",
-            "Insert safety eyes between rows 6 and 7 of head, spaced 5 stitches apart.",
-            "Gradually decrease and close top of head, stuffing firmly.",
-            "Ears (make 2): R1 6 sc in MR, R2 (1 sc, inc) x 3 [9], R3-8 9 sc. Pinch base and sew to top of head."
-          ]
-        },
-        {
-          title: "4. Facial Needle Sculpting & Keychain Clasp",
-          points: [
-            "1. Needle sculpting: Pass strong thread through back of neck to inner corners of eyes. Pull gently to create deep, expressive eye sockets.",
-            "2. Muzzle embroidery: Embroider horizontal nose line and vertical drop mouth in black thread.",
-            "3. Tail & Clasp: Sew round pom-pom tail at lower back. Attach sturdy lobster clasp to head center between ears.",
-            "4. Finishing touch: Tie yellow polka-dot ribbon around the neck with a miniature clover charm."
-          ]
-        }
-      ]
-    }
-  },
-  {
-    id: 2,
-    name: "Shooting Star Keychain",
-    slug: "shooting-star-keychain",
-    category: "amigurumi",
-    skill: "intermediate",
-    iconKey: "star",
-    soldOut: false,
-    isFree: true,
-    primaryImage: "/images/products/shooting-star/star-1.webp",
-    images: [
-      "/images/products/shooting-star/star-1.jpg",
-      "/images/products/shooting-star/star-2.jpg",
-      "/images/products/shooting-star/star-3.jpg",
-      "/images/products/shooting-star/star-4.jpg"
-    ],
-    color: "#fef9db", // Soft creamy pastel lemon yellow
-    price: 0.00,
-    description: "A sweet crochet star with an embroidered smile and a pastel rainbow tail in lilac, pink, and aqua green. Approx. 8 cm, 3.0 mm hook. Permanently 100% free digital download.",
-    badge: "100% Free Pattern",
-    tag: "Free PDF",
-    pages: 7,
-    terms: "US Terms",
-    formats: ["PDF"],
-    bestseller: false,
-    size: "Approx. 8 cm",
-    hook: "3.0 mm",
-    materials: [
-      "8/6 cotton yarn: yellow, pink, lilac, aqua green & black",
-      "3.0 mm crochet hook & yarn needle",
-      "Two 6 mm safety eyes",
-      "Stitch marker & scissors",
-      "Cold silicone glue (for rainbow tail)",
-      "Metal keychain ring"
-    ],
-    sections: [
-      "Materials & Abbreviations",
-      "Star body - make 2 (continuous rounds)",
-      "Make the five points (no stuffing)",
-      "Pastel rainbow tail (lilac, pink, aqua green)",
-      "Face embroidery & safety eyes",
-      "Assembly & key step photos"
-    ],
-    patternGuide: {
-      abbreviations: [
-        { code: "MR", meaning: "Magic ring" },
-        { code: "ch", meaning: "Chain" },
-        { code: "sl st", meaning: "Slip stitch" },
-        { code: "sc", meaning: "Single crochet" },
-        { code: "hdc", meaning: "Half double crochet" },
-        { code: "dc", meaning: "Double crochet" },
-        { code: "inc", meaning: "Increase (2 sc in one stitch)" },
-        { code: "dec", meaning: "Invisible decrease" }
-      ],
-      steps: [
-        {
-          title: "1. Star Body - Make 2 (Yellow Yarn)",
-          note: "Work the entire piece in continuous rounds with yellow yarn.",
-          rounds: [
-            "R1: 5 sc in MR (5)",
-            "R2: 5 inc (10)",
-            "R3: (1 sc, inc) x 5 (15)",
-            "R4: 1 sc, inc, (2 sc, inc) x 4, 1 sc (20)"
-          ],
-          finishing: "Fasten off the first circle. Do not cut yarn on the second."
-        },
-        {
-          title: "2. Make the Five Points",
-          points: [
-            "1. Place wrong sides together. Work 4 sc from the second star, then 4 sc from the first star.",
-            "2. Work 4 sc and 2 dec (6). Fasten off, leaving a tail for closing.",
-            "3. Repeat for the remaining four points. Close all points with a yarn needle.",
-            "4. Do not stuff. Weave all yarn ends inside."
-          ]
-        },
-        {
-          title: "3. Pastel Rainbow Tail",
-          points: [
-            "1. With lilac, ch 10. Starting in the 2nd chain, make 6 sc and 1 sl st. Fasten off.",
-            "2. Join pink yarn in the 3rd stitch from the back; make 6 sc and 1 sl st. Turn.",
-            "3. Ch 1, make 1 sl st and 5 sc. Fasten off.",
-            "4. Join aqua green yarn in the 3rd stitch from the back; make 4 sc and 1 sl st. Turn.",
-            "5. Ch 1, make 1 sl st and 3 sc. Fasten off and weave in ends."
-          ]
-        },
-        {
-          title: "4. Face & Finishing Assembly",
-          points: [
-            "1. Embroider a U-shaped smile between rounds 1 and 2 with black yarn.",
-            "2. Attach the safety eyes one stitch away from each side of the smile.",
-            "3. Add blush on cheeks if desired.",
-            "4. Glue the rainbow tail to the back of one star side with cold silicone glue.",
-            "5. Attach keychain ring to the top point of the star."
-          ]
-        }
-      ]
-    }
-  },
-  {
-    id: 3,
-    name: "Eyeglass Holder Set 2",
-    slug: "eyeglass-holder-set-2",
-    category: "pdf-pattern",
-    skill: "intermediate",
-    iconKey: "eyeglass-holder",
-    soldOut: false,
-    buyUrl: "https://cozy-stitches-crochet-shop.fourthwall.com/cart/checkout?products=a673caae-9270-4be7-805a-75e396bd21f9:1&currency=USD",
-    primaryImage: "/images/products/eyeglass-holders/eyeglass-grid.webp",
-    images: [
-      "/images/products/eyeglass-holders/eyeglass-grid.png",
-      "/images/products/eyeglass-holders/eyeglass-fox.png",
-      "/images/products/eyeglass-holders/eyeglass-turtle.png",
-      "/images/products/eyeglass-holders/eyeglass-raccoon.png",
-      "/images/products/eyeglass-holders/eyeglass-bunny.png",
-      "/images/products/eyeglass-holders/eyeglass-llama.jpg"
-    ],
-    color: "#fbeae8", // Soft warm pastel coral
-    price: 3.99,
-    description: "Seven character variations (Fox, Turtle, Raccoon, Llama, Angry Dragon, Chicken). Practical 3D crochet trays with raised walls that keep your glasses safe.",
-    badge: "Set · 7 Characters",
-    tag: "Instant Download",
-    pages: 13,
-    terms: "US Terms",
-    formats: ["PDF"],
-    bestseller: true,
-    size: "Universal Eyeglass Tray",
-    hook: "4.0 & 2.5 mm",
-    materials: [
-      "#4 medium-weight yarn (red, cream, grey, black, green, beige)",
-      "#2 fine yarn (for eyes and details)",
-      "4.0 mm & 2.5 mm crochet hooks",
-      "Safety eyes (16 mm for fox/raccoon/llama, or crocheted)",
-      "Fiberfill stuffing for snouts",
-      "Stitch marker & yarn needle",
-      "Cold silicone glue / hot glue"
-    ],
-    sections: [
-      "Materials & Tools & Color Palette",
-      "Special Stitch Guide (BPSC Wall Technique)",
-      "Base Patterns (Fox, Raccoon, Llama, Dragon, Turtle, Chicken)",
-      "Ears & Snouts for All 7 Characters",
-      "Additional Elements (Horns, Whiskers, Comb, Wattles)",
-      "Eyes & Final Assembly Guide with Photos"
-    ],
-    patternGuide: {
-      abbreviations: [
-        { code: "CH", meaning: "Chain" },
-        { code: "SL ST", meaning: "Slip stitch" },
-        { code: "SC", meaning: "Single crochet" },
-        { code: "HDC", meaning: "Half double crochet" },
-        { code: "DC", meaning: "Double crochet" },
-        { code: "TR", meaning: "Treble crochet" },
-        { code: "INC", meaning: "Increase (2 sc in one stitch)" },
-        { code: "DEC", meaning: "Decrease" },
-        { code: "BLO", meaning: "Back loop only" },
-        { code: "BPSC", meaning: "Back-post single crochet (creates vertical tray walls)" },
-        { code: "LS", meaning: "Loop stitch" }
-      ],
-      steps: [
-        {
-          title: "1. Base - Fox & Character Tray (4.0 mm hook)",
-          note: "CH 19 and begin in the second chain. Work in continuous oval rounds.",
-          rounds: [
-            "R1: INC, SC 16, 4 SC in the same chain; continue on other side: SC 16, INC [40]",
-            "R2: INC x2, SC 16, INC x4, SC 16, INC x2 [48]",
-            "R3: (SC, INC) x2, SC 16, (SC, INC) x2, SC, INC, SC, INC, SC 16, (SC, INC) x2 [56]",
-            "R4: SC, SC, INC, SC 2, INC, SC 16, (SC 2, INC) x2, SC, SC, INC, SC 2, INC, SC 16, (SC 2, INC) x2 [64]",
-            "R5: SC, SC 2, INC, SC 3, INC, SC 16, (SC 3, INC) x2, SC, SC 2, INC, SC 3, INC, SC 16, (SC 3, INC) x2 [72]",
-            "R6: SC, SC 3, INC, SC 4, INC, SC 16, (SC 4, INC) x2, SC, SC 3, INC, SC 4, INC, SC 16, (SC 4, INC) x2 [80]"
-          ],
-          finishing: "Work one additional SC in second color. CH 1, turn to work outside wall. R7 BPSC 39, BPSC 41 [80]. R8-9: SC 39, SC 41 [80]. R10: (SC 2, SC2TOG) x2, SC 19, SC2TOG, SC 4, SC2TOG, SC 2, SC 2, (SC2TOG, SC 4) x4, SC 16, SC2TOG, SC 4, SC2TOG, SC 3 [72]."
-        },
-        {
-          title: "2. Ears (Make 2)",
-          points: [
-            "Fox: Inner piece in cream, outer piece in red. CH 2, R1: SC 2, R2: INC x2 [4], R3: SC 4, R4: INC, SC 2, INC [6], R5: SC 6, R6: INC, SC 4, INC [8], R7: SC 8. Place together: SC 7, 3 SC at tip, SC 7.",
-            "Raccoon: R1: SC 2, R2: INC x2, R3: SC 4, R4: INC, SC 2, INC [6], R5-6: SC 6. Join white yarn: SC 6, 3 SC at tip, SC 6.",
-            "Llama & Dragon: R1: 6 SC in MR [6], R2: (SC, INC) x3 [9], R3: (SC, INC, SC) x3 [12], R4-8: SC 12, R9: (SC, DEC, SC) x3 [9]. Fold and close with SC 4."
-          ]
-        },
-        {
-          title: "3. 3D Snouts & Beaks",
-          points: [
-            "Fox Snout: R1-2: SC 8, R3: INC, SC, INC, SC 3, INC, SC [11], R4: (INC, SC) x2, SC, SC, INC, SC 2, INC, SC [15], R5: SC 7, INC, SC 3, INC, SC 3 [17], R6: SC 7, SC 7, SC 3 [17].",
-            "Raccoon Snout: R1-2: SC 8, R3: INC, SC, INC, SC 3, INC, SC [11], R4: (INC, SC) x2, SC 2, INC, SC 2, INC, SC [15], R5: SC 7, INC, SC 3, INC, SC 3 [17].",
-            "Chicken Beak: R1-3: SC 6, R4: (3 SC in one stitch, SC 2) x2, SL ST."
-          ]
-        },
-        {
-          title: "4. Eyes & Facial Assembly",
-          points: [
-            "1. Fox, Raccoon, Llama: Use 16 mm safety eyes with back posts removed. Glue short black yarn strand for eyelid. Secure with glue.",
-            "2. Dragon & Turtle: Use #2 yarn with 2.5 mm hook: R1: SC 6 [6], R2: INC x6 [12], R3: (SC, INC) x6 [18], R4: (SC, INC, SC) x6 [24], R5: (SC 3, INC) x6 [30].",
-            "3. Final Assembly: Stuff snout with fiberfill before sewing completely. Embroider nose on snout. Sew or glue eyes, attach ears/horns to the top rim of the tray."
-          ]
-        }
-      ]
-    }
-  },
-  {
-    id: 4,
-    name: "Graduate Doll Amigurumi",
-    slug: "graduate-doll-amigurumi",
-    category: "amigurumi",
-    skill: "intermediate",
-    iconKey: "graduate",
-    soldOut: false,
-    buyUrl: "https://cozy-stitches-crochet-shop.fourthwall.com/cart/checkout?products=97a4fd30-e2c5-453a-a5c5-5ad0c4abba20:1&currency=USD",
-    primaryImage: "/images/products/graduate-doll/graduate-1.webp",
-    images: [
-      "/images/products/graduate-doll/graduate-1.jpg",
-      "/images/products/graduate-doll/graduate-2.jpg",
-      "/images/products/graduate-doll/graduate-3.jpg",
-      "/images/products/graduate-doll/graduate-4.jpg",
-      "/images/products/graduate-doll/graduate-5.jpg"
-    ],
-    color: "#f6edf9", // Delicate soft celebratory lavender
-    price: 3.99,
-    description: "An elegant keepsake amigurumi doll with graduation cap, gold tassel & stole, graduation gown, diploma scroll, and floral granny wrap bouquet.",
-    badge: "Keepsake Doll",
-    tag: "Instant Download",
-    pages: 11,
-    terms: "US Terms",
-    formats: ["PDF"],
-    bestseller: true,
-    size: "18 cm (20 cm with cap)",
-    hook: "2.00 mm - 2.20 mm",
-    materials: [
-      "Silvigurumi yarn: Skin color, Brown 5902, Burgundy 6781, Gold / Silvia Lumina",
-      "Black yarn for gown and graduation cap",
-      "Beige, Purple & Yellow for bouquet (Sunflower + Lavender)",
-      "White yarn for scroll and eye highlights",
-      "#10 safety eyes & 20-gauge craft wire",
-      "2.00 mm & 2.20 mm crochet hooks",
-      "Silicone fiberfill & needle"
-    ],
-    sections: [
-      "Materials, Abbreviations & False X Stitch",
-      "Shoes, Legs & Body Join (Wire insertion)",
-      "Head, Face Embroidery & Hair Placement",
-      "Bodice & Burgundy Dress",
-      "Graduation Cap with Gold Tassel",
-      "Graduation Gown & Gold Stole",
-      "Diploma Scroll & Granny Bouquet Wrap (Sunflower & Lavender)"
-    ],
-    patternGuide: {
-      abbreviations: [
-        { code: "MR", meaning: "Magic ring" },
-        { code: "CH", meaning: "Chain" },
-        { code: "SC", meaning: "Single crochet" },
-        { code: "INC", meaning: "Increase (2 sc in one stitch)" },
-        { code: "DEC", meaning: "Decrease (invisible decrease)" },
-        { code: "BLO", meaning: "Back loop only" },
-        { code: "FLO", meaning: "Front loop only" },
-        { code: "HDC", meaning: "Half double crochet" },
-        { code: "DC", meaning: "Double crochet" },
-        { code: "SL ST", meaning: "Slip stitch" }
-      ],
-      steps: [
-        {
-          title: "1. Shoes & Legs (2.00 mm hook)",
-          note: "Work in continuous spiral. Stuff firmly as you go.",
-          rounds: [
-            "Shoe color: R1 CH5; from 2nd CH: 3 SC, 3-SC INC; other side: 2 SC, INC [10]",
-            "R2: INC, 2 SC, 3 INC, 3 SC, INC [15]",
-            "R3: 2 INC, 3 SC, 4 INC, 5 SC, INC [22]",
-            "R4: BLO 22 SC",
-            "R5-6: 22 SC (Change to skin color at R7)",
-            "R8: BLO 6 SC, 6 DEC, 4 SC [16]",
-            "R9: 5 SC, 4 DEC, 3 SC [12]",
-            "R10-22: Work leg shaping and knee INC/DEC as detailed in chart."
-          ]
-        },
-        {
-          title: "2. Joining Legs & Body",
-          rounds: [
-            "Join legs with White yarn: work 8 extra SC to the corner, CH2 and join the first leg.",
-            "R1: 9 SC, INC, 9 SC, 2 SC on chain, 9 SC, INC, 9 SC, 2 SC on chain [44]",
-            "R2-5: 44 SC",
-            "Change to skin at R9 (BLO) and shape upper torso.",
-            "Attach arms at R22 (6 SC, 4 SC attaching arm 1, 9 SC, 4 SC attaching arm 2, 5 SC [28]).",
-            "Insert 20-gauge wire for posability."
-          ]
-        },
-        {
-          title: "3. Graduation Cap & Tassel (2.20 mm hook)",
-          rounds: [
-            "Skull cap: R1 8 SC in MR, R2 8 INC [16], R3 (SC, INC)x8 [24], expand to 56 SC.",
-            "Top Square: make 2 squares of 20 SC x 18 rows. Join with SC around with acetate support.",
-            "Tassel: wrap gold Silvia Lumina yarn 8-10 times around fingers, tie fringe, pass through cap center."
-          ]
-        },
-        {
-          title: "4. Gown, Stole & Floral Bouquet",
-          points: [
-            "1. Gown: Worked in black with CH5 sleeve armholes and full flared length.",
-            "2. Gold Stole: CH47 with Silvia Lumina, worked in HDC and DC for draped graduation look.",
-            "3. Bouquet: Granny wrap base holding a mini crochet sunflower and purple lavender sprigs."
-          ]
-        }
-      ]
-    }
-  },
 {
   "id": 7,
   "name": "Festive Grinch Amigurumi",
@@ -1154,10 +754,411 @@ export const products = [
       }
     ]
   }
-}
+},
+  {
+    id: 1,
+    name: "Kroha Bunny Plush & Keychain",
+    slug: "kroha-bunny",
+    category: "amigurumi",
+    skill: "intermediate",
+    iconKey: "bunny",
+    soldOut: false,
+    buyUrl: "https://cozy-stitches-crochet-shop.fourthwall.com/cart/checkout?products=9755bfdc-b748-4b40-915c-69d4452c19c1:1&currency=USD",
+    primaryImage: "/images/products/kroha-bunny/bunny-1.webp",
+    images: [
+      "/images/products/kroha-bunny/bunny-1.jpg",
+      "/images/products/kroha-bunny/bunny-2.jpg",
+      "/images/products/kroha-bunny/bunny-3.jpg",
+      "/images/products/kroha-bunny/bunny-4.jpg"
+    ],
+    color: "#e8f7ee", // Delicate soft mint pastel
+    price: 3.99,
+    description: "An adorable plush amigurumi bunny pattern with 2-in-1 sizing: a 9 cm mini keychain or a 17 cm huggable plush toy. Includes step-by-step photos for sculpted facial details, floppy ears, and sweet bow tie.",
+    badge: "Plush & Keychain",
+    tag: "Instant Download",
+    pages: 17,
+    terms: "US Terms",
+    formats: ["PDF"],
+    bestseller: true,
+    size: "9 cm (Keychain) / 17 cm (Plush Toy)",
+    hook: "2.0 mm (Keychain) & 3.5 mm (Plush Toy)",
+    materials: [
+      "YarnArt Dolce Baby yarn (for 9 cm keychain, 1 skein, 100% micro-polyester, 50g / 85m)",
+      "Himalaya Dolphin Baby plush yarn (for 17 cm plush toy, 1 skein, 100% polyester, 100g / 120m)",
+      "Crochet hooks: 2.0 mm (keychain) or 3.5 mm (plush toy)",
+      "Hollofibre or polyester fiberfill stuffing",
+      "1 pair plastic safety eyes / beads (and strong thread for sculpting)",
+      "Black embroidery thread for nose, mouth and eye indentations",
+      "Yarn needle (tapestry & long doll needle) & scissors",
+      "Keychain clasp or lobster claw attachment",
+      "Optional: yellow polka-dot ribbon & clover charm for neckline"
+    ],
+    sections: [
+      "Materials, Sizing & Abbreviations",
+      "Legs & Lower Body Join (Seamless spiral)",
+      "Upper Torso, Arm Attachment & Head",
+      "Floppy Ears & Tail",
+      "Facial Sculpting, Eye Deepening & Embroidery",
+      "Assembly, Ribbon Bow & Keychain Clasp"
+    ],
+    patternGuide: {
+      abbreviations: [
+        { code: "MR", meaning: "Magic ring" },
+        { code: "ch", meaning: "Chain" },
+        { code: "sc", meaning: "Single crochet" },
+        { code: "inc", meaning: "Increase (2 sc in one stitch)" },
+        { code: "dec", meaning: "Invisible decrease" },
+        { code: "sl st", meaning: "Slip stitch" }
+      ],
+      steps: [
+        {
+          title: "1. Legs & Lower Body (Worked Bottom-Up)",
+          note: "Work in continuous spiral. Stuff legs lightly as you go.",
+          rounds: [
+            "Leg 1: R1 6 sc in MR [6], R2 6 inc [12], R3-4 12 sc [12]. Fasten off.",
+            "Leg 2: Repeat R1-4, do not cut yarn. Chain 1 and join to Leg 1.",
+            "R5: 12 sc on Leg 1, 1 sc in chain, 12 sc on Leg 2, 1 sc in chain [26]",
+            "R6-10: Work 26 sc in continuous rounds, building the tummy.",
+            "Stuff the bottom and lower tummy firmly before continuing."
+          ]
+        },
+        {
+          title: "2. Upper Torso & Arm Join",
+          rounds: [
+            "Arms (make 2): R1 5 sc in MR [5], R2 5 inc [10], R3-6 10 sc [10]. Fold flat and crochet 4 sc through both layers.",
+            "Body continuation: R11-13 Work gradual decrease rounds to shape waist and chest.",
+            "R14: Crochet arms directly into the body round on each side to eliminate sewing.",
+            "R15: Shape neck opening, stuff upper torso."
+          ]
+        },
+        {
+          title: "3. Head & Floppy Ears",
+          rounds: [
+            "Head: Continue upwards from neck with increase rounds to 30 sc. Work 5 even rounds.",
+            "Insert safety eyes between rows 6 and 7 of head, spaced 5 stitches apart.",
+            "Gradually decrease and close top of head, stuffing firmly.",
+            "Ears (make 2): R1 6 sc in MR, R2 (1 sc, inc) x 3 [9], R3-8 9 sc. Pinch base and sew to top of head."
+          ]
+        },
+        {
+          title: "4. Facial Needle Sculpting & Keychain Clasp",
+          points: [
+            "1. Needle sculpting: Pass strong thread through back of neck to inner corners of eyes. Pull gently to create deep, expressive eye sockets.",
+            "2. Muzzle embroidery: Embroider horizontal nose line and vertical drop mouth in black thread.",
+            "3. Tail & Clasp: Sew round pom-pom tail at lower back. Attach sturdy lobster clasp to head center between ears.",
+            "4. Finishing touch: Tie yellow polka-dot ribbon around the neck with a miniature clover charm."
+          ]
+        }
+      ]
+    }
+  },
+  {
+    id: 2,
+    name: "Shooting Star Keychain",
+    slug: "shooting-star-keychain",
+    category: "amigurumi",
+    skill: "intermediate",
+    iconKey: "star",
+    soldOut: false,
+    isFree: true,
+    primaryImage: "/images/products/shooting-star/star-1.webp",
+    images: [
+      "/images/products/shooting-star/star-1.jpg",
+      "/images/products/shooting-star/star-2.jpg",
+      "/images/products/shooting-star/star-3.jpg",
+      "/images/products/shooting-star/star-4.jpg"
+    ],
+    color: "#fef9db", // Soft creamy pastel lemon yellow
+    price: 0.00,
+    description: "A sweet crochet star with an embroidered smile and a pastel rainbow tail in lilac, pink, and aqua green. Approx. 8 cm, 3.0 mm hook. Permanently 100% free digital download.",
+    badge: "100% Free Pattern",
+    tag: "Free PDF",
+    pages: 7,
+    terms: "US Terms",
+    formats: ["PDF"],
+    bestseller: false,
+    size: "Approx. 8 cm",
+    hook: "3.0 mm",
+    materials: [
+      "8/6 cotton yarn: yellow, pink, lilac, aqua green & black",
+      "3.0 mm crochet hook & yarn needle",
+      "Two 6 mm safety eyes",
+      "Stitch marker & scissors",
+      "Cold silicone glue (for rainbow tail)",
+      "Metal keychain ring"
+    ],
+    sections: [
+      "Materials & Abbreviations",
+      "Star body - make 2 (continuous rounds)",
+      "Make the five points (no stuffing)",
+      "Pastel rainbow tail (lilac, pink, aqua green)",
+      "Face embroidery & safety eyes",
+      "Assembly & key step photos"
+    ],
+    patternGuide: {
+      abbreviations: [
+        { code: "MR", meaning: "Magic ring" },
+        { code: "ch", meaning: "Chain" },
+        { code: "sl st", meaning: "Slip stitch" },
+        { code: "sc", meaning: "Single crochet" },
+        { code: "hdc", meaning: "Half double crochet" },
+        { code: "dc", meaning: "Double crochet" },
+        { code: "inc", meaning: "Increase (2 sc in one stitch)" },
+        { code: "dec", meaning: "Invisible decrease" }
+      ],
+      steps: [
+        {
+          title: "1. Star Body - Make 2 (Yellow Yarn)",
+          note: "Work the entire piece in continuous rounds with yellow yarn.",
+          rounds: [
+            "R1: 5 sc in MR (5)",
+            "R2: 5 inc (10)",
+            "R3: (1 sc, inc) x 5 (15)",
+            "R4: 1 sc, inc, (2 sc, inc) x 4, 1 sc (20)"
+          ],
+          finishing: "Fasten off the first circle. Do not cut yarn on the second."
+        },
+        {
+          title: "2. Make the Five Points",
+          points: [
+            "1. Place wrong sides together. Work 4 sc from the second star, then 4 sc from the first star.",
+            "2. Work 4 sc and 2 dec (6). Fasten off, leaving a tail for closing.",
+            "3. Repeat for the remaining four points. Close all points with a yarn needle.",
+            "4. Do not stuff. Weave all yarn ends inside."
+          ]
+        },
+        {
+          title: "3. Pastel Rainbow Tail",
+          points: [
+            "1. With lilac, ch 10. Starting in the 2nd chain, make 6 sc and 1 sl st. Fasten off.",
+            "2. Join pink yarn in the 3rd stitch from the back; make 6 sc and 1 sl st. Turn.",
+            "3. Ch 1, make 1 sl st and 5 sc. Fasten off.",
+            "4. Join aqua green yarn in the 3rd stitch from the back; make 4 sc and 1 sl st. Turn.",
+            "5. Ch 1, make 1 sl st and 3 sc. Fasten off and weave in ends."
+          ]
+        },
+        {
+          title: "4. Face & Finishing Assembly",
+          points: [
+            "1. Embroider a U-shaped smile between rounds 1 and 2 with black yarn.",
+            "2. Attach the safety eyes one stitch away from each side of the smile.",
+            "3. Add blush on cheeks if desired.",
+            "4. Glue the rainbow tail to the back of one star side with cold silicone glue.",
+            "5. Attach keychain ring to the top point of the star."
+          ]
+        }
+      ]
+    }
+  },
+  {
+    id: 3,
+    name: "Eyeglass Holder Set 2",
+    slug: "eyeglass-holder-set-2",
+    category: "pdf-pattern",
+    skill: "intermediate",
+    iconKey: "eyeglass-holder",
+    soldOut: false,
+    buyUrl: "https://cozy-stitches-crochet-shop.fourthwall.com/cart/checkout?products=a673caae-9270-4be7-805a-75e396bd21f9:1&currency=USD",
+    primaryImage: "/images/products/eyeglass-holders/eyeglass-grid.webp",
+    images: [
+      "/images/products/eyeglass-holders/eyeglass-grid.png",
+      "/images/products/eyeglass-holders/eyeglass-fox.png",
+      "/images/products/eyeglass-holders/eyeglass-turtle.png",
+      "/images/products/eyeglass-holders/eyeglass-raccoon.png",
+      "/images/products/eyeglass-holders/eyeglass-bunny.png",
+      "/images/products/eyeglass-holders/eyeglass-llama.jpg"
+    ],
+    color: "#fbeae8", // Soft warm pastel coral
+    price: 3.99,
+    description: "Seven character variations (Fox, Turtle, Raccoon, Llama, Angry Dragon, Chicken). Practical 3D crochet trays with raised walls that keep your glasses safe.",
+    badge: "Set · 7 Characters",
+    tag: "Instant Download",
+    pages: 13,
+    terms: "US Terms",
+    formats: ["PDF"],
+    bestseller: true,
+    size: "Universal Eyeglass Tray",
+    hook: "4.0 & 2.5 mm",
+    materials: [
+      "#4 medium-weight yarn (red, cream, grey, black, green, beige)",
+      "#2 fine yarn (for eyes and details)",
+      "4.0 mm & 2.5 mm crochet hooks",
+      "Safety eyes (16 mm for fox/raccoon/llama, or crocheted)",
+      "Fiberfill stuffing for snouts",
+      "Stitch marker & yarn needle",
+      "Cold silicone glue / hot glue"
+    ],
+    sections: [
+      "Materials & Tools & Color Palette",
+      "Special Stitch Guide (BPSC Wall Technique)",
+      "Base Patterns (Fox, Raccoon, Llama, Dragon, Turtle, Chicken)",
+      "Ears & Snouts for All 7 Characters",
+      "Additional Elements (Horns, Whiskers, Comb, Wattles)",
+      "Eyes & Final Assembly Guide with Photos"
+    ],
+    patternGuide: {
+      abbreviations: [
+        { code: "CH", meaning: "Chain" },
+        { code: "SL ST", meaning: "Slip stitch" },
+        { code: "SC", meaning: "Single crochet" },
+        { code: "HDC", meaning: "Half double crochet" },
+        { code: "DC", meaning: "Double crochet" },
+        { code: "TR", meaning: "Treble crochet" },
+        { code: "INC", meaning: "Increase (2 sc in one stitch)" },
+        { code: "DEC", meaning: "Decrease" },
+        { code: "BLO", meaning: "Back loop only" },
+        { code: "BPSC", meaning: "Back-post single crochet (creates vertical tray walls)" },
+        { code: "LS", meaning: "Loop stitch" }
+      ],
+      steps: [
+        {
+          title: "1. Base - Fox & Character Tray (4.0 mm hook)",
+          note: "CH 19 and begin in the second chain. Work in continuous oval rounds.",
+          rounds: [
+            "R1: INC, SC 16, 4 SC in the same chain; continue on other side: SC 16, INC [40]",
+            "R2: INC x2, SC 16, INC x4, SC 16, INC x2 [48]",
+            "R3: (SC, INC) x2, SC 16, (SC, INC) x2, SC, INC, SC, INC, SC 16, (SC, INC) x2 [56]",
+            "R4: SC, SC, INC, SC 2, INC, SC 16, (SC 2, INC) x2, SC, SC, INC, SC 2, INC, SC 16, (SC 2, INC) x2 [64]",
+            "R5: SC, SC 2, INC, SC 3, INC, SC 16, (SC 3, INC) x2, SC, SC 2, INC, SC 3, INC, SC 16, (SC 3, INC) x2 [72]",
+            "R6: SC, SC 3, INC, SC 4, INC, SC 16, (SC 4, INC) x2, SC, SC 3, INC, SC 4, INC, SC 16, (SC 4, INC) x2 [80]"
+          ],
+          finishing: "Work one additional SC in second color. CH 1, turn to work outside wall. R7 BPSC 39, BPSC 41 [80]. R8-9: SC 39, SC 41 [80]. R10: (SC 2, SC2TOG) x2, SC 19, SC2TOG, SC 4, SC2TOG, SC 2, SC 2, (SC2TOG, SC 4) x4, SC 16, SC2TOG, SC 4, SC2TOG, SC 3 [72]."
+        },
+        {
+          title: "2. Ears (Make 2)",
+          points: [
+            "Fox: Inner piece in cream, outer piece in red. CH 2, R1: SC 2, R2: INC x2 [4], R3: SC 4, R4: INC, SC 2, INC [6], R5: SC 6, R6: INC, SC 4, INC [8], R7: SC 8. Place together: SC 7, 3 SC at tip, SC 7.",
+            "Raccoon: R1: SC 2, R2: INC x2, R3: SC 4, R4: INC, SC 2, INC [6], R5-6: SC 6. Join white yarn: SC 6, 3 SC at tip, SC 6.",
+            "Llama & Dragon: R1: 6 SC in MR [6], R2: (SC, INC) x3 [9], R3: (SC, INC, SC) x3 [12], R4-8: SC 12, R9: (SC, DEC, SC) x3 [9]. Fold and close with SC 4."
+          ]
+        },
+        {
+          title: "3. 3D Snouts & Beaks",
+          points: [
+            "Fox Snout: R1-2: SC 8, R3: INC, SC, INC, SC 3, INC, SC [11], R4: (INC, SC) x2, SC, SC, INC, SC 2, INC, SC [15], R5: SC 7, INC, SC 3, INC, SC 3 [17], R6: SC 7, SC 7, SC 3 [17].",
+            "Raccoon Snout: R1-2: SC 8, R3: INC, SC, INC, SC 3, INC, SC [11], R4: (INC, SC) x2, SC 2, INC, SC 2, INC, SC [15], R5: SC 7, INC, SC 3, INC, SC 3 [17].",
+            "Chicken Beak: R1-3: SC 6, R4: (3 SC in one stitch, SC 2) x2, SL ST."
+          ]
+        },
+        {
+          title: "4. Eyes & Facial Assembly",
+          points: [
+            "1. Fox, Raccoon, Llama: Use 16 mm safety eyes with back posts removed. Glue short black yarn strand for eyelid. Secure with glue.",
+            "2. Dragon & Turtle: Use #2 yarn with 2.5 mm hook: R1: SC 6 [6], R2: INC x6 [12], R3: (SC, INC) x6 [18], R4: (SC, INC, SC) x6 [24], R5: (SC 3, INC) x6 [30].",
+            "3. Final Assembly: Stuff snout with fiberfill before sewing completely. Embroider nose on snout. Sew or glue eyes, attach ears/horns to the top rim of the tray."
+          ]
+        }
+      ]
+    }
+  },
+  {
+    id: 4,
+    name: "Graduate Doll Amigurumi",
+    slug: "graduate-doll-amigurumi",
+    category: "amigurumi",
+    skill: "intermediate",
+    iconKey: "graduate",
+    soldOut: false,
+    buyUrl: "https://cozy-stitches-crochet-shop.fourthwall.com/cart/checkout?products=97a4fd30-e2c5-453a-a5c5-5ad0c4abba20:1&currency=USD",
+    primaryImage: "/images/products/graduate-doll/graduate-1.webp",
+    images: [
+      "/images/products/graduate-doll/graduate-1.jpg",
+      "/images/products/graduate-doll/graduate-2.jpg",
+      "/images/products/graduate-doll/graduate-3.jpg",
+      "/images/products/graduate-doll/graduate-4.jpg",
+      "/images/products/graduate-doll/graduate-5.jpg"
+    ],
+    color: "#f6edf9", // Delicate soft celebratory lavender
+    price: 3.99,
+    description: "An elegant keepsake amigurumi doll with graduation cap, gold tassel & stole, graduation gown, diploma scroll, and floral granny wrap bouquet.",
+    badge: "Keepsake Doll",
+    tag: "Instant Download",
+    pages: 11,
+    terms: "US Terms",
+    formats: ["PDF"],
+    bestseller: true,
+    size: "18 cm (20 cm with cap)",
+    hook: "2.00 mm - 2.20 mm",
+    materials: [
+      "Silvigurumi yarn: Skin color, Brown 5902, Burgundy 6781, Gold / Silvia Lumina",
+      "Black yarn for gown and graduation cap",
+      "Beige, Purple & Yellow for bouquet (Sunflower + Lavender)",
+      "White yarn for scroll and eye highlights",
+      "#10 safety eyes & 20-gauge craft wire",
+      "2.00 mm & 2.20 mm crochet hooks",
+      "Silicone fiberfill & needle"
+    ],
+    sections: [
+      "Materials, Abbreviations & False X Stitch",
+      "Shoes, Legs & Body Join (Wire insertion)",
+      "Head, Face Embroidery & Hair Placement",
+      "Bodice & Burgundy Dress",
+      "Graduation Cap with Gold Tassel",
+      "Graduation Gown & Gold Stole",
+      "Diploma Scroll & Granny Bouquet Wrap (Sunflower & Lavender)"
+    ],
+    patternGuide: {
+      abbreviations: [
+        { code: "MR", meaning: "Magic ring" },
+        { code: "CH", meaning: "Chain" },
+        { code: "SC", meaning: "Single crochet" },
+        { code: "INC", meaning: "Increase (2 sc in one stitch)" },
+        { code: "DEC", meaning: "Decrease (invisible decrease)" },
+        { code: "BLO", meaning: "Back loop only" },
+        { code: "FLO", meaning: "Front loop only" },
+        { code: "HDC", meaning: "Half double crochet" },
+        { code: "DC", meaning: "Double crochet" },
+        { code: "SL ST", meaning: "Slip stitch" }
+      ],
+      steps: [
+        {
+          title: "1. Shoes & Legs (2.00 mm hook)",
+          note: "Work in continuous spiral. Stuff firmly as you go.",
+          rounds: [
+            "Shoe color: R1 CH5; from 2nd CH: 3 SC, 3-SC INC; other side: 2 SC, INC [10]",
+            "R2: INC, 2 SC, 3 INC, 3 SC, INC [15]",
+            "R3: 2 INC, 3 SC, 4 INC, 5 SC, INC [22]",
+            "R4: BLO 22 SC",
+            "R5-6: 22 SC (Change to skin color at R7)",
+            "R8: BLO 6 SC, 6 DEC, 4 SC [16]",
+            "R9: 5 SC, 4 DEC, 3 SC [12]",
+            "R10-22: Work leg shaping and knee INC/DEC as detailed in chart."
+          ]
+        },
+        {
+          title: "2. Joining Legs & Body",
+          rounds: [
+            "Join legs with White yarn: work 8 extra SC to the corner, CH2 and join the first leg.",
+            "R1: 9 SC, INC, 9 SC, 2 SC on chain, 9 SC, INC, 9 SC, 2 SC on chain [44]",
+            "R2-5: 44 SC",
+            "Change to skin at R9 (BLO) and shape upper torso.",
+            "Attach arms at R22 (6 SC, 4 SC attaching arm 1, 9 SC, 4 SC attaching arm 2, 5 SC [28]).",
+            "Insert 20-gauge wire for posability."
+          ]
+        },
+        {
+          title: "3. Graduation Cap & Tassel (2.20 mm hook)",
+          rounds: [
+            "Skull cap: R1 8 SC in MR, R2 8 INC [16], R3 (SC, INC)x8 [24], expand to 56 SC.",
+            "Top Square: make 2 squares of 20 SC x 18 rows. Join with SC around with acetate support.",
+            "Tassel: wrap gold Silvia Lumina yarn 8-10 times around fingers, tie fringe, pass through cap center."
+          ]
+        },
+        {
+          title: "4. Gown, Stole & Floral Bouquet",
+          points: [
+            "1. Gown: Worked in black with CH5 sleeve armholes and full flared length.",
+            "2. Gold Stole: CH47 with Silvia Lumina, worked in HDC and DC for draped graduation look.",
+            "3. Bouquet: Granny wrap base holding a mini crochet sunflower and purple lavender sprigs."
+          ]
+        }
+      ]
+    }
+  }
 ];
 export const categories = [
   { key: "all",         label: "All Patterns" },
+  { key: "christmas",   label: "🎄 Christmas Special" },
   { key: "pdf-pattern", label: "PDF Patterns" },
   { key: "amigurumi",   label: "Amigurumi" },
 ];
