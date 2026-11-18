@@ -153,7 +153,12 @@ export function initSchema() {
     [3, "Eyeglass Holder Set 2", "pdf-pattern", "intermediate", 4.99, 8.99, "pattern-3-eyeglass-holder-set-2.pdf", "Eyeglass-Holder-Set-2-Pattern.pdf", 13],
     [4, "Graduate Doll Amigurumi", "amigurumi", "intermediate", 6.99, 11.99, "pattern-4-graduate-doll.pdf", "Graduate-Doll-Amigurumi-Pattern.pdf", 11],
     [5, "Plush Santa Claus Doll", "amigurumi", "intermediate", 3.99, 8.99, "pattern-5-santa-claus.pdf", "Santa-Claus-Plush-Pattern.pdf", 18],
-    [6, "Christmas Collection 5-in-1 Amigurumi", "amigurumi", "intermediate", 7.99, 14.99, "pattern-6-christmas-collection.pdf", "Christmas-Collection-5in1-Pattern.pdf", 48]
+    [6, "Christmas Collection 5-in-1 Amigurumi", "amigurumi", "intermediate", 7.99, 14.99, "pattern-6-christmas-collection.pdf", "Christmas-Collection-5in1-Pattern.pdf", 48],
+    [7, "Festive Grinch Amigurumi", "amigurumi", "intermediate", 3.99, 7.99, "pattern-7-festive-grinch.pdf", "Festive-Grinch-Pattern.pdf", 12],
+    [8, "Holiday Snowman Amigurumi", "amigurumi", "beginner", 3.99, 7.99, "pattern-8-holiday-snowman.pdf", "Holiday-Snowman-Pattern.pdf", 12],
+    [9, "Gingerbread Doll Amigurumi", "amigurumi", "beginner", 3.99, 7.99, "pattern-9-gingerbread-doll.pdf", "Gingerbread-Doll-Pattern.pdf", 10],
+    [10, "Little Dragon Amigurumi", "amigurumi", "intermediate", 3.99, 7.99, "pattern-10-little-dragon.pdf", "Little-Dragon-Pattern.pdf", 13],
+    [11, "Christmas Elf Doll Amigurumi", "amigurumi", "intermediate", 3.99, 7.99, "pattern-11-christmas-elf.pdf", "Christmas-Elf-Pattern.pdf", 18]
   ];
 
   for (const p of productsSeed) {

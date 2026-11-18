@@ -41,6 +41,21 @@ function getProductSEO(product) {
   } else if (product.id === 6) {
     seoTitle = `Christmas Collection 5-in-1 Amigurumi Crochet Pattern PDF | CozyStitches`;
     seoDescription = `Complete 48-page Christmas amigurumi pattern bundle. Includes 5 designs: Grinch, Little Dragon, Gingerbread Doll, Snowman, and Elf with step-by-step photos and 8 video tutorials.`;
+  } else if (product.id === 7) {
+    seoTitle = `Festive Grinch Amigurumi Crochet Pattern PDF | CozyStitches`;
+    seoDescription = `Crochet the mischievous Festive Grinch in his cozy red Santa hat and festive trousers. 12-page digital PDF with 25 instructional photos in US crochet terms.`;
+  } else if (product.id === 8) {
+    seoTitle = `Holiday Snowman Amigurumi Crochet Pattern PDF | CozyStitches`;
+    seoDescription = `Crochet a charming holiday snowman with black top hat, cozy red scarf, and carrot nose. Flat self-standing base, 12-page PDF with 26 instructional photos in US terms.`;
+  } else if (product.id === 9) {
+    seoTitle = `Gingerbread Doll Amigurumi Crochet Pattern PDF | CozyStitches`;
+    seoDescription = `Cute gingerbread doll pattern with scalloped frosting cap, embroidered rainbow sprinkles, and red buttons. 10-page digital PDF with 21 step-by-step photos in US terms.`;
+  } else if (product.id === 10) {
+    seoTitle = `Little Dragon Amigurumi Crochet Pattern PDF | CozyStitches`;
+    seoDescription = `Adorable fantasy holiday dragon pattern with poseable wired tail, ribbed wings, horns, and spikes. 13-page digital PDF with 31 photos and wiring tutorial in US terms.`;
+  } else if (product.id === 11) {
+    seoTitle = `Christmas Elf Doll Amigurumi Crochet Pattern PDF | CozyStitches`;
+    seoDescription = `Delightful holiday elf doll pattern with pointed ears, curly brown hair cap, emerald coat, and striped beanie. 18-page digital PDF with 38 instructional photos in US terms.`;
   }
 
   const canonicalUrl = `${SITE_URL}/product/${product.id}`;

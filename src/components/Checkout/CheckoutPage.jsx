@@ -16,7 +16,7 @@ import Logo from '../Logo/Logo';
 import './CheckoutPage.css';
 
 export default function CheckoutPage({ product, onBack }) {
-  const [activeMethod, setActiveMethod] = useState('lemon'); // 'lemon' (cards/apple pay/paypal)
+  const [activeMethod, setActiveMethod] = useState('card'); // 'card' (cards/apple pay/paypal)
   const [isRedirecting, setIsRedirecting] = useState(false);
 
   useEffect(() => {
@@ -27,22 +27,13 @@ export default function CheckoutPage({ product, onBack }) {
     ? Math.round((1 - product.price / product.originalPrice) * 100)
     : null;
 
-  // Lemon Squeezy direct checkout URL (with overlay fallback)
+  // Direct checkout URL
   const checkoutUrl = product.buyUrl || 'https://cozy-stitches-crochet-shop.fourthwall.com/';
 
-  const handleOpenLemonOverlay = (e) => {
-    if (checkoutUrl.includes('fourthwall.com')) {
-      window.location.href = checkoutUrl;
-      return;
-    }
-    e.preventDefault();
-    if (checkoutUrl.includes('lemonsqueezy.com') && window.LemonSqueezy && window.LemonSqueezy.Url) {
-      window.LemonSqueezy.Url.Open(checkoutUrl);
-    } else {
-      setIsRedirecting(true);
-      // Clean single navigation prevents double-request race condition
-      window.location.assign(checkoutUrl);
-    }
+  const handleCheckoutClick = () => {
+    setIsRedirecting(true);
+    // Direct clean navigation to Fourthwall secure checkout
+    window.location.assign(checkoutUrl);
   };
 
   if (product.soldOut) {
@@ -97,16 +88,14 @@ export default function CheckoutPage({ product, onBack }) {
                 </div>
               </div>
 
-              {/* Lemon Squeezy Embedded Secure Gate */}
+              {/* Secure Fourthwall Instant Checkout Gate */}
               <div className="co-payment-methods">
                 <div className="co-gate-box">
                   <div className="co-gate-top">
                     <div className="co-pill-recom">Recommended for US &amp; Global</div>
                     <h4>Credit / Debit Card, Apple Pay, Google Pay &amp; PayPal</h4>
                     <p className="co-gate-desc">
-                      {checkoutUrl.includes('fourthwall.com')
-                        ? 'Fast 1-click checkout powered by Fourthwall & Stripe. Apple Pay, Google Pay, and all major cards accepted.'
-                        : 'Fast 1-click checkout powered by Lemon Squeezy (Merchant of Record). All major credit/debit cards accepted.'}
+                      Fast 1-click checkout powered by Fourthwall &amp; Stripe. Apple Pay, Google Pay, PayPal, and all major cards accepted.
                     </p>
                   </div>
 
@@ -121,7 +110,7 @@ export default function CheckoutPage({ product, onBack }) {
                   {/* Primary Instant Checkout Action */}
                   <a
                     href={checkoutUrl}
-                    onClick={handleOpenLemonOverlay}
+                    onClick={handleCheckoutClick}
                     className="co-btn-checkout btn-primary"
                   >
                     <Lock size={18} />
