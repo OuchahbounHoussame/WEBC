@@ -7,7 +7,8 @@ export const products = [
     skill: "intermediate",
     iconKey: "christmas-collection",
     soldOut: false,
-    buyUrl: "https://cozy-stitches-crochet-shop.fourthwall.com/",
+    buyUrl: "https://cozy-stitches-crochet-shop.fourthwall.com/cart/checkout?products=310efa69-7023-4fb9-ad82-902caaa0423b:1&currency=USD",
+    fourthwallProductUrl: "https://cozy-stitches-crochet-shop.fourthwall.com/products/christmas-collection-5-in-1-amigurumi-crochet-pdf-pattern-bundle",
     primaryImage: "/images/products/christmas-collection/collection-studio.webp",
     images: [
       "/images/products/christmas-collection/collection-studio.webp",
