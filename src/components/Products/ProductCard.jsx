@@ -44,6 +44,9 @@ export default function ProductCard({ product, onAddToCart, onViewProduct }) {
               src={product.primaryImage}
               alt={`${product.name} handmade crochet amigurumi pattern PDF`}
               loading="lazy"
+              decoding="async"
+              width="360"
+              height="450"
               className="pc-real-product-img"
             />
           ) : (

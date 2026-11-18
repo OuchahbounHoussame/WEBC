@@ -408,7 +408,7 @@ export const products = [
     iconKey: "eyeglass-holder",
     soldOut: false,
     buyUrl: "https://cozy-stitches-crochet-shop.fourthwall.com/cart/checkout?products=a673caae-9270-4be7-805a-75e396bd21f9:1&currency=USD",
-    primaryImage: "/images/products/eyeglass-holders/eyeglass-grid.png",
+    primaryImage: "/images/products/eyeglass-holders/eyeglass-grid.webp",
     images: [
       "/images/products/eyeglass-holders/eyeglass-grid.png",
       "/images/products/eyeglass-holders/eyeglass-fox.png",
@@ -604,6 +604,557 @@ export const products = [
       ]
     }
   },
+{
+  "id": 7,
+  "name": "Festive Grinch Amigurumi",
+  "slug": "festive-grinch",
+  "category": "amigurumi",
+  "skill": "intermediate",
+  "iconKey": "christmas-collection",
+  "soldOut": false,
+  "buyUrl": "https://cozy-stitches-crochet-shop.fourthwall.com/",
+  "primaryImage": "/images/products/festive-grinch/grinch-1.webp",
+  "images": [
+    "/images/products/festive-grinch/grinch-1.webp",
+    "/images/products/festive-grinch/grinch-2.webp",
+    "/images/products/festive-grinch/grinch-3.webp",
+    "/images/products/festive-grinch/grinch-4.webp"
+  ],
+  "color": "#f0fdf4",
+  "price": 3.99,
+  "originalPrice": 7.99,
+  "description": "Crochet the mischievous Festive Grinch with this 12-page digital PDF pattern. Features an expressive embroidered smirk, slouchy Santa hat with fluffy pompom, and removable red trousers with booties in US crochet terms.",
+  "badge": "Holiday Special",
+  "tag": "Instant Download",
+  "pages": 12,
+  "terms": "US Terms",
+  "formats": [
+    "PDF"
+  ],
+  "bestseller": true,
+  "size": "Approx. 18–20 cm tall",
+  "hook": "1.75 mm",
+  "materials": [
+    "YarnArt Jeans (55% cotton, 45% acrylic, 160 m / 50 g) in Lime Green 29, Red 90, Black 53, White 62",
+    "Alize Softy (shade 62) for fluffy trim on hat and booties",
+    "1.75 mm crochet hook",
+    "10 mm safety eyes",
+    "Polyfill toy stuffing",
+    "Tapestry needle, stitch markers, scissors & lighter"
+  ],
+  "sections": [
+    "Getting Started & Color Selection",
+    "Materials & Stitch Guide (US Terms)",
+    "Head & Tummy Shaping (One-piece construction)",
+    "Facial Needle Sculpting & Embroidered Smirk",
+    "Slouchy Santa Hat & Alize Softy Pompom",
+    "Red Trousers, Black Belt & Booties Assembly"
+  ],
+  "patternGuide": {
+    "abbreviations": [
+      {
+        "code": "MR",
+        "meaning": "Magic ring"
+      },
+      {
+        "code": "ch",
+        "meaning": "Chain"
+      },
+      {
+        "code": "sc",
+        "meaning": "Single crochet"
+      },
+      {
+        "code": "hdc",
+        "meaning": "Half double crochet"
+      },
+      {
+        "code": "dc",
+        "meaning": "Double crochet"
+      },
+      {
+        "code": "sl st",
+        "meaning": "Slip stitch"
+      },
+      {
+        "code": "inc",
+        "meaning": "Increase (2 sc in one stitch)"
+      },
+      {
+        "code": "dec",
+        "meaning": "Invisible decrease (2 sc together)"
+      },
+      {
+        "code": "BPsc",
+        "meaning": "Back post single crochet"
+      },
+      {
+        "code": "BLO",
+        "meaning": "Back loop only"
+      }
+    ],
+    "steps": [
+      {
+        "title": "1. Head & Body Construction",
+        "note": "Work with YarnArt Jeans shade 29 (lime green) and 1.75 mm hook.",
+        "rounds": [
+          "R1-27: Begin with MR 6 sc and expand up to 48 sc for the chubby head contour. Insert 10 mm safety eyes between rounds 16-17 with 8 stitches between them.",
+          "R28-46: Form neck taper and continue directly into the pear-shaped tummy. Stuff firmly before closing."
+        ]
+      },
+      {
+        "title": "2. Needle Sculpting & Facial Features",
+        "rounds": [
+          "Needle sculpting: Pass yarn needle from chin indent to inner eye corners, pulling gently to create expressive sunken sockets.",
+          "Embroidered expression: Embroider curved black eyebrows and mischievous wide smirk using black thread, adding white Alize Softy tufts at cheeks."
+        ]
+      },
+      {
+        "title": "3. Holiday Santa Hat & Trousers",
+        "rounds": [
+          "Hat: Worked in vibrant holiday red from tip downward, widening gradually into slouchy drape. Finish brim with 2 rounds of fluffy Alize Softy yarn.",
+          "Trousers & Shoes: Crocheted in red with black belt band and yellow buckle embroidery. Cuffed with white plush borders."
+        ]
+      }
+    ]
+  }
+},
+{
+  "id": 8,
+  "name": "Holiday Snowman Amigurumi",
+  "slug": "holiday-snowman",
+  "category": "amigurumi",
+  "skill": "easy",
+  "iconKey": "christmas-collection",
+  "soldOut": false,
+  "buyUrl": "https://cozy-stitches-crochet-shop.fourthwall.com/",
+  "primaryImage": "/images/products/holiday-snowman/snowman-1.webp",
+  "images": [
+    "/images/products/holiday-snowman/snowman-1.webp",
+    "/images/products/holiday-snowman/snowman-2.webp",
+    "/images/products/holiday-snowman/snowman-3.webp",
+    "/images/products/holiday-snowman/snowman-4.webp"
+  ],
+  "color": "#f8fafc",
+  "price": 3.99,
+  "originalPrice": 7.99,
+  "description": "Crochet this cheerful Holiday Snowman featuring a structured black top hat with red ribbon, textured winter red scarf, and bright orange carrot nose. Flat self-standing base allows easy holiday display. 12 pages with 26 instructional photos.",
+  "badge": "Winter Classic",
+  "tag": "Instant Download",
+  "pages": 12,
+  "terms": "US Terms",
+  "formats": [
+    "PDF"
+  ],
+  "bestseller": false,
+  "size": "Approx. 16–18 cm tall",
+  "hook": "1.75 mm",
+  "materials": [
+    "YarnArt Jeans in White 01 (main body), Black 53 (top hat), Red 90 (scarf), Orange (carrot nose), Brown (arms)",
+    "1.75 mm crochet hook",
+    "10 mm safety eyes",
+    "Polyfill stuffing",
+    "Black embroidery floss for mouth & button details",
+    "Tapestry needle & stitch markers"
+  ],
+  "sections": [
+    "Materials & Color Selection",
+    "Stitch Abbreviations (US Terms)",
+    "Flat-Base Body & Head Shaping",
+    "Structured Black Top Hat & Red Band",
+    "Orange Carrot Nose & Twig Arms",
+    "Cozy Ribbed Red Scarf & Final Assembly"
+  ],
+  "patternGuide": {
+    "abbreviations": [
+      {
+        "code": "MR",
+        "meaning": "Magic ring"
+      },
+      {
+        "code": "ch",
+        "meaning": "Chain"
+      },
+      {
+        "code": "sc",
+        "meaning": "Single crochet"
+      },
+      {
+        "code": "hdc",
+        "meaning": "Half double crochet"
+      },
+      {
+        "code": "sl st",
+        "meaning": "Slip stitch"
+      },
+      {
+        "code": "inc",
+        "meaning": "Increase (2 sc in one stitch)"
+      },
+      {
+        "code": "dec",
+        "meaning": "Invisible decrease (2 sc together)"
+      },
+      {
+        "code": "FPsc",
+        "meaning": "Front post single crochet"
+      },
+      {
+        "code": "BLO",
+        "meaning": "Back loop only"
+      }
+    ],
+    "steps": [
+      {
+        "title": "1. Snowman Body & Self-Standing Flat Base",
+        "note": "Work with YarnArt Jeans white (01) and 1.75 mm hook.",
+        "rounds": [
+          "R1-8: Start with MR 6 sc and expand flat to 48 sc for a sturdy flat base that stands independently on flat surfaces.",
+          "R9: Work BLO round to create sharp base transition, then work upward into lower snow globe body and upper head."
+        ]
+      },
+      {
+        "title": "2. Top Hat & Carrot Nose",
+        "rounds": [
+          "Top Hat: Crochet cylinder in black with FPsc brim expansion and bright red ribbon collar band.",
+          "Carrot Nose: Crochet in conical spiral with bright orange cotton, attach centered between safety eyes."
+        ]
+      },
+      {
+        "title": "3. Red Winter Scarf & Finishing",
+        "rounds": [
+          "Scarf: Long textured ribbing in holiday red with fringed edges, wrapped snugly around the neckline.",
+          "Buttons: Embroider 2 coal buttons down tummy using french knots or black yarn rounds."
+        ]
+      }
+    ]
+  }
+},
+{
+  "id": 9,
+  "name": "Gingerbread Doll Amigurumi",
+  "slug": "gingerbread-doll",
+  "category": "amigurumi",
+  "skill": "easy",
+  "iconKey": "christmas-collection",
+  "soldOut": false,
+  "buyUrl": "https://cozy-stitches-crochet-shop.fourthwall.com/",
+  "primaryImage": "/images/products/gingerbread-doll/gingerbread-1.webp",
+  "images": [
+    "/images/products/gingerbread-doll/gingerbread-1.webp",
+    "/images/products/gingerbread-doll/gingerbread-2.webp",
+    "/images/products/gingerbread-doll/gingerbread-3.webp",
+    "/images/products/gingerbread-doll/gingerbread-4.webp"
+  ],
+  "color": "#fef3c7",
+  "price": 3.99,
+  "originalPrice": 7.99,
+  "description": "Irresistibly cute 10-page gingerbread doll amigurumi pattern. Featuring a rich golden-tan cookie body, scalloped white piped frosting cap decorated with embroidered rainbow sprinkles, and red tummy buttons. Includes 21 full-color step photos in US terms.",
+  "badge": "Sweet Treat",
+  "tag": "Instant Download",
+  "pages": 10,
+  "terms": "US Terms",
+  "formats": [
+    "PDF"
+  ],
+  "bestseller": true,
+  "size": "Approx. 15–18 cm tall",
+  "hook": "1.75 mm",
+  "materials": [
+    "YarnArt Jeans in Golden-tan 07 (main), White 62 (frosting), Red 90 (buttons & cheeks), Rainbow embroidery threads",
+    "Alize Softy (shade 62) for scalloped icing rim",
+    "1.75 mm crochet hook",
+    "10 mm safety eyes",
+    "Polyfill stuffing",
+    "Tapestry needle & stitch markers"
+  ],
+  "sections": [
+    "Materials & Tools & Color Palette",
+    "Stitch Abbreviations (US Terms)",
+    "Head, Tummy & Limb Construction",
+    "Scalloped White Frosting Cap",
+    "Embroidered Rainbow Sprinkles & Face",
+    "Wrist & Ankle Ric-Rac Cuffs Assembly"
+  ],
+  "patternGuide": {
+    "abbreviations": [
+      {
+        "code": "MR",
+        "meaning": "Magic ring"
+      },
+      {
+        "code": "ch",
+        "meaning": "Chain"
+      },
+      {
+        "code": "sc",
+        "meaning": "Single crochet"
+      },
+      {
+        "code": "hdc",
+        "meaning": "Half double crochet"
+      },
+      {
+        "code": "sl st",
+        "meaning": "Slip stitch"
+      },
+      {
+        "code": "inc",
+        "meaning": "Increase (2 sc in one stitch)"
+      },
+      {
+        "code": "dec",
+        "meaning": "Invisible decrease (2 sc together)"
+      },
+      {
+        "code": "FLO",
+        "meaning": "Front loop only"
+      }
+    ],
+    "steps": [
+      {
+        "title": "1. Cookie Body & Limbs",
+        "note": "Work with warm golden-tan yarn and 1.75 mm hook.",
+        "rounds": [
+          "Crochet seamless arms and legs with white wavy icing cuffs.",
+          "Join legs into body, shaping chubby tummy and head in one continuous piece with neat decreases."
+        ]
+      },
+      {
+        "title": "2. Piped Frosting Cap & Rainbow Sprinkles",
+        "rounds": [
+          "Crochet white scalloped icing cap with decorative dripped edge.",
+          "Embroider colorful seed-stitch sprinkles across the cap in red, turquoise, lemon and coral."
+        ]
+      },
+      {
+        "title": "3. Facial Features & Buttons",
+        "rounds": [
+          "Insert 10 mm black safety eyes, embroider sweet mouth and rosy blush cheeks.",
+          "Stitch two bright red candy buttons down the chest."
+        ]
+      }
+    ]
+  }
+},
+{
+  "id": 10,
+  "name": "Little Dragon Amigurumi",
+  "slug": "little-dragon",
+  "category": "amigurumi",
+  "skill": "intermediate",
+  "iconKey": "christmas-collection",
+  "soldOut": false,
+  "buyUrl": "https://cozy-stitches-crochet-shop.fourthwall.com/",
+  "primaryImage": "/images/products/little-dragon/dragon-1.webp",
+  "images": [
+    "/images/products/little-dragon/dragon-1.webp",
+    "/images/products/little-dragon/dragon-2.webp",
+    "/images/products/little-dragon/dragon-3.webp",
+    "/images/products/little-dragon/dragon-4.webp"
+  ],
+  "color": "#f0fdfa",
+  "price": 3.99,
+  "originalPrice": 7.99,
+  "description": "Magical 13-page fantasy amigurumi pattern for a gentle holiday Little Dragon. Features poseable wired tail, ribbed cream wings, tiny horns, and white dorsal ridge spikes. Includes 31 original photos and wiring guide in US terms.",
+  "badge": "Fantasy Favorite",
+  "tag": "Instant Download",
+  "pages": 13,
+  "terms": "US Terms",
+  "formats": [
+    "PDF"
+  ],
+  "bestseller": false,
+  "size": "Approx. 15–17 cm tall",
+  "hook": "1.75 mm",
+  "materials": [
+    "YarnArt Jeans in Olive Green 69 (main), Cream 03 (horns/wings/tail tip), Red 90 (accents)",
+    "Alize Softy (shade 62) for fluffy trim details",
+    "1.75 mm crochet hook",
+    "10 mm safety eyes",
+    "2 mm craft wire (approx. 25 cm) & adhesive fabric tape for poseable tail",
+    "Polyfill stuffing & tapestry needle"
+  ],
+  "sections": [
+    "Materials & Wiring Guidelines",
+    "Stitch Abbreviations (US Terms)",
+    "Head & Snout Construction",
+    "Poseable Wired Tail & Body Shaping",
+    "Ribbed Wings, Horns & Dorsal Spikes",
+    "Final Assembly & Posing"
+  ],
+  "patternGuide": {
+    "abbreviations": [
+      {
+        "code": "MR",
+        "meaning": "Magic ring"
+      },
+      {
+        "code": "ch",
+        "meaning": "Chain"
+      },
+      {
+        "code": "sc",
+        "meaning": "Single crochet"
+      },
+      {
+        "code": "hdc",
+        "meaning": "Half double crochet"
+      },
+      {
+        "code": "dc",
+        "meaning": "Double crochet"
+      },
+      {
+        "code": "sl st",
+        "meaning": "Slip stitch"
+      },
+      {
+        "code": "inc",
+        "meaning": "Increase (2 sc in one stitch)"
+      },
+      {
+        "code": "dec",
+        "meaning": "Invisible decrease"
+      }
+    ],
+    "steps": [
+      {
+        "title": "1. Head, Snout & Horns",
+        "note": "Work in olive green (69) and cream (03) with 1.75 mm hook.",
+        "rounds": [
+          "Crochet distinctive friendly snout contour, widening into rounded head.",
+          "Attach cream curved horns and cute nostril indentations."
+        ]
+      },
+      {
+        "title": "2. Poseable Tail & Wire Armor",
+        "rounds": [
+          "Wrap 2 mm copper/craft wire with fabric adhesive tape for safety.",
+          "Insert wire through curved tail and into body for dynamic, posable curled tail stance."
+        ]
+      },
+      {
+        "title": "3. Ribbed Wings & Back Spikes",
+        "rounds": [
+          "Crochet ribbed wings in cream cotton with neat dimensional ridges.",
+          "Stitch graduated white spikes along spine from crown to tail tip."
+        ]
+      }
+    ]
+  }
+},
+{
+  "id": 11,
+  "name": "Christmas Elf Doll Amigurumi",
+  "slug": "christmas-elf",
+  "category": "amigurumi",
+  "skill": "intermediate",
+  "iconKey": "christmas-collection",
+  "soldOut": false,
+  "buyUrl": "https://cozy-stitches-crochet-shop.fourthwall.com/",
+  "primaryImage": "/images/products/christmas-elf/elf-1.webp",
+  "images": [
+    "/images/products/christmas-elf/elf-1.webp",
+    "/images/products/christmas-elf/elf-2.webp",
+    "/images/products/christmas-elf/elf-3.webp",
+    "/images/products/christmas-elf/elf-4.webp"
+  ],
+  "color": "#ecfdf5",
+  "price": 3.99,
+  "originalPrice": 7.99,
+  "description": "Detailed 18-page holiday elf doll pattern with 38 full-color instructional photos. Features pointed elf ears, curly brown yarn hair cap, emerald coat with fluffy white trim, burgundy trousers, and a tall red-and-white striped beanie in US terms.",
+  "badge": "Santa's Helper",
+  "tag": "Instant Download",
+  "pages": 18,
+  "terms": "US Terms",
+  "formats": [
+    "PDF"
+  ],
+  "bestseller": false,
+  "size": "Approx. 20–22 cm tall",
+  "hook": "1.75 mm",
+  "materials": [
+    "YarnArt Jeans in Skin Tone 07, Emerald 63, Burgundy 66, White 01, Grey 46, Brown 70, Red 90",
+    "Alize Softy (shade 62) for plush fluffy collar & trim",
+    "1.75 mm crochet hook",
+    "10 mm safety eyes",
+    "Polyfill stuffing",
+    "Tapestry needle, stitch markers & scissors"
+  ],
+  "sections": [
+    "Materials & Tools & Color Palette",
+    "Stitch Abbreviations (US Terms)",
+    "Head, Pointed Ears & Curly Hair Cap (27 Strands)",
+    "Emerald Coat & Fluffy Alize Softy Collar",
+    "Burgundy Trousers & Grey Shoes Assembly",
+    "Striped Holiday Beanie & Final Dressing"
+  ],
+  "patternGuide": {
+    "abbreviations": [
+      {
+        "code": "MR",
+        "meaning": "Magic ring"
+      },
+      {
+        "code": "ch",
+        "meaning": "Chain"
+      },
+      {
+        "code": "sc",
+        "meaning": "Single crochet"
+      },
+      {
+        "code": "hdc",
+        "meaning": "Half double crochet"
+      },
+      {
+        "code": "dc",
+        "meaning": "Double crochet"
+      },
+      {
+        "code": "sl st",
+        "meaning": "Slip stitch"
+      },
+      {
+        "code": "inc",
+        "meaning": "Increase (2 sc in one stitch)"
+      },
+      {
+        "code": "dec",
+        "meaning": "Invisible decrease"
+      },
+      {
+        "code": "BLO",
+        "meaning": "Back loop only"
+      }
+    ],
+    "steps": [
+      {
+        "title": "1. Head, Pointed Ears & Curly Hair Cap",
+        "note": "Work in skin tone 07 and brown 70 with 1.75 mm hook.",
+        "rounds": [
+          "Shape expressive doll head with indented eye sockets for 10 mm safety eyes.",
+          "Crochet signature pointed elven ears and stitch 27 individual spiraled hair curl strands onto cap."
+        ]
+      },
+      {
+        "title": "2. Emerald Coat & Fluffy Collar",
+        "rounds": [
+          "Work seamless coat transition into burgundy trousers and grey shoes.",
+          "Add plush white Alize Softy collar and sleeve cuff borders."
+        ]
+      },
+      {
+        "title": "3. Red & White Striped Beanie",
+        "rounds": [
+          "Crochet long tapered holiday beanie alternating red and white stripes.",
+          "Finish with a soft white pompom and secure onto curls."
+        ]
+      }
+    ]
+  }
+}
 ];
 export const categories = [
   { key: "all",         label: "All Patterns" },

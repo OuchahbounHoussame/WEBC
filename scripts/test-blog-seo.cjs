@@ -167,7 +167,7 @@ async function runTests() {
   const products = productsModule.products;
   assert(products[0].id === 6, 'Product 6 (Christmas Collection 5-in-1) is Position 1 in catalog');
   assert(products[1].id === 5, 'Product 5 (Plush Santa Claus) is Position 2 in catalog');
-  assert(products.length === 6, 'All 6 products are present and cleanly defined');
+  assert(products.length === 11, `All 11 products are present and cleanly defined (found ${products.length})`);
 
   // ── 6. Live HTTP Server Responses (Express) ────────────────
   console.log('\nTest Group 6: Live HTTP Server Endpoint Responses');
