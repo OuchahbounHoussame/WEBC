@@ -213,9 +213,9 @@ export const products = [
   "iconKey": "christmas-collection",
   "soldOut": false,
   "buyUrl": "https://cozy-stitches-crochet-shop.fourthwall.com/",
-  "primaryImage": "/images/products/festive-grinch/grinch-1.webp",
+  "primaryImage": "/images/products/festive-grinch/grinch-studio.webp",
   "images": [
-    "/images/products/festive-grinch/grinch-1.webp",
+    "/images/products/festive-grinch/grinch-studio.webp",
     "/images/products/festive-grinch/grinch-2.webp",
     "/images/products/festive-grinch/grinch-3.webp",
     "/images/products/festive-grinch/grinch-4.webp"
@@ -328,9 +328,9 @@ export const products = [
   "iconKey": "christmas-collection",
   "soldOut": false,
   "buyUrl": "https://cozy-stitches-crochet-shop.fourthwall.com/",
-  "primaryImage": "/images/products/holiday-snowman/snowman-1.webp",
+  "primaryImage": "/images/products/holiday-snowman/snowman-studio.webp",
   "images": [
-    "/images/products/holiday-snowman/snowman-1.webp",
+    "/images/products/holiday-snowman/snowman-studio.webp",
     "/images/products/holiday-snowman/snowman-2.webp",
     "/images/products/holiday-snowman/snowman-3.webp",
     "/images/products/holiday-snowman/snowman-4.webp"
@@ -439,9 +439,9 @@ export const products = [
   "iconKey": "christmas-collection",
   "soldOut": false,
   "buyUrl": "https://cozy-stitches-crochet-shop.fourthwall.com/",
-  "primaryImage": "/images/products/gingerbread-doll/gingerbread-1.webp",
+  "primaryImage": "/images/products/gingerbread-doll/gingerbread-studio.webp",
   "images": [
-    "/images/products/gingerbread-doll/gingerbread-1.webp",
+    "/images/products/gingerbread-doll/gingerbread-studio.webp",
     "/images/products/gingerbread-doll/gingerbread-2.webp",
     "/images/products/gingerbread-doll/gingerbread-3.webp",
     "/images/products/gingerbread-doll/gingerbread-4.webp"
@@ -546,9 +546,9 @@ export const products = [
   "iconKey": "christmas-collection",
   "soldOut": false,
   "buyUrl": "https://cozy-stitches-crochet-shop.fourthwall.com/",
-  "primaryImage": "/images/products/little-dragon/dragon-1.webp",
+  "primaryImage": "/images/products/little-dragon/dragon-studio.webp",
   "images": [
-    "/images/products/little-dragon/dragon-1.webp",
+    "/images/products/little-dragon/dragon-studio.webp",
     "/images/products/little-dragon/dragon-2.webp",
     "/images/products/little-dragon/dragon-3.webp",
     "/images/products/little-dragon/dragon-4.webp"
@@ -653,9 +653,9 @@ export const products = [
   "iconKey": "christmas-collection",
   "soldOut": false,
   "buyUrl": "https://cozy-stitches-crochet-shop.fourthwall.com/",
-  "primaryImage": "/images/products/christmas-elf/elf-1.webp",
+  "primaryImage": "/images/products/christmas-elf/elf-studio.webp",
   "images": [
-    "/images/products/christmas-elf/elf-1.webp",
+    "/images/products/christmas-elf/elf-studio.webp",
     "/images/products/christmas-elf/elf-2.webp",
     "/images/products/christmas-elf/elf-3.webp",
     "/images/products/christmas-elf/elf-4.webp"
@@ -861,9 +861,9 @@ export const products = [
     iconKey: "star",
     soldOut: false,
     isFree: true,
-    primaryImage: "/images/products/shooting-star/star-1.webp",
+    primaryImage: "/images/products/shooting-star/star-studio.webp",
     images: [
-      "/images/products/shooting-star/star-1.jpg",
+      "/images/products/shooting-star/star-studio.webp",
       "/images/products/shooting-star/star-2.jpg",
       "/images/products/shooting-star/star-3.jpg",
       "/images/products/shooting-star/star-4.jpg"
