@@ -15,10 +15,7 @@ export const products = [
       "/images/products/holiday-snowman/snowman-studio.webp",
       "/images/products/gingerbread-doll/gingerbread-studio.webp",
       "/images/products/little-dragon/dragon-studio.webp",
-      "/images/products/christmas-elf/elf-studio.webp",
-      "/images/products/christmas-collection/christmas-2.webp",
-      "/images/products/christmas-collection/christmas-3.webp",
-      "/images/products/christmas-collection/christmas-4.webp"
+      "/images/products/christmas-elf/elf-studio.webp"
     ],
     color: "#fef2f2", // Festive holiday white & berry
     price: 7.99,
