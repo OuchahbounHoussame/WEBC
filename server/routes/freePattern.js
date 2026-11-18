@@ -70,7 +70,7 @@ function getSiteUrl(req) {
 
 // ── 1. POST /api/free-pattern (Submit email for free PDF) ───────
 router.post('/', async (req, res) => {
-  const { email, marketingConsent, hp, b_hp_website } = req.body || {};
+  const { email, marketingConsent, hp, b_hp_website, pattern } = req.body || {};
   const clientIp = req.headers['x-forwarded-for']?.split(',')[0]?.trim() || req.socket.remoteAddress || '127.0.0.1';
 
   // 1. Honeypot check (Bot sinkhole)
@@ -103,18 +103,27 @@ router.post('/', async (req, res) => {
   }
 
   // 4. Generate Cryptographically Signed Download Token
-  const token = createFreebieToken(cleanEmail, 48); // 48-hour validity
+  const isGingerbread = pattern === 'gingerbread' || pattern === 'gingerbread-ornament';
+  const token = createFreebieToken(cleanEmail, 48, isGingerbread ? 'gingerbread' : 2);
   const siteUrl = getSiteUrl(req);
   const downloadUrl = `${siteUrl}/api/free-pattern/download/${token}`;
 
   // 5. Build Branded Email Template
-  const emailSubject = 'Your Free Shooting Star Crochet Pattern PDF ⭐';
+  const emailSubject = isGingerbread
+    ? 'Your Free Gingerbread Man Crochet Pattern PDF 🎄'
+    : 'Your Free Shooting Star Crochet Pattern PDF ⭐';
+
+  const patternName = isGingerbread ? 'Gingerbread Man Ornament' : 'Shooting Star Keychain';
+  const patternIcon = isGingerbread ? '🎄' : '⭐';
+  const patternDetails = isGingerbread
+    ? '10 Printable Pages • Full Color Step Photos • US Terms'
+    : '7 Printable Pages • Full Color Step Photos • US Terms';
 
   const emailText = `Hi there!
 
 Thanks for visiting CozyStitches.
 
-Your free Shooting Star Keychain crochet pattern is ready.
+Your free ${patternName} crochet pattern is ready.
 
 Click below to download your PDF and start crocheting:
 ${downloadUrl}
@@ -153,13 +162,13 @@ https://www.shopcozystitches.com
     <div class="content">
       <p style="font-size: 16px; margin-top: 0;">Hi there!</p>
       <p>Thanks for visiting CozyStitches.</p>
-      <p>Your free <strong>Shooting Star Keychain</strong> crochet pattern is ready.</p>
+      <p>Your free <strong>${patternName}</strong> crochet pattern is ready.</p>
       <p>Click below to download your PDF and start crocheting!</p>
 
       <div class="cta-box">
-        <div style="font-size: 32px; margin-bottom: 8px;">⭐</div>
-        <div style="font-size: 18px; font-weight: 700; color: #482750;">Shooting Star Keychain Pattern</div>
-        <div style="font-size: 13px; color: #7f6885; margin: 4px 0 12px;">7 Printable Pages • Full Color Step Photos • US Terms</div>
+        <div style="font-size: 32px; margin-bottom: 8px;">${patternIcon}</div>
+        <div style="font-size: 18px; font-weight: 700; color: #482750;">${patternName} Pattern</div>
+        <div style="font-size: 13px; color: #7f6885; margin: 4px 0 12px;">${patternDetails}</div>
         <a href="${downloadUrl}" class="btn-download" target="_blank">Download Your Free Pattern</a>
         <div class="expiry-note">🔒 Active for 48 hours. You can request a fresh link anytime on our website.</div>
       </div>
@@ -197,7 +206,7 @@ https://www.shopcozystitches.com
   if (marketingConsent === true) {
     const consentRecord = {
       consentTimestamp: new Date().toISOString(),
-      consentSource: 'freebie_shooting_star',
+      consentSource: isGingerbread ? 'freebie_gingerbread' : 'freebie_shooting_star',
       consentNoticeVersion: 'v1.0'
     };
 
@@ -225,7 +234,7 @@ https://www.shopcozystitches.com
   // 9. Respond to Client
   return res.json({
     success: true,
-    message: 'Your free Shooting Star pattern has been prepared and sent to your email!',
+    message: `Your free ${patternName} pattern has been prepared and sent to your email!`,
     delivery: emailResult.success ? 'dispatched' : 'ready_for_download',
     downloadUrl, // Also provide immediate download link in UI for superior customer experience
     marketingSubscribed: subscribedToMarketing
@@ -285,10 +294,15 @@ router.get('/download/:token', (req, res) => {
   }
 
   // Resolve Freebie Pattern PDF safely
+  const targetFile = verification.fileName || 'pattern-2-shooting-star-keychain.pdf';
+  const downloadFilename = verification.patternId === 'gingerbread'
+    ? 'CozyStitches-Gingerbread-Man-Ornament-Pattern.pdf'
+    : 'CozyStitches-Shooting-Star-Keychain-Pattern.pdf';
+
   const candidates = [
-    path.join(STORAGE_DIR, 'pattern-2-shooting-star-keychain.pdf'),
-    path.join(process.cwd(), 'server', 'storage', 'patterns', 'pattern-2-shooting-star-keychain.pdf'),
-    path.join(process.cwd(), 'crochet-store-react', 'server', 'storage', 'patterns', 'pattern-2-shooting-star-keychain.pdf')
+    path.join(STORAGE_DIR, targetFile),
+    path.join(process.cwd(), 'server', 'storage', 'patterns', targetFile),
+    path.join(process.cwd(), 'crochet-store-react', 'server', 'storage', 'patterns', targetFile)
   ];
 
   let resolvedPath = null;
@@ -300,13 +314,13 @@ router.get('/download/:token', (req, res) => {
   }
 
   if (!resolvedPath) {
-    console.error('[FreePattern] PDF file missing from storage candidates');
+    console.error(`[FreePattern] PDF file missing from storage candidates: ${targetFile}`);
     return res.status(500).json({ success: false, message: 'PDF file is temporarily unavailable. Please contact support.' });
   }
 
-  console.log(`[FreePattern] ✅ Streaming freebie PDF to verified requester`);
+  console.log(`[FreePattern] ✅ Streaming freebie PDF (${downloadFilename}) to verified requester`);
   res.setHeader('Content-Type', 'application/pdf');
-  res.setHeader('Content-Disposition', 'attachment; filename="CozyStitches-Shooting-Star-Keychain-Pattern.pdf"');
+  res.setHeader('Content-Disposition', `attachment; filename="${downloadFilename}"`);
   res.setHeader('Cache-Control', 'private, no-transform, max-age=86400');
   
   const stream = fs.createReadStream(resolvedPath);
