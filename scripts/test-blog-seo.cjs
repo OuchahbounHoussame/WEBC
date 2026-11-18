@@ -29,11 +29,13 @@ async function runTests() {
   console.log('Test Group 1: Static Prerender Output Files');
   const blogIndexPath = path.join(distDir, 'blog', 'index.html');
   const articlePath = path.join(distDir, 'blog', 'free-shooting-star-crochet-pattern-keychain', 'index.html');
+  const gingerbreadArticlePath = path.join(distDir, 'blog', 'free-crochet-gingerbread-man-ornament-pattern', 'index.html');
   const sitemapPath = path.join(distDir, 'sitemap.xml');
   const robotsPath = path.join(distDir, 'robots.txt');
 
   assert(fs.existsSync(blogIndexPath), 'dist/blog/index.html exists');
   assert(fs.existsSync(articlePath), 'dist/blog/free-shooting-star-crochet-pattern-keychain/index.html exists');
+  assert(fs.existsSync(gingerbreadArticlePath), 'dist/blog/free-crochet-gingerbread-man-ornament-pattern/index.html exists');
   assert(fs.existsSync(sitemapPath), 'dist/sitemap.xml exists');
   assert(fs.existsSync(robotsPath), 'dist/robots.txt exists');
 
@@ -113,6 +115,37 @@ async function runTests() {
   assert(articleHtml.includes('/product/6'), 'Article cross-promotes product 6 (Christmas Collection)');
   assert(articleHtml.includes('href="/blog"'), 'Article contains breadcrumb navigation back to /blog');
 
+  // ── 3b. Gingerbread Man Article HTML SEO & Pattern Integrity ──
+  console.log('\nTest Group 3b: Gingerbread Man Article Verification');
+  const gbHtml = fs.readFileSync(gingerbreadArticlePath, 'utf8');
+
+  // Document Title & Single H1
+  assert(gbHtml.includes('<title>Free Crochet Gingerbread Man Ornament Pattern | Cozy Stitches</title>'), 'Gingerbread article has required exact title');
+  const gbH1Matches = gbHtml.match(/<h1[^>]*>([\s\S]*?)<\/h1>/gi) || [];
+  assert(gbH1Matches.length === 1, `Gingerbread article has exactly one H1 element (found ${gbH1Matches.length})`);
+  assert(gbH1Matches[0] && gbH1Matches[0].includes('Free Crochet Gingerbread Man Ornament Pattern: Mini Christmas Amigurumi'), 'H1 is: Free Crochet Gingerbread Man Ornament Pattern: Mini Christmas Amigurumi');
+
+  // Meta Description & Canonical
+  assert(gbHtml.includes('content="Crochet a cute mini gingerbread man Christmas ornament with scalloped white icing and colorful sprinkles. Free pattern, US stitch instructions &amp; printable guide."') || gbHtml.includes('content="Crochet a cute mini gingerbread man Christmas ornament with scalloped white icing and colorful sprinkles. Free pattern, US stitch instructions & printable guide."'), 'Gingerbread meta description matches');
+  assert(gbHtml.includes('<link rel="canonical" href="https://www.shopcozystitches.com/blog/free-crochet-gingerbread-man-ornament-pattern" />'), 'Gingerbread article has unique canonical tag');
+  assert(gbHtml.includes('"@type": "BlogPosting"'), 'Gingerbread article includes Schema.org BlogPosting markup');
+
+  // Explicit Anchor IDs
+  assert(gbHtml.includes('id="gingerbread-pattern"'), 'Gingerbread article includes anchor ID gingerbread-pattern');
+  assert(gbHtml.includes('id="download-pattern"'), 'Gingerbread article includes anchor ID download-pattern');
+  assert(gbHtml.includes('id="save-for-later"'), 'Gingerbread article includes anchor ID save-for-later');
+
+  // Jump-links
+  assert(gbHtml.includes('href="#gingerbread-pattern"'), 'Includes jump link to #gingerbread-pattern');
+  assert(gbHtml.includes('href="#download-pattern"'), 'Includes jump link to #download-pattern');
+  assert(gbHtml.includes('href="#save-for-later"'), 'Includes jump link to #save-for-later');
+
+  // Pins & Process photos
+  assert(gbHtml.includes('01-gingerbread-hero.png'), 'Includes Gingerbread Pin 1 image');
+  assert(gbHtml.includes('06-seasonal-inspiration.png'), 'Includes Gingerbread Pin 6 image');
+  assert(gbHtml.includes('/product/6'), 'Gingerbread article cross-promotes product 6 (Christmas Collection)');
+  assert(gbHtml.includes('/product/5'), 'Gingerbread article cross-promotes product 5 (Santa Claus)');
+
   // ── 4. Sitemap & Robots Audit ──────────────────────────────
   console.log('\nTest Group 4: Sitemap & Robots.txt Verification');
   const sitemapXml = fs.readFileSync(sitemapPath, 'utf8');
@@ -162,11 +195,18 @@ async function runTests() {
     assert(resBlog.body.includes('Crochet Tutorials &amp; Free Guides') || resBlog.body.includes('Crochet Tutorials & Free Guides'), 'GET /blog body contains prerendered content');
 
     const resArticle = await fetchUrl('/blog/free-shooting-star-crochet-pattern-keychain');
-    assert(resArticle.status === 200, 'GET /blog/:slug returns HTTP 200');
-    assert(resArticle.body.includes('Free Shooting Star Crochet Pattern: Cute Star Keychain'), 'GET /blog/:slug body contains updated H1');
+    assert(resArticle.status === 200, 'GET /blog/:slug returns HTTP 200 (Shooting Star)');
+    assert(resArticle.body.includes('Free Shooting Star Crochet Pattern: Cute Star Keychain'), 'GET /blog/:slug body contains updated H1 (Shooting Star)');
     assert(resArticle.body.includes('id="shooting-star-pattern"'), 'GET /blog/:slug contains shooting-star-pattern anchor');
     assert(resArticle.body.includes('id="download-pattern"'), 'GET /blog/:slug contains download-pattern anchor');
     assert(resArticle.body.includes('id="save-for-later"'), 'GET /blog/:slug contains save-for-later anchor');
+
+    const resGb = await fetchUrl('/blog/free-crochet-gingerbread-man-ornament-pattern');
+    assert(resGb.status === 200, 'GET /blog/:slug returns HTTP 200 (Gingerbread)');
+    assert(resGb.body.includes('Free Crochet Gingerbread Man Ornament Pattern: Mini Christmas Amigurumi'), 'GET /blog/:slug body contains updated H1 (Gingerbread)');
+    assert(resGb.body.includes('id="gingerbread-pattern"'), 'GET /blog/:slug contains gingerbread-pattern anchor');
+    assert(resGb.body.includes('id="download-pattern"'), 'GET /blog/:slug contains download-pattern anchor');
+    assert(resGb.body.includes('id="save-for-later"'), 'GET /blog/:slug contains save-for-later anchor');
 
     const resInvalidBlog = await fetchUrl('/blog/non-existent-crochet-slug');
     assert(resInvalidBlog.status === 404, 'GET /blog/non-existent returns true HTTP 404');

@@ -691,7 +691,7 @@ function prerenderBlogPages(templateHtml) {
     const materialsLi = (post.materials || []).map((m) => `<li style="margin-bottom: 8px;">${m}</li>`).join('');
     const materialsHtml = post.materials ? `
       <section style="background: #ffffff; border: 1px solid #ebd9ea; border-radius: 16px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="color: #482750; font-size: 22px; font-family: Georgia, serif; margin-top: 0; margin-bottom: 14px;">Materials for your crochet star</h2>
+        <h2 style="color: #482750; font-size: 22px; font-family: Georgia, serif; margin-top: 0; margin-bottom: 14px;">${post.materialsTitle || "Materials for your crochet star"}</h2>
         <ul style="color: #423046; line-height: 1.7; margin: 0 0 16px 20px; padding: 0;">${materialsLi}</ul>
         ${post.materialsNote ? `<p style="font-size: 14px; color: #7f6885; font-style: italic; margin: 0; border-top: 1px solid #ebd9ea; padding-top: 12px;">${post.materialsNote}</p>` : ''}
       </section>
@@ -721,7 +721,7 @@ function prerenderBlogPages(templateHtml) {
     ` : '';
 
     const patternStepsHtml = post.steps ? `
-      ${post.saveForLater?.pins?.[0] ? getInlinePinHtml(post.saveForLater.pins[0], "Planning your next crochet session? Pin this free shooting star pattern to your Pinterest board so you don't lose it!") : ''}
+      ${post.saveForLater?.pins?.[0] ? getInlinePinHtml(post.saveForLater.pins[0], post.inlinePinCallouts?.[0] || "Planning your next crochet session? Pin this free shooting star pattern to your Pinterest board so you don't lose it!") : ''}
 
         <section id="${post.patternAnchor || 'shooting-star-pattern'}" style="margin-bottom: 48px;">
         <h2 style="font-size: 28px; color: #482750; font-family: Georgia, serif; border-bottom: 2px solid #fee6ea; padding-bottom: 10px; margin-bottom: 24px;">
@@ -760,7 +760,7 @@ function prerenderBlogPages(templateHtml) {
                 ${st.notes.map((n) => `<p style="margin: 4px 0;">${n}</p>`).join('')}
               </div>
             ` : ''}
-            ${st.number === 3 && post.saveForLater?.pins?.[2] ? getInlinePinHtml(post.saveForLater.pins[2], "Love this stepped pastel color combination? Pin this tutorial to your colorful crochet ideas board!") : ''}
+            ${(st.inlinePin || (st.number === 3 && post.saveForLater?.pins?.[2])) ? getInlinePinHtml(st.inlinePin || post.saveForLater.pins[2], post.inlinePinCallouts?.[1] || "Love this stepped pastel color combination? Pin this tutorial to your colorful crochet ideas board!") : ''}
           </div>
         `).join('')}
       </section>
@@ -768,7 +768,7 @@ function prerenderBlogPages(templateHtml) {
 
     const tipsHtml = post.tips ? `
       <section style="background: #faf4f8; border: 1px solid #ebd9ea; border-radius: 16px; padding: 24px; margin-bottom: 48px;">
-        <h2 style="color: #482750; font-size: 22px; font-family: Georgia, serif; margin-top: 0; margin-bottom: 16px;">Tips for a neat amigurumi star</h2>
+        <h2 style="color: #482750; font-size: 22px; font-family: Georgia, serif; margin-top: 0; margin-bottom: 16px;">${post.tipsTitle || "Tips for a neat amigurumi star"}</h2>
         <div style="display: grid; gap: 14px;">
           ${post.tips.map((t) => `
             <div style="line-height: 1.6; color: #3d2544;">
@@ -815,9 +815,13 @@ function prerenderBlogPages(templateHtml) {
         </div>
         <h2 style="font-size: 28px; color: #482750; font-family: Georgia, serif; margin: 0 0 14px;">${post.saveForLater.title}</h2>
         <p style="font-size: 16px; color: #423046; line-height: 1.7; margin-bottom: 16px;">${post.saveForLater.intro}</p>
-        <p style="font-size: 15px; color: #554458; margin-bottom: 24px;">
-          For another project, explore the <a href="/product/1" style="color: #be6c87; font-weight: 700; text-decoration: underline;">Kroha Bunny crochet pattern</a> or browse the <a href="/product/6" style="color: #be6c87; font-weight: 700; text-decoration: underline;">Christmas crochet collection</a>.
-        </p>
+        ${post.saveForLater.relatedText ? `
+          <p style="font-size: 15px; color: #554458; margin-bottom: 24px;">${post.saveForLater.relatedText}</p>
+        ` : `
+          <p style="font-size: 15px; color: #554458; margin-bottom: 24px;">
+            For another project, explore the <a href="/product/1" style="color: #be6c87; font-weight: 700; text-decoration: underline;">Kroha Bunny crochet pattern</a> or browse the <a href="/product/6" style="color: #be6c87; font-weight: 700; text-decoration: underline;">Christmas crochet collection</a>.
+          </p>
+        `}
 
         <!-- Featured Pin 1 -->
         ${post.saveForLater.pins && post.saveForLater.pins[0] ? (() => {

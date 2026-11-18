@@ -17,12 +17,13 @@ function getSecret() {
 /**
  * Generate a URL-safe, tamper-proof download token active for 48 hours
  */
-export function createFreebieToken(email, expiresInHours = 48) {
+export function createFreebieToken(email, expiresInHours = 48, patternKey = 2) {
   const secret = getSecret();
+  const isGingerbread = patternKey === 'gingerbread' || patternKey === 'gingerbread-ornament';
   const payload = {
     email: email.trim().toLowerCase(),
-    patternId: 2,
-    fileName: 'pattern-2-shooting-star-keychain.pdf',
+    patternId: isGingerbread ? 'gingerbread' : 2,
+    fileName: isGingerbread ? 'pattern-gingerbread-man-ornament.pdf' : 'pattern-2-shooting-star-keychain.pdf',
     iat: Date.now(),
     exp: Date.now() + expiresInHours * 60 * 60 * 1000
   };
@@ -69,8 +70,13 @@ export function verifyFreebieToken(token) {
     const jsonStr = Buffer.from(payloadB64, 'base64url').toString('utf8');
     const payload = JSON.parse(jsonStr);
 
-    // Verify patternId strictly matches freebie pattern (id: 2)
-    if (payload.patternId !== 2 || payload.fileName !== 'pattern-2-shooting-star-keychain.pdf') {
+    // Verify patternId strictly matches allowed freebie patterns (id: 2 or 'gingerbread')
+    const allowed = [
+      { id: 2, file: 'pattern-2-shooting-star-keychain.pdf' },
+      { id: 'gingerbread', file: 'pattern-gingerbread-man-ornament.pdf' }
+    ];
+    const match = allowed.find(a => a.id === payload.patternId && a.file === payload.fileName);
+    if (!match) {
       return { valid: false, reason: 'unauthorized_file' };
     }
 

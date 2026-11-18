@@ -53,14 +53,14 @@ export default function BlogPostPage({
 
   const handleDownloadClick = () => {
     try {
-      track('blog_free_pattern_cta_clicked', { slug: post.slug, target: 'product_2' });
+      track('blog_free_pattern_cta_clicked', { slug: post.slug, target: post.downloadCta?.buttonLink || 'product_2' });
     } catch {
       // non-blocking analytics
     }
     if (onFreebieClick) {
-      onFreebieClick();
+      onFreebieClick(post);
     } else {
-      window.location.href = '/product/2';
+      window.location.href = post.downloadCta?.buttonLink || '/product/2';
     }
   };
 
@@ -284,7 +284,7 @@ export default function BlogPostPage({
         {post.materials && post.materials.length > 0 && (
           <section className="article-materials-box" aria-label="Materials needed" style={{ marginBottom: '36px' }}>
             <h2 style={{ color: '#482750', fontSize: '1.4rem', marginTop: 0, marginBottom: '16px' }}>
-              Materials for your crochet star
+              {post.materialsTitle || "Materials for your crochet star"}
             </h2>
             <ul style={{ margin: '0 0 16px 20px', padding: 0, lineHeight: 1.7, color: '#423046' }}>
               {post.materials.map((mat, i) => (
@@ -334,11 +334,11 @@ export default function BlogPostPage({
         {/* Inline Pin 1 (Pattern Overview) */}
         {renderInlinePin(
           post.saveForLater?.pins?.[0],
-          "Planning your next crochet session? Pin this free shooting star pattern to your Pinterest board so you don't lose it!"
+          post.inlinePinCallouts?.[0] || "Planning your next crochet session? Pin this free shooting star pattern to your Pinterest board so you don't lose it!"
         )}
 
-        {/* Section: Free shooting star crochet pattern (Anchor: #shooting-star-pattern) */}
-        <section id="shooting-star-pattern" className="article-pattern-section" style={{ marginBottom: '48px' }}>
+        {/* Section: Pattern Section */}
+        <section id={post.patternAnchor || "shooting-star-pattern"} className="article-pattern-section" style={{ marginBottom: '48px' }}>
           <h2 style={{ fontSize: '1.85rem', color: '#482750', borderBottom: '2px solid #fee6ea', paddingBottom: '10px', marginBottom: '24px' }}>
             {post.patternTitle || "Free shooting star crochet pattern"}
           </h2>
@@ -429,20 +429,20 @@ export default function BlogPostPage({
                 </div>
               )}
 
-              {/* Inline Pin 2 (Pastel Stepped Tail Inspiration - shown after Step 3) */}
-              {step.number === 3 && renderInlinePin(
-                post.saveForLater?.pins?.[2],
-                "Love this stepped pastel color combination? Pin this tutorial to your colorful crochet ideas board!"
+              {/* Inline Pin 2 (shown after Step 3 or when specified) */}
+              {(step.inlinePin || (step.number === 3 && post.saveForLater?.pins?.[2])) && renderInlinePin(
+                step.inlinePin || post.saveForLater?.pins?.[2],
+                post.inlinePinCallouts?.[1] || "Love this stepped pastel color combination? Pin this tutorial to your colorful crochet ideas board!"
               )}
             </div>
           ))}
         </section>
 
-        {/* Section: Tips for a neat amigurumi star */}
+        {/* Section: Tips */}
         {post.tips && post.tips.length > 0 && (
           <section className="article-tips-section" style={{ background: '#faf4f8', border: '1px solid #ebd9ea', borderRadius: '16px', padding: '24px', marginBottom: '48px' }}>
             <h2 style={{ color: '#482750', fontSize: '1.35rem', marginTop: 0, marginBottom: '16px' }}>
-              Tips for a neat amigurumi star
+              {post.tipsTitle || "Tips for a neat amigurumi star"}
             </h2>
             <div style={{ display: 'grid', gap: '14px' }}>
               {post.tips.map((tip, tIdx) => (
@@ -460,7 +460,7 @@ export default function BlogPostPage({
         {/* Inline Pin 3 (Save for Later / Gift Idea) */}
         {renderInlinePin(
           post.saveForLater?.pins?.[5],
-          "Save this cute star keychain pattern to your Pinterest board for your next quick handmade gift!"
+          post.inlinePinCallouts?.[2] || "Save this cute star keychain pattern to your Pinterest board for your next quick handmade gift!"
         )}
 
         {/* Section: Download CTA (Anchor: #download-pattern) */}
@@ -528,34 +528,41 @@ export default function BlogPostPage({
               {post.saveForLater.intro}
             </p>
 
-            <p style={{ fontSize: '0.98rem', color: '#554458', marginBottom: '24px' }}>
-              For another project, explore the{' '}
-              <a
-                href="/product/1"
-                style={{ color: '#be6c87', fontWeight: 700, textDecoration: 'underline' }}
-                onClick={(e) => {
-                  e.preventDefault();
-                  const p1 = products.find((p) => p.id === 1);
-                  if (onOpenProduct && p1) onOpenProduct(p1);
-                  else window.location.href = '/product/1';
-                }}
-              >
-                Kroha Bunny crochet pattern
-              </a>{' '}
-              or browse the{' '}
-              <a
-                href="/product/6"
-                style={{ color: '#be6c87', fontWeight: 700, textDecoration: 'underline' }}
-                onClick={(e) => {
-                  e.preventDefault();
-                  const p6 = products.find((p) => p.id === 6);
-                  if (onOpenProduct && p6) onOpenProduct(p6);
-                  else window.location.href = '/product/6';
-                }}
-              >
-                Christmas crochet collection
-              </a>.
-            </p>
+            {post.saveForLater.relatedText ? (
+              <p
+                style={{ fontSize: '0.98rem', color: '#554458', marginBottom: '24px' }}
+                dangerouslySetInnerHTML={{ __html: post.saveForLater.relatedText }}
+              />
+            ) : (
+              <p style={{ fontSize: '0.98rem', color: '#554458', marginBottom: '24px' }}>
+                For another project, explore the{' '}
+                <a
+                  href="/product/1"
+                  style={{ color: '#be6c87', fontWeight: 700, textDecoration: 'underline' }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const p1 = products.find((p) => p.id === 1);
+                    if (onOpenProduct && p1) onOpenProduct(p1);
+                    else window.location.href = '/product/1';
+                  }}
+                >
+                  Kroha Bunny crochet pattern
+                </a>{' '}
+                or browse the{' '}
+                <a
+                  href="/product/6"
+                  style={{ color: '#be6c87', fontWeight: 700, textDecoration: 'underline' }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const p6 = products.find((p) => p.id === 6);
+                    if (onOpenProduct && p6) onOpenProduct(p6);
+                    else window.location.href = '/product/6';
+                  }}
+                >
+                  Christmas crochet collection
+                </a>.
+              </p>
+            )}
 
             {/* Featured Pin 1 */}
             {post.saveForLater.pins && post.saveForLater.pins[0] && (() => {
