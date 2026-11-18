@@ -8,12 +8,17 @@ export const products = [
     iconKey: "christmas-collection",
     soldOut: false,
     buyUrl: "https://cozy-stitches-crochet-shop.fourthwall.com/",
-    primaryImage: "/images/products/christmas-collection/christmas-1.webp",
+    primaryImage: "/images/products/christmas-collection/collection-studio.webp",
     images: [
-      "/images/products/christmas-collection/christmas-1.jpg",
-      "/images/products/christmas-collection/christmas-2.jpg",
-      "/images/products/christmas-collection/christmas-3.jpg",
-      "/images/products/christmas-collection/christmas-4.jpg"
+      "/images/products/christmas-collection/collection-studio.webp",
+      "/images/products/festive-grinch/grinch-studio.webp",
+      "/images/products/holiday-snowman/snowman-studio.webp",
+      "/images/products/gingerbread-doll/gingerbread-studio.webp",
+      "/images/products/little-dragon/dragon-studio.webp",
+      "/images/products/christmas-elf/elf-studio.webp",
+      "/images/products/christmas-collection/christmas-2.webp",
+      "/images/products/christmas-collection/christmas-3.webp",
+      "/images/products/christmas-collection/christmas-4.webp"
     ],
     color: "#fef2f2", // Festive holiday white & berry
     price: 7.99,
