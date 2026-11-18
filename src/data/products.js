@@ -8,7 +8,7 @@ export const products = [
     iconKey: "christmas-collection",
     soldOut: false,
     buyUrl: "https://cozy-stitches-crochet-shop.fourthwall.com/",
-    primaryImage: "/images/products/christmas-collection/christmas-1.jpg",
+    primaryImage: "/images/products/christmas-collection/christmas-1.webp",
     images: [
       "/images/products/christmas-collection/christmas-1.jpg",
       "/images/products/christmas-collection/christmas-2.jpg",
@@ -106,7 +106,7 @@ export const products = [
     iconKey: "santa",
     soldOut: false,
     buyUrl: "https://cozy-stitches-crochet-shop.fourthwall.com/cart/checkout?products=d917960a-1151-423b-8efa-a8c5522741c3:1&currency=USD",
-    primaryImage: "/images/products/santa-claus/santa-1.jpg",
+    primaryImage: "/images/products/santa-claus/santa-1.webp",
     images: [
       "/images/products/santa-claus/santa-1.jpg",
       "/images/products/santa-claus/santa-2.jpg",
@@ -213,7 +213,7 @@ export const products = [
     iconKey: "bunny",
     soldOut: false,
     buyUrl: "https://cozy-stitches-crochet-shop.fourthwall.com/cart/checkout?products=9755bfdc-b748-4b40-915c-69d4452c19c1:1&currency=USD",
-    primaryImage: "/images/products/kroha-bunny/bunny-1.jpg",
+    primaryImage: "/images/products/kroha-bunny/bunny-1.webp",
     images: [
       "/images/products/kroha-bunny/bunny-1.jpg",
       "/images/products/kroha-bunny/bunny-2.jpg",
@@ -310,7 +310,7 @@ export const products = [
     iconKey: "star",
     soldOut: false,
     isFree: true,
-    primaryImage: "/images/products/shooting-star/star-1.jpg",
+    primaryImage: "/images/products/shooting-star/star-1.webp",
     images: [
       "/images/products/shooting-star/star-1.jpg",
       "/images/products/shooting-star/star-2.jpg",
@@ -509,7 +509,7 @@ export const products = [
     iconKey: "graduate",
     soldOut: false,
     buyUrl: "https://cozy-stitches-crochet-shop.fourthwall.com/cart/checkout?products=97a4fd30-e2c5-453a-a5c5-5ad0c4abba20:1&currency=USD",
-    primaryImage: "/images/products/graduate-doll/graduate-1.jpg",
+    primaryImage: "/images/products/graduate-doll/graduate-1.webp",
     images: [
       "/images/products/graduate-doll/graduate-1.jpg",
       "/images/products/graduate-doll/graduate-2.jpg",
