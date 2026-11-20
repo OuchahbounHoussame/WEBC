@@ -96,10 +96,13 @@ export default function Freebie() {
 
               <div className="fc-image-stage">
                 <img
-                  src="/images/products/shooting-star/star-1.png"
+                  src="/images/products/shooting-star/star-studio.webp"
                   alt="Shooting Star Keychain crochet amigurumi"
                   className="fc-hero-img"
                   loading="lazy"
+                  decoding="async"
+                  width="400"
+                  height="400"
                 />
                 <div className="fc-img-badge">
                   <Sparkles size={12} />

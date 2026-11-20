@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import Navbar       from './components/Navbar/Navbar';
 import Hero         from './components/Hero/Hero';
@@ -11,14 +11,15 @@ import FAQ          from './components/FAQ/FAQ';
 import Footer       from './components/Footer/Footer';
 import CartToast    from './components/CartToast/CartToast';
 import CartDrawer   from './components/Cart/CartDrawer';
-import ProductDetailPage from './components/ProductDetail/ProductDetailPage';
-import CheckoutPage from './components/Checkout/CheckoutPage';
-import BlogIndex from './components/Blog/BlogIndex';
-import BlogPostPage from './components/Blog/BlogPostPage';
 import BackToTop    from './components/BackToTop/BackToTop';
 import { products } from './data/products';
 import { getBlogPostBySlug } from './data/blogPosts';
 import './App.css';
+
+const ProductDetailPage = lazy(() => import('./components/ProductDetail/ProductDetailPage'));
+const CheckoutPage = lazy(() => import('./components/Checkout/CheckoutPage'));
+const BlogIndex = lazy(() => import('./components/Blog/BlogIndex'));
+const BlogPostPage = lazy(() => import('./components/Blog/BlogPostPage'));
 
 // URL Helper to resolve product from pathname (/product/:id or /checkout/:id) or query (?product=id)
 function getProductFromUrl() {
@@ -251,55 +252,57 @@ export default function App() {
         />
       )}
       <main>
-        {isCheckout && currentProduct ? (
-          <CheckoutPage
-            product={currentProduct}
-            onBack={() => navigateToProduct(currentProduct)}
-          />
-        ) : currentProduct ? (
-          <ProductDetailPage
-            product={currentProduct}
-            onAddToCart={addToCart}
-            onBuyNow={handleBuyNow}
-            onBackToStore={navigateToHome}
-          />
-        ) : currentBlogSlug ? (
-          <BlogPostPage
-            post={getBlogPostBySlug(currentBlogSlug)}
-            onBackToBlog={navigateToBlog}
-            onHomeClick={navigateToHome}
-            onOpenProduct={navigateToProduct}
-            onFreebieClick={() => {
-              navigateToHome();
-              setTimeout(() => {
-                const el = document.getElementById('freebie');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }, 120);
-            }}
-          />
-        ) : isBlogIndex ? (
-          <BlogIndex
-            onOpenPost={navigateToBlogPost}
-            onHomeClick={navigateToHome}
-            onFreebieClick={() => {
-              navigateToHome();
-              setTimeout(() => {
-                const el = document.getElementById('freebie');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }, 120);
-            }}
-          />
-        ) : (
-          <>
-            <Hero />
-            <TrustBar />
-            <Products onAddToCart={addToCart} onViewProduct={navigateToProduct} />
-            <HowItWorks />
-            <Freebie />
-            <Testimonials />
-            <FAQ />
-          </>
-        )}
+        <Suspense fallback={<div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><div className="loading-spinner" /></div>}>
+          {isCheckout && currentProduct ? (
+            <CheckoutPage
+              product={currentProduct}
+              onBack={() => navigateToProduct(currentProduct)}
+            />
+          ) : currentProduct ? (
+            <ProductDetailPage
+              product={currentProduct}
+              onAddToCart={addToCart}
+              onBuyNow={handleBuyNow}
+              onBackToStore={navigateToHome}
+            />
+          ) : currentBlogSlug ? (
+            <BlogPostPage
+              post={getBlogPostBySlug(currentBlogSlug)}
+              onBackToBlog={navigateToBlog}
+              onHomeClick={navigateToHome}
+              onOpenProduct={navigateToProduct}
+              onFreebieClick={() => {
+                navigateToHome();
+                setTimeout(() => {
+                  const el = document.getElementById('freebie');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }, 120);
+              }}
+            />
+          ) : isBlogIndex ? (
+            <BlogIndex
+              onOpenPost={navigateToBlogPost}
+              onHomeClick={navigateToHome}
+              onFreebieClick={() => {
+                navigateToHome();
+                setTimeout(() => {
+                  const el = document.getElementById('freebie');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }, 120);
+              }}
+            />
+          ) : (
+            <>
+              <Hero />
+              <TrustBar />
+              <Products onAddToCart={addToCart} onViewProduct={navigateToProduct} />
+              <HowItWorks />
+              <Freebie />
+              <Testimonials />
+              <FAQ />
+            </>
+          )}
+        </Suspense>
       </main>
       {!isCheckout && <Footer onBlogClick={navigateToBlog} />}
       <CartToast toast={toast} />

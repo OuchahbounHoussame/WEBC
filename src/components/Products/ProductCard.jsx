@@ -14,7 +14,7 @@ import {
 import { ProductIcon } from '../Icons/CrochetIcons';
 import './Products.css';
 
-export default function ProductCard({ product, onAddToCart, onViewProduct }) {
+export default function ProductCard({ product, priority = false, onAddToCart, onViewProduct }) {
   const [added, setAdded] = useState(false);
 
   const handleAdd = (e) => {
@@ -43,7 +43,8 @@ export default function ProductCard({ product, onAddToCart, onViewProduct }) {
             <img
               src={product.primaryImage}
               alt={`${product.name} handmade crochet amigurumi pattern PDF`}
-              loading="lazy"
+              loading={priority ? "eager" : "lazy"}
+              fetchPriority={priority ? "high" : "auto"}
               decoding="async"
               width="360"
               height="450"

@@ -96,10 +96,11 @@ export default function Products({ onAddToCart, onViewProduct }) {
       {/* Grid */}
       {filtered.length > 0 ? (
         <div className="products-grid">
-          {filtered.map((p) => (
+          {filtered.map((p, idx) => (
             <ProductCard
               key={p.id}
               product={p}
+              priority={idx === 0}
               onAddToCart={onAddToCart}
               onViewProduct={onViewProduct}
             />
