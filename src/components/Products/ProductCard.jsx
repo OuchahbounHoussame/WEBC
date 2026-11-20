@@ -167,6 +167,35 @@ export default function ProductCard({ product, priority = false, onAddToCart, on
             <span>Instant Access</span>
           </span>
         </div>
+
+        {/* Price & BF Deal */}
+        <div className="pc-footer-price" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '14px', paddingTop: '10px', borderTop: '1px dashed #ebd9ea' }}>
+          <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px' }}>
+            {product.isFree || product.id === 2 ? (
+              <span style={{ fontSize: '1.2rem', fontWeight: 800, color: '#059669' }}>100% FREE</span>
+            ) : (
+              <>
+                {product.originalPrice && (
+                  <span style={{ fontSize: '0.85rem', color: '#9d87a0', textDecoration: 'line-through' }}>
+                    ${product.originalPrice.toFixed(2)}
+                  </span>
+                )}
+                <span style={{ fontSize: '1.3rem', fontWeight: 800, color: '#482750' }}>
+                  ${product.price.toFixed(2)}
+                </span>
+              </>
+            )}
+          </div>
+          {product.isFree || product.id === 2 ? (
+            <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#059669', background: '#ecfdf5', padding: '3px 8px', borderRadius: '20px' }}>
+              Free Pattern
+            </span>
+          ) : (
+            <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#dc2626', background: '#fef2f2', border: '1px solid #fecaca', padding: '3px 8px', borderRadius: '20px', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+              <Sparkles size={11} /> Black Friday $1.99
+            </span>
+          )}
+        </div>
       </div>
     </article>
   );

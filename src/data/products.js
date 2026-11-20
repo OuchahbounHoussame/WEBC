@@ -19,7 +19,8 @@ export const products = [
       "/images/products/christmas-elf/elf-studio.webp"
     ],
     color: "#fef2f2", // Festive holiday white & berry
-    price: 7.99,
+    originalPrice: 7.99,
+    price: 1.99,
     description: "A complete 48-page holiday amigurumi collection featuring 5 festive designs: The Grinch, Little Dragon, Gingerbread Doll, Snowman, and Christmas Elf. Includes step-by-step photos and 8 technique video demonstrations.",
     badge: "5-in-1 Bundle",
     tag: "Instant Download",
@@ -117,7 +118,8 @@ export const products = [
       "/images/products/santa-claus/santa-4.jpg"
     ],
     color: "#fde8e8", // Soft warm holiday pastel
-    price: 3.99,
+    originalPrice: 3.99,
+    price: 1.99,
     description: "A cuddly Christmas amigurumi doll measuring approx. 27 cm tall. Features a lush loop-stitch beard, slouchy Santa hat with snowflake pin, fluffy cuffs, and 10 linked video demonstrations.",
     badge: "Holiday Special",
     tag: "Instant Download",
@@ -224,8 +226,8 @@ export const products = [
     "/images/products/festive-grinch/grinch-4.webp"
   ],
   "color": "#f0fdf4",
-  "price": 3.99,
-  "originalPrice": 7.99,
+  "price": 1.99,
+  "originalPrice": 3.99,
   "description": "Crochet the mischievous Festive Grinch with this 12-page digital PDF pattern. Features an expressive embroidered smirk, slouchy Santa hat with fluffy pompom, and removable red trousers with booties in US crochet terms.",
   "badge": "Holiday Special",
   "tag": "Instant Download",
@@ -339,7 +341,8 @@ export const products = [
     "/images/products/holiday-snowman/snowman-4.webp"
   ],
   "color": "#f8fafc",
-  "price": 3.99,
+  "originalPrice": 3.99,
+  "price": 1.99,
   "originalPrice": 7.99,
   "description": "Crochet this cheerful Holiday Snowman featuring a structured black top hat with red ribbon, textured winter red scarf, and bright orange carrot nose. Flat self-standing base allows easy holiday display. 12 pages with 26 instructional photos.",
   "badge": "Winter Classic",
@@ -450,7 +453,8 @@ export const products = [
     "/images/products/gingerbread-doll/gingerbread-4.webp"
   ],
   "color": "#fef3c7",
-  "price": 3.99,
+  "originalPrice": 3.99,
+  "price": 1.99,
   "originalPrice": 7.99,
   "description": "Irresistibly cute 10-page gingerbread doll amigurumi pattern. Featuring a rich golden-tan cookie body, scalloped white piped frosting cap decorated with embroidered rainbow sprinkles, and red tummy buttons. Includes 21 full-color step photos in US terms.",
   "badge": "Sweet Treat",
@@ -557,7 +561,8 @@ export const products = [
     "/images/products/little-dragon/dragon-4.webp"
   ],
   "color": "#f0fdfa",
-  "price": 3.99,
+  "originalPrice": 3.99,
+  "price": 1.99,
   "originalPrice": 7.99,
   "description": "Magical 13-page fantasy amigurumi pattern for a gentle holiday Little Dragon. Features poseable wired tail, ribbed cream wings, tiny horns, and white dorsal ridge spikes. Includes 31 original photos and wiring guide in US terms.",
   "badge": "Fantasy Favorite",
@@ -664,7 +669,8 @@ export const products = [
     "/images/products/christmas-elf/elf-4.webp"
   ],
   "color": "#ecfdf5",
-  "price": 3.99,
+  "originalPrice": 3.99,
+  "price": 1.99,
   "originalPrice": 7.99,
   "description": "Detailed 18-page holiday elf doll pattern with 38 full-color instructional photos. Features pointed elf ears, curly brown yarn hair cap, emerald coat with fluffy white trim, burgundy trousers, and a tall red-and-white striped beanie in US terms.",
   "badge": "Santa's Helper",
@@ -775,7 +781,8 @@ export const products = [
       "/images/products/kroha-bunny/bunny-4.jpg"
     ],
     color: "#e8f7ee", // Delicate soft mint pastel
-    price: 3.99,
+    originalPrice: 3.99,
+    price: 1.99,
     description: "An adorable plush amigurumi bunny pattern with 2-in-1 sizing: a 9 cm mini keychain or a 17 cm huggable plush toy. Includes step-by-step photos for sculpted facial details, floppy ears, and sweet bow tie.",
     badge: "Plush & Keychain",
     tag: "Instant Download",
@@ -972,7 +979,8 @@ export const products = [
       "/images/products/eyeglass-holders/eyeglass-llama.jpg"
     ],
     color: "#fbeae8", // Soft warm pastel coral
-    price: 3.99,
+    originalPrice: 3.99,
+    price: 1.99,
     description: "Seven character variations (Fox, Turtle, Raccoon, Llama, Angry Dragon, Chicken). Practical 3D crochet trays with raised walls that keep your glasses safe.",
     badge: "Set · 7 Characters",
     tag: "Instant Download",
@@ -1072,7 +1080,8 @@ export const products = [
       "/images/products/graduate-doll/graduate-5.jpg"
     ],
     color: "#f6edf9", // Delicate soft celebratory lavender
-    price: 3.99,
+    originalPrice: 3.99,
+    price: 1.99,
     description: "An elegant keepsake amigurumi doll with graduation cap, gold tassel & stole, graduation gown, diploma scroll, and floral granny wrap bouquet.",
     badge: "Keepsake Doll",
     tag: "Instant Download",

@@ -10,9 +10,9 @@ export default function Hero() {
       <div className="hero-bg-pattern" aria-hidden="true" />
 
       <div className="hero-content">
-        <div className="hero-pill">
+        <div className="hero-pill" style={{ background: 'rgba(220, 38, 38, 0.3)', border: '1px solid rgba(254, 202, 202, 0.45)' }}>
           <Sparkles size={14} />
-          <span>New patterns dropped every week</span>
+          <span>🔥 BLACK FRIDAY SALE: All Patterns Just $1.99!</span>
         </div>
         <h1 className="hero-title">
           Beautiful Crochet Patterns,<br />
@@ -34,7 +34,7 @@ export default function Hero() {
             <Globe size={14} /> US &amp; UK terms
           </span>
           <span>
-            <Tag size={14} /> From $4.49
+            <Tag size={14} /> Black Friday $1.99
           </span>
         </div>
 

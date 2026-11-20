@@ -150,11 +150,21 @@ export default function ProductDetailPage({ product, onAddToCart, onBuyNow, onBa
 
           {/* Pricing Row */}
           <div className="pdp-price-box">
-            <div className="pdp-price-wrap">
+            <div className="pdp-price-wrap" style={{ display: 'flex', alignItems: 'baseline', gap: '10px' }}>
               {product.isFree || product.id === 2 ? (
                 <span className="pdp-current-price" style={{ color: '#059669', fontWeight: 800 }}>100% FREE</span>
               ) : (
-                <span className="pdp-current-price">${product.price.toFixed(2)} USD</span>
+                <>
+                  {product.originalPrice && product.originalPrice > product.price && (
+                    <span style={{ fontSize: '1.25rem', color: '#9d87a0', textDecoration: 'line-through', fontWeight: 500 }}>
+                      ${product.originalPrice.toFixed(2)}
+                    </span>
+                  )}
+                  <span className="pdp-current-price" style={{ color: '#d92662', fontWeight: 800 }}>${product.price.toFixed(2)} USD</span>
+                  <span style={{ background: '#fef2f2', color: '#dc2626', border: '1px solid #fecaca', fontSize: '0.78rem', fontWeight: 700, padding: '4px 10px', borderRadius: '50px' }}>
+                    🔥 Black Friday Deal
+                  </span>
+                </>
               )}
             </div>
           </div>
