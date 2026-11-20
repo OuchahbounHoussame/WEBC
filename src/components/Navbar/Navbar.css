@@ -1,8 +1,49 @@
 .navbar {
   position: fixed; top: 0; left: 0; right: 0;
-  z-index: 1000; padding: 16px 5%;
+  z-index: 1000; padding: 0 5% 14px;
   background: transparent;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.nav-top-banner {
+  background: linear-gradient(90deg, #18091c 0%, #7f1d1d 50%, #18091c 100%);
+  color: #fff;
+  padding: 6px 12px;
+  font-size: 0.78rem;
+  letter-spacing: 0.3px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  margin: 0 -5.5% 10px -5.5%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+.nav-top-banner-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.nav-banner-tag {
+  background: #dc2626;
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 4px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+.nav-banner-text {
+  color: rgba(255, 255, 255, 0.95);
+}
+.nav-banner-badge {
+  background: rgba(255, 255, 255, 0.18);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 50px;
+  color: #fef08a;
 }
 .navbar.scrolled,
 .navbar.menu-open,
@@ -11,7 +52,7 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow: 0 4px 20px rgba(130, 70, 130, 0.08);
-  padding: 10px 5%;
+  padding: 0 5% 10px;
   border-bottom: 1px solid #f3e8f6;
 }
 .nav-container {

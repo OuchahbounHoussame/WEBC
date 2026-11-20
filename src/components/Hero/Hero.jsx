@@ -10,17 +10,16 @@ export default function Hero() {
       <div className="hero-bg-pattern" aria-hidden="true" />
 
       <div className="hero-content">
-        <div className="hero-pill" style={{ background: 'rgba(220, 38, 38, 0.3)', border: '1px solid rgba(254, 202, 202, 0.45)' }}>
-          <Sparkles size={14} />
-          <span>🔥 BLACK FRIDAY SALE: All Patterns Just $1.99!</span>
+        <div className="hero-pill" style={{ background: 'rgba(220, 38, 38, 0.35)', border: '1px solid rgba(254, 202, 202, 0.6)', boxShadow: '0 4px 20px rgba(220, 38, 38, 0.35)' }}>
+          <Sparkles size={14} color="#fef08a" />
+          <span style={{ fontWeight: 800, letterSpacing: '0.8px', textTransform: 'uppercase' }}>🔥 END OF YEAR BLACK FRIDAY • ALL PATTERNS $1.99</span>
         </div>
         <h1 className="hero-title">
-          Beautiful Crochet Patterns,<br />
-          <span>Instant PDF Download</span>
+          End of Year Black Friday Sale<br />
+          <span>Every Pattern Just $1.99</span>
         </h1>
         <p className="hero-sub">
-          Shop downloadable crochet patterns, amigurumi guides, and detailed project tutorials.
-          Buy once, download forever — straight to your device in seconds.
+          Our biggest holiday blowout of the year! Grab full step-by-step crochet patterns &amp; Christmas collections for just <strong>$1.99 each</strong> (was up to $7.99). Instant PDF download forever.
         </p>
 
         <div className="hero-highlights">
@@ -34,7 +33,7 @@ export default function Hero() {
             <Globe size={14} /> US &amp; UK terms
           </span>
           <span>
-            <Tag size={14} /> Black Friday $1.99
+            <Tag size={14} /> Black Friday $1.99 Each
           </span>
         </div>
 

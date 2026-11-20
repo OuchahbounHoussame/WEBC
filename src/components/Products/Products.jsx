@@ -38,11 +38,60 @@ export default function Products({ onAddToCart, onViewProduct }) {
   return (
     <section className="products-section" id="products">
       <div className="section-header">
-        <p className="section-label">Digital Catalog</p>
-        <h2>Download &amp; Start Crocheting Today</h2>
-        <p className="section-desc">
-          Every pattern is an instant PDF download — no waiting, no shipping. Just beautiful crochet.
+        <p className="section-label" style={{ color: '#dc2626', fontWeight: 800, letterSpacing: '1px' }}>
+          🔥 END OF YEAR BLACK FRIDAY SALE
         </p>
+        <h2>Holiday Amigurumi &amp; Crochet Patterns</h2>
+        <p className="section-desc">
+          Every pattern is an instant PDF download. Grab your favorite holiday designs for just <strong>$1.99</strong>!
+        </p>
+      </div>
+
+      {/* Black Friday Promo Feature Banner */}
+      <div className="bf-catalog-banner" style={{
+        maxWidth: '1240px',
+        margin: '0 auto 32px',
+        background: 'linear-gradient(135deg, #1f0b24 0%, #4a0d26 50%, #7f1d1d 100%)',
+        borderRadius: '16px',
+        padding: '20px 28px',
+        color: '#ffffff',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        gap: '20px',
+        border: '1px solid rgba(244, 63, 94, 0.35)',
+        boxShadow: '0 8px 30px rgba(42, 8, 39, 0.2)'
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: '#dc2626', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px', flexShrink: 0, boxShadow: '0 0 15px rgba(220, 38, 38, 0.6)' }}>
+            🎁
+          </div>
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+              <span style={{ background: '#ef4444', color: '#fff', fontSize: '0.72rem', fontWeight: 800, padding: '2px 8px', borderRadius: '4px', textTransform: 'uppercase' }}>
+                End of Year Event
+              </span>
+              <span style={{ color: '#fef08a', fontSize: '0.85rem', fontWeight: 700 }}>
+                ⚡ Black Friday Doorbuster Deal
+              </span>
+            </div>
+            <h3 style={{ margin: 0, fontSize: '1.3rem', fontFamily: 'Georgia, serif', color: '#fff' }}>
+              All Digital Patterns Marked Down to $1.99
+            </h3>
+            <p style={{ margin: '4px 0 0', fontSize: '0.86rem', color: 'rgba(255,255,255,0.85)' }}>
+              Christmas Collections, Plush Santa, Festive Grinch, Snowman, Elf &amp; Animals. Instant lifetime access.
+            </p>
+          </div>
+        </div>
+        <div style={{ textAlign: 'right', marginLeft: 'auto' }}>
+          <div style={{ fontSize: '0.75rem', color: '#fecaca', textTransform: 'uppercase', letterSpacing: '0.6px', fontWeight: 700 }}>
+            Catalog-Wide Price
+          </div>
+          <div style={{ fontSize: '2.1rem', fontWeight: 800, color: '#fef08a', lineHeight: 1 }}>
+            $1.99 <span style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.7)', fontWeight: 500, textDecoration: 'line-through' }}>$7.99</span>
+          </div>
+        </div>
       </div>
 
       {/* Filters */}

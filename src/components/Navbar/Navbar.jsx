@@ -58,6 +58,15 @@ export default function Navbar({
 
   return (
     <header className={`navbar ${scrolled ? 'scrolled' : ''} ${menuOpen ? 'menu-open' : ''} ${isProductPage ? 'is-product-page' : ''}`}>
+      {/* Top Black Friday Announcement Banner */}
+      <div className="nav-top-banner">
+        <div className="nav-top-banner-inner">
+          <span className="nav-banner-tag">BLACK FRIDAY</span>
+          <span className="nav-banner-text">🔥 <strong>End of Year Mega Sale:</strong> All PDF Patterns Marked Down to <strong>$1.99</strong>! Instant Download</span>
+          <span className="nav-banner-badge">Save up to 75%</span>
+        </div>
+      </div>
+
       <div className="nav-container">
         <button
           className="logo-btn"
