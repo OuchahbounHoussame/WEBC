@@ -1,49 +1,84 @@
 .navbar {
   position: fixed; top: 0; left: 0; right: 0;
-  z-index: 1000; padding: 0 5% 14px;
+  z-index: 1000; padding: 0 5% 12px;
   background: transparent;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.nav-top-banner {
-  background: linear-gradient(90deg, #18091c 0%, #7f1d1d 50%, #18091c 100%);
+
+/* ── Seamless Infinite Marquee Ticker ── */
+.nav-ticker-bar {
+  background: linear-gradient(90deg, #150619 0%, #831818 28%, #4a0d26 55%, #0f3e2b 82%, #150619 100%);
   color: #fff;
-  padding: 6px 12px;
-  font-size: 0.78rem;
-  letter-spacing: 0.3px;
-  text-align: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  margin: 0 -5.5% 10px -5.5%;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-.nav-top-banner-inner {
-  max-width: 1300px;
-  margin: 0 auto;
+  height: 36px;
+  overflow: hidden;
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  margin: 0 -5.5% 8px -5.5%;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.28);
+  font-size: 0.8rem;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  user-select: none;
 }
-.nav-banner-tag {
-  background: #dc2626;
-  color: #fff;
-  font-size: 0.68rem;
+.nav-ticker-track {
+  display: flex;
+  width: max-content;
+  animation: tickerSlide 26s linear infinite;
+  will-change: transform;
+}
+.nav-ticker-bar:hover .nav-ticker-track {
+  animation-play-state: paused;
+}
+@keyframes tickerSlide {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+.nav-ticker-items {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding-right: 18px;
+}
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.96);
+  font-weight: 500;
+}
+.ticker-badge {
+  font-size: 0.66rem;
   font-weight: 800;
   padding: 2px 7px;
   border-radius: 4px;
-  letter-spacing: 0.8px;
+  letter-spacing: 0.6px;
   text-transform: uppercase;
 }
-.nav-banner-text {
-  color: rgba(255, 255, 255, 0.95);
+.ticker-badge.bf-badge {
+  background: #dc2626;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(220, 38, 38, 0.7);
+  animation: glowRed 2s ease-in-out infinite alternate;
 }
-.nav-banner-badge {
-  background: rgba(255, 255, 255, 0.18);
-  font-size: 0.72rem;
-  font-weight: 700;
-  padding: 2px 8px;
-  border-radius: 50px;
-  color: #fef08a;
+.ticker-badge.holiday-badge {
+  background: #059669;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(5, 150, 105, 0.6);
+}
+.ticker-badge.ny-badge {
+  background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+  color: #fff;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.6);
+}
+@keyframes glowRed {
+  from { box-shadow: 0 0 6px rgba(220, 38, 38, 0.5); }
+  to { box-shadow: 0 0 14px rgba(248, 113, 113, 0.9); }
+}
+.ticker-sep {
+  opacity: 0.85;
+  font-size: 0.85rem;
 }
 .navbar.scrolled,
 .navbar.menu-open,
@@ -262,10 +297,26 @@
   }
 }
 
+@media (max-width: 768px) {
+  .nav-ticker-bar {
+    height: 32px;
+    font-size: 0.74rem;
+    margin: 0 -4.5% 6px -4.5%;
+  }
+  .nav-ticker-track {
+    animation-duration: 20s;
+  }
+  .ticker-badge {
+    font-size: 0.6rem;
+    padding: 1px 5px;
+  }
+}
+
 @media (max-width: 480px) {
-  .navbar { padding: 12px 4%; }
+  .navbar { padding: 0 4% 10px; }
   .navbar.scrolled,
-  .navbar.menu-open { padding: 10px 4%; }
+  .navbar.menu-open,
+  .navbar.is-product-page { padding: 0 4% 8px; }
   .logo-text { font-size: 1.12rem; }
   .logo-btn { gap: 7px; }
   .cart-btn { padding: 6px 8px; }

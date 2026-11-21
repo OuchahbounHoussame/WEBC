@@ -58,12 +58,30 @@ export default function Navbar({
 
   return (
     <header className={`navbar ${scrolled ? 'scrolled' : ''} ${menuOpen ? 'menu-open' : ''} ${isProductPage ? 'is-product-page' : ''}`}>
-      {/* Top Black Friday Announcement Banner */}
-      <div className="nav-top-banner">
-        <div className="nav-top-banner-inner">
-          <span className="nav-banner-tag">BLACK FRIDAY</span>
-          <span className="nav-banner-text">🔥 <strong>End of Year Mega Sale:</strong> All PDF Patterns Marked Down to <strong>$1.99</strong>! Instant Download</span>
-          <span className="nav-banner-badge">Save up to 75%</span>
+      {/* Top Black Friday & New Year Infinite Marquee Ribbon */}
+      <div className="nav-ticker-bar" role="marquee" aria-label="Black Friday and End of Year announcements">
+        <div className="nav-ticker-track">
+          <div className="nav-ticker-items">
+            <span className="ticker-item"><span className="ticker-badge bf-badge">🔥 BLACK FRIDAY</span> <strong>All PDF Patterns $1.99</strong> (Save Up To 75%)</span>
+            <span className="ticker-sep">❄️</span>
+            <span className="ticker-item"><span className="ticker-badge holiday-badge">🎄 END OF YEAR SALE</span> Christmas 5-in-1, Santa, Grinch, Snowman &amp; Elf</span>
+            <span className="ticker-sep">✨</span>
+            <span className="ticker-item">📥 <strong>Instant PDF Download</strong> — Full Step Photos &amp; Video Tutorials</span>
+            <span className="ticker-sep">🎉</span>
+            <span className="ticker-item"><span className="ticker-badge ny-badge">🎆 NEW YEAR SPECIAL</span> Limited Holiday Quantities at $1.99</span>
+            <span className="ticker-sep">🧶</span>
+          </div>
+          {/* Duplicate track for 100% seamless infinite loop */}
+          <div className="nav-ticker-items" aria-hidden="true">
+            <span className="ticker-item"><span className="ticker-badge bf-badge">🔥 BLACK FRIDAY</span> <strong>All PDF Patterns $1.99</strong> (Save Up To 75%)</span>
+            <span className="ticker-sep">❄️</span>
+            <span className="ticker-item"><span className="ticker-badge holiday-badge">🎄 END OF YEAR SALE</span> Christmas 5-in-1, Santa, Grinch, Snowman &amp; Elf</span>
+            <span className="ticker-sep">✨</span>
+            <span className="ticker-item">📥 <strong>Instant PDF Download</strong> — Full Step Photos &amp; Video Tutorials</span>
+            <span className="ticker-sep">🎉</span>
+            <span className="ticker-item"><span className="ticker-badge ny-badge">🎆 NEW YEAR SPECIAL</span> Limited Holiday Quantities at $1.99</span>
+            <span className="ticker-sep">🧶</span>
+          </div>
         </div>
       </div>
 
