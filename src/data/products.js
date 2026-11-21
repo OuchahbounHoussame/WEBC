@@ -110,6 +110,7 @@ export const products = [
     iconKey: "santa",
     soldOut: false,
     buyUrl: "https://cozy-stitches-crochet-shop.fourthwall.com/cart/checkout?products=d917960a-1151-423b-8efa-a8c5522741c3:1&currency=USD",
+    fourthwallProductUrl: "https://cozy-stitches-crochet-shop.fourthwall.com/products/plush-santa-claus-doll-christmas-crochet-pdf-pattern",
     primaryImage: "/images/products/santa-claus/santa-1.webp",
     images: [
       "/images/products/santa-claus/santa-1.jpg",
@@ -217,7 +218,8 @@ export const products = [
   "skill": "intermediate",
   "iconKey": "christmas-collection",
   "soldOut": false,
-  "buyUrl": "https://cozy-stitches-crochet-shop.fourthwall.com/",
+  "buyUrl": "https://cozy-stitches-crochet-shop.fourthwall.com/cart/checkout?products=fc3d1054-c43f-4aa8-b91d-d5dc6bdf08fd:1&currency=USD",
+  "fourthwallProductUrl": "https://cozy-stitches-crochet-shop.fourthwall.com/products/festive-grinch-amigurumi-crochet-pdf-pattern",
   "primaryImage": "/images/products/festive-grinch/grinch-studio.webp",
   "images": [
     "/images/products/festive-grinch/grinch-studio.webp",
@@ -332,7 +334,8 @@ export const products = [
   "skill": "easy",
   "iconKey": "christmas-collection",
   "soldOut": false,
-  "buyUrl": "https://cozy-stitches-crochet-shop.fourthwall.com/",
+  "buyUrl": "https://cozy-stitches-crochet-shop.fourthwall.com/cart/checkout?products=f173b0a4-84ea-436c-9463-bdacb0851f3e:1&currency=USD",
+  "fourthwallProductUrl": "https://cozy-stitches-crochet-shop.fourthwall.com/products/holiday-snowman-amigurumi-crochet-pdf-pattern",
   "primaryImage": "/images/products/holiday-snowman/snowman-studio.webp",
   "images": [
     "/images/products/holiday-snowman/snowman-studio.webp",
@@ -444,7 +447,8 @@ export const products = [
   "skill": "easy",
   "iconKey": "christmas-collection",
   "soldOut": false,
-  "buyUrl": "https://cozy-stitches-crochet-shop.fourthwall.com/",
+  "buyUrl": "https://cozy-stitches-crochet-shop.fourthwall.com/cart/checkout?products=6fe1de20-de65-4b28-bb3e-b881cb2dd7c3:1&currency=USD",
+  "fourthwallProductUrl": "https://cozy-stitches-crochet-shop.fourthwall.com/products/gingerbread-doll-amigurumi-crochet-pdf-pattern",
   "primaryImage": "/images/products/gingerbread-doll/gingerbread-studio.webp",
   "images": [
     "/images/products/gingerbread-doll/gingerbread-studio.webp",
@@ -552,7 +556,8 @@ export const products = [
   "skill": "intermediate",
   "iconKey": "christmas-collection",
   "soldOut": false,
-  "buyUrl": "https://cozy-stitches-crochet-shop.fourthwall.com/",
+  "buyUrl": "https://cozy-stitches-crochet-shop.fourthwall.com/cart/checkout?products=578384cc-2b8b-43e4-b07c-fa09c28b7371:1&currency=USD",
+  "fourthwallProductUrl": "https://cozy-stitches-crochet-shop.fourthwall.com/products/little-dragon-amigurumi-crochet-pdf-pattern",
   "primaryImage": "/images/products/little-dragon/dragon-studio.webp",
   "images": [
     "/images/products/little-dragon/dragon-studio.webp",
@@ -660,7 +665,8 @@ export const products = [
   "skill": "intermediate",
   "iconKey": "christmas-collection",
   "soldOut": false,
-  "buyUrl": "https://cozy-stitches-crochet-shop.fourthwall.com/",
+  "buyUrl": "https://cozy-stitches-crochet-shop.fourthwall.com/cart/checkout?products=746be95b-7bc2-4441-90cb-6758363aa9d9:1&currency=USD",
+  "fourthwallProductUrl": "https://cozy-stitches-crochet-shop.fourthwall.com/products/christmas-elf-doll-amigurumi-crochet-pdf-pattern",
   "primaryImage": "/images/products/christmas-elf/elf-studio.webp",
   "images": [
     "/images/products/christmas-elf/elf-studio.webp",
@@ -773,6 +779,7 @@ export const products = [
     iconKey: "bunny",
     soldOut: false,
     buyUrl: "https://cozy-stitches-crochet-shop.fourthwall.com/cart/checkout?products=9755bfdc-b748-4b40-915c-69d4452c19c1:1&currency=USD",
+    fourthwallProductUrl: "https://cozy-stitches-crochet-shop.fourthwall.com/products/kroha-bunny-plush-keychain-crochet-pdf-pattern",
     primaryImage: "/images/products/kroha-bunny/bunny-1.webp",
     images: [
       "/images/products/kroha-bunny/bunny-1.jpg",
@@ -969,6 +976,7 @@ export const products = [
     iconKey: "eyeglass-holder",
     soldOut: false,
     buyUrl: "https://cozy-stitches-crochet-shop.fourthwall.com/cart/checkout?products=a673caae-9270-4be7-805a-75e396bd21f9:1&currency=USD",
+    fourthwallProductUrl: "https://cozy-stitches-crochet-shop.fourthwall.com/products/cozystitches-crochet-eyeglass-holder-set-pdf-pattern",
     primaryImage: "/images/products/eyeglass-holders/eyeglass-grid.webp",
     images: [
       "/images/products/eyeglass-holders/eyeglass-grid.png",
@@ -1071,6 +1079,7 @@ export const products = [
     iconKey: "graduate",
     soldOut: false,
     buyUrl: "https://cozy-stitches-crochet-shop.fourthwall.com/cart/checkout?products=97a4fd30-e2c5-453a-a5c5-5ad0c4abba20:1&currency=USD",
+    fourthwallProductUrl: "https://cozy-stitches-crochet-shop.fourthwall.com/products/graduate-doll-amigurumi-crochet-pattern-pdf",
     primaryImage: "/images/products/graduate-doll/graduate-1.webp",
     images: [
       "/images/products/graduate-doll/graduate-1.jpg",
