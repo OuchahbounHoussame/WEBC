@@ -98,7 +98,7 @@ export default function ProductCard({ product, priority = false, onAddToCart, on
 
         <div className="pc-overlay">
           <a
-            href={`/product/${product.id}`}
+            href={product.id === 12 ? `/patterns/${product.slug}` : `/product/${product.id}`}
             className="pc-preview-btn"
             style={{ textDecoration: 'none' }}
             onClick={(e) => {
@@ -144,7 +144,7 @@ export default function ProductCard({ product, priority = false, onAddToCart, on
 
         <h3 className="pc-name">
           <a
-            href={`/product/${product.id}`}
+            href={product.id === 12 ? `/patterns/${product.slug}` : `/product/${product.id}`}
             className="pc-name-link"
             onClick={(e) => {
               e.preventDefault();

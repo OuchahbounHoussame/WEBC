@@ -65,7 +65,9 @@ export default function ProductDetailPage({ product, onAddToCart, onBuyNow, onBa
         <div className="pdp-breadcrumb">
           <span onClick={onBackToStore} style={{ cursor: 'pointer' }}>Home</span>
           <span className="pdp-bc-sep">/</span>
-          <span style={{ textTransform: 'capitalize' }}>{product.category}</span>
+          <span onClick={onBackToStore} style={{ cursor: 'pointer', textTransform: 'capitalize' }}>
+            {product.id === 12 ? 'Patterns' : product.category}
+          </span>
           <span className="pdp-bc-sep">/</span>
           <span className="pdp-bc-current">{product.name}</span>
         </div>
@@ -84,7 +86,9 @@ export default function ProductDetailPage({ product, onAddToCart, onBuyNow, onBa
             {images.length > 0 ? (
               <img
                 src={images[activeImageIndex]}
-                alt={`${product.name} crochet pattern photo ${activeImageIndex + 1} - handmade amigurumi`}
+                alt={`${product.name} crochet pattern photo ${activeImageIndex + 1} - handmade holiday decor`}
+                width="640"
+                height="640"
                 className="pdp-main-image"
               />
             ) : (
@@ -99,7 +103,7 @@ export default function ProductDetailPage({ product, onAddToCart, onBuyNow, onBa
               <span>Instant PDF</span>
             </div>
 
-                      </div>
+          </div>
 
           {/* Thumbnails strip (Only real photos, no vector art) */}
           {images.length > 1 && (
@@ -111,7 +115,13 @@ export default function ProductDetailPage({ product, onAddToCart, onBuyNow, onBa
                   onClick={() => setActiveImageIndex(idx)}
                   title={`View Photo ${idx + 1}`}
                 >
-                  <img src={imgUrl} alt={`${product.name} step photo thumbnail ${idx + 1}`} loading="lazy" />
+                  <img
+                    src={imgUrl}
+                    alt={`${product.name} step photo thumbnail ${idx + 1}`}
+                    loading="lazy"
+                    width="72"
+                    height="72"
+                  />
                 </button>
               ))}
             </div>
@@ -245,6 +255,52 @@ export default function ProductDetailPage({ product, onAddToCart, onBuyNow, onBa
               <span><strong>Lifetime access:</strong> Request a fresh link anytime with your email.</span>
             </div>
           </div>
+
+          {/* Connection to First Sales Page / Matching Bundle */}
+          {product.connectedProductId && (
+            <div className="pdp-connected-banner" style={{
+              marginTop: '20px',
+              padding: '16px 20px',
+              background: 'linear-gradient(135deg, #fef2f2 0%, #fff1f2 100%)',
+              border: '2px dashed #be6c87',
+              borderRadius: '14px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: '14px',
+              flexWrap: 'wrap'
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <span style={{ fontSize: '26px' }}>🎄</span>
+                <div>
+                  <span style={{ fontSize: '0.72rem', fontWeight: 800, color: '#dc2626', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                    Holiday Companion Pattern
+                  </span>
+                  <h4 style={{ margin: '2px 0 3px', fontSize: '1.05rem', color: '#482750' }}>
+                    {product.connectedProductName}
+                  </h4>
+                  <p style={{ margin: 0, fontSize: '0.82rem', color: '#7f6885' }}>
+                    {product.connectedProductSubtitle}
+                  </p>
+                </div>
+              </div>
+              <a
+                href={product.connectedProductUrl}
+                className="btn btn-secondary"
+                style={{ padding: '8px 18px', fontSize: '0.85rem', fontWeight: 700, borderRadius: '50px', textDecoration: 'none' }}
+                onClick={(e) => {
+                  if (onSelectProduct) {
+                    e.preventDefault();
+                    const target = products.find(p => p.id === product.connectedProductId);
+                    if (target) onSelectProduct(target);
+                    else window.location.href = product.connectedProductUrl;
+                  }
+                }}
+              >
+                View Pattern &rarr;
+              </a>
+            </div>
+          )}
         </div>
       </div>
 
@@ -276,6 +332,16 @@ export default function ProductDetailPage({ product, onAddToCart, onBuyNow, onBa
             >
               <FileText size={16} />
               <span>Step-by-Step Guide</span>
+            </button>
+          )}
+
+          {product.faqs && product.faqs.length > 0 && (
+            <button
+              className={`pdp-tab-btn ${activeTab === 'faq' ? 'active' : ''}`}
+              onClick={() => setActiveTab('faq')}
+            >
+              <CheckCircle2 size={16} />
+              <span>FAQ ({product.faqs.length})</span>
             </button>
           )}
 
@@ -390,6 +456,27 @@ export default function ProductDetailPage({ product, onAddToCart, onBuyNow, onBa
             </div>
           )}
 
+          {activeTab === 'faq' && product.faqs && (
+            <div className="pdp-panel-faq">
+              <div style={{ maxWidth: '820px', margin: '0 auto' }}>
+                <h3 style={{ fontSize: '1.35rem', color: '#482750', marginBottom: '16px', fontFamily: 'Georgia, serif' }}>
+                  Frequently Asked Questions
+                </h3>
+                {product.faqs.map((faq, i) => (
+                  <div key={i} style={{ marginBottom: '16px', padding: '16px 20px', background: '#fdf8fa', border: '1px solid #ebd9ea', borderRadius: '12px' }}>
+                    <h4 style={{ fontSize: '1.02rem', color: '#482750', margin: '0 0 8px', display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
+                      <span style={{ color: '#be6c87', fontWeight: 800 }}>Q:</span>
+                      <span>{faq.question}</span>
+                    </h4>
+                    <p style={{ fontSize: '0.92rem', color: '#554458', margin: 0, lineHeight: 1.6, paddingLeft: '22px' }}>
+                      {faq.answer}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           {activeTab === 'reviews' && (
             <div className="pdp-panel-reviews">
               <div style={{ background: '#fdf8fa', border: '1px solid #ebd9ea', borderRadius: '16px', padding: '24px', lineHeight: 1.7, color: '#554458' }}>
@@ -413,38 +500,49 @@ export default function ProductDetailPage({ product, onAddToCart, onBuyNow, onBa
           <p className="pdp-related-sub">Downloadable PDF tutorials with step-by-step photos</p>
         </div>
         <div className="pdp-related-grid">
-          {products.filter((p) => p.id !== product.id).map((rel) => (
-            <a
-              key={rel.id}
-              href={`/product/${rel.id}`}
-              className="pdp-related-card"
-              onClick={(e) => {
-                e.preventDefault();
-                if (onSelectProduct) {
-                  onSelectProduct(rel);
-                } else {
-                  window.location.href = `/product/${rel.id}`;
-                }
-              }}
-            >
-              <div className="pdp-related-img-wrap">
-                <img
-                  src={rel.primaryImage}
-                  alt={`${rel.name} handmade crochet amigurumi pattern PDF`}
-                  loading="lazy"
-                  className="pdp-related-img"
-                />
-                <span className="pdp-related-badge">{rel.skill}</span>
-              </div>
-              <div className="pdp-related-info">
-                <h3 className="pdp-related-name">{rel.name}</h3>
-                <div className="pdp-related-meta">
-                  <span className="pdp-related-price">${Number(rel.price).toFixed(2)} USD</span>
-                  <span className="pdp-related-cta">View Pattern &rarr;</span>
-                </div>
-              </div>
-            </a>
-          ))}
+          {(() => {
+            const sortedRelated = [
+              ...products.filter((p) => p.id === product.connectedProductId),
+              ...products.filter((p) => p.id !== product.id && p.id !== product.connectedProductId)
+            ];
+            return sortedRelated.map((rel) => {
+              const relHref = rel.id === 12 ? `/patterns/${rel.slug}` : `/product/${rel.id}`;
+              return (
+                <a
+                  key={rel.id}
+                  href={relHref}
+                  className="pdp-related-card"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (onSelectProduct) {
+                      onSelectProduct(rel);
+                    } else {
+                      window.location.href = relHref;
+                    }
+                  }}
+                >
+                  <div className="pdp-related-img-wrap">
+                    <img
+                      src={rel.primaryImage}
+                      alt={`${rel.name} handmade crochet amigurumi pattern PDF`}
+                      loading="lazy"
+                      width="300"
+                      height="300"
+                      className="pdp-related-img"
+                    />
+                    <span className="pdp-related-badge">{rel.skill}</span>
+                  </div>
+                  <div className="pdp-related-info">
+                    <h3 className="pdp-related-name">{rel.name}</h3>
+                    <div className="pdp-related-meta">
+                      <span className="pdp-related-price">${Number(rel.price).toFixed(2)} USD</span>
+                      <span className="pdp-related-cta">View Pattern &rarr;</span>
+                    </div>
+                  </div>
+                </a>
+              );
+            });
+          })()}
         </div>
       </section>
 </div>

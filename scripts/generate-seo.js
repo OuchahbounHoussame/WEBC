@@ -56,9 +56,14 @@ function getProductSEO(product) {
   } else if (product.id === 11) {
     seoTitle = `Christmas Elf Doll Amigurumi Crochet Pattern PDF | CozyStitches`;
     seoDescription = `Delightful holiday elf doll pattern with pointed ears, curly brown hair cap, emerald coat, and striped beanie. 18-page digital PDF with 38 instructional photos in US terms.`;
+  } else if (product.id === 12 || product.slug === 'christmas-holly-car-hanging-crochet-pattern') {
+    seoTitle = `Christmas Holly Car Hanging Crochet Pattern | Cozy Stitches`;
+    seoDescription = `Crochet a festive Christmas holly car hanging with this 7-page English PDF pattern. Features US crochet terms, step-by-step photo guide & quick assembly.`;
   }
 
-  const canonicalUrl = `${SITE_URL}/product/${product.id}`;
+  const canonicalUrl = (product.id === 12 || product.slug === 'christmas-holly-car-hanging-crochet-pattern')
+    ? `${SITE_URL}/patterns/christmas-holly-car-hanging-crochet-pattern`
+    : `${SITE_URL}/product/${product.id}`;
   const imageUrl = product.primaryImage.startsWith('http')
     ? product.primaryImage
     : `${SITE_URL}${product.primaryImage}`;
@@ -67,8 +72,7 @@ function getProductSEO(product) {
     ? product.images.map((img) => (img.startsWith('http') ? img : `${SITE_URL}${img}`))
     : [imageUrl];
 
-  const jsonLd = {
-    "@context": "https://schema.org",
+  const productSchema = {
     "@type": "Product",
     "name": product.name,
     "headline": seoTitle,
@@ -79,7 +83,7 @@ function getProductSEO(product) {
     "category": "Crafts & Hobbies > Crochet & Knitting > Crochet Patterns",
     "brand": {
       "@type": "Brand",
-      "name": "CozyStitches"
+      "name": "Cozy Stitches"
     },
     "offers": {
       "@type": "Offer",
@@ -91,10 +95,55 @@ function getProductSEO(product) {
       "availability": (product.id === 2 || product.isFree) ? "https://schema.org/InStock" : (product.soldOut ? "https://schema.org/OutOfStock" : "https://schema.org/InStock"),
       "seller": {
         "@type": "Organization",
-        "name": "CozyStitches",
+        "name": "Cozy Stitches",
         "url": SITE_URL
       }
     }
+  };
+
+  const breadcrumbSchema = {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": SITE_URL
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Patterns",
+        "item": `${SITE_URL}/#products`
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": product.name,
+        "item": canonicalUrl
+      }
+    ]
+  };
+
+  const graphItems = [productSchema, breadcrumbSchema];
+
+  if (product.faqs && product.faqs.length > 0) {
+    graphItems.push({
+      "@type": "FAQPage",
+      "mainEntity": product.faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answer
+        }
+      }))
+    });
+  }
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": graphItems
   };
 
   return {
@@ -362,6 +411,31 @@ function prerenderProductPages(templateHtml) {
       </div>
     ` : '';
 
+    const isHolly = product.id === 12 || product.slug === 'christmas-holly-car-hanging-crochet-pattern';
+
+    const hollyFaqHtml = isHolly && product.faqs ? `
+      <section style="margin-top: 32px; padding: 24px; background: #fdf8fa; border: 1px solid #ebd9ea; border-radius: 16px;">
+        <h2 style="font-size: 22px; color: #482750; margin: 0 0 16px; font-family: Georgia, serif;">Frequently Asked Questions</h2>
+        ${product.faqs.map(faq => `
+          <div style="margin-bottom: 16px;">
+            <h3 style="font-size: 16px; color: #482750; margin: 0 0 6px;">Q: ${faq.question}</h3>
+            <p style="font-size: 14px; color: #554458; margin: 0; line-height: 1.6;">${faq.answer}</p>
+          </div>
+        `).join('')}
+      </section>
+    ` : '';
+
+    const connectedCardHtml = product.connectedProductId ? `
+      <div style="margin-top: 24px; padding: 18px 20px; background: #fef2f2; border: 2px dashed #be6c87; border-radius: 14px;">
+        <span style="font-size: 11px; font-weight: 800; color: #dc2626; text-transform: uppercase; letter-spacing: 0.5px;">Holiday Companion Pattern</span>
+        <h3 style="margin: 4px 0 6px; font-size: 18px; color: #482750;">
+          <a href="${product.connectedProductUrl}" style="color: #482750; text-decoration: underline;">${product.connectedProductName}</a>
+        </h3>
+        <p style="margin: 0 0 10px; font-size: 14px; color: #7f6885;">${product.connectedProductSubtitle}</p>
+        <a href="${product.connectedProductUrl}" style="display: inline-block; background: #be6c87; color: #ffffff; padding: 8px 18px; border-radius: 50px; font-size: 13px; font-weight: 700; text-decoration: none;">View Connected Pattern &rarr;</a>
+      </div>
+    ` : '';
+
     const semanticContent = `
       <div class="pdp-container prerendered-static" style="max-width: 1100px; margin: 0 auto; padding: 24px 16px;">
         <nav aria-label="Breadcrumb" style="font-size: 13px; margin-bottom: 20px; color: #7f6885;">
@@ -396,8 +470,38 @@ function prerenderProductPages(templateHtml) {
               <p style="margin: 4px 0;"><strong>📐 Language &amp; Terms:</strong> ${product.terms || 'US Terms'}</p>
               <p style="margin: 4px 0;"><strong>🔒 Delivery:</strong> Immediate access + email backup</p>
             </div>
-            ${materialsHtml ? `<div style="margin-top: 20px;"><h3 style="color: #482750; font-size: 16px;">Materials Required:</h3><ul style="color: #554458; line-height: 1.6;">${materialsHtml}</ul></div>` : ''}
-            ${sectionsHtml ? `<div style="margin-top: 20px;"><h3 style="color: #482750; font-size: 16px;">Pattern Sections:</h3><ul style="color: #554458; line-height: 1.6;">${sectionsHtml}</ul></div>` : ''}
+            ${isHolly ? `
+              <section style="margin-top: 24px;">
+                <h2 style="color: #482750; font-size: 20px; margin-bottom: 8px;">Pattern Overview</h2>
+                <ul style="color: #554458; line-height: 1.6; font-size: 15px;">
+                  <li><strong>Finished Size:</strong> Approximately 19 cm / 7.4 inches in length (size varies slightly with yarn tension).</li>
+                  <li><strong>Difficulty Level:</strong> 3 / 5 (Intermediate crafter friendly with full photographic walk-through).</li>
+                  <li><strong>Ideal Use Cases:</strong> Car rearview mirror charm, Christmas tree hanging ornament, holiday gift tag, or festive wreath accent.</li>
+                </ul>
+              </section>
+              <section style="margin-top: 24px;">
+                <h2 style="color: #482750; font-size: 20px; margin-bottom: 8px;">Materials &amp; Tools Needed</h2>
+                <ul style="color: #554458; line-height: 1.6; font-size: 15px;">
+                  ${materialsHtml}
+                </ul>
+              </section>
+              <section style="margin-top: 24px;">
+                <h2 style="color: #482750; font-size: 20px; margin-bottom: 8px;">What's Included in the 7-Page PDF</h2>
+                <ul style="color: #554458; line-height: 1.6; font-size: 15px;">
+                  <li><strong>US Crochet Terms:</strong> Clear abbreviations guide (MR, ch, sc, hdc, dc, BO bobble, tr/TRC).</li>
+                  <li><strong>Joining Rounds Photo Guide:</strong> 11 step-by-step photos demonstrating slip-stitch join alignment.</li>
+                  <li><strong>Holly Leaf Chain A:</strong> 8 instructional photos for alternating continuous leaf chains.</li>
+                  <li><strong>Holly Leaf Chain B &amp; Loop:</strong> 4 instructional photos for leaf pairs and 35-chain hanging loop.</li>
+                  <li><strong>Berry Clusters &amp; Assembly:</strong> 8 instructional photos for 9 3-loop bobble berry clusters and final assembly.</li>
+                </ul>
+              </section>
+              ${hollyFaqHtml}
+              ${connectedCardHtml}
+            ` : `
+              ${materialsHtml ? `<div style="margin-top: 20px;"><h2 style="color: #482750; font-size: 18px;">Materials Required:</h2><ul style="color: #554458; line-height: 1.6;">${materialsHtml}</ul></div>` : ''}
+              ${sectionsHtml ? `<div style="margin-top: 20px;"><h2 style="color: #482750; font-size: 18px;">Pattern Sections:</h2><ul style="color: #554458; line-height: 1.6;">${sectionsHtml}</ul></div>` : ''}
+              ${connectedCardHtml}
+            `}
             ${(() => {
               if (product.id === 2 || product.isFree) {
                 return `<div style="margin-top: 28px;">
@@ -463,6 +567,14 @@ function prerenderProductPages(templateHtml) {
       fs.mkdirSync(slugDir, { recursive: true });
       fs.writeFileSync(path.join(slugDir, 'index.html'), productHtml, 'utf8');
       fs.writeFileSync(path.join(rootDir, 'dist', 'product', `${product.slug}.html`), productHtml, 'utf8');
+    }
+
+    if (product.id === 12 || product.slug === 'christmas-holly-car-hanging-crochet-pattern') {
+      const patternsDir = path.join(rootDir, 'dist', 'patterns', product.slug);
+      fs.mkdirSync(patternsDir, { recursive: true });
+      fs.writeFileSync(path.join(patternsDir, 'index.html'), productHtml, 'utf8');
+      fs.writeFileSync(path.join(rootDir, 'dist', 'patterns', `${product.slug}.html`), productHtml, 'utf8');
+      console.log(`✓ Prerendered /patterns/${product.slug}`);
     }
 
     console.log(`✓ Prerendered /product/${product.id} (${product.name})`);

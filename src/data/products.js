@@ -99,7 +99,11 @@ export const products = [
           ]
         }
       ]
-    }
+    },
+    connectedProductId: 12,
+    connectedProductName: "Christmas Holly Car Hanging Crochet Pattern",
+    connectedProductSubtitle: "Matching festive holiday car charm & home decor with green leaf chains & red berry clusters. 7-page PDF.",
+    connectedProductUrl: "/patterns/christmas-holly-car-hanging-crochet-pattern"
   },
 {
     id: 5,
@@ -209,6 +213,131 @@ export const products = [
         }
       ]
     }
+  },
+  {
+    id: 12,
+    name: "Christmas Holly Car Hanging Crochet Pattern",
+    slug: "christmas-holly-car-hanging-crochet-pattern",
+    category: "christmas",
+    skill: "intermediate",
+    iconKey: "holly",
+    soldOut: false,
+    primaryImage: "/images/products/christmas-holly/holly-hero.webp",
+    images: [
+      "/images/products/christmas-holly/holly-hero.webp",
+      "/images/products/christmas-holly/holly-rounds-guide.webp",
+      "/images/products/christmas-holly/holly-leaf-chain-a.webp",
+      "/images/products/christmas-holly/holly-leaf-chain-b.webp",
+      "/images/products/christmas-holly/holly-berries-assembly.webp"
+    ],
+    color: "#f0fdf4", // Festive evergreen & berry
+    originalPrice: 3.99,
+    price: 1.99,
+    description: "Crochet a festive Christmas holly car hanging with this 7-page English PDF pattern. Features US crochet terms, step-by-step photo guide & quick assembly.",
+    badge: "Holiday Special",
+    tag: "Instant Download",
+    pages: 7,
+    terms: "US Terms",
+    formats: ["PDF"],
+    bestseller: true,
+    size: "Approx. 19 cm / 7.4 inches",
+    hook: "2.5 mm (C)",
+    difficulty: "3 / 5 (Intermediate)",
+    materials: [
+      "Sport / Fine (2) yarn, or yarn of your choice; Green (1 skein)",
+      "Sport / Fine (2) yarn, or yarn of your choice; Red (1 skein)",
+      "2.5 mm (C) crochet hook",
+      "Stitch marker (essential for marking first stitch of each round)",
+      "Large-eye sewing / tapestry needle",
+      "Sharp craft scissors",
+      "Hot glue gun (or craft glue / sewing needle for berry cluster attachment)"
+    ],
+    sections: [
+      "Pattern Overview & Finished Dimensions (~19 cm / 7.4 in)",
+      "Materials, Abbreviations (US Terms) & Working Notes",
+      "Joining Rounds: Step-by-Step Photo Guide (11 instructional photos)",
+      "Holly Leaf Chain A (8 instructional photos)",
+      "Holly Leaf Chain B & Hanging Loop Attachment (4 instructional photos)",
+      "Holly Berry Clusters (9 clusters) & Assembly (8 instructional photos)",
+      "Final Car Mirror Hanging & Holiday Display"
+    ],
+    patternGuide: {
+      abbreviations: [
+        { code: "MR", meaning: "Magic ring" },
+        { code: "st(s)", meaning: "Stitch(es)" },
+        { code: "sl st", meaning: "Slip stitch" },
+        { code: "ch", meaning: "Chain" },
+        { code: "TC", meaning: "Turn the work (Turn crochet)" },
+        { code: "sc", meaning: "Single crochet" },
+        { code: "hdc", meaning: "Half double crochet" },
+        { code: "dc", meaning: "Double crochet" },
+        { code: "BO", meaning: "Bobble stitch (3 loops)" },
+        { code: "tr / TRC", meaning: "Treble crochet (used in general joining notes)" }
+      ],
+      steps: [
+        {
+          title: "1. Joining Rounds: Step-by-Step Photo Guide (11 Photos)",
+          note: "Work slip-stitch joins to align rounds and eliminate seam skewing. ch 1 for sc/hdc, ch 2 for dc, ch 3 for tr / TRC.",
+          rounds: [
+            "1. Mark the first stitch of the round with a stitch marker.",
+            "2. Insert the hook into that stitch, yarn over and pull through to make a slip stitch; gently tighten (photos 2-4).",
+            "3. Yarn over and pull through to chain, then work the first stitch of the next round directly into the same stitch used for the join (photos 5-11)."
+          ]
+        },
+        {
+          title: "2. Holly Leaf Chain A (Green Yarn - 8 Step Photos)",
+          rounds: [
+            "1. Ch 9. Starting in the 3rd ch from hook: work 4 dc, 1 hdc, 1 sc, 1 sl st. Ch 10. Starting in the 3rd ch from hook: work 4 dc, 1 hdc, 1 sc, 1 sl st.",
+            "2. Repeat 3 times: [Ch 15; starting in the 3rd ch from hook: work 4 dc, 1 hdc, 1 sc, 1 sl st. Ch 10; starting in the 3rd ch from hook: work 4 dc, 1 hdc, 1 sc, 1 sl st].",
+            "3. Ch 5 and place a stitch marker.",
+            "4. Repeat the same bracketed sequence in step 2 three more times. Weave in the ends and cut the yarn."
+          ]
+        },
+        {
+          title: "3. Holly Leaf Chain B & Loop Attachment (Green Yarn - 4 Step Photos)",
+          rounds: [
+            "1. Ch 9. Starting in the 3rd ch from hook: work 4 dc, 1 hdc, 1 sc, 1 sl st.",
+            "2. Repeat 2 times: [Ch 15; starting in the 3rd ch from hook: work 4 dc, 1 hdc, 1 sc, 1 sl st. Ch 10; starting in the 3rd ch from hook: work 4 dc, 1 hdc, 1 sc, 1 sl st].",
+            "3. Sl st into the marked stitch on leaf chain A. Ch 35, then sl st into the same marked stitch on leaf chain A. Weave in ends and cut yarn."
+          ]
+        },
+        {
+          title: "4. Holly Berry Clusters & Assembly (Red Yarn - 8 Step Photos)",
+          points: [
+            "1. Holly Berry Clusters (Make 9): In red yarn, Round 1: Make a MR. Work [ch 1, BO (3 loops), ch 1, sl st] 3 times. Weave in ends and cut yarn.",
+            "2. Bobble Definition: The pattern provides 3-loop bobble cluster instructions supported by original clear photo references.",
+            "3. Assembly: Sew the berry clusters to the leaf chains, or attach them using a hot glue gun. Arrange them randomly or follow the finished-project photograph.",
+            "4. Car Hanging & Decor: Hang over your car rearview mirror, tie into a Christmas wreath, or drape along your holiday mantel."
+          ]
+        }
+      ]
+    },
+    faqs: [
+      {
+        question: "What is the skill level and difficulty for this Christmas Holly pattern?",
+        answer: "This pattern is rated 3/5 (Intermediate). It requires familiarity with standard crochet stitches (chain, slip stitch, single crochet, half double crochet, double crochet) and guides you through 3-loop bobble berry clusters and slip-stitch joining technique with clear photos."
+      },
+      {
+        question: "What yarn weight and hook size should I use?",
+        answer: "The pattern calls for Sport / Fine (2) yarn in festive Green and Red (one skein of each color), paired with a 2.5 mm (US C) crochet hook. You can also substitute DK or light worsted weight yarn with an appropriate hook size."
+      },
+      {
+        question: "What is the finished size of the holly car hanging?",
+        answer: "The finished Christmas Holly hanging measures approximately 19 cm (7.4 inches) in length, making it the ideal size for hanging from a car rearview mirror, decorating a Christmas tree, or styling holiday wreaths and garland."
+      },
+      {
+        question: "How do I receive my crochet pattern after purchase?",
+        answer: "Your pattern is delivered as an instant digital PDF download immediately after completing checkout. A backup link is also emailed to you right away so you can save and print your pattern anytime."
+      },
+      {
+        question: "Can I sell finished items made from this pattern?",
+        answer: "The original pattern specifies personal use only and prohibits distribution or sharing of the PDF guide on social media or digital platforms. You are welcome to craft finished holly hangings for personal enjoyment, car decor, and gift giving."
+      }
+    ],
+    connectedProductId: 6,
+    connectedProductName: "Christmas Collection 5-in-1 Amigurumi Bundle",
+    connectedProductSubtitle: "Complete 48-page holiday bundle featuring Grinch, Dragon, Snowman, Gingerbread & Elf.",
+    connectedProductUrl: "/product/6"
   },
 {
   "id": 7,

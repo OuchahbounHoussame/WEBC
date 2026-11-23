@@ -1004,6 +1004,8 @@ export function ChristmasCollectionIcon({ size = 80 }) {
 // Helper to render matching vector artwork by key
 export function ProductIcon({ iconKey, size = 80 }) {
   switch (iconKey) {
+    case 'holly':
+    case 'christmas-holly':
     case 'christmas':
     case 'christmas-collection':
     case 'collection':      return <ChristmasCollectionIcon size={size} />;

@@ -5,11 +5,29 @@
   "cleanUrls": true,
   "functions": {
     "api/[...all].js": {
-      "includeFiles": "{server/**,dist/*.html,dist/*.xml,dist/*.txt,dist/blog/**,dist/product/**}",
+      "includeFiles": "{server/**,dist/*.html,dist/*.xml,dist/*.txt,dist/blog/**,dist/product/**,dist/patterns/**}",
       "excludeFiles": "{dist/images/**,dist/assets/**}"
     }
   },
   "headers": [
+    {
+      "source": "/(.*)\\.pdf",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+      ]
+    },
+    {
+      "source": "/server/storage/(.*)",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+      ]
+    },
+    {
+      "source": "/storage/(.*)",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+      ]
+    },
     {
       "source": "/assets/(.*)",
       "headers": [

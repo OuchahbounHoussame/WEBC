@@ -158,7 +158,8 @@ export function initSchema() {
     [8, "Holiday Snowman Amigurumi", "amigurumi", "beginner", 3.99, 7.99, "pattern-8-holiday-snowman.pdf", "Holiday-Snowman-Pattern.pdf", 12],
     [9, "Gingerbread Doll Amigurumi", "amigurumi", "beginner", 3.99, 7.99, "pattern-9-gingerbread-doll.pdf", "Gingerbread-Doll-Pattern.pdf", 10],
     [10, "Little Dragon Amigurumi", "amigurumi", "intermediate", 3.99, 7.99, "pattern-10-little-dragon.pdf", "Little-Dragon-Pattern.pdf", 13],
-    [11, "Christmas Elf Doll Amigurumi", "amigurumi", "intermediate", 3.99, 7.99, "pattern-11-christmas-elf.pdf", "Christmas-Elf-Pattern.pdf", 18]
+    [11, "Christmas Elf Doll Amigurumi", "amigurumi", "intermediate", 3.99, 7.99, "pattern-11-christmas-elf.pdf", "Christmas-Elf-Pattern.pdf", 18],
+    [12, "Christmas Holly Car Hanging", "christmas", "intermediate", 1.99, 3.99, "pattern-12-christmas-holly-car-hanging.pdf", "Christmas-Holly-Car-Hanging-Crochet-Pattern.pdf", 7]
   ];
 
   for (const p of productsSeed) {

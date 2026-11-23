@@ -64,6 +64,7 @@ async function runTests() {
     'product/4/index.html',
     'product/5/index.html',
     'product/6/index.html',
+    'patterns/christmas-holly-car-hanging-crochet-pattern/index.html',
     'blog/index.html',
     'blog/free-shooting-star-crochet-pattern-keychain/index.html'
   ];

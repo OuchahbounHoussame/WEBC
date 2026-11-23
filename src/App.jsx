@@ -21,14 +21,14 @@ const CheckoutPage = lazy(() => import('./components/Checkout/CheckoutPage'));
 const BlogIndex = lazy(() => import('./components/Blog/BlogIndex'));
 const BlogPostPage = lazy(() => import('./components/Blog/BlogPostPage'));
 
-// URL Helper to resolve product from pathname (/product/:id or /checkout/:id) or query (?product=id)
+// URL Helper to resolve product from pathname (/product/:id or /checkout/:id or /patterns/:slug) or query (?product=id)
 function getProductFromUrl() {
   if (typeof window === 'undefined') return null;
   const pathname = window.location.pathname;
   const searchParams = new URLSearchParams(window.location.search);
   const paramId = searchParams.get('product') || searchParams.get('p') || searchParams.get('id');
 
-  const match = pathname.match(/^\/(?:product|checkout)\/([^/]+)/);
+  const match = pathname.match(/^\/(?:product|checkout|patterns)\/([^/]+)/);
   const target = match ? match[1] : paramId;
 
   if (!target) return null;
@@ -89,7 +89,7 @@ export default function App() {
   // Check if current route is an invalid/missing product
   const isInvalidProductRoute = Boolean(
     typeof window !== 'undefined' &&
-    window.location.pathname.startsWith('/product/') &&
+    (window.location.pathname.startsWith('/product/') || window.location.pathname.startsWith('/patterns/')) &&
     !currentProduct
   );
 
@@ -127,7 +127,9 @@ export default function App() {
   }, []);
 
   const navigateToProduct = (product) => {
-    const url = `/product/${product.id}`;
+    const url = product.id === 12
+      ? `/patterns/${product.slug}`
+      : `/product/${product.id}`;
     window.history.pushState({ productId: product.id }, '', url);
     setCurrentProduct(product);
     setIsCheckout(false);
@@ -264,6 +266,7 @@ export default function App() {
               onAddToCart={addToCart}
               onBuyNow={handleBuyNow}
               onBackToStore={navigateToHome}
+              onSelectProduct={navigateToProduct}
             />
           ) : currentBlogSlug ? (
             <BlogPostPage

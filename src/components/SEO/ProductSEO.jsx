@@ -6,8 +6,7 @@ const HOMEPAGE_DESC = 'Download charming, step-by-step crochet & amigurumi PDF p
 
 /**
  * Generates verified SEO metadata and 100% genuine Schema.org Product JSON-LD.
- * Only real, published product data is included.
- * No fabricated ratings, unverified reviews, physical shipping, or inaccurate return policies.
+ * Includes Product, BreadcrumbList, and FAQPage structured data schemas.
  */
 export function getProductSEOMetadata(product) {
   if (!product) return null;
@@ -33,9 +32,15 @@ export function getProductSEOMetadata(product) {
   } else if (product.id === 6) {
     seoTitle = `Christmas Collection 5-in-1 Amigurumi Crochet Pattern PDF | CozyStitches`;
     seoDescription = `Complete 48-page Christmas amigurumi pattern bundle. Includes 5 designs: Grinch, Little Dragon, Gingerbread Doll, Snowman, and Elf with step-by-step photos and 8 video tutorials.`;
+  } else if (product.id === 12 || product.slug === 'christmas-holly-car-hanging-crochet-pattern') {
+    seoTitle = `Christmas Holly Car Hanging Crochet Pattern | Cozy Stitches`;
+    seoDescription = `Crochet a festive Christmas holly car hanging with this 7-page English PDF pattern. Features US crochet terms, step-by-step photo guide & quick assembly.`;
   }
 
-  const canonicalUrl = `${SITE_URL}/product/${product.id}`;
+  const canonicalUrl = (product.id === 12 || product.slug === 'christmas-holly-car-hanging-crochet-pattern')
+    ? `${SITE_URL}/patterns/christmas-holly-car-hanging-crochet-pattern`
+    : `${SITE_URL}/product/${product.id}`;
+
   const imageUrl = product.primaryImage.startsWith('http')
     ? product.primaryImage
     : `${SITE_URL}${product.primaryImage}`;
@@ -45,9 +50,7 @@ export function getProductSEOMetadata(product) {
     : [imageUrl];
 
   // Strictly genuine Schema.org Product markup
-  // Excludes unverified reviews/ratings and physical shipping/returns per digital goods guidelines
-  const jsonLd = {
-    "@context": "https://schema.org",
+  const productSchema = {
     "@type": "Product",
     "name": product.name,
     "headline": seoTitle,
@@ -58,7 +61,7 @@ export function getProductSEOMetadata(product) {
     "category": "Crafts & Hobbies > Crochet & Knitting > Crochet Patterns",
     "brand": {
       "@type": "Brand",
-      "name": "CozyStitches"
+      "name": "Cozy Stitches"
     },
     "offers": {
       "@type": "Offer",
@@ -70,10 +73,55 @@ export function getProductSEOMetadata(product) {
       "availability": (product.id === 2 || product.isFree) ? "https://schema.org/InStock" : (product.soldOut ? "https://schema.org/OutOfStock" : "https://schema.org/InStock"),
       "seller": {
         "@type": "Organization",
-        "name": "CozyStitches",
+        "name": "Cozy Stitches",
         "url": SITE_URL
       }
     }
+  };
+
+  const breadcrumbSchema = {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": SITE_URL
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Patterns",
+        "item": `${SITE_URL}/#products`
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": product.name,
+        "item": canonicalUrl
+      }
+    ]
+  };
+
+  const graphItems = [productSchema, breadcrumbSchema];
+
+  if (product.faqs && product.faqs.length > 0) {
+    graphItems.push({
+      "@type": "FAQPage",
+      "mainEntity": product.faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answer
+        }
+      }))
+    });
+  }
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": graphItems
   };
 
   return {
@@ -123,7 +171,8 @@ export default function ProductSEO({ product }) {
     setMeta('og:url', meta.canonicalUrl, true);
     setMeta('og:type', 'product', true);
     setMeta('og:image', meta.imageUrl, true);
-    setMeta('og:site_name', 'CozyStitches', true);
+    setMeta('og:image:alt', `${product.name} Finished Project Photo`, true);
+    setMeta('og:site_name', 'Cozy Stitches', true);
     setMeta('product:price:amount', Number(product.price).toFixed(2), true);
     setMeta('product:price:currency', 'USD', true);
 

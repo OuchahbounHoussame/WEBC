@@ -167,7 +167,10 @@ async function runTests() {
   const products = productsModule.products;
   assert(products[0].id === 6, 'Product 6 (Christmas Collection 5-in-1) is Position 1 in catalog');
   assert(products[1].id === 5, 'Product 5 (Plush Santa Claus) is Position 2 in catalog');
-  assert(products.length === 11, `All 11 products are present and cleanly defined (found ${products.length})`);
+  assert(products.length === 12, `All 12 products are present and cleanly defined (found ${products.length})`);
+  assert(products.find(p => p.id === 12), 'Product 12 (Christmas Holly Car Hanging) is present in catalog');
+  assert(products[0].connectedProductId === 12, 'Product 6 is connected to Product 12 (Christmas Holly)');
+  assert(products.find(p => p.id === 12).connectedProductId === 6, 'Product 12 is connected to Product 6 (Christmas Collection 5-in-1)');
 
   // ── 6. Live HTTP Server Responses (Express) ────────────────
   console.log('\nTest Group 6: Live HTTP Server Endpoint Responses');
@@ -216,6 +219,12 @@ async function runTests() {
 
     const resProd2 = await fetchUrl('/product/2');
     assert(resProd2.status === 200, 'GET /product/2 returns HTTP 200');
+
+    const resHolly = await fetchUrl('/patterns/christmas-holly-car-hanging-crochet-pattern');
+    assert(resHolly.status === 200, 'GET /patterns/christmas-holly-car-hanging-crochet-pattern returns HTTP 200');
+    assert(resHolly.body.includes('Christmas Holly Car Hanging Crochet Pattern'), 'Holly page body includes H1 / title');
+    assert(resHolly.body.includes('https://www.shopcozystitches.com/patterns/christmas-holly-car-hanging-crochet-pattern'), 'Holly page includes canonical tag');
+    assert(resHolly.body.includes('Christmas Collection 5-in-1 Amigurumi'), 'Holly page connects to Product 6 (Christmas Collection)');
   } finally {
     await new Promise((resolve) => server.close(resolve));
   }
