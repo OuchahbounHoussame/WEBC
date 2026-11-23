@@ -225,9 +225,11 @@ export const products = [
     primaryImage: "/images/products/christmas-holly/holly-hero.webp",
     images: [
       "/images/products/christmas-holly/holly-hero.webp",
+      "/images/products/christmas-holly/holly-detail-stitches.webp",
+      "/images/products/christmas-holly/holly-hanging-loop.webp",
+      "/images/products/christmas-holly/holly-full-view.webp",
+      "/images/products/christmas-holly/holly-angled-view.webp",
       "/images/products/christmas-holly/holly-rounds-guide.webp",
-      "/images/products/christmas-holly/holly-leaf-chain-a.webp",
-      "/images/products/christmas-holly/holly-leaf-chain-b.webp",
       "/images/products/christmas-holly/holly-berries-assembly.webp"
     ],
     color: "#f0fdf4", // Festive evergreen & berry
