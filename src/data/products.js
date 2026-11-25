@@ -222,6 +222,8 @@ export const products = [
     skill: "intermediate",
     iconKey: "holly",
     soldOut: false,
+    buyUrl: "https://cozy-stitches-crochet-shop.fourthwall.com/cart/checkout?products=35885eaa-d7e1-4fe6-a579-d5476ef9b264:1&currency=USD",
+    fourthwallProductUrl: "https://cozy-stitches-crochet-shop.fourthwall.com/products/christmas-holly-car-hanging-crochet-pdf-pattern",
     primaryImage: "/images/products/christmas-holly/holly-hero.webp",
     images: [
       "/images/products/christmas-holly/holly-hero.webp",
